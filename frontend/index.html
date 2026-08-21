@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MedTender Intelligence | Procurement Workspace</title>
-  <meta name="description" content="Medical Tender Intelligence and Bid Management Workspace for Rwanda">
+  <title>MedTender | Company-to-Tender Relevance & Procurement Intelligence</title>
+  <meta name="description" content="Company-to-Tender Relevance Matching and Predictive Stock Replenishment Workspace">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,7 +29,7 @@
         <button class="nav-item" data-view="tenders" id="navTenders">
           <span class="nav-icon" aria-hidden="true">≡</span>
           <span>Tender pipeline</span>
-          <span class="badge" id="sidebarPipelineCount">4</span>
+          <span class="badge" id="sidebarPipelineCount">6</span>
         </button>
         <button class="nav-item" data-view="sources" id="navSources">
           <span class="nav-icon" aria-hidden="true">◌</span>
@@ -38,17 +38,17 @@
         </button>
         <button class="nav-item" data-view="catalogue" id="navCatalogue">
           <span class="nav-icon" aria-hidden="true">□</span>
-          <span>Product catalogue</span>
+          <span>Catalogue & Replenish</span>
           <span class="badge" id="sidebarCatalogueCount">8</span>
         </button>
       </nav>
 
       <div class="sidebar-bottom">
-        <div class="system-status" aria-label="Collection engine status">
+        <div class="system-status" aria-label="Company Matching engine status">
           <span class="status-dot" aria-hidden="true"></span>
           <div>
-            <strong>Collection engine</strong>
-            <small id="sidebarScanStatus">Monitoring 8 sources</small>
+            <strong>Matching engine</strong>
+            <small id="sidebarScanStatus">Portfolio synced (8 items)</small>
           </div>
         </div>
         <button class="nav-item" id="helpCentreBtn" aria-label="Open help centre">
@@ -83,19 +83,19 @@
             <button class="profile-chip" id="profileChipBtn" aria-expanded="false" aria-haspopup="true" aria-label="User menu">
               <span class="avatar" id="userAvatar">CK</span>
               <div>
-                <strong id="userName">Chris K.</strong>
-                <small id="userRole">Administrator</small>
+                <strong id="userName">Chris Kalisa</strong>
+                <small id="userRole">Chief Medical Procurement</small>
               </div>
               <span class="chevron" aria-hidden="true">⌄</span>
             </button>
 
             <div class="profile-dropdown" id="profileDropdown" role="menu" aria-label="User options">
               <div class="profile-dropdown-header">
-                <strong id="menuUserName">Chris K.</strong>
-                <small id="menuUserEmail">admin@medtender.rw</small>
+                <strong id="menuUserName">Chris Kalisa</strong>
+                <small id="menuUserEmail">c.kalisa@medtender.rw</small>
               </div>
               <button class="dropdown-item" id="menuSettings" role="menuitem">
-                <span aria-hidden="true">⚙</span> System preferences
+                <span aria-hidden="true">⚙</span> Company Profile & OEM Matrix
               </button>
               <button class="dropdown-item sign-out" id="signOutBtn" role="menuitem">
                 <span aria-hidden="true">↳</span> Sign out
@@ -113,50 +113,50 @@
           <div>
             <p class="eyebrow">
               <span id="currentDate">Friday, 21 August 2026</span>
-              <span class="live-pill"><i aria-hidden="true"></i> Live intelligence</span>
+              <span class="live-pill"><i aria-hidden="true"></i> Live Company Matching</span>
             </p>
             <h1 id="overviewHeading">Good morning, Chris.</h1>
-            <p class="heading-note">Your highest-value medical opportunities, prioritised for action.</p>
+            <p class="heading-note">Opportunities prioritized by technical fit, portfolio coverage, and delivery advantage.</p>
           </div>
           <div class="heading-actions">
             <button class="primary-button" id="scanButton">
-              <span aria-hidden="true">↻</span> Scan sources
+              <span aria-hidden="true">↻</span> Scan & Match Market
             </button>
           </div>
         </div>
 
         <div class="metric-grid" aria-label="Executive summary metrics">
-          <article class="metric-card featured" aria-label="Open opportunities">
+          <article class="metric-card featured" aria-label="High fit tenders">
             <div class="metric-label">
-              <span>Open opportunities</span>
-              <span class="metric-spark">Live queue</span>
+              <span>High Fit Bids</span>
+              <span class="metric-spark">Fit ≥ 80%</span>
             </div>
-            <strong class="metric-value" id="openCount">0</strong>
-            <small id="sourceSummary">Loading monitored opportunities</small>
+            <strong class="metric-value" id="highFitCount">4</strong>
+            <small id="highFitSummary">Matched with registered catalogue items</small>
             <div class="sparkline" aria-hidden="true">
               <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
             </div>
           </article>
 
-          <article class="metric-card" aria-label="Highly relevant opportunities">
-            <div class="metric-label">Highly relevant</div>
-            <strong class="metric-value" id="relevantCount">0</strong>
-            <small>Score of 75 or higher</small>
-            <div class="mini-bar" aria-hidden="true"><span id="relevantBar" style="width:0%"></span></div>
+          <article class="metric-card" aria-label="Full portfolio coverage">
+            <div class="metric-label">100% Lot Coverage</div>
+            <strong class="metric-value" id="fullCoverageCount">3</strong>
+            <small>Can supply all requested lots</small>
+            <div class="mini-bar green-bar" aria-hidden="true"><span id="coverageBar" style="width:75%"></span></div>
           </article>
 
-          <article class="metric-card" aria-label="Opportunities closing in 7 days">
-            <div class="metric-label">Closing in 7 days</div>
-            <strong class="metric-value warm" id="closingCount">0</strong>
-            <small id="urgentSummary">Deadlines requiring attention</small>
-            <div class="mini-bar warm-bar" aria-hidden="true"><span id="closingBar" style="width:0%"></span></div>
+          <article class="metric-card" aria-label="Expansion opportunities">
+            <div class="metric-label">Expansion Opportunities</div>
+            <strong class="metric-value warm" id="expansionCount">2</strong>
+            <small>High demand / new OEM partnership</small>
+            <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:60%"></span></div>
           </article>
 
-          <article class="metric-card" aria-label="Estimated bid pipeline value">
-            <div class="metric-label">Bid pipeline</div>
-            <strong class="metric-value" id="pipelineValue">Not available</strong>
-            <small id="pipelineSummary">Based on published values</small>
-            <div class="mini-bar green-bar" aria-hidden="true"><span id="pipelineBar" style="width:0%"></span></div>
+          <article class="metric-card" aria-label="Stock replenishment alerts">
+            <div class="metric-label">Restock Alerts</div>
+            <strong class="metric-value" style="color:var(--coral)" id="restockAlertCount">2</strong>
+            <small>Fast-moving tender equipment low</small>
+            <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:40%"></span></div>
           </article>
         </div>
 
@@ -164,19 +164,25 @@
           <div class="opportunity-panel panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Priority queue</p>
-                <h2>Top medical tender opportunities</h2>
+                <p class="eyebrow">Company Fit Priority Queue</p>
+                <h2>Highest Relevance Medical Opportunities</h2>
               </div>
               <button class="text-button" id="overviewViewAllBtn" data-view="tenders">
-                Full pipeline <span>→</span>
+                Full pipeline matrix <span>→</span>
               </button>
             </div>
 
             <div class="toolbar" role="search" aria-label="Filter overview opportunities">
               <label class="search-box" for="searchInput">
                 <span aria-hidden="true">⌕</span>
-                <input id="searchInput" type="search" placeholder="Search title, entity, product..." aria-label="Search tenders by keyword">
+                <input id="searchInput" type="search" placeholder="Search title, entity, required product..." aria-label="Search tenders by keyword">
               </label>
+              <select id="overviewFitFilter" aria-label="Filter by company fit level">
+                <option value="">All fit levels</option>
+                <option value="high">High Fit (≥80%)</option>
+                <option value="expansion">Expansion Opportunity</option>
+                <option value="review">Review Needed</option>
+              </select>
               <select id="categoryFilter" aria-label="Filter by product category">
                 <option value="">All categories</option>
                 <option value="Medical Equipment">Medical Equipment</option>
@@ -185,20 +191,18 @@
                 <option value="Dental">Dental</option>
                 <option value="Imaging & Radiology">Imaging & Radiology</option>
               </select>
-              <button class="filter-button" id="filterButton" aria-label="Reset filters">
-                <span aria-hidden="true">☷</span> <span>Reset</span>
-              </button>
             </div>
 
             <div class="table-wrap">
-              <table aria-label="Top opportunities list">
+              <table aria-label="Top opportunities list with company relevance">
                 <thead>
                   <tr>
-                    <th scope="col">Opportunity</th>
+                    <th scope="col">Opportunity & Buyer</th>
                     <th scope="col">Deadline</th>
-                    <th scope="col">Product match</th>
-                    <th scope="col">Suitability</th>
-                    <th scope="col"><span class="sr-only">Actions</span></th>
+                    <th scope="col">Company Relevance</th>
+                    <th scope="col">Lot Coverage</th>
+                    <th scope="col">Recommendation</th>
+                    <th scope="col">Match Matrix</th>
                   </tr>
                 </thead>
                 <tbody id="tenderRows"></tbody>
@@ -210,82 +214,78 @@
           </div>
 
           <aside class="side-column">
+            <!-- Market Demand & Replenishment Signals Widget -->
+            <section class="panel" aria-labelledby="replenishHeading" style="border-top:3px solid var(--teal)">
+              <div class="panel-heading compact">
+                <div>
+                  <p class="eyebrow" style="color:var(--teal)">Replenishment Signals</p>
+                  <h2 id="replenishHeading" style="font-size:14px;">High-Demand Tender Stock</h2>
+                </div>
+                <button class="text-button" data-view="catalogue" style="font-size:10px;">Predictor →</button>
+              </div>
+              <div style="padding:0 18px 14px; display:grid; gap:10px;">
+                <div class="restock-alert urgent">
+                  <div>
+                    <strong>ICU Modular Patient Monitors</strong>
+                    <p style="font-size:10px;margin:2px 0 0">Warehouse: 2 units (Min: 6). Inflow: 3 tenders.</p>
+                  </div>
+                  <button class="primary-button" style="padding:4px 8px;font-size:10px;" data-trigger-restock="ICU-MON-12">Restock</button>
+                </div>
+
+                <div class="restock-alert urgent">
+                  <div>
+                    <strong>Surgical Sterile Gloves (L/M)</strong>
+                    <p style="font-size:10px;margin:2px 0 0">Warehouse: 400 boxes (Min: 1,000).</p>
+                  </div>
+                  <button class="primary-button" style="padding:4px 8px;font-size:10px;" data-trigger-restock="CON-SUR-GLV">Restock</button>
+                </div>
+
+                <div class="restock-alert opportunity">
+                  <div>
+                    <strong>Hemodialysis Machines & Filters</strong>
+                    <p style="font-size:10px;margin:2px 0 0">🚀 Not stocked. RWF 1.8B Rwanda demand.</p>
+                  </div>
+                  <button class="outline-button" style="padding:4px 8px;font-size:10px;" data-view="catalogue">Partner</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Portfolio Health & Capability -->
             <section class="panel readiness-panel" aria-labelledby="readinessHeading">
               <div class="panel-heading compact">
                 <div>
-                  <p class="eyebrow">Portfolio health</p>
-                  <h2 id="readinessHeading">Bid readiness</h2>
+                  <p class="eyebrow">Company Capabilities</p>
+                  <h2 id="readinessHeading">Tender Eligibility Index</h2>
                 </div>
                 <button class="icon-button" aria-label="Readiness options">•••</button>
               </div>
 
               <div class="readiness-score">
-                <div class="score-ring" aria-label="Overall readiness score: 74 out of 100">
-                  <strong>74</strong>
+                <div class="score-ring" aria-label="Overall readiness score: 88 out of 100">
+                  <strong>88</strong>
                   <small>/100</small>
                 </div>
                 <div>
-                  <strong>Good position</strong>
-                  <p>Up 6 points this month</p>
+                  <strong>Strong Bidding Position</strong>
+                  <p>ISO 13485 & Wholesale Active</p>
                 </div>
               </div>
 
               <div class="readiness-list">
                 <div>
                   <span class="legend teal" aria-hidden="true"></span>
-                  <label>Technical capability</label>
-                  <strong>82%</strong>
+                  <label>OEM Authorizations on File</label>
+                  <strong>6 Brands</strong>
                 </div>
                 <div>
                   <span class="legend coral" aria-hidden="true"></span>
-                  <label>Documents available</label>
-                  <strong>68%</strong>
+                  <label>Average Spec Compliance</label>
+                  <strong>84.2%</strong>
                 </div>
                 <div>
                   <span class="legend gold" aria-hidden="true"></span>
-                  <label>Supplier coverage</label>
-                  <strong>71%</strong>
-                </div>
-              </div>
-
-              <button class="outline-button" id="readinessReportBtn">
-                Open readiness report <span aria-hidden="true">→</span>
-              </button>
-            </section>
-
-            <section class="panel activity-panel" aria-labelledby="activityHeading">
-              <div class="panel-heading compact">
-                <div>
-                  <p class="eyebrow">Live feed</p>
-                  <h2 id="activityHeading">Recent activity</h2>
-                </div>
-                <button class="icon-button" aria-label="Activity options">•••</button>
-              </div>
-
-              <div class="activity-item">
-                <span class="activity-icon teal-bg" aria-hidden="true">↗</span>
-                <div>
-                  <strong>New tender matched</strong>
-                  <p>Rwanda Biomedical Centre (RBC)</p>
-                  <small>12 minutes ago</small>
-                </div>
-              </div>
-
-              <div class="activity-item">
-                <span class="activity-icon coral-bg" aria-hidden="true">!</span>
-                <div>
-                  <strong>Deadline approaching</strong>
-                  <p>District Hospital Supply (CHUK)</p>
-                  <small>48 minutes ago</small>
-                </div>
-              </div>
-
-              <div class="activity-item">
-                <span class="activity-icon gold-bg" aria-hidden="true">✓</span>
-                <div>
-                  <strong>Document verified</strong>
-                  <p>ISO 13485 Medical Certificate</p>
-                  <small>2 hours ago</small>
+                  <label>Local In-Stock Availability</label>
+                  <strong>62.5%</strong>
                 </div>
               </div>
             </section>
@@ -299,13 +299,13 @@
       <section id="viewPipeline" class="view-panel" aria-labelledby="pipelineHeading">
         <div class="page-heading">
           <div>
-            <p class="eyebrow">Opportunity Management</p>
-            <h1 id="pipelineHeading">Tender Pipeline & Bids</h1>
-            <p class="heading-note">Track, qualify, and prepare high-yield tenders across Rwanda's healthcare sector.</p>
+            <p class="eyebrow">Company Relevance Matching</p>
+            <h1 id="pipelineHeading">Tender Opportunity Matrix</h1>
+            <p class="heading-note">Evaluate specification gaps, lot coverage, delivery advantage, and strategic expansions.</p>
           </div>
           <div class="heading-actions">
             <button class="outline-button" id="pipelineExportBtn">
-              <span aria-hidden="true">⤓</span> Export CSV
+              <span aria-hidden="true">⤓</span> Export Compliance CSV
             </button>
             <button class="primary-button" id="openAddTenderBtn">
               <span aria-hidden="true">+</span> Register Tender
@@ -315,80 +315,79 @@
 
         <div class="metric-grid" aria-label="Pipeline metrics">
           <article class="metric-card" aria-label="Total active pipeline">
-            <div class="metric-label">Active pipeline value</div>
+            <div class="metric-label">Qualified Pipeline Value</div>
             <strong class="metric-value" id="pipelineTotalValue">RWF 14.8B</strong>
-            <small id="pipelineActiveCount">6 active qualified opportunities</small>
-            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:78%"></span></div>
+            <small id="pipelineActiveCount">6 active monitored opportunities</small>
+            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:85%"></span></div>
           </article>
           <article class="metric-card" aria-label="In Bid Preparation">
             <div class="metric-label">In Bid Preparation</div>
             <strong class="metric-value warm" id="pipelinePrepCount">2</strong>
-            <small>Active submissions being drafted</small>
+            <small>Spec compliance verified</small>
             <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:50%"></span></div>
           </article>
-          <article class="metric-card" aria-label="Average match score">
-            <div class="metric-label">Average Suitability</div>
-            <strong class="metric-value" id="pipelineAvgMatch">83%</strong>
-            <small>Across medical catalogue items</small>
-            <div class="mini-bar blue-bar" aria-hidden="true"><span style="width:83%"></span></div>
+          <article class="metric-card" aria-label="Average technical spec match">
+            <div class="metric-label">Avg Technical Spec Match</div>
+            <strong class="metric-value" id="pipelineAvgMatch">86%</strong>
+            <small>Across parameter comparisons</small>
+            <div class="mini-bar blue-bar" aria-hidden="true"><span style="width:86%"></span></div>
           </article>
-          <article class="metric-card" aria-label="Won & Awarded">
-            <div class="metric-label">Awarded (YTD)</div>
-            <strong class="metric-value" id="pipelineWonValue">RWF 3.2B</strong>
-            <small>85% win rate on high-match bids</small>
-            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:90%"></span></div>
+          <article class="metric-card" aria-label="Fast delivery stock advantage">
+            <div class="metric-label">In-Stock Delivery Advantage</div>
+            <strong class="metric-value" id="pipelineStockAdvantage">4 Tenders</strong>
+            <small>Warehouse stock gives express advantage</small>
+            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:66%"></span></div>
           </article>
         </div>
 
         <div class="content-full">
           <div class="panel">
-            <div class="pipeline-stages" role="tablist" aria-label="Pipeline stage tabs">
+            <div class="pipeline-stages" role="tablist" aria-label="Pipeline filter tabs">
               <button class="stage-pill active" data-stage="" role="tab" aria-selected="true">
-                All Opportunities <span class="count" id="countStageAll">6</span>
+                All Tenders <span class="count" id="countStageAll">6</span>
               </button>
-              <button class="stage-pill" data-stage="new" role="tab" aria-selected="false">
-                New & Review <span class="count" id="countStageNew">2</span>
+              <button class="stage-pill" data-stage="high_fit" role="tab" aria-selected="false">
+                ⭐ High Fit (≥80%) <span class="count" id="countStageHigh">4</span>
               </button>
-              <button class="stage-pill" data-stage="interested" role="tab" aria-selected="false">
-                Qualified / Interested <span class="count" id="countStageInterested">1</span>
+              <button class="stage-pill" data-stage="expansion" role="tab" aria-selected="false">
+                🚀 Expansion Opportunities <span class="count" id="countStageExp">2</span>
               </button>
               <button class="stage-pill" data-stage="bid_preparation" role="tab" aria-selected="false">
-                Bid Preparation <span class="count" id="countStagePrep">2</span>
+                In Bid Preparation <span class="count" id="countStagePrep">2</span>
               </button>
               <button class="stage-pill" data-stage="submitted" role="tab" aria-selected="false">
                 Submitted <span class="count" id="countStageSubmitted">1</span>
-              </button>
-              <button class="stage-pill" data-stage="awarded" role="tab" aria-selected="false">
-                Awarded <span class="count" id="countStageAwarded">0</span>
               </button>
             </div>
 
             <div class="toolbar" role="search" aria-label="Filter pipeline tenders">
               <label class="search-box" for="pipelineSearchInput">
                 <span aria-hidden="true">⌕</span>
-                <input id="pipelineSearchInput" type="search" placeholder="Search reference, title, entity, buyer..." aria-label="Search pipeline tenders">
+                <input id="pipelineSearchInput" type="search" placeholder="Search reference, title, buyer, required device..." aria-label="Search pipeline tenders">
               </label>
 
               <select id="pipelineCategoryFilter" aria-label="Filter by category">
                 <option value="">All categories</option>
                 <option value="Medical Equipment">Medical Equipment</option>
-                <option value="Laboratory">Laboratory</option>
+                <option value="Laboratory">Laboratory Diagnostics</option>
                 <option value="Medical Consumables">Medical Consumables</option>
-                <option value="Dental">Dental</option>
+                <option value="Dental">Dental & Maxillofacial</option>
                 <option value="Imaging & Radiology">Imaging & Radiology</option>
               </select>
 
-              <select id="pipelineRiskFilter" aria-label="Filter by risk level">
-                <option value="">All risk levels</option>
-                <option value="Low">Low risk</option>
-                <option value="Medium">Medium risk</option>
-                <option value="High">High risk</option>
+              <select id="pipelineActionFilter" aria-label="Filter by recommended action">
+                <option value="">All Recommendations</option>
+                <option value="BID_HIGH_FIT">Bid (High Win Rate)</option>
+                <option value="REVIEW_VERIFY">Review & Verify</option>
+                <option value="OPPORTUNITY_EXPANSION">Expansion Opportunity</option>
+                <option value="NO_BID">No-Bid</option>
               </select>
 
               <select id="pipelineSortBy" aria-label="Sort tenders by">
+                <option value="relevance">Sort: Company Fit (Highest)</option>
                 <option value="deadline">Sort: Deadline (Earliest)</option>
-                <option value="relevance">Sort: Suitability (Highest)</option>
                 <option value="value">Sort: Estimated Value</option>
+                <option value="coverage">Sort: Lot Coverage %</option>
               </select>
             </div>
 
@@ -397,13 +396,15 @@
                 <thead>
                   <tr>
                     <th scope="col">Ref & Title</th>
-                    <th scope="col">Procuring Entity</th>
-                    <th scope="col">Est. Value</th>
+                    <th scope="col">Buyer Entity</th>
+                    <th scope="col">Value (RWF)</th>
                     <th scope="col">Deadline</th>
-                    <th scope="col">Product Match</th>
-                    <th scope="col">Suitability</th>
-                    <th scope="col">Stage / Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Company Fit</th>
+                    <th scope="col">Spec Match</th>
+                    <th scope="col">Lot Coverage</th>
+                    <th scope="col">Delivery Readiness</th>
+                    <th scope="col">Recommendation</th>
+                    <th scope="col">Decision Matrix</th>
                   </tr>
                 </thead>
                 <tbody id="pipelineTableRows"></tbody>
@@ -508,14 +509,14 @@
       </section>
 
       <!-- ================================================================= -->
-      <!-- VIEW 4: PRODUCT CATALOGUE & CAPABILITY MATRIX                     -->
+      <!-- VIEW 4: CATALOGUE & PREDICTIVE MARKET REPLENISHMENT               -->
       <!-- ================================================================= -->
       <section id="viewCatalogue" class="view-panel" aria-labelledby="catalogueHeading">
         <div class="page-heading">
           <div>
-            <p class="eyebrow">Commercial & Technical Portfolio</p>
-            <h1 id="catalogueHeading">Medical Product Catalogue</h1>
-            <p class="heading-note">Capabilities, devices, and consumables used for automated tender specification matching.</p>
+            <p class="eyebrow">Inventory & Market Intelligence</p>
+            <h1 id="catalogueHeading">Product Catalogue & Demand Replenishment</h1>
+            <p class="heading-note">Track company product specifications, analyze recurring tender demand, and forecast stock replenishment.</p>
           </div>
           <div class="heading-actions">
             <button class="primary-button" id="openAddProductBtn">
@@ -524,55 +525,136 @@
           </div>
         </div>
 
-        <div class="metric-grid" aria-label="Catalogue metrics">
-          <article class="metric-card" aria-label="Registered catalogue items">
-            <div class="metric-label">Registered Products</div>
-            <strong class="metric-value" id="catalogueTotalCount">8</strong>
-            <small>Across 6 key medical categories</small>
-            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:85%"></span></div>
-          </article>
-          <article class="metric-card" aria-label="Certified products">
-            <div class="metric-label">ISO / CE Certified</div>
-            <strong class="metric-value">100%</strong>
-            <small>Meets Rwanda FDA / MOH standards</small>
-            <div class="mini-bar" aria-hidden="true"><span style="width:100%"></span></div>
-          </article>
-          <article class="metric-card" aria-label="Tenders matched">
-            <div class="metric-label">Active Tender Matches</div>
-            <strong class="metric-value warm" id="catalogueMatchedCount">6</strong>
-            <small>Linked to live procurement notices</small>
-            <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:75%"></span></div>
-          </article>
-          <article class="metric-card" aria-label="Lead time reliability">
-            <div class="metric-label">Avg Supplier Lead Time</div>
-            <strong class="metric-value">14 Days</strong>
-            <small>Express Kigali warehouse delivery</small>
-            <div class="mini-bar blue-bar" aria-hidden="true"><span style="width:90%"></span></div>
-          </article>
+        <!-- Sub-Tabs: Catalogue vs Market Demand Replenishment -->
+        <div class="catalogue-subtabs" role="tablist" aria-label="Catalogue sections">
+          <button class="subtab-btn active" id="subtabCatalogue" role="tab" aria-selected="true">
+            📦 Company Product Catalogue & Specifications
+          </button>
+          <button class="subtab-btn" id="subtabDemand" role="tab" aria-selected="false">
+            📊 Most Recurring Products & Predictive Restocking
+          </button>
         </div>
 
-        <div class="content-full">
-          <div class="panel">
-            <div class="toolbar" role="search" aria-label="Filter catalogue">
-              <label class="search-box" for="catalogueSearchInput">
-                <span aria-hidden="true">⌕</span>
-                <input id="catalogueSearchInput" type="search" placeholder="Search product name, code, manufacturer, specs..." aria-label="Search catalogue">
-              </label>
+        <!-- TAB 1: Product Catalogue & Specifications -->
+        <div id="subtabContentCatalogue">
+          <div class="metric-grid" aria-label="Catalogue metrics">
+            <article class="metric-card" aria-label="Registered catalogue items">
+              <div class="metric-label">Registered Products</div>
+              <strong class="metric-value" id="catalogueTotalCount">8</strong>
+              <small>Across 6 key medical categories</small>
+              <div class="mini-bar green-bar" aria-hidden="true"><span style="width:85%"></span></div>
+            </article>
+            <article class="metric-card" aria-label="Certified products">
+              <div class="metric-label">ISO / CE Certified</div>
+              <strong class="metric-value">100%</strong>
+              <small>Meets Rwanda FDA / MOH standards</small>
+              <div class="mini-bar" aria-hidden="true"><span style="width:100%"></span></div>
+            </article>
+            <article class="metric-card" aria-label="Tenders matched">
+              <div class="metric-label">Active Tender Matches</div>
+              <strong class="metric-value warm" id="catalogueMatchedCount">6</strong>
+              <small>Linked to live procurement notices</small>
+              <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:75%"></span></div>
+            </article>
+            <article class="metric-card" aria-label="Total warehouse units">
+              <div class="metric-label">Local Warehouse Units</div>
+              <strong class="metric-value" id="catalogueStockTotal">428 Units</strong>
+              <small>Ready for immediate bid delivery</small>
+              <div class="mini-bar blue-bar" aria-hidden="true"><span style="width:80%"></span></div>
+            </article>
+          </div>
 
-              <select id="catalogueCategoryFilter" aria-label="Filter by product category">
-                <option value="">All categories</option>
-                <option value="Neonatal & ICU">Neonatal & ICU</option>
-                <option value="Laboratory">Laboratory Diagnostics</option>
-                <option value="Dental">Dental & Maxillofacial</option>
-                <option value="Imaging & Radiology">Imaging & Radiology</option>
-                <option value="Surgical">Surgical & Sterilization</option>
-                <option value="Consumables">Medical Consumables</option>
-              </select>
+          <div class="content-full">
+            <div class="panel">
+              <div class="toolbar" role="search" aria-label="Filter catalogue">
+                <label class="search-box" for="catalogueSearchInput">
+                  <span aria-hidden="true">⌕</span>
+                  <input id="catalogueSearchInput" type="search" placeholder="Search product name, code, manufacturer, specs..." aria-label="Search catalogue">
+                </label>
+
+                <select id="catalogueCategoryFilter" aria-label="Filter by product category">
+                  <option value="">All categories</option>
+                  <option value="Neonatal & ICU">Neonatal & ICU</option>
+                  <option value="Laboratory">Laboratory Diagnostics</option>
+                  <option value="Dental">Dental & Maxillofacial</option>
+                  <option value="Imaging & Radiology">Imaging & Radiology</option>
+                  <option value="Surgical">Surgical & Sterilization</option>
+                  <option value="Consumables">Medical Consumables</option>
+                </select>
+              </div>
+
+              <div class="catalogue-grid" id="catalogueGridContainer"></div>
+              <div class="empty-state" id="catalogueEmptyState" hidden>
+                No catalogue products match your query.
+              </div>
             </div>
+          </div>
+        </div>
 
-            <div class="catalogue-grid" id="catalogueGridContainer"></div>
-            <div class="empty-state" id="catalogueEmptyState" hidden>
-              No catalogue products match your query.
+        <!-- TAB 2: Most Recurring Products & Predictive Restocking -->
+        <div id="subtabContentDemand" hidden>
+          <div class="metric-grid" aria-label="Demand forecasting metrics">
+            <article class="metric-card featured" aria-label="Annual tender market demand">
+              <div class="metric-label">
+                <span>Annual Market Demand</span>
+                <span class="metric-spark">Rwanda Sector</span>
+              </div>
+              <strong class="metric-value">RWF 18.5B</strong>
+              <small>Aggregated across RBC, RMS, Hospitals</small>
+              <div class="sparkline" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+            <article class="metric-card" aria-label="Urgent restock triggers">
+              <div class="metric-label">Urgent Restock Triggers</div>
+              <strong class="metric-value warm" id="demandUrgentCount">2 Items</strong>
+              <small>Current stock below safe tender buffer</small>
+              <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:40%"></span></div>
+            </article>
+            <article class="metric-card" aria-label="Predicted upcoming tender wave">
+              <div class="metric-label">Predicted Q3/Q4 Inflow</div>
+              <strong class="metric-value">+14 Tenders</strong>
+              <small>MOH District Hospital upgrade cycle</small>
+              <div class="mini-bar green-bar" aria-hidden="true"><span style="width:75%"></span></div>
+            </article>
+            <article class="metric-card" aria-label="Expansion opportunities">
+              <div class="metric-label">New OEM Partnering</div>
+              <strong class="metric-value" style="color:var(--purple)" id="demandExpansionCount">3 Product Lines</strong>
+              <small>High demand items we don't yet supply</small>
+              <div class="mini-bar blue-bar" aria-hidden="true"><span style="width:60%"></span></div>
+            </article>
+          </div>
+
+          <div class="content-full">
+            <div class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">Market Demand & Restock Optimization</p>
+                  <h2>Most Recurring Equipment & Predictive Sourcing Recommendations</h2>
+                </div>
+                <button class="primary-button" id="bulkRestockBtn">
+                  <span>⚡</span> Auto-Generate Restock Purchase Order
+                </button>
+              </div>
+
+              <div class="toolbar" role="search" aria-label="Filter demand items">
+                <label class="search-box" for="demandSearchInput">
+                  <span aria-hidden="true">⌕</span>
+                  <input id="demandSearchInput" type="search" placeholder="Search equipment, category, predicted wave..." aria-label="Search demand items">
+                </label>
+
+                <select id="demandUrgencyFilter" aria-label="Filter by restock urgency">
+                  <option value="">All Urgency Levels</option>
+                  <option value="urgent">🔴 Immediate Restock Needed</option>
+                  <option value="safe">🟢 Safe Buffer Level</option>
+                  <option value="expansion">🚀 New Sourcing Opportunity</option>
+                </select>
+              </div>
+
+              <div class="sources-grid" id="demandGridContainer"></div>
+              <div class="empty-state" id="demandEmptyState" hidden>
+                No recurring demand items match your criteria.
+              </div>
             </div>
           </div>
         </div>
@@ -581,18 +663,58 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- MODALS & OVERLAYS                                                     -->
+  <!-- MODALS & SPECIFICATION COMPLIANCE MATRIX DRAWER                       -->
   <!-- ===================================================================== -->
 
-  <!-- Opportunity Details Drawer -->
+  <!-- Opportunity Details & Specification Compliance Matrix Drawer -->
   <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
   <aside class="tender-drawer" id="tenderDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
     <div class="drawer-header">
-      <span class="eyebrow">Opportunity detail</span>
+      <span class="eyebrow">Company Relevance & Spec Compliance Matrix</span>
       <button class="close-button" id="closeDrawer" aria-label="Close tender details modal">×</button>
     </div>
     <div id="drawerContent"></div>
   </aside>
+
+  <!-- Stock Replenishment Quick Modal -->
+  <div class="modal-backdrop" id="restockModalBackdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="restockModalTitle">
+      <div class="modal-header">
+        <h2 id="restockModalTitle">Replenish Warehouse Stock</h2>
+        <button class="close-button" id="closeRestockModal" aria-label="Close modal">×</button>
+      </div>
+      <form id="restockForm" novalidate>
+        <input type="hidden" id="restockProductCode">
+        <div class="modal-body">
+          <p style="font-size:12px;color:var(--muted)">Place stock replenishment order with authorized OEM manufacturer for fast-delivery tender advantage.</p>
+          
+          <label for="restockProductName">
+            Product / Equipment
+            <input type="text" id="restockProductName" readonly>
+          </label>
+
+          <label for="restockUnits">
+            Quantity to Order (Units / Boxes)
+            <input type="number" id="restockUnits" min="1" value="10" required>
+          </label>
+
+          <label for="restockSupplier">
+            Authorized OEM Supplier
+            <input type="text" id="restockSupplier" readonly>
+          </label>
+
+          <label for="restockLeadTime">
+            Expected Delivery to Kigali Warehouse
+            <input type="text" id="restockLeadTime" value="7-10 Business Days" readonly>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="outline-button" id="cancelRestockBtn">Cancel</button>
+          <button type="submit" class="primary-button">Confirm & Update Stock</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- Add Monitored Source Modal -->
   <div class="modal-backdrop" id="addSourceModalBackdrop" hidden>
@@ -718,7 +840,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="outline-button" id="cancelAddTenderBtn">Cancel</button>
-          <button type="submit" class="primary-button">Add to Pipeline</button>
+          <button type="submit" class="primary-button">Add & Run Match Engine</button>
         </div>
       </form>
     </div>
@@ -728,26 +850,33 @@
   <div class="modal-backdrop" id="helpCentreModalBackdrop" hidden>
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="helpCentreModalTitle">
       <div class="modal-header">
-        <h2 id="helpCentreModalTitle">MedTender Help Centre & System Guide</h2>
+        <h2 id="helpCentreModalTitle">MedTender Company Relevance & Match Guide</h2>
         <button class="close-button" id="closeHelpCentreModal" aria-label="Close help centre">×</button>
       </div>
       <div class="modal-body">
         <div class="help-section">
-          <h3>Rwanda e-Procurement (UMUCYO) Integration</h3>
-          <p>MedTender continuously monitors Rwanda's Umucyo portal and direct hospital boards. Compliance checks respect <code>robots.txt</code> and national procurement transparency guidelines.</p>
-        </div>
-        <div class="help-section">
-          <h3>Suitability & Product Matching Algorithm</h3>
-          <p>Suitability scores are calculated using a multi-factor weighting:</p>
+          <h3>How Company Relevance Score is Calculated</h3>
+          <p>Unlike simple keyword matching, MedTender computes a multi-factor score:</p>
           <ul>
-            <li><strong>40% Keyword & Classification Match:</strong> Matches tender lot descriptions with your Product Catalogue specifications.</li>
-            <li><strong>30% Technical Capability:</strong> Verified ISO 13485 certifications and authorization requirements.</li>
-            <li><strong>30% Commercial Viability:</strong> Risk assessment based on bid security, payment terms, and deadline urgency.</li>
+            <li><strong>35% Technical Specification Match:</strong> Parameter-by-parameter evaluation against your catalogue (Display, accuracy, battery, interfaces).</li>
+            <li><strong>30% Portfolio Lot Coverage:</strong> Ratio of lots/items in the tender that your company can fulfill.</li>
+            <li><strong>20% Eligibility & Regulatory Fit:</strong> Valid ISO 13485, Rwanda FDA wholesale license, and tax clearance.</li>
+            <li><strong>15% OEM Brand Authorization:</strong> Authorized distributor certificates on file for requested manufacturer.</li>
           </ul>
         </div>
         <div class="help-section">
-          <h3>Role-Based Access Control (RBAC)</h3>
-          <p>Endpoints and actions are strictly partitioned across 7 roles: <em>Admin, Management, Sales, Biomedical Engineer, Procurement, Finance,</em> and <em>Viewer</em>.</p>
+          <h3>Compliance Status Badges</h3>
+          <ul>
+            <li>✅ <strong>Compliant:</strong> Supplied product meets or exceeds tender specifications.</li>
+            <li>⚠️ <strong>Verification Required:</strong> Ambiguous requirement or requires checking special accessories with manufacturer.</li>
+            <li>🟡 <strong>Partially Compliant:</strong> Minor parameter variation or requires optional module.</li>
+            <li>❌ <strong>Non-Compliant:</strong> Critical specification gap.</li>
+            <li>❓ <strong>Unknown:</strong> Spec not stated in tender document; inquiry recommended.</li>
+          </ul>
+        </div>
+        <div class="help-section">
+          <h3>Market Demand & Replenishment Predictor</h3>
+          <p>Aggregates procurement frequency across Rwanda to recommend safe warehouse stock thresholds so your bids have a competitive fast-delivery advantage.</p>
         </div>
       </div>
       <div class="modal-footer">
