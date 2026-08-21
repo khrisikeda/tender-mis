@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedTender Intelligence | Procurement Workspace</title>
+  <meta name="description" content="Medical Tender Intelligence and Bid Management Workspace for Rwanda">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <div class="app-shell" id="appShell">
+    <!-- Sidebar Navigation (Left Panel) -->
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand-mark">
+        <span>MT</span>
+        <div>
+          <strong>MEDTENDER</strong>
+          <small>INTELLIGENCE SYSTEM</small>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Main menu">
+        <button class="nav-item active" data-view="dashboard" id="navDashboard" aria-current="page">
+          <span class="nav-icon" aria-hidden="true">▦</span>
+          <span>Overview</span>
+        </button>
+        <button class="nav-item" data-view="tenders" id="navTenders">
+          <span class="nav-icon" aria-hidden="true">≡</span>
+          <span>Tender pipeline</span>
+          <span class="badge" id="sidebarPipelineCount">4</span>
+        </button>
+        <button class="nav-item" data-view="sources" id="navSources">
+          <span class="nav-icon" aria-hidden="true">◌</span>
+          <span>Sources</span>
+          <span class="badge" id="sidebarSourcesCount">8</span>
+        </button>
+        <button class="nav-item" data-view="catalogue" id="navCatalogue">
+          <span class="nav-icon" aria-hidden="true">□</span>
+          <span>Product catalogue</span>
+          <span class="badge" id="sidebarCatalogueCount">8</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="system-status" aria-label="Collection engine status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div>
+            <strong>Collection engine</strong>
+            <small id="sidebarScanStatus">Monitoring 8 sources</small>
+          </div>
+        </div>
+        <button class="nav-item" id="helpCentreBtn" aria-label="Open help centre">
+          <span class="nav-icon" aria-hidden="true">?</span>
+          <span>Help centre</span>
+        </button>
+        <button class="nav-item sign-out" id="sidebarSignOut" aria-label="Sign out of your account">
+          <span class="nav-icon" aria-hidden="true">↳</span>
+          <span>Sign out</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Content Area -->
+    <main class="main-content" id="mainContent" tabindex="-1">
+      <header class="topbar">
+        <div class="breadcrumbs" aria-label="Breadcrumbs">
+          <span>Rwanda</span>
+          <b aria-hidden="true">/</b>
+          <span id="breadcrumbCategory">Procurement</span>
+          <b aria-hidden="true">/</b>
+          <strong id="breadcrumbView">Opportunity intelligence</strong>
+        </div>
+
+        <div class="top-actions">
+          <button class="icon-button" id="notificationButton" aria-label="View notifications (3 unread)">
+            <span class="notification-dot" aria-hidden="true"></span>
+            <span aria-hidden="true">♢</span>
+          </button>
+
+          <div class="profile-menu-container">
+            <button class="profile-chip" id="profileChipBtn" aria-expanded="false" aria-haspopup="true" aria-label="User menu">
+              <span class="avatar" id="userAvatar">CK</span>
+              <div>
+                <strong id="userName">Chris K.</strong>
+                <small id="userRole">Administrator</small>
+              </div>
+              <span class="chevron" aria-hidden="true">⌄</span>
+            </button>
+
+            <div class="profile-dropdown" id="profileDropdown" role="menu" aria-label="User options">
+              <div class="profile-dropdown-header">
+                <strong id="menuUserName">Chris K.</strong>
+                <small id="menuUserEmail">admin@medtender.rw</small>
+              </div>
+              <button class="dropdown-item" id="menuSettings" role="menuitem">
+                <span aria-hidden="true">⚙</span> System preferences
+              </button>
+              <button class="dropdown-item sign-out" id="signOutBtn" role="menuitem">
+                <span aria-hidden="true">↳</span> Sign out
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ================================================================= -->
+      <!-- VIEW 1: OVERVIEW DASHBOARD                                        -->
+      <!-- ================================================================= -->
+      <section id="viewOverview" class="view-panel active" aria-labelledby="overviewHeading">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">
+              <span id="currentDate">Friday, 21 August 2026</span>
+              <span class="live-pill"><i aria-hidden="true"></i> Live intelligence</span>
+            </p>
+            <h1 id="overviewHeading">Good morning, Chris.</h1>
+            <p class="heading-note">Your highest-value medical opportunities, prioritised for action.</p>
+          </div>
+          <div class="heading-actions">
+            <button class="primary-button" id="scanButton">
+              <span aria-hidden="true">↻</span> Scan sources
+            </button>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-label="Executive summary metrics">
+          <article class="metric-card featured" aria-label="Open opportunities">
+            <div class="metric-label">
+              <span>Open opportunities</span>
+              <span class="metric-spark">Live queue</span>
+            </div>
+            <strong class="metric-value" id="openCount">0</strong>
+            <small id="sourceSummary">Loading monitored opportunities</small>
+            <div class="sparkline" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </article>
+
+          <article class="metric-card" aria-label="Highly relevant opportunities">
+            <div class="metric-label">Highly relevant</div>
+            <strong class="metric-value" id="relevantCount">0</strong>
+            <small>Score of 75 or higher</small>
+            <div class="mini-bar" aria-hidden="true"><span id="relevantBar" style="width:0%"></span></div>
+          </article>
+
+          <article class="metric-card" aria-label="Opportunities closing in 7 days">
+            <div class="metric-label">Closing in 7 days</div>
+            <strong class="metric-value warm" id="closingCount">0</strong>
+            <small id="urgentSummary">Deadlines requiring attention</small>
+            <div class="mini-bar warm-bar" aria-hidden="true"><span id="closingBar" style="width:0%"></span></div>
+          </article>
+
+          <article class="metric-card" aria-label="Estimated bid pipeline value">
+            <div class="metric-label">Bid pipeline</div>
+            <strong class="metric-value" id="pipelineValue">Not available</strong>
+            <small id="pipelineSummary">Based on published values</small>
+            <div class="mini-bar green-bar" aria-hidden="true"><span id="pipelineBar" style="width:0%"></span></div>
+          </article>
+        </div>
+
+        <div class="content-grid">
+          <div class="opportunity-panel panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Priority queue</p>
+                <h2>Top medical tender opportunities</h2>
+              </div>
+              <button class="text-button" id="overviewViewAllBtn" data-view="tenders">
+                Full pipeline <span>→</span>
+              </button>
+            </div>
+
+            <div class="toolbar" role="search" aria-label="Filter overview opportunities">
+              <label class="search-box" for="searchInput">
+                <span aria-hidden="true">⌕</span>
+                <input id="searchInput" type="search" placeholder="Search title, entity, product..." aria-label="Search tenders by keyword">
+              </label>
+              <select id="categoryFilter" aria-label="Filter by product category">
+                <option value="">All categories</option>
+                <option value="Medical Equipment">Medical Equipment</option>
+                <option value="Laboratory">Laboratory</option>
+                <option value="Medical Consumables">Medical Consumables</option>
+                <option value="Dental">Dental</option>
+                <option value="Imaging & Radiology">Imaging & Radiology</option>
+              </select>
+              <button class="filter-button" id="filterButton" aria-label="Reset filters">
+                <span aria-hidden="true">☷</span> <span>Reset</span>
+              </button>
+            </div>
+
+            <div class="table-wrap">
+              <table aria-label="Top opportunities list">
+                <thead>
+                  <tr>
+                    <th scope="col">Opportunity</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Product match</th>
+                    <th scope="col">Suitability</th>
+                    <th scope="col"><span class="sr-only">Actions</span></th>
+                  </tr>
+                </thead>
+                <tbody id="tenderRows"></tbody>
+              </table>
+              <div class="empty-state" id="emptyState" hidden>
+                No medical tender opportunities match your current filters.
+              </div>
+            </div>
+          </div>
+
+          <aside class="side-column">
+            <section class="panel readiness-panel" aria-labelledby="readinessHeading">
+              <div class="panel-heading compact">
+                <div>
+                  <p class="eyebrow">Portfolio health</p>
+                  <h2 id="readinessHeading">Bid readiness</h2>
+                </div>
+                <button class="icon-button" aria-label="Readiness options">•••</button>
+              </div>
+
+              <div class="readiness-score">
+                <div class="score-ring" aria-label="Overall readiness score: 74 out of 100">
+                  <strong>74</strong>
+                  <small>/100</small>
+                </div>
+                <div>
+                  <strong>Good position</strong>
+                  <p>Up 6 points this month</p>
+                </div>
+              </div>
+
+              <div class="readiness-list">
+                <div>
+                  <span class="legend teal" aria-hidden="true"></span>
+                  <label>Technical capability</label>
+                  <strong>82%</strong>
+                </div>
+                <div>
+                  <span class="legend coral" aria-hidden="true"></span>
+                  <label>Documents available</label>
+                  <strong>68%</strong>
+                </div>
+                <div>
+                  <span class="legend gold" aria-hidden="true"></span>
+                  <label>Supplier coverage</label>
+                  <strong>71%</strong>
+                </div>
+              </div>
+
+              <button class="outline-button" id="readinessReportBtn">
+                Open readiness report <span aria-hidden="true">→</span>
+              </button>
+            </section>
+
+            <section class="panel activity-panel" aria-labelledby="activityHeading">
+              <div class="panel-heading compact">
+                <div>
+                  <p class="eyebrow">Live feed</p>
+                  <h2 id="activityHeading">Recent activity</h2>
+                </div>
+                <button class="icon-button" aria-label="Activity options">•••</button>
+              </div>
+
+              <div class="activity-item">
+                <span class="activity-icon teal-bg" aria-hidden="true">↗</span>
+                <div>
+                  <strong>New tender matched</strong>
+                  <p>Rwanda Biomedical Centre (RBC)</p>
+                  <small>12 minutes ago</small>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <span class="activity-icon coral-bg" aria-hidden="true">!</span>
+                <div>
+                  <strong>Deadline approaching</strong>
+                  <p>District Hospital Supply (CHUK)</p>
+                  <small>48 minutes ago</small>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <span class="activity-icon gold-bg" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Document verified</strong>
+                  <p>ISO 13485 Medical Certificate</p>
+                  <small>2 hours ago</small>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- VIEW 2: TENDER PIPELINE WORKSPACE                                 -->
+      <!-- ================================================================= -->
+      <section id="viewPipeline" class="view-panel" aria-labelledby="pipelineHeading">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Opportunity Management</p>
+            <h1 id="pipelineHeading">Tender Pipeline & Bids</h1>
+            <p class="heading-note">Track, qualify, and prepare high-yield tenders across Rwanda's healthcare sector.</p>
+          </div>
+          <div class="heading-actions">
+            <button class="outline-button" id="pipelineExportBtn">
+              <span aria-hidden="true">⤓</span> Export CSV
+            </button>
+            <button class="primary-button" id="openAddTenderBtn">
+              <span aria-hidden="true">+</span> Register Tender
+            </button>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-label="Pipeline metrics">
+          <article class="metric-card" aria-label="Total active pipeline">
+            <div class="metric-label">Active pipeline value</div>
+            <strong class="metric-value" id="pipelineTotalValue">RWF 14.8B</strong>
+            <small id="pipelineActiveCount">6 active qualified opportunities</small>
+            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:78%"></span></div>
+          </article>
+          <article class="metric-card" aria-label="In Bid Preparation">
+            <div class="metric-label">In Bid Preparation</div>
+            <strong class="metric-value warm" id="pipelinePrepCount">2</strong>
+            <small>Active submissions being drafted</small>
+            <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:50%"></span></div>
+          </article>
+          <article class="metric-card" aria-label="Average match score">
+            <div class="metric-label">Average Suitability</div>
+            <strong class="metric-value" id="pipelineAvgMatch">83%</strong>
+            <small>Across medical catalogue items</small>
+            <div class="mini-bar blue-bar" aria-hidden="true"><span style="width:83%"></span></div>
+          </article>
+          <article class="metric-card" aria-label="Won & Awarded">
+            <div class="metric-label">Awarded (YTD)</div>
+            <strong class="metric-value" id="pipelineWonValue">RWF 3.2B</strong>
+            <small>85% win rate on high-match bids</small>
+            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:90%"></span></div>
+          </article>
+        </div>
+
+        <div class="content-full">
+          <div class="panel">
+            <div class="pipeline-stages" role="tablist" aria-label="Pipeline stage tabs">
+              <button class="stage-pill active" data-stage="" role="tab" aria-selected="true">
+                All Opportunities <span class="count" id="countStageAll">6</span>
+              </button>
+              <button class="stage-pill" data-stage="new" role="tab" aria-selected="false">
+                New & Review <span class="count" id="countStageNew">2</span>
+              </button>
+              <button class="stage-pill" data-stage="interested" role="tab" aria-selected="false">
+                Qualified / Interested <span class="count" id="countStageInterested">1</span>
+              </button>
+              <button class="stage-pill" data-stage="bid_preparation" role="tab" aria-selected="false">
+                Bid Preparation <span class="count" id="countStagePrep">2</span>
+              </button>
+              <button class="stage-pill" data-stage="submitted" role="tab" aria-selected="false">
+                Submitted <span class="count" id="countStageSubmitted">1</span>
+              </button>
+              <button class="stage-pill" data-stage="awarded" role="tab" aria-selected="false">
+                Awarded <span class="count" id="countStageAwarded">0</span>
+              </button>
+            </div>
+
+            <div class="toolbar" role="search" aria-label="Filter pipeline tenders">
+              <label class="search-box" for="pipelineSearchInput">
+                <span aria-hidden="true">⌕</span>
+                <input id="pipelineSearchInput" type="search" placeholder="Search reference, title, entity, buyer..." aria-label="Search pipeline tenders">
+              </label>
+
+              <select id="pipelineCategoryFilter" aria-label="Filter by category">
+                <option value="">All categories</option>
+                <option value="Medical Equipment">Medical Equipment</option>
+                <option value="Laboratory">Laboratory</option>
+                <option value="Medical Consumables">Medical Consumables</option>
+                <option value="Dental">Dental</option>
+                <option value="Imaging & Radiology">Imaging & Radiology</option>
+              </select>
+
+              <select id="pipelineRiskFilter" aria-label="Filter by risk level">
+                <option value="">All risk levels</option>
+                <option value="Low">Low risk</option>
+                <option value="Medium">Medium risk</option>
+                <option value="High">High risk</option>
+              </select>
+
+              <select id="pipelineSortBy" aria-label="Sort tenders by">
+                <option value="deadline">Sort: Deadline (Earliest)</option>
+                <option value="relevance">Sort: Suitability (Highest)</option>
+                <option value="value">Sort: Estimated Value</option>
+              </select>
+            </div>
+
+            <div class="table-wrap">
+              <table aria-label="Complete pipeline table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ref & Title</th>
+                    <th scope="col">Procuring Entity</th>
+                    <th scope="col">Est. Value</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Product Match</th>
+                    <th scope="col">Suitability</th>
+                    <th scope="col">Stage / Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="pipelineTableRows"></tbody>
+              </table>
+              <div class="empty-state" id="pipelineEmptyState" hidden>
+                No pipeline tenders match your selected filters.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- VIEW 3: TENDER SOURCES DASHBOARD                                  -->
+      <!-- ================================================================= -->
+      <section id="viewSources" class="view-panel" aria-labelledby="sourcesHeading">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Collection & Discovery Engine</p>
+            <h1 id="sourcesHeading">Monitored Procurement Sources</h1>
+            <p class="heading-note">Monitor public portals, hospitals, and NGO tender boards with compliance automation.</p>
+          </div>
+          <div class="heading-actions">
+            <button class="secondary-button" id="scanAllSourcesBtn">
+              <span aria-hidden="true">↻</span> Scan All Sources Now
+            </button>
+            <button class="primary-button" id="openAddSourceBtn">
+              <span aria-hidden="true">+</span> Add Source
+            </button>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-label="Sources engine metrics">
+          <article class="metric-card featured" aria-label="Monitored sources">
+            <div class="metric-label">
+              <span>Monitored Portals</span>
+              <span class="metric-spark">Rwanda</span>
+            </div>
+            <strong class="metric-value" id="sourcesTotalCount">8</strong>
+            <small id="sourcesActiveCount">8 online & active</small>
+            <div class="sparkline" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </article>
+          <article class="metric-card" aria-label="Total tenders discovered">
+            <div class="metric-label">Tenders Discovered</div>
+            <strong class="metric-value" id="sourcesTotalTenders">142</strong>
+            <small>Across government & private boards</small>
+            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:92%"></span></div>
+          </article>
+          <article class="metric-card" aria-label="Compliance health">
+            <div class="metric-label">Robots.txt Compliance</div>
+            <strong class="metric-value" id="sourcesComplianceRate">100%</strong>
+            <small>All automated fetchers strictly compliant</small>
+            <div class="mini-bar" aria-hidden="true"><span style="width:100%"></span></div>
+          </article>
+          <article class="metric-card" aria-label="Last scan timestamp">
+            <div class="metric-label">Latest Scan Run</div>
+            <strong class="metric-value" id="sourcesLastScanTime">14m ago</strong>
+            <small id="sourcesScanSummary">0 collection errors detected</small>
+            <div class="mini-bar blue-bar" aria-hidden="true"><span style="width:100%"></span></div>
+          </article>
+        </div>
+
+        <div class="content-full">
+          <div class="panel">
+            <div class="toolbar" role="search" aria-label="Filter sources">
+              <label class="search-box" for="sourceSearchInput">
+                <span aria-hidden="true">⌕</span>
+                <input id="sourceSearchInput" type="search" placeholder="Search source name, organization, URL..." aria-label="Search sources">
+              </label>
+
+              <select id="sourceCategoryFilter" aria-label="Filter by source category">
+                <option value="">All portal types</option>
+                <option value="government_portal">Government Portal</option>
+                <option value="hospital">Referral / Teaching Hospital</option>
+                <option value="ministry">Ministry / Public Agency</option>
+                <option value="ngo">NGO / International Agency</option>
+              </select>
+
+              <select id="sourceMethodFilter" aria-label="Filter by collection method">
+                <option value="">All collection methods</option>
+                <option value="api">API Direct</option>
+                <option value="webpage">Webpage Scraper</option>
+                <option value="rss">RSS Feed</option>
+                <option value="manual_import">Manual Import</option>
+              </select>
+
+              <select id="sourceStatusFilter" aria-label="Filter by active status">
+                <option value="">All statuses</option>
+                <option value="active">Active Only</option>
+                <option value="inactive">Inactive / Deactivated</option>
+              </select>
+            </div>
+
+            <div class="sources-grid" id="sourcesGridContainer"></div>
+            <div class="empty-state" id="sourcesEmptyState" hidden>
+              No monitored sources match your filter criteria.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- VIEW 4: PRODUCT CATALOGUE & CAPABILITY MATRIX                     -->
+      <!-- ================================================================= -->
+      <section id="viewCatalogue" class="view-panel" aria-labelledby="catalogueHeading">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Commercial & Technical Portfolio</p>
+            <h1 id="catalogueHeading">Medical Product Catalogue</h1>
+            <p class="heading-note">Capabilities, devices, and consumables used for automated tender specification matching.</p>
+          </div>
+          <div class="heading-actions">
+            <button class="primary-button" id="openAddProductBtn">
+              <span aria-hidden="true">+</span> Add Equipment / Product
+            </button>
+          </div>
+        </div>
+
+        <div class="metric-grid" aria-label="Catalogue metrics">
+          <article class="metric-card" aria-label="Registered catalogue items">
+            <div class="metric-label">Registered Products</div>
+            <strong class="metric-value" id="catalogueTotalCount">8</strong>
+            <small>Across 6 key medical categories</small>
+            <div class="mini-bar green-bar" aria-hidden="true"><span style="width:85%"></span></div>
+          </article>
+          <article class="metric-card" aria-label="Certified products">
+            <div class="metric-label">ISO / CE Certified</div>
+            <strong class="metric-value">100%</strong>
+            <small>Meets Rwanda FDA / MOH standards</small>
+            <div class="mini-bar" aria-hidden="true"><span style="width:100%"></span></div>
+          </article>
+          <article class="metric-card" aria-label="Tenders matched">
+            <div class="metric-label">Active Tender Matches</div>
+            <strong class="metric-value warm" id="catalogueMatchedCount">6</strong>
+            <small>Linked to live procurement notices</small>
+            <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:75%"></span></div>
+          </article>
+          <article class="metric-card" aria-label="Lead time reliability">
+            <div class="metric-label">Avg Supplier Lead Time</div>
+            <strong class="metric-value">14 Days</strong>
+            <small>Express Kigali warehouse delivery</small>
+            <div class="mini-bar blue-bar" aria-hidden="true"><span style="width:90%"></span></div>
+          </article>
+        </div>
+
+        <div class="content-full">
+          <div class="panel">
+            <div class="toolbar" role="search" aria-label="Filter catalogue">
+              <label class="search-box" for="catalogueSearchInput">
+                <span aria-hidden="true">⌕</span>
+                <input id="catalogueSearchInput" type="search" placeholder="Search product name, code, manufacturer, specs..." aria-label="Search catalogue">
+              </label>
+
+              <select id="catalogueCategoryFilter" aria-label="Filter by product category">
+                <option value="">All categories</option>
+                <option value="Neonatal & ICU">Neonatal & ICU</option>
+                <option value="Laboratory">Laboratory Diagnostics</option>
+                <option value="Dental">Dental & Maxillofacial</option>
+                <option value="Imaging & Radiology">Imaging & Radiology</option>
+                <option value="Surgical">Surgical & Sterilization</option>
+                <option value="Consumables">Medical Consumables</option>
+              </select>
+            </div>
+
+            <div class="catalogue-grid" id="catalogueGridContainer"></div>
+            <div class="empty-state" id="catalogueEmptyState" hidden>
+              No catalogue products match your query.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODALS & OVERLAYS                                                     -->
+  <!-- ===================================================================== -->
+
+  <!-- Opportunity Details Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="tender-drawer" id="tenderDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="eyebrow">Opportunity detail</span>
+      <button class="close-button" id="closeDrawer" aria-label="Close tender details modal">×</button>
+    </div>
+    <div id="drawerContent"></div>
+  </aside>
+
+  <!-- Add Monitored Source Modal -->
+  <div class="modal-backdrop" id="addSourceModalBackdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="addSourceModalTitle">
+      <div class="modal-header">
+        <h2 id="addSourceModalTitle">Add Monitored Procurement Source</h2>
+        <button class="close-button" id="closeAddSourceModal" aria-label="Close modal">×</button>
+      </div>
+      <form id="addSourceForm" novalidate>
+        <div class="modal-body">
+          <label for="newSourceName">
+            Source Name
+            <input type="text" id="newSourceName" placeholder="e.g. King Faisal Hospital Procurement" required>
+          </label>
+
+          <label for="newSourceWebsite">
+            Website URL / Portal Endpoint
+            <input type="url" id="newSourceWebsite" placeholder="https://kfh.rw/tenders" required>
+          </label>
+
+          <label for="newSourceOrganization">
+            Procuring Organization / Ministry
+            <input type="text" id="newSourceOrganization" placeholder="King Faisal Hospital Rwanda" required>
+          </label>
+
+          <label for="newSourceCategory">
+            Source Category
+            <select id="newSourceCategory" required>
+              <option value="government_portal">Government Portal (e.g. RPPA Umucyo)</option>
+              <option value="hospital">Hospital / Medical Center</option>
+              <option value="ministry">Ministry / Public Institution</option>
+              <option value="ngo">NGO / Development Agency</option>
+              <option value="other">Other Medical Entity</option>
+            </select>
+          </label>
+
+          <label for="newSourceMethod">
+            Collection Method
+            <select id="newSourceMethod" required>
+              <option value="webpage">Webpage Scraper (HTML Parser)</option>
+              <option value="api">API Direct Integration</option>
+              <option value="rss">RSS Feed</option>
+              <option value="manual_import">Manual Document Import</option>
+            </select>
+          </label>
+
+          <label for="newSourceFrequency">
+            Scan Frequency (Hours)
+            <select id="newSourceFrequency">
+              <option value="6">Every 6 hours (High urgency)</option>
+              <option value="12">Every 12 hours</option>
+              <option value="24" selected>Every 24 hours (Daily scan)</option>
+              <option value="72">Every 3 days</option>
+            </select>
+          </label>
+
+          <label class="check-label" for="newSourceManual">
+            <input type="checkbox" id="newSourceManual">
+            <span>Requires manual verification / CAPTCHA bypass</span>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="outline-button" id="cancelAddSourceBtn">Cancel</button>
+          <button type="submit" class="primary-button">Save & Register Source</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Register New Tender Modal -->
+  <div class="modal-backdrop" id="addTenderModalBackdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="addTenderModalTitle">
+      <div class="modal-header">
+        <h2 id="addTenderModalTitle">Register New Tender Opportunity</h2>
+        <button class="close-button" id="closeAddTenderModal" aria-label="Close modal">×</button>
+      </div>
+      <form id="addTenderForm" novalidate>
+        <div class="modal-body">
+          <label for="newTenderTitle">
+            Tender Title
+            <input type="text" id="newTenderTitle" placeholder="e.g. Supply of ICU Ventilators and Patient Monitors" required>
+          </label>
+
+          <label for="newTenderRef">
+            Tender Reference Number
+            <input type="text" id="newTenderRef" placeholder="e.g. 000005/G/NCB/2026/2027/RBC" required>
+          </label>
+
+          <label for="newTenderEntity">
+            Procuring Entity / Hospital
+            <input type="text" id="newTenderEntity" placeholder="e.g. Rwanda Biomedical Centre" required>
+          </label>
+
+          <label for="newTenderCategory">
+            Product Category
+            <select id="newTenderCategory" required>
+              <option value="Medical Equipment">Medical Equipment</option>
+              <option value="Laboratory">Laboratory Diagnostics</option>
+              <option value="Medical Consumables">Medical Consumables</option>
+              <option value="Dental">Dental & Maxillofacial</option>
+              <option value="Imaging & Radiology">Imaging & Radiology</option>
+            </select>
+          </label>
+
+          <label for="newTenderDeadline">
+            Submission Deadline
+            <input type="datetime-local" id="newTenderDeadline" required>
+          </label>
+
+          <label for="newTenderValue">
+            Estimated Value (RWF)
+            <input type="number" id="newTenderValue" placeholder="e.g. 150000000">
+          </label>
+
+          <label for="newTenderRisk">
+            Risk Assessment
+            <select id="newTenderRisk">
+              <option value="Low">Low Risk</option>
+              <option value="Medium" selected>Medium Risk</option>
+              <option value="High">High Risk</option>
+            </select>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="outline-button" id="cancelAddTenderBtn">Cancel</button>
+          <button type="submit" class="primary-button">Add to Pipeline</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Help Centre Modal -->
+  <div class="modal-backdrop" id="helpCentreModalBackdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="helpCentreModalTitle">
+      <div class="modal-header">
+        <h2 id="helpCentreModalTitle">MedTender Help Centre & System Guide</h2>
+        <button class="close-button" id="closeHelpCentreModal" aria-label="Close help centre">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="help-section">
+          <h3>Rwanda e-Procurement (UMUCYO) Integration</h3>
+          <p>MedTender continuously monitors Rwanda's Umucyo portal and direct hospital boards. Compliance checks respect <code>robots.txt</code> and national procurement transparency guidelines.</p>
+        </div>
+        <div class="help-section">
+          <h3>Suitability & Product Matching Algorithm</h3>
+          <p>Suitability scores are calculated using a multi-factor weighting:</p>
+          <ul>
+            <li><strong>40% Keyword & Classification Match:</strong> Matches tender lot descriptions with your Product Catalogue specifications.</li>
+            <li><strong>30% Technical Capability:</strong> Verified ISO 13485 certifications and authorization requirements.</li>
+            <li><strong>30% Commercial Viability:</strong> Risk assessment based on bid security, payment terms, and deadline urgency.</li>
+          </ul>
+        </div>
+        <div class="help-section">
+          <h3>Role-Based Access Control (RBAC)</h3>
+          <p>Endpoints and actions are strictly partitioned across 7 roles: <em>Admin, Management, Sales, Biomedical Engineer, Procurement, Finance,</em> and <em>Viewer</em>.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="primary-button" id="dismissHelpBtn">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

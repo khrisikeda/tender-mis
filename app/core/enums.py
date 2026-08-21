@@ -33,6 +33,33 @@ class CollectionMethod(str, enum.Enum):
     MANUAL_IMPORT = "manual_import"
 
 
+class TenderStatus(str, enum.Enum):
+    NEW = "new"
+    REVIEW = "review"
+    INTERESTED = "interested"
+    QUALIFICATION_CHECK = "qualification_check"
+    BID_PREPARATION = "bid_preparation"
+    SUBMITTED = "submitted"
+    AWARDED = "awarded"
+    LOST = "lost"
+    CANCELLED = "cancelled"
+    NOT_ELIGIBLE = "not_eligible"
+
+
+class EvidenceStatus(str, enum.Enum):
+    VERIFIED = "verified"
+    INFERRED = "inferred"
+    INTERNAL_ESTIMATE = "internal_estimate"
+    MISSING = "missing"
+    REQUIRES_HUMAN_VERIFICATION = "requires_human_verification"
+
+
+class ExtractionStatus(str, enum.Enum):
+    PENDING = "pending"
+    COMPLETE = "complete"
+    FAILED = "failed"
+
+
 class AuditAction(str, enum.Enum):
     CREATE = "create"
     UPDATE = "update"

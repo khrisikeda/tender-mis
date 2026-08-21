@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request Access | MedTender Intelligence</title>
+  <meta name="description" content="Request access to the MedTender Procurement Intelligence platform.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="#signupName" class="skip-link">Skip to registration form</a>
+
+  <main class="auth-screen" aria-label="Request access page">
+    <div class="auth-visual">
+      <header class="auth-brand">
+        <span>MT</span>
+        <div>
+          <strong>MEDTENDER</strong>
+          <small>INTELLIGENCE SYSTEM</small>
+        </div>
+      </header>
+
+      <div class="auth-message">
+        <p class="eyebrow">Rwanda Procurement Intelligence</p>
+        <h1>Bring sharper evidence to every bid.</h1>
+        <p>Give your team one trusted place to discover, assess, and prepare winning medical tender submissions.</p>
+      </div>
+
+      <div class="auth-signal" aria-label="System status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div>
+          <strong>Intelligence engine online</strong>
+          <small>Monitoring medical procurement signals across Rwanda</small>
+        </div>
+      </div>
+    </div>
+
+    <section class="auth-panel" aria-labelledby="requestAccessHeading">
+      <div class="auth-panel-top">
+        <span class="eyebrow">Join your workspace</span>
+        <span class="auth-region" aria-label="Region: Rwanda">RWANDA <i aria-hidden="true"></i></span>
+      </div>
+
+      <div class="auth-copy">
+        <h2 id="requestAccessHeading">Request access to MedTender</h2>
+        <p>Bring evidence-led tender intelligence to your organization.</p>
+      </div>
+
+      <form class="auth-form" id="signupForm" novalidate>
+        <label for="signupName">
+          Full name
+          <input type="text" id="signupName" autocomplete="name" placeholder="Dr. / Eng. Your Full Name" required autofocus>
+        </label>
+
+        <label for="signupEmail">
+          Work email
+          <input type="email" id="signupEmail" autocomplete="email" placeholder="you@company.rw" required>
+        </label>
+
+        <label for="signupCompany">
+          Company or institution
+          <input type="text" id="signupCompany" placeholder="e.g. Rwanda Medical Equipment Ltd" required>
+        </label>
+
+        <label for="signupRole">
+          Primary operational role
+          <select id="signupRole" required>
+            <option value="Sales">Sales & Business Development</option>
+            <option value="Biomedical engineer">Biomedical Engineer</option>
+            <option value="Procurement">Procurement Specialist</option>
+            <option value="Finance">Finance & Pricing</option>
+            <option value="Management">Executive Management</option>
+          </select>
+        </label>
+
+        <button class="auth-submit" type="submit" id="submitSignup">
+          Request access <span aria-hidden="true">→</span>
+        </button>
+
+        <p class="auth-note">Accounts are vetted and provisioned by a system administrator to maintain data integrity.</p>
+      </form>
+
+      <p class="auth-feedback" id="authFeedback" role="status" aria-live="polite"></p>
+
+      <p class="auth-switch">
+        Already have access? <a href="login.html">Sign in</a>
+      </p>
+
+      <p class="auth-legal">Secure workspace · Authorized users only</p>
+    </section>
+  </main>
+
+  <script src="auth.js"></script>
+</body>
+</html>
