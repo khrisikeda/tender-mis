@@ -1,4 +1,4 @@
-const API_BASE = window.localStorage.getItem('medtender_api_base') || 
+const API_BASE = window.localStorage.getItem('medtender_api_base') ||
   (window.location.port === '8000' || window.location.protocol.startsWith('http') ? window.location.origin : 'http://localhost:8000');
 
 // ==========================================================================
@@ -102,7 +102,13 @@ let catalogue = [
     code: 'NEO-WRM-500',
     name: 'Advanced Infant Radiant Warmer & Phototherapy System',
     category: 'Neonatal & ICU',
-    manufacturer: 'MedTech Global / OEM Partner',
+    manufacturer: 'MedTech Global (China OEM)',
+    origin: '🇨🇳 China OEM Stock',
+    origin_country: 'China',
+    european_benchmark: 'Dräger Babyroo TN300 / GE Giraffe OmniBed',
+    cost_advantage_pct: 48,
+    unit_price_rwf: 12500000,
+    benchmark_unit_price_rwf: 24000000,
     specs: [
       'Microprocessor servo-controlled skin temperature (34-38°C ±0.1°C)',
       'Integrated high-intensity LED phototherapy (450-470nm, >40 µW/cm²/nm)',
@@ -122,9 +128,15 @@ let catalogue = [
     code: 'LAB-ANA-800',
     name: 'Fully Automated High-Throughput Clinical Chemistry Analyzer',
     category: 'Laboratory',
-    manufacturer: 'DiaSys Diagnostic Systems Germany',
+    manufacturer: 'DiaSys Systems / Mindray OEM',
+    origin: '🇩🇪/🇨🇳 Germany & China OEM',
+    origin_country: 'Germany / China',
+    european_benchmark: 'Roche Cobas c501 / Siemens Atellica CH 930',
+    cost_advantage_pct: 45,
+    unit_price_rwf: 45000000,
+    benchmark_unit_price_rwf: 82000000,
     specs: [
-      'Throughput: 800 photometric tests/hour + 400 ISE/hour',
+      'Throughput: 800 photometric tests/hour + 400 ISE/hour (1200 T/H total)',
       '90 refrigerated onboard reagent positions (2-8°C constant)',
       'Bi-directional LIS HL7 interface with internal barcode scanner',
       'Automatic 8-step cuvette washing with water blank testing',
@@ -142,9 +154,15 @@ let catalogue = [
     code: 'DEN-UNT-300',
     name: 'Ergonomic Dental Operatory Unit & Digital Imaging Suite',
     category: 'Dental',
-    manufacturer: 'Planmeca Dental Solutions',
+    manufacturer: 'Planmeca / Sinol Dental OEM',
+    origin: '🇨🇳 China Stock / Finland Tech',
+    origin_country: 'China',
+    european_benchmark: 'KaVo ESTETICA E70 / Sirona Intego',
+    cost_advantage_pct: 42,
+    unit_price_rwf: 18000000,
+    benchmark_unit_price_rwf: 31000000,
     specs: [
-      'Electro-mechanical chair with 4 programmable memory positions',
+      'Electro-mechanical chair with 6 programmable memory presets',
       '5-instrument doctor console with brushless optical micromotor (40k RPM)',
       'Integrated intraoral HD camera with 21.5" medical-grade display',
       'Automated waterline disinfection system (continuous suction flush)',
@@ -163,6 +181,12 @@ let catalogue = [
     name: '12.1-Inch Multi-Parameter Modular ICU Patient Monitor',
     category: 'Neonatal & ICU',
     manufacturer: 'Mindray Healthcare',
+    origin: '🇨🇳 China Direct Stock',
+    origin_country: 'China',
+    european_benchmark: 'Philips IntelliVue MX450 / Dräger Vista 120',
+    cost_advantage_pct: 52,
+    unit_price_rwf: 4200000,
+    benchmark_unit_price_rwf: 8750000,
     specs: [
       '12.1" capacitive anti-glare touchscreen display (800x600)',
       'Standard: 3/5-Lead ECG, Mindray SpO2 (Nellcor compatible), NIBP, 2-Temp, HR/PR',
@@ -182,7 +206,13 @@ let catalogue = [
     code: 'RAD-CT-128',
     name: '128-Slice High-Speed Diagnostic Whole-Body CT Scanner',
     category: 'Imaging & Radiology',
-    manufacturer: 'Siemens Healthineers / Partner OEM',
+    manufacturer: 'Siemens Healthineers / Neusoft OEM',
+    origin: '🇩🇪/🇨🇳 Germany & China Partner',
+    origin_country: 'Germany / China',
+    european_benchmark: 'Siemens SOMATOM go.Top / GE Revolution EVO',
+    cost_advantage_pct: 32,
+    unit_price_rwf: 980000000,
+    benchmark_unit_price_rwf: 1450000000,
     specs: [
       '0.33s gantry rotation speed with 128 slices reconstructed per rotation',
       'Stellar 3D detector with 0.33mm isotropic spatial resolution',
@@ -202,7 +232,13 @@ let catalogue = [
     code: 'SUR-LAP-4K',
     name: '4K Ultra HD Endoscopic Surgical Laparoscopy Tower System',
     category: 'Surgical',
-    manufacturer: 'Karl Storz / OEM Partner',
+    manufacturer: 'Karl Storz / Mindray HyPixel Partner',
+    origin: '🇨🇳/🇩🇪 China Stock & Germany Partner',
+    origin_country: 'China / Germany',
+    european_benchmark: 'Karl Storz Image1 S 4K / Olympus Visera Elite',
+    cost_advantage_pct: 38,
+    unit_price_rwf: 95000000,
+    benchmark_unit_price_rwf: 155000000,
     specs: [
       'Native 3840x2160 4K UHD sensor with optical zoom laparoscopes',
       '300W High-output LED cold light source (50,000 hour lifespan)',
@@ -221,7 +257,13 @@ let catalogue = [
     code: 'AUT-ST-150',
     name: '150-Litre Horizontal Hospital Steam Sterilizer & Autoclave',
     category: 'Surgical',
-    manufacturer: 'Tuttnauer Biomedical',
+    manufacturer: 'Tuttnauer Biomedical / OEM Partner',
+    origin: '🇮🇱/🇨🇳 OEM Partner Stock',
+    origin_country: 'Israel / China',
+    european_benchmark: 'Tuttnauer Class B / Belimed 120L Autoclave',
+    cost_advantage_pct: 28,
+    unit_price_rwf: 28000000,
+    benchmark_unit_price_rwf: 39000000,
     specs: [
       'Class B fractionated pre-vacuum & post-vacuum drying cycle',
       'Microprocessor PLC touch controller with built-in thermal validation printer',
@@ -240,7 +282,13 @@ let catalogue = [
     code: 'CON-SUR-GLV',
     name: 'Sterile Powder-Free Powdered Nitrile Surgical Gloves (Sizes 6.5 - 8.5)',
     category: 'Consumables',
-    manufacturer: 'Ansell Healthcare',
+    manufacturer: 'Ansell Healthcare / TopGlove OEM',
+    origin: '🇲🇾/🇨🇳 TopGlove & Ansell Stock',
+    origin_country: 'Malaysia / China',
+    european_benchmark: 'Molnlycke Biogel / Hartmann Peha-taft',
+    cost_advantage_pct: 35,
+    unit_price_rwf: 850,
+    benchmark_unit_price_rwf: 1300,
     specs: [
       'Micro-textured non-slip grip in wet surgical conditions',
       'AQL 0.65 freedom from pinholes barrier protection',
@@ -273,7 +321,7 @@ let tenders = [
     relevance_score: 94,
     tech_spec_match: 96,
     product_match: 92,
-    coverage_rate: 100, // 3 of 3 lots supplied
+    coverage_rate: 100,
     eligibility_match: 100,
     manufacturer_match: 95,
     risk: 'Low',
@@ -285,6 +333,70 @@ let tenders = [
     recommended_action: 'BID_HIGH_FIT',
     recommendation_label: 'Bid (High Win Rate)',
     icon: 'NICU',
+    benchmarked_european_brand: 'Dräger Medical / Philips Healthcare (Germany/Netherlands)',
+    chinese_stocked_model: 'MedTech RadiantCare 500 + Mindray ePM 12M (China Stock)',
+    european_market_price_rwf: 4500000000,
+    chinese_bid_price_rwf: 2340000000,
+    cost_advantage_pct: 48,
+    cost_savings_rwf: 2160000000,
+    equivalence_score: 94,
+    tech_parity_score: 96,
+    clinical_parity_score: 94,
+    regulatory_parity_score: 100,
+    warranty_parity_score: 95,
+    sourcing_strategy: 'BID_CHINESE_EQUIVALENT',
+    sourcing_strategy_label: '🇨🇳 Bid Chinese Stock (94% Equiv)',
+    sourcing_strategy_desc: '≥ 88% Equivalence — Bid with high confidence using in-stock Chinese equipment. 48% public budget savings for RBC.',
+    brand_equivalence_matrix: [
+      {
+        parameter: 'Infant Radiant Warmer Heating & Servo Control',
+        european_benchmark: 'Dräger Babyroo TN300: Microprocessor servo 34.0°C - 38.0°C (±0.1°C)',
+        chinese_supplied: 'MedTech RadiantCare 500: Microprocessor servo 34.0°C - 38.0°C (±0.1°C)',
+        status: 'EXACT_MATCH',
+        justification: 'Identical temperature control precision (±0.1°C) with dual skin thermistor sensors (T1/T2) certified under IEC 60601-2-21.',
+        standards_compliance: 'IEC 60601-2-21, ISO 13485:2016, CE 0123'
+      },
+      {
+        parameter: 'Phototherapy Wavelength & Peak Irradiance',
+        european_benchmark: 'Dräger BiliLux LED: 450-470nm, irradiance ≥ 35 µW/cm²/nm',
+        chinese_supplied: 'MedTech LED Phototherapy: 450-470nm, irradiance 42 µW/cm²/nm',
+        status: 'EXACT_MATCH',
+        justification: 'Exceeds European benchmark irradiance by 20% at 460nm peak bilirubin absorption band, accelerating neonatal jaundice clearance.',
+        standards_compliance: 'IEC 60601-2-50, CE 0123'
+      },
+      {
+        parameter: 'Modular ICU Patient Monitor Architecture',
+        european_benchmark: 'Philips IntelliVue MX450 / Dräger Vista 120 (12" display, FAST-SpO2)',
+        chinese_supplied: 'Mindray ePM 12M (12.1" capacitive touch, Mindray/Nellcor SpO2)',
+        status: 'EQUIVALENT',
+        justification: 'Mindray patented low-perfusion anti-motion SpO2 algorithm is clinically validated as equivalent to Philips FAST-SpO2 in NICU trials.',
+        standards_compliance: 'IEC 60601-1, CE 0482, FDA 510(k)'
+      },
+      {
+        parameter: 'EtCO2 Sidestream Neonatal Module',
+        european_benchmark: 'Philips Microstream Oridion Capnography (50 mL/min)',
+        chinese_supplied: 'Mindray Sidestream Microstream EtCO2 Plug-in (50 mL/min)',
+        status: 'EXACT_MATCH',
+        justification: 'Fully compatible 50 mL/min low sampling rate designed specifically for low tidal volume neonatal/pediatric patients.',
+        standards_compliance: 'ISO 80601-2-55'
+      },
+      {
+        parameter: 'Regulatory Certification Parity',
+        european_benchmark: 'CE 0123 / ISO 13485 / FDA 510(k)',
+        chinese_supplied: 'CE 0482 (TÜV SÜD) / ISO 13485:2016 / Rwanda FDA Licensed',
+        status: 'EXACT_MATCH',
+        justification: 'Holds European Notified Body CE certificates and active Rwanda FDA wholesale premise & product registration.',
+        standards_compliance: 'Rwanda FDA Law No. 003/2018'
+      },
+      {
+        parameter: 'Warranty & Kigali Field Engineering Support',
+        european_benchmark: '2 Years standard manufacturer warranty (Overseas depot repairs)',
+        chinese_supplied: '3 Years comprehensive warranty + 4 certified Kigali resident engineers',
+        status: 'EXACT_MATCH',
+        justification: 'Superior local biomedical service SLA in Kigali (4-hour on-site response vs weeks for overseas European depot shipment).',
+        standards_compliance: 'Contractual SLA Guarantee'
+      }
+    ],
     lots: [
       {
         lot_number: 'Lot 1',
@@ -342,6 +454,62 @@ let tenders = [
     recommended_action: 'BID_HIGH_FIT',
     recommendation_label: 'Bid (High Win Rate)',
     icon: 'LAB',
+    benchmarked_european_brand: 'Roche Cobas c501 / Siemens Atellica CH 930 (Germany)',
+    chinese_stocked_model: 'DiaSys Respons 920 (Germany OEM) + Mindray BS-800 Chemistry (China OEM Stock)',
+    european_market_price_rwf: 2800000000,
+    chinese_bid_price_rwf: 1540000000,
+    cost_advantage_pct: 45,
+    cost_savings_rwf: 1260000000,
+    equivalence_score: 91,
+    tech_parity_score: 93,
+    clinical_parity_score: 90,
+    regulatory_parity_score: 95,
+    warranty_parity_score: 90,
+    sourcing_strategy: 'BID_CHINESE_EQUIVALENT',
+    sourcing_strategy_label: '🇨🇳 Bid Chinese/OEM Equivalent (91% Equiv)',
+    sourcing_strategy_desc: '≥ 88% Equivalence — Bid with high confidence. Throughput (1200 T/H) exceeds Roche Cobas c501 with 45% cost savings.',
+    brand_equivalence_matrix: [
+      {
+        parameter: 'Analytical Throughput Capacity',
+        european_benchmark: 'Roche Cobas c501: 600 photometric tests/hr',
+        chinese_supplied: 'DiaSys / Mindray Platform: 800 photometric + 400 ISE/hr (1200 T/H total)',
+        status: 'EXACT_MATCH',
+        justification: 'Exceeds benchmark throughput by 33% (faster turnaround for CHUK emergency lab).',
+        standards_compliance: 'CE-IVD, ISO 15189 Parity'
+      },
+      {
+        parameter: 'Onboard Refrigerated Reagent Positions',
+        european_benchmark: 'Roche Cobas c501: 60 refrigerated cassette slots (2-8°C)',
+        chinese_supplied: '90 refrigerated onboard reagent positions (2-8°C constant)',
+        status: 'EXACT_MATCH',
+        justification: '50% more onboard reagent capacity, reducing frequent operator cartridge swaps during high-volume clinical shifts.',
+        standards_compliance: 'CE-IVD Quality Standard'
+      },
+      {
+        parameter: 'Reaction Photometry & Cuvette Washing',
+        european_benchmark: 'Quartz permanent optical cuvettes with ultrasonic mixing',
+        chinese_supplied: 'Permanent optical glass cuvettes with non-contact stir mixing',
+        status: 'EQUIVALENT',
+        justification: 'Clinically identical optical absorbance linearity (0.0000 - 3.5000 Abs) with 8-stage automated wash cycle.',
+        standards_compliance: 'ISO 13485:2016'
+      },
+      {
+        parameter: 'LIS Bidirectional Network Protocol',
+        european_benchmark: 'Roche Cobas Infinity LIS proprietary protocol / HL7',
+        chinese_supplied: 'Standard HL7 / ASTM open bi-directional drivers',
+        status: 'EXACT_MATCH',
+        justification: 'Directly connects to CHUK open Hospital Information System without requiring costly proprietary middleware licenses.',
+        standards_compliance: 'HL7 / ASTM Compliant'
+      },
+      {
+        parameter: 'Deionized Water Supply Interface',
+        european_benchmark: 'Internal pressurized Milli-Q inlet (< 10 L/hr)',
+        chinese_supplied: 'External Millipore RO connection manifold supplied',
+        status: 'REGULATORY_DIFF',
+        justification: 'Requires attaching supplied external RO bypass manifold to CHUK laboratory plumbing (included in our installation scope).',
+        standards_compliance: 'CAP / CLSI Water Quality'
+      }
+    ],
     lots: [
       {
         lot_number: 'Lot 1',
@@ -373,7 +541,7 @@ let tenders = [
     relevance_score: 74,
     tech_spec_match: 80,
     product_match: 65,
-    coverage_rate: 66, // 2 of 3 lots covered
+    coverage_rate: 66,
     eligibility_match: 95,
     manufacturer_match: 75,
     risk: 'Medium',
@@ -385,6 +553,46 @@ let tenders = [
     recommended_action: 'OPPORTUNITY_EXPANSION',
     recommendation_label: 'Expansion Opportunity',
     icon: 'SUP',
+    benchmarked_european_brand: 'Fresenius Medical Care (Germany) / B. Braun / Tuttnauer',
+    chinese_stocked_model: 'Ansell Gammex Gloves + Tuttnauer 150L Autoclave (Dialyzer Missing in Stock)',
+    european_market_price_rwf: 5200000000,
+    chinese_bid_price_rwf: 3220000000,
+    cost_advantage_pct: 38,
+    cost_savings_rwf: 1980000000,
+    equivalence_score: 73,
+    tech_parity_score: 78,
+    clinical_parity_score: 70,
+    regulatory_parity_score: 85,
+    warranty_parity_score: 75,
+    sourcing_strategy: 'BID_WITH_EQUIVALENCE_DEFENSE',
+    sourcing_strategy_label: '⚖️ Bid with RPPA Defense / Partial Lot (73% Eq)',
+    sourcing_strategy_desc: '70–87% Equivalence — Lot 1 & Lot 3 are 100% compliant with high margin. Lot 2 (Dialyzer Filters) requires attaching RPPA equivalence defense or partnering with Fresenius distributor.',
+    brand_equivalence_matrix: [
+      {
+        parameter: 'Surgical Gloves Quality (Lot 1)',
+        european_benchmark: 'Ansell / Molnlycke Biogel: AQL 0.65 freedom from holes (EN 455)',
+        chinese_supplied: 'Ansell Gammex Sterile Surgical Gloves (In Stock Kigali)',
+        status: 'EXACT_MATCH',
+        justification: 'Exact European/Global benchmark brand in stock in Kigali with AQL 0.65 pinhole barrier.',
+        standards_compliance: 'EN 455 Parts 1-4, CE 2797'
+      },
+      {
+        parameter: 'High-Flux Dialyzer Membrane (Lot 2)',
+        european_benchmark: 'Fresenius FX CorDiax (Helixone Polysulfone 1.8-2.0 m²)',
+        chinese_supplied: 'WEGO Medical High-Flux Dialyzer / Sourced Partner Alternative',
+        status: 'TECHNICAL_MISS',
+        justification: 'Currently not in warehouse stock. Must attach RPPA equivalence justification citing synthetic polysulfone membrane parity or fast-track OEM distributor onboarding.',
+        standards_compliance: 'ISO 8637'
+      },
+      {
+        parameter: 'Sterilization Biological Validation (Lot 3)',
+        european_benchmark: 'Tuttnauer / 3M Attest 10⁶ Geobacillus stearothermophilus spore vials',
+        chinese_supplied: 'Tuttnauer Self-Contained Biological Indicators (In Stock)',
+        status: 'EXACT_MATCH',
+        justification: 'Complies fully with EN 285 European sterilization standard and ANSI/AAMI ST79.',
+        standards_compliance: 'EN 285, ISO 11138'
+      }
+    ],
     lots: [
       {
         lot_number: 'Lot 1',
@@ -447,6 +655,46 @@ let tenders = [
     recommended_action: 'BID_HIGH_FIT',
     recommendation_label: 'Bid (High Win Rate)',
     icon: 'DEN',
+    benchmarked_european_brand: 'KaVo Dental (Germany) / Sirona (Germany) / Planmeca (Finland)',
+    chinese_stocked_model: 'Planmeca Compact i5 (European OEM Stock) + Sinol Dental Elite S2318 (China Stock)',
+    european_market_price_rwf: 850000000,
+    chinese_bid_price_rwf: 493000000,
+    cost_advantage_pct: 42,
+    cost_savings_rwf: 357000000,
+    equivalence_score: 96,
+    tech_parity_score: 98,
+    clinical_parity_score: 95,
+    regulatory_parity_score: 100,
+    warranty_parity_score: 95,
+    sourcing_strategy: 'BID_CHINESE_EQUIVALENT',
+    sourcing_strategy_label: '🇨🇳 Bid Chinese/OEM Stock (96% Equiv)',
+    sourcing_strategy_desc: '≥ 88% Equivalence — 4 Units in Kigali warehouse ready for immediate delivery. 42% cost savings against KaVo benchmark.',
+    brand_equivalence_matrix: [
+      {
+        parameter: 'Dental Chair Ergonomics & Presets',
+        european_benchmark: 'KaVo ESTETICA E70: Electro-mechanical 4 memory presets',
+        chinese_supplied: 'Planmeca / Sinol Elite: 6 customizable digital presets',
+        status: 'EXACT_MATCH',
+        justification: 'Exceeds required presets with seamless double-articulated headrest and ultra-low entry height (350mm).',
+        standards_compliance: 'ISO 6875, IEC 60601-1'
+      },
+      {
+        parameter: 'Micromotor & Handpiece Optical Speed',
+        european_benchmark: 'KaVo INTRA LUX KL 703 LED (40,000 RPM)',
+        chinese_supplied: 'Brushless optical LED micromotor (100 - 40,000 RPM)',
+        status: 'EXACT_MATCH',
+        justification: 'Identical torque output (3.0 Ncm) and internal 4-port water spray.',
+        standards_compliance: 'ISO 14457'
+      },
+      {
+        parameter: 'Intraoral Digital Camera & Display',
+        european_benchmark: 'Sirona SiroCam AF HD intraoral camera',
+        chinese_supplied: 'Somia HD 1080p intraoral camera + 21.5" IPS anti-glare monitor',
+        status: 'EXACT_MATCH',
+        justification: 'Autofocus CMOS sensor with live DICOM capture and patient communication suite.',
+        standards_compliance: 'DICOM 3.0, CE Marked'
+      }
+    ],
     lots: [
       {
         lot_number: 'Lot 1',
@@ -490,6 +738,46 @@ let tenders = [
     recommended_action: 'BID_HIGH_FIT',
     recommendation_label: 'Bid (High Value)',
     icon: 'RAD',
+    benchmarked_european_brand: 'GE Revolution EVO / Siemens SOMATOM go.Top / Philips Incisive (Germany/USA)',
+    chinese_stocked_model: 'Siemens Healthineers Partner Scope (Germany) / Neusoft NeuViz 128 (China Alternative)',
+    european_market_price_rwf: 1450000000,
+    chinese_bid_price_rwf: 986000000,
+    cost_advantage_pct: 32,
+    cost_savings_rwf: 464000000,
+    equivalence_score: 95,
+    tech_parity_score: 96,
+    clinical_parity_score: 95,
+    regulatory_parity_score: 95,
+    warranty_parity_score: 95,
+    sourcing_strategy: 'SOURCE_EUROPEAN_PARTNER',
+    sourcing_strategy_label: '🇪🇺 Source European OEM Partner (95% Fit)',
+    sourcing_strategy_desc: 'High-value turnkey CT scanner. Bid via our authorized Siemens Healthineers partner agreement or propose Neusoft NeuViz 128 with RWF 464M savings.',
+    brand_equivalence_matrix: [
+      {
+        parameter: 'Gantry Rotation Speed & Slices per 360°',
+        european_benchmark: 'Siemens / GE: 0.35s rotation, 128 reconstructed slices/rotation',
+        chinese_supplied: 'Siemens Stellar / Neusoft 128: 0.33s rotation, 128 slices',
+        status: 'EXACT_MATCH',
+        justification: 'Cardiovascular prospective ECG gating at 0.33s rotation provides superior temporal resolution.',
+        standards_compliance: 'IEC 60601-2-44, CE 0197'
+      },
+      {
+        parameter: 'Detector Spatial Resolution',
+        european_benchmark: 'GE Optima: 0.35 mm isotropic resolution',
+        chinese_supplied: 'Siemens Stellar 3D / Neusoft: 0.33 mm isotropic resolution',
+        status: 'EXACT_MATCH',
+        justification: 'Superior ultra-thin slice reconstruction for pulmonary nodule and coronary stent evaluation.',
+        standards_compliance: 'FDA 510(k), CE Marked'
+      },
+      {
+        parameter: 'AI Radiation Dose Modulation Algorithm',
+        european_benchmark: 'GE ASiR-V / Siemens CARE Dose4D (up to 60% dose reduction)',
+        chinese_supplied: 'CARE Dose4D + ClearView iterative AI reconstruction',
+        status: 'EXACT_MATCH',
+        justification: 'Full pediatric and bariatric low-dose clinical imaging protocols certified by AERB.',
+        standards_compliance: 'AERB Compliant, ISO 13485'
+      }
+    ],
     lots: [
       {
         lot_number: 'Lot 1',
@@ -534,6 +822,46 @@ let tenders = [
     recommended_action: 'BID_HIGH_FIT',
     recommendation_label: 'Bid (High Win Rate)',
     icon: 'SUR',
+    benchmarked_european_brand: 'Karl Storz Image1 S 4K (Germany) / Olympus Visera Elite',
+    chinese_stocked_model: 'Karl Storz Image1 S (OEM Stock) + SonoScape HD-500 / Mindray HyPixel R1 (China Stock)',
+    european_market_price_rwf: 620000000,
+    chinese_bid_price_rwf: 384400000,
+    cost_advantage_pct: 38,
+    cost_savings_rwf: 235600000,
+    equivalence_score: 93,
+    tech_parity_score: 95,
+    clinical_parity_score: 92,
+    regulatory_parity_score: 95,
+    warranty_parity_score: 90,
+    sourcing_strategy: 'BID_CHINESE_EQUIVALENT',
+    sourcing_strategy_label: '🇨🇳 Bid Chinese/OEM Stock (93% Equiv)',
+    sourcing_strategy_desc: '≥ 88% Equivalence — 4K UHD Camera + 150L Autoclave in stock. 38% cost advantage against Storz reference benchmark.',
+    brand_equivalence_matrix: [
+      {
+        parameter: 'Camera Resolution & Color Gamut',
+        european_benchmark: 'Karl Storz 4K UHD (3840x2160 pixels), BT.2020 color gamut',
+        chinese_supplied: 'Mindray / Storz 4K UHD (3840x2160), BT.2020 wide gamut',
+        status: 'EXACT_MATCH',
+        justification: 'Native 4K CMOS sensor with BT.2020 color reproduction and real-time smoke reduction algorithm.',
+        standards_compliance: 'IEC 60601-2-18, CE Marked'
+      },
+      {
+        parameter: 'Automated CO2 Insufflation Flow',
+        european_benchmark: 'Olympus UHI-4 (40 L/min flow rate with heated gas)',
+        chinese_supplied: 'High-Flow 45 L/min heating insufflator with integrated smoke evac',
+        status: 'EXACT_MATCH',
+        justification: '12.5% higher flow rate, maintaining stable pneumoperitoneum during rapid suction.',
+        standards_compliance: 'ISO 13485:2016'
+      },
+      {
+        parameter: 'Steam Sterilizer Chamber & Material',
+        european_benchmark: 'Tuttnauer / Belimed 120L 316L Stainless Steel Chamber',
+        chinese_supplied: 'Tuttnauer 150L 316L chamber (In Stock in Kigali)',
+        status: 'EXACT_MATCH',
+        justification: '25% larger capacity, Class B EN 285 European pre-vacuum validation.',
+        standards_compliance: 'EN 285, ASME Section VIII'
+      }
+    ],
     lots: [
       {
         lot_number: 'Lot 1',
@@ -887,74 +1215,188 @@ function renderPipeline() {
   const actionFilter = document.querySelector('#pipelineActionFilter');
   const sortBy = document.querySelector('#pipelineSortBy');
 
-  // Stage counts
-  const stageCounts = {
-    all: tenders.length,
-    high_fit: tenders.filter(t => t.relevance_score >= 80).length,
-    expansion: tenders.filter(t => t.recommended_action === 'OPPORTUNITY_EXPANSION').length,
-    prep: tenders.filter(t => t.status === 'bid_preparation').length,
-    submitted: tenders.filter(t => t.status === 'submitted').length
-  };
-
-  const cAll = document.querySelector('#countStageAll');
-  const cHigh = document.querySelector('#countStageHigh');
-  const cExp = document.querySelector('#countStageExp');
-  const cPrep = document.querySelector('#countStagePrep');
-  const cSub = document.querySelector('#countStageSubmitted');
-
-  if (cAll) cAll.textContent = stageCounts.all;
-  if (cHigh) cHigh.textContent = stageCounts.high_fit;
-  if (cExp) cExp.textContent = stageCounts.expansion;
-  if (cPrep) cPrep.textContent = stageCounts.prep;
-  if (cSub) cSub.textContent = stageCounts.submitted;
-
-  // Sidebar badge sync
-  const sbPipeCount = document.querySelector('#sidebarPipelineCount');
-  if (sbPipeCount) sbPipeCount.textContent = tenders.length;
-
-  if (!pipelineRows) return;
-
-  const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
-  const cat = categoryFilter ? categoryFilter.value : '';
-  const act = actionFilter ? actionFilter.value : '';
-  const sort = sortBy ? sortBy.value : 'relevance';
-
-  let filtered = tenders.filter(t => {
-    if (pipelineSelectedStage === 'high_fit' && t.relevance_score < 80) return false;
-    if (pipelineSelectedStage === 'expansion' && t.recommended_action !== 'OPPORTUNITY_EXPANSION') return false;
-    if (pipelineSelectedStage === 'bid_preparation' && t.status !== 'bid_preparation') return false;
-    if (pipelineSelectedStage === 'submitted' && t.status !== 'submitted') return false;
-
-    if (cat && t.category !== cat) return false;
-    if (act && t.recommended_action !== act) return false;
-    if (term && !`${t.ref} ${t.title} ${t.procuring_entity} ${t.category}`.toLowerCase().includes(term)) return false;
-    return true;
-  });
-
-  // Sorting
-  filtered.sort((a, b) => {
-    if (sort === 'relevance') return (b.relevance_score || 0) - (a.relevance_score || 0);
-    if (sort === 'deadline') return new Date(a.deadline_at) - new Date(b.deadline_at);
-    if (sort === 'value') return (b.tender_value || 0) - (a.tender_value || 0);
-    if (sort === 'coverage') return (b.coverage_rate || 0) - (a.coverage_rate || 0);
-    return 0;
-  });
-
-  if (filtered.length === 0) {
-    pipelineRows.innerHTML = '';
-    if (pipelineEmptyState) pipelineEmptyState.hidden = false;
-    return;
+  // Sourcing Strategy & Equivalence Helper Engine
+  function computeEquivalenceScore(tender) {
+    if (!tender) return 0;
+    const tech = (tender.tech_parity_score || 0) * 0.4;
+    const clinical = (tender.clinical_parity_score || 0) * 0.3;
+    const reg = (tender.regulatory_parity_score || 0) * 0.2;
+    const warranty = (tender.warranty_parity_score || 0) * 0.1;
+    return Math.round(tech + clinical + reg + warranty);
   }
 
-  if (pipelineEmptyState) pipelineEmptyState.hidden = true;
+  function generateEquivalenceLetter(tender) {
+    const dateStr = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date());
+    const matrixLines = (tender.brand_equivalence_matrix || []).map((m, idx) => {
+      const statusLabel = m.status === 'EXACT_MATCH' ? '[EXACT MATCH / EXCEEDS]' : m.status === 'EQUIVALENT' ? '[CLINICAL EQUIVALENT]' : m.status === 'TECHNICAL_MISS' ? '[SPECIFICATION VARIANCE]' : '[REGULATORY PARITY]';
+      return `  ${idx + 1}. PARAMETER: ${m.parameter}
+     - European Reference: ${m.european_benchmark}
+     - Supplied Specification: ${m.chinese_supplied}
+     - Equivalence Classification: ${statusLabel}
+     - Clinical/Engineering Justification: ${m.justification}
+     - Standards Compliance: ${m.standards_compliance}`;
+    }).join('\n\n');
 
-  pipelineRows.innerHTML = filtered.map(t => {
-    const days = daysRemaining(t.deadline_at);
-    const urgencyLabel = days <= 3 ? `${days}d left` : days <= 7 ? `${days}d left` : `${days}d left`;
-    const scoreClass = t.relevance_score >= 85 ? 'high' : t.relevance_score >= 70 ? 'mid' : 'low';
-    const recClass = t.recommended_action === 'BID_HIGH_FIT' ? 'bid' : t.recommended_action === 'OPPORTUNITY_EXPANSION' ? 'expansion' : 'review';
+    return `REPUBLIC OF RWANDA
+TECHNICAL EQUIVALENCE JUSTIFICATION & SPECIFICATION COMPLIANCE STATEMENT
+Pursuant to Rwanda Public Procurement Law No. 62/2018 of 25/08/2018, Article 42
 
-    return `
+DATE: ${dateStr}
+TO: The Tender Evaluation Committee & Chief Procurement Officer
+PROCURING ENTITY: ${tender.procuring_entity}
+TENDER REFERENCE: ${tender.ref}
+PROJECT TITLE: ${tender.title}
+
+Dear Evaluation Committee Members,
+
+In accordance with Article 42 of Law No. 62/2018 of 25/08/2018 Governing Public Procurement in Rwanda, which strictly prohibits the restriction of public competition to proprietary brand names or manufacturers without admitting technically and clinically equivalent alternatives ("or equivalent"), we hereby formally submit our Technical Equivalence Defense Dossier for the referenced procurement.
+
+1. EXECUTIVE SOURCING & EQUIVALENCE SUMMARY
+Our proposed solution utilizing ${tender.chinese_stocked_model} achieves an overall technical and clinical equivalence score of ${tender.equivalence_score}% against the benchmarked European brand reference (${tender.benchmarked_european_brand}).
+  - Technical Specification Parity (40%): ${tender.tech_parity_score}%
+  - Clinical Performance Parity (30%): ${tender.clinical_parity_score}%
+  - Regulatory & Standards Compliance (20%): ${tender.regulatory_parity_score}%
+  - Local Service & Warranty SLA Parity (10%): ${tender.warranty_parity_score}%
+
+2. QUANTIFIED PUBLIC PROCUREMENT SAVINGS
+By adopting our proposed equivalent solution, the Procuring Entity achieves a ${tender.cost_advantage_pct}% direct acquisition cost advantage, representing a net public expenditure savings of ${formatRWF(tender.cost_savings_rwf)}. This fully adheres to the core procurement principles of economy, efficiency, and fairness under Rwandan Law.
+
+3. DETAILED PARAMETER-BY-PARAMETER EQUIVALENCE MATRIX:
+${matrixLines}
+
+4. REGULATORY CERTIFICATION & STANDARDS PARITY
+All supplied equipment is manufactured in ISO 13485:2016 accredited facilities, carries full CE Notified Body / IEC 60601-1 electrical safety compliance certificates, and holds active Rwanda FDA wholesale and premise import registration.
+
+5. LOCAL SERVICE COMMITMENT (KIGALI, RWANDA)
+To guarantee uninterrupted clinical continuity, we provide:
+  - Comprehensive 3-Year local warranty with direct OEM replacement parts guarantee.
+  - Dedicated Kigali-based factory-certified biomedical engineers.
+  - Maximum 4-hour emergency response SLA across Rwanda public hospitals.
+
+We hereby formally request the Evaluation Committee to evaluate our bid as fully compliant based on the proven technical and clinical equivalence presented above.
+
+Yours faithfully,
+
+Tender Compliance & Biomedical Engineering Directorate
+MedTender Biomedical Solutions Rwanda Ltd
+Kigali, Rwanda | info@medtender.rw | +250 788 000 000`;
+  }
+
+  function copyEquivalenceLetter(tenderId) {
+    const tender = tenders.find(t => t.id === tenderId);
+    if (!tender) return;
+    const letter = generateEquivalenceLetter(tender);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(letter).then(() => {
+        showToast('✓ RPPA Technical Equivalence Defense Letter copied to clipboard.');
+      }).catch(() => {
+        showToast('Defense letter generated. Ready for submission.');
+      });
+    } else {
+      showToast('✓ RPPA Technical Equivalence Defense Letter generated.');
+    }
+  }
+
+  function downloadEquivalenceLetter(tenderId) {
+    const tender = tenders.find(t => t.id === tenderId);
+    if (!tender) return;
+    const letter = generateEquivalenceLetter(tender);
+    const blob = new Blob([letter], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `RPPA_Equivalence_Defense_${tender.ref.replace(/[^a-zA-Z0-9_-]/g, '_')}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    showToast(`Downloaded RPPA Defense statement for ${tender.ref}`);
+  }
+
+  // Stage Filter State
+  let pipelineSelectedStage = '';
+
+  function renderPipeline() {
+    const pipelineRows = document.querySelector('#pipelineTableRows');
+    const pipelineEmptyState = document.querySelector('#pipelineEmptyState');
+    const searchInput = document.querySelector('#pipelineSearchInput');
+    const categoryFilter = document.querySelector('#pipelineCategoryFilter');
+    const actionFilter = document.querySelector('#pipelineActionFilter');
+    const strategyFilter = document.querySelector('#pipelineStrategyFilter');
+    const sortBy = document.querySelector('#pipelineSortBy');
+
+    // Stage counts
+    const stageCounts = {
+      all: tenders.length,
+      high_fit: tenders.filter(t => t.relevance_score >= 80).length,
+      expansion: tenders.filter(t => t.recommended_action === 'OPPORTUNITY_EXPANSION').length,
+      prep: tenders.filter(t => t.status === 'bid_preparation').length,
+      submitted: tenders.filter(t => t.status === 'submitted').length
+    };
+
+    const cAll = document.querySelector('#countStageAll');
+    const cHigh = document.querySelector('#countStageHigh');
+    const cExp = document.querySelector('#countStageExp');
+    const cPrep = document.querySelector('#countStagePrep');
+    const cSub = document.querySelector('#countStageSubmitted');
+
+    if (cAll) cAll.textContent = stageCounts.all;
+    if (cHigh) cHigh.textContent = stageCounts.high_fit;
+    if (cExp) cExp.textContent = stageCounts.expansion;
+    if (cPrep) cPrep.textContent = stageCounts.prep;
+    if (cSub) cSub.textContent = stageCounts.submitted;
+
+    // Sidebar badge sync
+    const sbPipeCount = document.querySelector('#sidebarPipelineCount');
+    if (sbPipeCount) sbPipeCount.textContent = tenders.length;
+
+    if (!pipelineRows) return;
+
+    const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const cat = categoryFilter ? categoryFilter.value : '';
+    const act = actionFilter ? actionFilter.value : '';
+    const strat = strategyFilter ? strategyFilter.value : '';
+    const sort = sortBy ? sortBy.value : 'relevance';
+
+    let filtered = tenders.filter(t => {
+      if (pipelineSelectedStage === 'high_fit' && t.relevance_score < 80) return false;
+      if (pipelineSelectedStage === 'expansion' && t.recommended_action !== 'OPPORTUNITY_EXPANSION') return false;
+      if (pipelineSelectedStage === 'bid_preparation' && t.status !== 'bid_preparation') return false;
+      if (pipelineSelectedStage === 'submitted' && t.status !== 'submitted') return false;
+
+      if (cat && t.category !== cat) return false;
+      if (act && t.recommended_action !== act) return false;
+      if (strat && t.sourcing_strategy !== strat) return false;
+      if (term && !`${t.ref} ${t.title} ${t.procuring_entity} ${t.category} ${t.benchmarked_european_brand || ''}`.toLowerCase().includes(term)) return false;
+      return true;
+    });
+
+    // Sorting
+    filtered.sort((a, b) => {
+      if (sort === 'relevance') return (b.relevance_score || 0) - (a.relevance_score || 0);
+      if (sort === 'equivalence') return (b.equivalence_score || 0) - (a.equivalence_score || 0);
+      if (sort === 'deadline') return new Date(a.deadline_at) - new Date(b.deadline_at);
+      if (sort === 'value') return (b.tender_value || 0) - (a.tender_value || 0);
+      if (sort === 'coverage') return (b.coverage_rate || 0) - (a.coverage_rate || 0);
+      return 0;
+    });
+
+    if (filtered.length === 0) {
+      pipelineRows.innerHTML = '';
+      if (pipelineEmptyState) pipelineEmptyState.hidden = false;
+      return;
+    }
+
+    if (pipelineEmptyState) pipelineEmptyState.hidden = true;
+
+    pipelineRows.innerHTML = filtered.map(t => {
+      const days = daysRemaining(t.deadline_at);
+      const urgencyLabel = days <= 3 ? `${days}d left` : days <= 7 ? `${days}d left` : `${days}d left`;
+      const scoreClass = t.relevance_score >= 85 ? 'high' : t.relevance_score >= 70 ? 'mid' : 'low';
+      const recClass = t.recommended_action === 'BID_HIGH_FIT' ? 'bid' : t.recommended_action === 'OPPORTUNITY_EXPANSION' ? 'expansion' : 'review';
+      const stratClass = t.sourcing_strategy === 'BID_CHINESE_EQUIVALENT' ? 'chinese' : t.sourcing_strategy === 'BID_WITH_EQUIVALENCE_DEFENSE' ? 'defense' : 'european';
+
+      return `
       <tr>
         <td>
           <div class="tender-name">
@@ -985,6 +1427,16 @@ function renderPipeline() {
           <strong style="color:var(--teal)">${t.tech_spec_match}%</strong>
         </td>
         <td>
+          <div class="strategy-cell">
+            <span class="strategy-badge ${stratClass}">
+              ${t.sourcing_strategy_label}
+            </span>
+            <small style="display:block;margin-top:3px;font-size:9px;color:var(--muted)">
+              vs ${t.benchmarked_european_brand ? t.benchmarked_european_brand.split('/')[0].trim() : 'Euro Benchmark'}
+            </small>
+          </div>
+        </td>
+        <td>
           <span class="coverage-pill ${t.coverage_rate === 100 ? 'full' : ''}">${t.coverage_rate}%</span>
         </td>
         <td>
@@ -996,113 +1448,140 @@ function renderPipeline() {
           <span class="recommend-badge ${recClass}">${t.recommendation_label}</span>
         </td>
         <td>
-          <button class="primary-button" style="padding:6px 10px;font-size:11px;" data-open-matrix="${t.id}" aria-label="Open Spec Matrix">
-            Spec Matrix →
-          </button>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <button class="primary-button" style="padding:4px 8px;font-size:10px;" data-open-matrix="${t.id}" aria-label="Open Spec Matrix">
+              📋 Spec Matrix
+            </button>
+            <button class="outline-button" style="padding:4px 8px;font-size:10px;" data-open-equiv="${t.id}" aria-label="Open Brand Equivalence">
+              🇨🇳 vs 🇪🇺 Equiv (${t.equivalence_score}%)
+            </button>
+          </div>
         </td>
       </tr>
     `;
-  }).join('');
+    }).join('');
 
-  pipelineRows.querySelectorAll('[data-open-matrix]').forEach(btn => {
-    btn.addEventListener('click', () => openTenderDrawer(btn.dataset.openMatrix));
-  });
-}
-
-// Stage pills handler
-document.querySelectorAll('#viewPipeline .stage-pill').forEach(pill => {
-  pill.addEventListener('click', () => {
-    document.querySelectorAll('#viewPipeline .stage-pill').forEach(p => {
-      p.classList.remove('active');
-      p.setAttribute('aria-selected', 'false');
+    pipelineRows.querySelectorAll('[data-open-matrix]').forEach(btn => {
+      btn.addEventListener('click', () => openTenderDrawer(btn.dataset.openMatrix, 'matrix'));
     });
-    pill.classList.add('active');
-    pill.setAttribute('aria-selected', 'true');
-    pipelineSelectedStage = pill.dataset.stage;
-    renderPipeline();
-  });
-});
 
-const pipeSearch = document.querySelector('#pipelineSearchInput');
-const pipeCat = document.querySelector('#pipelineCategoryFilter');
-const pipeAct = document.querySelector('#pipelineActionFilter');
-const pipeSort = document.querySelector('#pipelineSortBy');
-
-if (pipeSearch) pipeSearch.addEventListener('input', renderPipeline);
-if (pipeCat) pipeCat.addEventListener('change', renderPipeline);
-if (pipeAct) pipeAct.addEventListener('change', renderPipeline);
-if (pipeSort) pipeSort.addEventListener('change', renderPipeline);
-
-// ==========================================================================
-// 8. View 4: Catalogue & Predictive Stock Replenishment Controller
-// ==========================================================================
-
-const subtabCatalogue = document.querySelector('#subtabCatalogue');
-const subtabDemand = document.querySelector('#subtabDemand');
-const subtabContentCatalogue = document.querySelector('#subtabContentCatalogue');
-const subtabContentDemand = document.querySelector('#subtabContentDemand');
-
-if (subtabCatalogue && subtabDemand) {
-  subtabCatalogue.addEventListener('click', () => {
-    subtabCatalogue.classList.add('active');
-    subtabDemand.classList.remove('active');
-    subtabCatalogue.setAttribute('aria-selected', 'true');
-    subtabDemand.setAttribute('aria-selected', 'false');
-    if (subtabContentCatalogue) subtabContentCatalogue.hidden = false;
-    if (subtabContentDemand) subtabContentDemand.hidden = true;
-    renderCatalogue();
-  });
-
-  subtabDemand.addEventListener('click', () => {
-    subtabDemand.classList.add('active');
-    subtabCatalogue.classList.remove('active');
-    subtabDemand.setAttribute('aria-selected', 'true');
-    subtabCatalogue.setAttribute('aria-selected', 'false');
-    if (subtabContentDemand) subtabContentDemand.hidden = false;
-    if (subtabContentCatalogue) subtabContentCatalogue.hidden = true;
-    renderDemand();
-  });
-}
-
-function renderCatalogue() {
-  const container = document.querySelector('#catalogueGridContainer');
-  const emptyState = document.querySelector('#catalogueEmptyState');
-  const searchInput = document.querySelector('#catalogueSearchInput');
-  const categoryFilter = document.querySelector('#catalogueCategoryFilter');
-
-  if (!container) return;
-
-  const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
-  const cat = categoryFilter ? categoryFilter.value : '';
-
-  const filtered = catalogue.filter(p => {
-    if (cat && p.category !== cat) return false;
-    if (term && !`${p.code} ${p.name} ${p.manufacturer} ${p.specs.join(' ')}`.toLowerCase().includes(term)) return false;
-    return true;
-  });
-
-  if (filtered.length === 0) {
-    container.innerHTML = '';
-    if (emptyState) emptyState.hidden = false;
-    return;
+    pipelineRows.querySelectorAll('[data-open-equiv]').forEach(btn => {
+      btn.addEventListener('click', () => openTenderDrawer(btn.dataset.openEquiv, 'brand_equivalence'));
+    });
   }
 
-  if (emptyState) emptyState.hidden = true;
+  // Stage pills handler
+  document.querySelectorAll('#viewPipeline .stage-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#viewPipeline .stage-pill').forEach(p => {
+        p.classList.remove('active');
+        p.setAttribute('aria-selected', 'false');
+      });
+      pill.classList.add('active');
+      pill.setAttribute('aria-selected', 'true');
+      pipelineSelectedStage = pill.dataset.stage;
+      renderPipeline();
+    });
+  });
 
-  container.innerHTML = filtered.map(p => {
-    const stockClass = p.stock_status === 'IN_STOCK' ? 'safe' : p.stock_status === 'LOW_STOCK_URGENT' ? 'low' : 'safe';
-    const stockLabel = p.stock_status === 'LOW_STOCK_URGENT' ? '⚠️ Low Stock Alert' : '✓ In Stock Ready';
+  const pipeSearch = document.querySelector('#pipelineSearchInput');
+  const pipeCat = document.querySelector('#pipelineCategoryFilter');
+  const pipeAct = document.querySelector('#pipelineActionFilter');
+  const pipeStrat = document.querySelector('#pipelineStrategyFilter');
+  const pipeSort = document.querySelector('#pipelineSortBy');
 
-    return `
+  if (pipeSearch) pipeSearch.addEventListener('input', renderPipeline);
+  if (pipeCat) pipeCat.addEventListener('change', renderPipeline);
+  if (pipeAct) pipeAct.addEventListener('change', renderPipeline);
+  if (pipeStrat) pipeStrat.addEventListener('change', renderPipeline);
+  if (pipeSort) pipeSort.addEventListener('change', renderPipeline);
+
+  // ==========================================================================
+  // 8. View 4: Catalogue & Predictive Stock Replenishment Controller
+  // ==========================================================================
+
+  const subtabCatalogue = document.querySelector('#subtabCatalogue');
+  const subtabDemand = document.querySelector('#subtabDemand');
+  const subtabContentCatalogue = document.querySelector('#subtabContentCatalogue');
+  const subtabContentDemand = document.querySelector('#subtabContentDemand');
+
+  if (subtabCatalogue && subtabDemand) {
+    subtabCatalogue.addEventListener('click', () => {
+      subtabCatalogue.classList.add('active');
+      subtabDemand.classList.remove('active');
+      subtabCatalogue.setAttribute('aria-selected', 'true');
+      subtabDemand.setAttribute('aria-selected', 'false');
+      if (subtabContentCatalogue) subtabContentCatalogue.hidden = false;
+      if (subtabContentDemand) subtabContentDemand.hidden = true;
+      renderCatalogue();
+    });
+
+    subtabDemand.addEventListener('click', () => {
+      subtabDemand.classList.add('active');
+      subtabCatalogue.classList.remove('active');
+      subtabDemand.setAttribute('aria-selected', 'true');
+      subtabCatalogue.setAttribute('aria-selected', 'false');
+      if (subtabContentDemand) subtabContentDemand.hidden = false;
+      if (subtabContentCatalogue) subtabContentCatalogue.hidden = true;
+      renderDemand();
+    });
+  }
+
+  function renderCatalogue() {
+    const container = document.querySelector('#catalogueGridContainer');
+    const emptyState = document.querySelector('#catalogueEmptyState');
+    const searchInput = document.querySelector('#catalogueSearchInput');
+    const categoryFilter = document.querySelector('#catalogueCategoryFilter');
+
+    if (!container) return;
+
+    const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const cat = categoryFilter ? categoryFilter.value : '';
+
+    const filtered = catalogue.filter(p => {
+      if (cat && p.category !== cat) return false;
+      if (term && !`${p.code} ${p.name} ${p.manufacturer} ${p.origin || ''} ${p.european_benchmark || ''} ${p.specs.join(' ')}`.toLowerCase().includes(term)) return false;
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = '';
+      if (emptyState) emptyState.hidden = false;
+      return;
+    }
+
+    if (emptyState) emptyState.hidden = true;
+
+    container.innerHTML = filtered.map(p => {
+      const stockClass = p.stock_status === 'IN_STOCK' ? 'safe' : p.stock_status === 'LOW_STOCK_URGENT' ? 'low' : 'safe';
+      const stockLabel = p.stock_status === 'LOW_STOCK_URGENT' ? '⚠️ Low Stock Alert' : '✓ In Stock Ready';
+
+      return `
       <article class="product-card">
         <div>
           <div class="product-card-top">
             <span class="product-code">${p.code}</span>
+            <span class="origin-flag-badge">${p.origin || '🇨🇳 China Stock'}</span>
             <span class="badge" style="background:#e3f1ed;color:var(--teal-dark)">${p.category}</span>
           </div>
 
           <h3>${p.name}</h3>
-          <small style="color:var(--muted);display:block;margin-bottom:10px;">OEM: <strong>${p.manufacturer}</strong></small>
+          <div style="margin:4px 0 8px;">
+            <small style="color:var(--muted);display:block;">OEM: <strong>${p.manufacturer}</strong></small>
+            ${p.european_benchmark ? `
+              <div class="benchmark-pill" style="margin-top:4px;">
+                <small style="color:#1d554f;font-size:10px;display:block;">
+                  🇪🇺 <strong>Benchmark Eq:</strong> ${p.european_benchmark}
+                </small>
+              </div>
+            ` : ''}
+          </div>
+
+          ${p.cost_advantage_pct ? `
+            <div class="cost-advantage-tag" style="margin-bottom:8px;">
+              ⚡ <strong>${p.cost_advantage_pct}% Lower Cost</strong> vs European Import
+            </div>
+          ` : ''}
 
           <div class="product-specs">
             ${p.specs.map(s => `<span class="spec-tag">${s}</span>`).join('')}
@@ -1130,46 +1609,46 @@ function renderCatalogue() {
         </div>
       </article>
     `;
-  }).join('');
+    }).join('');
 
-  container.querySelectorAll('[data-trigger-restock]').forEach(btn => {
-    btn.addEventListener('click', () => openRestockModal(btn.dataset.triggerRestock));
-  });
-}
-
-function renderDemand() {
-  const container = document.querySelector('#demandGridContainer');
-  const emptyState = document.querySelector('#demandEmptyState');
-  const searchInput = document.querySelector('#demandSearchInput');
-  const urgencyFilter = document.querySelector('#demandUrgencyFilter');
-
-  if (!container) return;
-
-  const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
-  const urg = urgencyFilter ? urgencyFilter.value : '';
-
-  const filtered = recurringDemand.filter(d => {
-    if (urg === 'urgent' && d.urgency_level !== 'URGENT') return false;
-    if (urg === 'safe' && d.urgency_level !== 'SAFE') return false;
-    if (urg === 'expansion' && d.urgency_level !== 'EXPANSION') return false;
-    if (term && !`${d.code} ${d.name} ${d.category} ${d.next_expected_wave}`.toLowerCase().includes(term)) return false;
-    return true;
-  });
-
-  if (filtered.length === 0) {
-    container.innerHTML = '';
-    if (emptyState) emptyState.hidden = false;
-    return;
+    container.querySelectorAll('[data-trigger-restock]').forEach(btn => {
+      btn.addEventListener('click', () => openRestockModal(btn.dataset.triggerRestock));
+    });
   }
 
-  if (emptyState) emptyState.hidden = true;
+  function renderDemand() {
+    const container = document.querySelector('#demandGridContainer');
+    const emptyState = document.querySelector('#demandEmptyState');
+    const searchInput = document.querySelector('#demandSearchInput');
+    const urgencyFilter = document.querySelector('#demandUrgencyFilter');
 
-  container.innerHTML = filtered.map(d => {
-    const alertClass = d.urgency_level === 'URGENT' ? 'urgent' : d.urgency_level === 'EXPANSION' ? 'opportunity' : 'safe';
-    const fillClass = d.urgency_level === 'URGENT' ? 'low' : d.urgency_level === 'EXPANSION' ? 'expansion' : 'safe';
-    const percent = Math.min(100, Math.round((d.current_warehouse_stock / (d.min_safe_threshold || 1)) * 100));
+    if (!container) return;
 
-    return `
+    const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const urg = urgencyFilter ? urgencyFilter.value : '';
+
+    const filtered = recurringDemand.filter(d => {
+      if (urg === 'urgent' && d.urgency_level !== 'URGENT') return false;
+      if (urg === 'safe' && d.urgency_level !== 'SAFE') return false;
+      if (urg === 'expansion' && d.urgency_level !== 'EXPANSION') return false;
+      if (term && !`${d.code} ${d.name} ${d.category} ${d.next_expected_wave}`.toLowerCase().includes(term)) return false;
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = '';
+      if (emptyState) emptyState.hidden = false;
+      return;
+    }
+
+    if (emptyState) emptyState.hidden = true;
+
+    container.innerHTML = filtered.map(d => {
+      const alertClass = d.urgency_level === 'URGENT' ? 'urgent' : d.urgency_level === 'EXPANSION' ? 'opportunity' : 'safe';
+      const fillClass = d.urgency_level === 'URGENT' ? 'low' : d.urgency_level === 'EXPANSION' ? 'expansion' : 'safe';
+      const percent = Math.min(100, Math.round((d.current_warehouse_stock / (d.min_safe_threshold || 1)) * 100));
+
+      return `
       <article class="demand-card">
         <div>
           <div class="demand-header">
@@ -1216,65 +1695,80 @@ function renderDemand() {
         </div>
       </article>
     `;
-  }).join('');
+    }).join('');
 
-  container.querySelectorAll('[data-trigger-restock]').forEach(btn => {
-    btn.addEventListener('click', () => openRestockModal(btn.dataset.triggerRestock));
-  });
-}
+    container.querySelectorAll('[data-trigger-restock]').forEach(btn => {
+      btn.addEventListener('click', () => openRestockModal(btn.dataset.triggerRestock));
+    });
+  }
 
-const catSearch = document.querySelector('#catalogueSearchInput');
-const catCat = document.querySelector('#catalogueCategoryFilter');
-if (catSearch) catSearch.addEventListener('input', renderCatalogue);
-if (catCat) catCat.addEventListener('change', renderCatalogue);
+  const catSearch = document.querySelector('#catalogueSearchInput');
+  const catCat = document.querySelector('#catalogueCategoryFilter');
+  if (catSearch) catSearch.addEventListener('input', renderCatalogue);
+  if (catCat) catCat.addEventListener('change', renderCatalogue);
 
-const demandSearch = document.querySelector('#demandSearchInput');
-const demandUrg = document.querySelector('#demandUrgencyFilter');
-if (demandSearch) demandSearch.addEventListener('input', renderDemand);
-if (demandUrg) demandUrg.addEventListener('change', renderDemand);
+  const demandSearch = document.querySelector('#demandSearchInput');
+  const demandUrg = document.querySelector('#demandUrgencyFilter');
+  if (demandSearch) demandSearch.addEventListener('input', renderDemand);
+  if (demandUrg) demandUrg.addEventListener('change', renderDemand);
 
-const bulkRestockBtn = document.querySelector('#bulkRestockBtn');
-if (bulkRestockBtn) {
-  bulkRestockBtn.addEventListener('click', () => {
-    showToast('Auto-generating replenishment purchase order for 2 urgent items (Mindray Monitors + Ansell Gloves)...');
-    setTimeout(() => {
-      const mon = catalogue.find(c => c.code === 'ICU-MON-12');
-      const glv = catalogue.find(c => c.code === 'CON-SUR-GLV');
-      if (mon) { mon.warehouse_stock += 8; mon.stock_status = 'IN_STOCK'; }
-      if (glv) { glv.warehouse_stock += 1200; glv.stock_status = 'IN_STOCK'; }
-      const demMon = recurringDemand.find(d => d.code === 'ICU-MON-12');
-      const demGlv = recurringDemand.find(d => d.code === 'CON-SUR-GLV');
-      if (demMon) { demMon.current_warehouse_stock += 8; demMon.urgency_level = 'SAFE'; demMon.urgency_label = '🟢 Replenished (Safe Buffer)'; }
-      if (demGlv) { demGlv.current_warehouse_stock += 1200; demGlv.urgency_level = 'SAFE'; demGlv.urgency_label = '🟢 Replenished (Safe Buffer)'; }
-      renderCatalogue();
-      renderDemand();
-      renderOverview();
-      showToast('Purchase Order generated! Warehouse inventory buffer updated.');
-    }, 800);
-  });
-}
+  const bulkRestockBtn = document.querySelector('#bulkRestockBtn');
+  if (bulkRestockBtn) {
+    bulkRestockBtn.addEventListener('click', () => {
+      showToast('Auto-generating replenishment purchase order for 2 urgent items (Mindray Monitors + Ansell Gloves)...');
+      setTimeout(() => {
+        const mon = catalogue.find(c => c.code === 'ICU-MON-12');
+        const glv = catalogue.find(c => c.code === 'CON-SUR-GLV');
+        if (mon) { mon.warehouse_stock += 8; mon.stock_status = 'IN_STOCK'; }
+        if (glv) { glv.warehouse_stock += 1200; glv.stock_status = 'IN_STOCK'; }
+        const demMon = recurringDemand.find(d => d.code === 'ICU-MON-12');
+        const demGlv = recurringDemand.find(d => d.code === 'CON-SUR-GLV');
+        if (demMon) { demMon.current_warehouse_stock += 8; demMon.urgency_level = 'SAFE'; demMon.urgency_label = '🟢 Replenished (Safe Buffer)'; }
+        if (demGlv) { demGlv.current_warehouse_stock += 1200; demGlv.urgency_level = 'SAFE'; demGlv.urgency_label = '🟢 Replenished (Safe Buffer)'; }
+        renderCatalogue();
+        renderDemand();
+        renderOverview();
+        showToast('Purchase Order generated! Warehouse inventory buffer updated.');
+      }, 800);
+    });
+  }
 
-// ==========================================================================
-// 9. Interactive Tender Relevance & Spec Compliance Matrix Drawer
-// ==========================================================================
+  // ==========================================================================
+  // 9. Interactive Tender Relevance & Spec Compliance Matrix Drawer
+  // ==========================================================================
 
-const drawer = document.querySelector('#tenderDrawer');
-const drawerBackdrop = document.querySelector('#drawerBackdrop');
-const closeDrawerBtn = document.querySelector('#closeDrawer');
+  const drawer = document.querySelector('#tenderDrawer');
+  const drawerBackdrop = document.querySelector('#drawerBackdrop');
+  const closeDrawerBtn = document.querySelector('#closeDrawer');
 
-function openTenderDrawer(id) {
-  const tender = tenders.find(item => item.id === id);
-  if (!tender || !drawer) return;
+  let activeDrawerTenderId = null;
+  let activeDrawerTab = 'matrix';
 
-  const days = daysRemaining(tender.deadline_at);
-  const drawerContent = document.querySelector('#drawerContent');
-  const recClass = tender.recommended_action === 'BID_HIGH_FIT' ? 'bid' : tender.recommended_action === 'OPPORTUNITY_EXPANSION' ? 'expansion' : 'review';
+  function openTenderDrawer(id, tab = 'matrix') {
+    activeDrawerTenderId = id;
+    activeDrawerTab = tab;
+    renderDrawerContent();
 
-  if (drawerContent) {
-    drawerContent.innerHTML = `
-      <h2 class="drawer-title" id="drawerTitle">${tender.title}</h2>
-      <p class="drawer-entity">${tender.procuring_entity} · <strong style="font-family:'DM Mono',monospace;color:var(--teal)">${tender.ref}</strong></p>
+    if (!drawer) return;
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    if (drawerBackdrop) drawerBackdrop.hidden = false;
+    if (closeDrawerBtn) closeDrawerBtn.focus();
+  }
 
+  function renderDrawerContent() {
+    const tender = tenders.find(item => item.id === activeDrawerTenderId);
+    const drawerContent = document.querySelector('#drawerContent');
+    if (!tender || !drawerContent) return;
+
+    const days = daysRemaining(tender.deadline_at);
+    const recClass = tender.recommended_action === 'BID_HIGH_FIT' ? 'bid' : tender.recommended_action === 'OPPORTUNITY_EXPANSION' ? 'expansion' : 'review';
+    const stratClass = tender.sourcing_strategy === 'BID_CHINESE_EQUIVALENT' ? 'chinese' : tender.sourcing_strategy === 'BID_WITH_EQUIVALENCE_DEFENSE' ? 'defense' : 'european';
+
+    let bodyHtml = '';
+
+    if (activeDrawerTab === 'matrix') {
+      bodyHtml = `
       <!-- Multi-Score Company Fit Matrix -->
       <div class="drawer-score-grid" aria-label="Company relevance score breakdown">
         <div class="drawer-score" style="border:2px solid var(--teal)">
@@ -1338,9 +1832,9 @@ function openTenderDrawer(id) {
               </thead>
               <tbody>
                 ${lot.specs_matrix.map(s => {
-                  const badgeIcon = s.status === 'COMPLIANT' ? '✅' : s.status === 'VERIFICATION_REQUIRED' ? '⚠️' : s.status === 'PARTIALLY_COMPLIANT' ? '🟡' : s.status === 'NON_COMPLIANT' ? '❌' : '❓';
-                  const badgeClass = s.status.toLowerCase().replace(/_/g, '-');
-                  return `
+        const badgeIcon = s.status === 'COMPLIANT' ? '✅' : s.status === 'VERIFICATION_REQUIRED' ? '⚠️' : s.status === 'PARTIALLY_COMPLIANT' ? '🟡' : s.status === 'NON_COMPLIANT' ? '❌' : '❓';
+        const badgeClass = s.status.toLowerCase().replace(/_/g, '-');
+        return `
                     <tr>
                       <td class="spec-param-name">${s.param}</td>
                       <td class="spec-req-val">${s.req}</td>
@@ -1352,7 +1846,7 @@ function openTenderDrawer(id) {
                       </td>
                     </tr>
                   `;
-                }).join('')}
+      }).join('')}
               </tbody>
             </table>
           </div>
@@ -1388,164 +1882,378 @@ function openTenderDrawer(id) {
         </button>
       </div>
     `;
-  }
+    } else if (activeDrawerTab === 'brand_equivalence') {
+      bodyHtml = `
+      <!-- Sourcing Strategy Banner -->
+      <div class="strategy-banner ${stratClass}">
+        <div class="strategy-banner-top">
+          <span class="strategy-badge ${stratClass}">${tender.sourcing_strategy_label}</span>
+          <span class="cost-savings-pill">⚡ Save ${formatRWF(tender.cost_savings_rwf)} (${tender.cost_advantage_pct}% Lower)</span>
+        </div>
+        <p class="strategy-desc">${tender.sourcing_strategy_desc}</p>
+      </div>
 
-  drawer.classList.add('open');
-  drawer.setAttribute('aria-hidden', 'false');
-  if (drawerBackdrop) drawerBackdrop.hidden = false;
-  if (closeDrawerBtn) closeDrawerBtn.focus();
+      <!-- Side-by-Side Brand Benchmark Comparison Grid -->
+      <section class="drawer-section">
+        <h3>🇨🇳 Chinese Stock vs 🇪🇺 European Benchmark</h3>
+        <div class="brand-compare-grid">
+          <div class="brand-compare-card chinese">
+            <div class="compare-badge chinese">🇨🇳 Our Stocked Supply</div>
+            <h4>${tender.chinese_stocked_model}</h4>
+            <div class="compare-details">
+              <div><small>Supplied Acquisition Bid</small><strong>${formatRWF(tender.chinese_bid_price_rwf)}</strong></div>
+              <div><small>Stock & Delivery Lead Time</small><strong style="color:var(--green)">${tender.stock_label}</strong></div>
+              <div><small>Kigali Field Engineering</small><strong>✓ 4 Resident Biomedical Engineers</strong></div>
+            </div>
+          </div>
 
-  const exportBtn = document.querySelector('#exportMatrixBtn');
-  if (exportBtn) {
-    exportBtn.addEventListener('click', () => {
-      showToast(`Compliance Matrix for "${tender.ref}" exported.`);
+          <div class="brand-compare-card european">
+            <div class="compare-badge european">🇪🇺 Tender Benchmark</div>
+            <h4>${tender.benchmarked_european_brand}</h4>
+            <div class="compare-details">
+              <div><small>Estimated European Import Cost</small><strong>${formatRWF(tender.european_market_price_rwf)}</strong></div>
+              <div><small>Estimated Import Lead Time</small><strong style="color:var(--muted)">45 - 90 Days Shipping</strong></div>
+              <div><small>Depot Service SLA</small><strong>Overseas Depot Support</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4-Dimension Brand Equivalence Score Breakdown -->
+      <section class="drawer-section">
+        <h3>Brand Equivalence Parity Breakdown</h3>
+        <div class="parity-score-box">
+          <div class="parity-score-header">
+            <div>
+              <strong style="font-size:20px;color:var(--teal)">★ ${tender.equivalence_score}%</strong>
+              <span style="font-size:12px;color:var(--ink);font-weight:700;margin-left:6px;">Overall Equivalence Parity</span>
+            </div>
+            <span class="rppa-pill">RPPA Law No. 62/2018 Art. 42 Compliant</span>
+          </div>
+
+          <div class="parity-grid">
+            <div class="parity-item">
+              <div class="parity-label">
+                <span>Technical Spec Parity (40%)</span>
+                <strong>${tender.tech_parity_score}%</strong>
+              </div>
+              <div class="parity-bar-wrap">
+                <div class="parity-bar-fill" style="width:${tender.tech_parity_score}%;background:var(--teal)"></div>
+              </div>
+            </div>
+
+            <div class="parity-item">
+              <div class="parity-label">
+                <span>Clinical Performance (30%)</span>
+                <strong>${tender.clinical_parity_score}%</strong>
+              </div>
+              <div class="parity-bar-wrap">
+                <div class="parity-bar-fill" style="width:${tender.clinical_parity_score}%;background:var(--green)"></div>
+              </div>
+            </div>
+
+            <div class="parity-item">
+              <div class="parity-label">
+                <span>Regulatory & Standards (20%)</span>
+                <strong>${tender.regulatory_parity_score}%</strong>
+              </div>
+              <div class="parity-bar-wrap">
+                <div class="parity-bar-fill" style="width:${tender.regulatory_parity_score}%;background:#3178c6"></div>
+              </div>
+            </div>
+
+            <div class="parity-item">
+              <div class="parity-label">
+                <span>Local SLA & Warranty (10%)</span>
+                <strong>${tender.warranty_parity_score}%</strong>
+              </div>
+              <div class="parity-bar-wrap">
+                <div class="parity-bar-fill" style="width:${tender.warranty_parity_score}%;background:var(--warm)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Granular Parameter Deviation & Equivalence Matrix -->
+      <section class="drawer-section">
+        <h3>Granular Parameter Deviation & Clinical Justification Matrix</h3>
+        <div class="table-wrap" style="box-shadow:none;border:1px solid var(--line);border-radius:6px;">
+          <table class="equiv-matrix-table">
+            <thead>
+              <tr>
+                <th scope="col">Parameter</th>
+                <th scope="col">🇪🇺 European Benchmark</th>
+                <th scope="col">🇨🇳 Supplied Specification</th>
+                <th scope="col">Equivalence Status</th>
+                <th scope="col">Clinical / Engineering Defense Justification</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${(tender.brand_equivalence_matrix || []).map(m => {
+        const statusTag = m.status === 'EXACT_MATCH'
+          ? '<span class="status-pill exact">✅ Exact Match / Exceeds</span>'
+          : m.status === 'EQUIVALENT'
+            ? '<span class="status-pill equiv">🟡 Clinical Equivalent</span>'
+            : m.status === 'TECHNICAL_MISS'
+              ? '<span class="status-pill miss">❌ Spec Gap / Sourcing</span>'
+              : '<span class="status-pill reg">⚠️ Regulatory Parity</span>';
+
+        return `
+                  <tr>
+                    <td class="equiv-param-name"><strong>${m.parameter}</strong></td>
+                    <td class="equiv-euro-spec">${m.european_benchmark}</td>
+                    <td class="equiv-china-spec">${m.chinese_supplied}</td>
+                    <td>${statusTag}</td>
+                    <td class="equiv-justification">
+                      <p>${m.justification}</p>
+                      <small style="font-family:'DM Mono',monospace;color:var(--teal)">Standards: ${m.standards_compliance}</small>
+                    </td>
+                  </tr>
+                `;
+      }).join('')}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Auto-Generated RPPA Technical Equivalence Defense Letter -->
+      <section class="drawer-section">
+        <div class="defense-letter-card">
+          <div class="defense-letter-header">
+            <div>
+              <h3 style="margin:0;font-size:14px;color:var(--ink);">⚖️ Auto-Generated RPPA Technical Equivalence Defense Letter</h3>
+              <small style="color:var(--muted)">Formally prepared under Rwanda Public Procurement Law No. 62/2018, Article 42</small>
+            </div>
+            <div class="defense-actions">
+              <button class="outline-button" id="copyDefenseLetterBtn" style="padding:6px 12px;font-size:11px;">
+                📋 Copy Defense Text
+              </button>
+              <button class="outline-button" id="downloadDefenseLetterBtn" style="padding:6px 12px;font-size:11px;">
+                📥 Download (.txt)
+              </button>
+            </div>
+          </div>
+          <div class="defense-letter-preview">
+            <pre>${generateEquivalenceLetter(tender)}</pre>
+          </div>
+        </div>
+      </section>
+
+      <div class="drawer-actions">
+        <button class="outline-button" id="exportEquivPdfBtn">Export Equivalence Dossier</button>
+        <button class="primary-button" id="attachDossierBtn">
+          ⚡ Attach to Bid Submission Dossier
+        </button>
+      </div>
+    `;
+    }
+
+    drawerContent.innerHTML = `
+    <h2 class="drawer-title" id="drawerTitle">${tender.title}</h2>
+    <p class="drawer-entity">${tender.procuring_entity} · <strong style="font-family:'DM Mono',monospace;color:var(--teal)">${tender.ref}</strong></p>
+
+    <!-- Segmented Drawer Navigation Subtabs -->
+    <div class="drawer-tabs" role="tablist" aria-label="Tender Analysis Views">
+      <button class="drawer-tab-btn ${activeDrawerTab === 'matrix' ? 'active' : ''}" data-drawer-tab="matrix" role="tab" aria-selected="${activeDrawerTab === 'matrix'}">
+        📋 Spec Compliance Matrix
+      </button>
+      <button class="drawer-tab-btn ${activeDrawerTab === 'brand_equivalence' ? 'active' : ''}" data-drawer-tab="brand_equivalence" role="tab" aria-selected="${activeDrawerTab === 'brand_equivalence'}">
+        🇨🇳 vs 🇪🇺 Brand Equivalence Engine (${tender.equivalence_score}% Parity)
+      </button>
+    </div>
+
+    <div class="drawer-body-wrap">
+      ${bodyHtml}
+    </div>
+  `;
+
+    // Attach tab switcher events
+    drawerContent.querySelectorAll('[data-drawer-tab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeDrawerTab = btn.dataset.drawerTab;
+        renderDrawerContent();
+      });
     });
+
+    // Attach matrix buttons
+    const exportBtn = document.querySelector('#exportMatrixBtn');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        showToast(`Compliance Matrix for "${tender.ref}" exported.`);
+      });
+    }
+
+    const advanceBtn = document.querySelector('#advancePrepBtn');
+    if (advanceBtn) {
+      advanceBtn.addEventListener('click', () => {
+        tender.status = 'bid_preparation';
+        renderPipeline();
+        renderOverview();
+        showToast(`Tender ${tender.ref} moved to Bid Preparation.`);
+        closeTenderDrawer();
+      });
+    }
+
+    // Attach equivalence buttons
+    const copyBtn = document.querySelector('#copyDefenseLetterBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => copyEquivalenceLetter(tender.id));
+    }
+
+    const dlBtn = document.querySelector('#downloadDefenseLetterBtn');
+    if (dlBtn) {
+      dlBtn.addEventListener('click', () => downloadEquivalenceLetter(tender.id));
+    }
+
+    const exportPdfBtn = document.querySelector('#exportEquivPdfBtn');
+    if (exportPdfBtn) {
+      exportPdfBtn.addEventListener('click', () => {
+        showToast(`Generating certified Equivalence Dossier PDF for ${tender.ref}...`);
+        setTimeout(() => showToast('Dossier generated with complete RPPA Article 42 justifications.'), 800);
+      });
+    }
+
+    const attachDossierBtn = document.querySelector('#attachDossierBtn');
+    if (attachDossierBtn) {
+      attachDossierBtn.addEventListener('click', () => {
+        showToast(`✓ Equivalence justification attached to Bid Dossier for ${tender.ref}`);
+      });
+    }
   }
 
-  const advanceBtn = document.querySelector('#advancePrepBtn');
-  if (advanceBtn) {
-    advanceBtn.addEventListener('click', () => {
-      tender.status = 'bid_preparation';
-      renderPipeline();
+  function closeTenderDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    if (drawerBackdrop) drawerBackdrop.hidden = true;
+  }
+
+  if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeTenderDrawer);
+  if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeTenderDrawer);
+
+  // ==========================================================================
+  // 10. Restock Modal Controller
+  // ==========================================================================
+
+  const restockModalBackdrop = document.querySelector('#restockModalBackdrop');
+  const closeRestockModal = document.querySelector('#closeRestockModal');
+  const cancelRestockBtn = document.querySelector('#cancelRestockBtn');
+  const restockForm = document.querySelector('#restockForm');
+
+  function openRestockModal(productCode) {
+    const item = catalogue.find(c => c.code === productCode) || recurringDemand.find(d => d.code === productCode);
+    if (!item) return;
+
+    const codeInput = document.querySelector('#restockProductCode');
+    const nameInput = document.querySelector('#restockProductName');
+    const supplierInput = document.querySelector('#restockSupplier');
+    const unitsInput = document.querySelector('#restockUnits');
+
+    if (codeInput) codeInput.value = item.code;
+    if (nameInput) nameInput.value = `[${item.code}] ${item.name}`;
+    if (supplierInput) supplierInput.value = item.manufacturer || item.oem_partner || 'Authorized Medical OEM';
+    if (unitsInput) unitsInput.value = item.recommended_restock_qty || 10;
+
+    if (restockModalBackdrop) restockModalBackdrop.hidden = false;
+  }
+
+  function closeRestockModalDialog() {
+    if (restockModalBackdrop) restockModalBackdrop.hidden = true;
+  }
+
+  if (closeRestockModal) closeRestockModal.addEventListener('click', closeRestockModalDialog);
+  if (cancelRestockBtn) cancelRestockBtn.addEventListener('click', closeRestockModalDialog);
+
+  if (restockForm) {
+    restockForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const code = document.querySelector('#restockProductCode').value;
+      const units = parseInt(document.querySelector('#restockUnits').value, 10) || 10;
+
+      const catItem = catalogue.find(c => c.code === code);
+      if (catItem) {
+        catItem.warehouse_stock += units;
+        catItem.stock_status = 'IN_STOCK';
+      }
+
+      const demandItem = recurringDemand.find(d => d.code === code);
+      if (demandItem) {
+        demandItem.current_warehouse_stock += units;
+        demandItem.urgency_level = 'SAFE';
+        demandItem.urgency_label = '🟢 Replenished (Safe Buffer)';
+      }
+
+      closeRestockModalDialog();
+      renderCatalogue();
+      renderDemand();
       renderOverview();
-      showToast(`Tender ${tender.ref} moved to Bid Preparation.`);
-      closeTenderDrawer();
+      showToast(`Replenishment order confirmed for ${units} units of ${code}. Warehouse stock updated.`);
     });
   }
-}
 
-function closeTenderDrawer() {
-  if (!drawer) return;
-  drawer.classList.remove('open');
-  drawer.setAttribute('aria-hidden', 'true');
-  if (drawerBackdrop) drawerBackdrop.hidden = true;
-}
+  // Help Centre Modal
+  const helpCentreBtn = document.querySelector('#helpCentreBtn');
+  const helpCentreModalBackdrop = document.querySelector('#helpCentreModalBackdrop');
+  const closeHelpCentreModal = document.querySelector('#closeHelpCentreModal');
+  const dismissHelpBtn = document.querySelector('#dismissHelpBtn');
 
-if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeTenderDrawer);
-if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeTenderDrawer);
-
-// ==========================================================================
-// 10. Restock Modal Controller
-// ==========================================================================
-
-const restockModalBackdrop = document.querySelector('#restockModalBackdrop');
-const closeRestockModal = document.querySelector('#closeRestockModal');
-const cancelRestockBtn = document.querySelector('#cancelRestockBtn');
-const restockForm = document.querySelector('#restockForm');
-
-function openRestockModal(productCode) {
-  const item = catalogue.find(c => c.code === productCode) || recurringDemand.find(d => d.code === productCode);
-  if (!item) return;
-
-  const codeInput = document.querySelector('#restockProductCode');
-  const nameInput = document.querySelector('#restockProductName');
-  const supplierInput = document.querySelector('#restockSupplier');
-  const unitsInput = document.querySelector('#restockUnits');
-
-  if (codeInput) codeInput.value = item.code;
-  if (nameInput) nameInput.value = `[${item.code}] ${item.name}`;
-  if (supplierInput) supplierInput.value = item.manufacturer || item.oem_partner || 'Authorized Medical OEM';
-  if (unitsInput) unitsInput.value = item.recommended_restock_qty || 10;
-
-  if (restockModalBackdrop) restockModalBackdrop.hidden = false;
-}
-
-function closeRestockModalDialog() {
-  if (restockModalBackdrop) restockModalBackdrop.hidden = true;
-}
-
-if (closeRestockModal) closeRestockModal.addEventListener('click', closeRestockModalDialog);
-if (cancelRestockBtn) cancelRestockBtn.addEventListener('click', closeRestockModalDialog);
-
-if (restockForm) {
-  restockForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const code = document.querySelector('#restockProductCode').value;
-    const units = parseInt(document.querySelector('#restockUnits').value, 10) || 10;
-
-    const catItem = catalogue.find(c => c.code === code);
-    if (catItem) {
-      catItem.warehouse_stock += units;
-      catItem.stock_status = 'IN_STOCK';
-    }
-
-    const demandItem = recurringDemand.find(d => d.code === code);
-    if (demandItem) {
-      demandItem.current_warehouse_stock += units;
-      demandItem.urgency_level = 'SAFE';
-      demandItem.urgency_label = '🟢 Replenished (Safe Buffer)';
-    }
-
-    closeRestockModalDialog();
-    renderCatalogue();
-    renderDemand();
-    renderOverview();
-    showToast(`Replenishment order confirmed for ${units} units of ${code}. Warehouse stock updated.`);
-  });
-}
-
-// Help Centre Modal
-const helpCentreBtn = document.querySelector('#helpCentreBtn');
-const helpCentreModalBackdrop = document.querySelector('#helpCentreModalBackdrop');
-const closeHelpCentreModal = document.querySelector('#closeHelpCentreModal');
-const dismissHelpBtn = document.querySelector('#dismissHelpBtn');
-
-function toggleHelpModal(show) {
-  if (helpCentreModalBackdrop) helpCentreModalBackdrop.hidden = !show;
-}
-
-if (helpCentreBtn) helpCentreBtn.addEventListener('click', () => toggleHelpModal(true));
-if (closeHelpCentreModal) closeHelpCentreModal.addEventListener('click', () => toggleHelpModal(false));
-if (dismissHelpBtn) dismissHelpBtn.addEventListener('click', () => toggleHelpModal(false));
-
-// Global Escape Key Listener
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeTenderDrawer();
-    closeRestockModalDialog();
-    toggleHelpModal(false);
-    if (profileDropdown && profileDropdown.classList.contains('open')) {
-      profileDropdown.classList.remove('open');
-      if (profileChipBtn) profileChipBtn.setAttribute('aria-expanded', 'false');
-    }
-  }
-});
-
-// Sources Controller
-function renderSources() {
-  const container = document.querySelector('#sourcesGridContainer');
-  const emptyState = document.querySelector('#sourcesEmptyState');
-  const searchInput = document.querySelector('#sourceSearchInput');
-  const categoryFilter = document.querySelector('#sourceCategoryFilter');
-  const methodFilter = document.querySelector('#sourceMethodFilter');
-  const statusFilter = document.querySelector('#sourceStatusFilter');
-
-  if (!container) return;
-
-  const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
-  const cat = categoryFilter ? categoryFilter.value : '';
-  const method = methodFilter ? methodFilter.value : '';
-  const stat = statusFilter ? statusFilter.value : '';
-
-  const filtered = sources.filter(s => {
-    if (cat && s.category !== cat) return false;
-    if (method && s.collection_method !== method) return false;
-    if (stat === 'active' && !s.is_active) return false;
-    if (stat === 'inactive' && s.is_active) return false;
-    if (term && !`${s.name} ${s.organization} ${s.website}`.toLowerCase().includes(term)) return false;
-    return true;
-  });
-
-  if (filtered.length === 0) {
-    container.innerHTML = '';
-    if (emptyState) emptyState.hidden = false;
-    return;
+  function toggleHelpModal(show) {
+    if (helpCentreModalBackdrop) helpCentreModalBackdrop.hidden = !show;
   }
 
-  if (emptyState) emptyState.hidden = true;
+  if (helpCentreBtn) helpCentreBtn.addEventListener('click', () => toggleHelpModal(true));
+  if (closeHelpCentreModal) closeHelpCentreModal.addEventListener('click', () => toggleHelpModal(false));
+  if (dismissHelpBtn) dismissHelpBtn.addEventListener('click', () => toggleHelpModal(false));
 
-  container.innerHTML = filtered.map(s => {
-    return `
+  // Global Escape Key Listener
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeTenderDrawer();
+      closeRestockModalDialog();
+      toggleHelpModal(false);
+      if (profileDropdown && profileDropdown.classList.contains('open')) {
+        profileDropdown.classList.remove('open');
+        if (profileChipBtn) profileChipBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+
+  // Sources Controller
+  function renderSources() {
+    const container = document.querySelector('#sourcesGridContainer');
+    const emptyState = document.querySelector('#sourcesEmptyState');
+    const searchInput = document.querySelector('#sourceSearchInput');
+    const categoryFilter = document.querySelector('#sourceCategoryFilter');
+    const methodFilter = document.querySelector('#sourceMethodFilter');
+    const statusFilter = document.querySelector('#sourceStatusFilter');
+
+    if (!container) return;
+
+    const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const cat = categoryFilter ? categoryFilter.value : '';
+    const method = methodFilter ? methodFilter.value : '';
+    const stat = statusFilter ? statusFilter.value : '';
+
+    const filtered = sources.filter(s => {
+      if (cat && s.category !== cat) return false;
+      if (method && s.collection_method !== method) return false;
+      if (stat === 'active' && !s.is_active) return false;
+      if (stat === 'inactive' && s.is_active) return false;
+      if (term && !`${s.name} ${s.organization} ${s.website}`.toLowerCase().includes(term)) return false;
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = '';
+      if (emptyState) emptyState.hidden = false;
+      return;
+    }
+
+    if (emptyState) emptyState.hidden = true;
+
+    container.innerHTML = filtered.map(s => {
+      return `
       <article class="source-card">
         <div>
           <div class="source-header">
@@ -1578,20 +2286,21 @@ function renderSources() {
         </div>
       </article>
     `;
-  }).join('');
+    }).join('');
 
-  container.querySelectorAll('[data-scan-source]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      showToast('Running compliant extraction scan...');
-      setTimeout(() => {
-        renderSources();
-        showToast('Source updated with latest procurement notices.');
-      }, 500);
+    container.querySelectorAll('[data-scan-source]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showToast('Running compliant extraction scan...');
+        setTimeout(() => {
+          renderSources();
+          showToast('Source updated with latest procurement notices.');
+        }, 500);
+      });
     });
-  });
-}
+  }
 
-// Initial Initialization
-loadUserProfile();
-const initialHash = window.location.hash.replace('#', '');
-switchView(initialHash && viewMap[initialHash] ? initialHash : 'dashboard');
+  // Initial Initialization
+  loadUserProfile();
+  const initialHash = window.location.hash.replace('#', '');
+  switchView(initialHash && viewMap[initialHash] ? initialHash : 'dashboard');
+}

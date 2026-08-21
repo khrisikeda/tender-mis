@@ -383,8 +383,16 @@
                 <option value="NO_BID">No-Bid</option>
               </select>
 
+              <select id="pipelineStrategyFilter" aria-label="Filter by sourcing strategy">
+                <option value="">All Sourcing Strategies</option>
+                <option value="BID_CHINESE_EQUIVALENT">🇨🇳 Bid Chinese Stock (≥88% Equiv)</option>
+                <option value="BID_WITH_EQUIVALENCE_DEFENSE">⚖️ Bid with RPPA Defense (70-87%)</option>
+                <option value="SOURCE_EUROPEAN_PARTNER">🇪🇺 Source European OEM Partner</option>
+              </select>
+
               <select id="pipelineSortBy" aria-label="Sort tenders by">
                 <option value="relevance">Sort: Company Fit (Highest)</option>
+                <option value="equivalence">Sort: Brand Equivalence (Highest)</option>
                 <option value="deadline">Sort: Deadline (Earliest)</option>
                 <option value="value">Sort: Estimated Value</option>
                 <option value="coverage">Sort: Lot Coverage %</option>
@@ -401,6 +409,7 @@
                     <th scope="col">Deadline</th>
                     <th scope="col">Company Fit</th>
                     <th scope="col">Spec Match</th>
+                    <th scope="col">Sourcing Strategy</th>
                     <th scope="col">Lot Coverage</th>
                     <th scope="col">Delivery Readiness</th>
                     <th scope="col">Recommendation</th>
