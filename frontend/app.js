@@ -1205,27 +1205,17 @@ if (overviewCategoryFilter) overviewCategoryFilter.addEventListener('change', re
 // 7. View 2: Tender Pipeline & Matching Workspace
 // ==========================================================================
 
-let pipelineSelectedStage = '';
+// Sourcing Strategy & Equivalence Helper Engine
+function computeEquivalenceScore(tender) {
+  if (!tender) return 0;
+  const tech = (tender.tech_parity_score || 0) * 0.4;
+  const clinical = (tender.clinical_parity_score || 0) * 0.3;
+  const reg = (tender.regulatory_parity_score || 0) * 0.2;
+  const warranty = (tender.warranty_parity_score || 0) * 0.1;
+  return Math.round(tech + clinical + reg + warranty);
+}
 
-function renderPipeline() {
-  const pipelineRows = document.querySelector('#pipelineTableRows');
-  const pipelineEmptyState = document.querySelector('#pipelineEmptyState');
-  const searchInput = document.querySelector('#pipelineSearchInput');
-  const categoryFilter = document.querySelector('#pipelineCategoryFilter');
-  const actionFilter = document.querySelector('#pipelineActionFilter');
-  const sortBy = document.querySelector('#pipelineSortBy');
-
-  // Sourcing Strategy & Equivalence Helper Engine
-  function computeEquivalenceScore(tender) {
-    if (!tender) return 0;
-    const tech = (tender.tech_parity_score || 0) * 0.4;
-    const clinical = (tender.clinical_parity_score || 0) * 0.3;
-    const reg = (tender.regulatory_parity_score || 0) * 0.2;
-    const warranty = (tender.warranty_parity_score || 0) * 0.1;
-    return Math.round(tech + clinical + reg + warranty);
-  }
-
-  function generateEquivalenceLetter(tender) {
+function generateEquivalenceLetter(tender) {
     const dateStr = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }).format(new Date());
     const matrixLines = (tender.brand_equivalence_matrix || []).map((m, idx) => {
       const statusLabel = m.status === 'EXACT_MATCH' ? '[EXACT MATCH / EXCEEDS]' : m.status === 'EQUIVALENT' ? '[CLINICAL EQUIVALENT]' : m.status === 'TECHNICAL_MISS' ? '[SPECIFICATION VARIANCE]' : '[REGULATORY PARITY]';
@@ -1313,8 +1303,8 @@ Kigali, Rwanda | info@medtender.rw | +250 788 000 000`;
     showToast(`Downloaded RPPA Defense statement for ${tender.ref}`);
   }
 
-  // Stage Filter State
-  let pipelineSelectedStage = '';
+// Stage Filter State
+let pipelineSelectedStage = '';
 
   function renderPipeline() {
     const pipelineRows = document.querySelector('#pipelineTableRows');
@@ -2303,4 +2293,3 @@ Kigali, Rwanda | info@medtender.rw | +250 788 000 000`;
   loadUserProfile();
   const initialHash = window.location.hash.replace('#', '');
   switchView(initialHash && viewMap[initialHash] ? initialHash : 'dashboard');
-}
