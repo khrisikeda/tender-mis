@@ -1746,12 +1746,31 @@ let pipelineSelectedStage = '';
     if (closeDrawerBtn) closeDrawerBtn.focus();
   }
 
+  function getRequirementProgress(tender) {
+    const requirements = (tender.lots || []).flatMap(lot => lot.specs_matrix || []);
+    const compliant = requirements.filter(item => item.status === 'COMPLIANT').length;
+    const partial = requirements.filter(item => item.status === 'PARTIALLY_COMPLIANT').length;
+    const completed = compliant + Math.round(partial * 0.5);
+    return { total: requirements.length, compliant, partial, completed, percentage: requirements.length ? Math.round((completed / requirements.length) * 100) : 0 };
+  }
+
+  function getTenderDocument(tenderId) {
+    try { return JSON.parse(window.localStorage.getItem(`medtender_document_${tenderId}`) || 'null'); } catch { return null; }
+  }
+
+  function formatFileSize(bytes) {
+    if (!bytes) return 'Size unavailable';
+    return bytes < 1048576 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1048576).toFixed(1)} MB`;
+  }
+
   function renderDrawerContent() {
     const tender = tenders.find(item => item.id === activeDrawerTenderId);
     const drawerContent = document.querySelector('#drawerContent');
     if (!tender || !drawerContent) return;
 
     const days = daysRemaining(tender.deadline_at);
+    const progress = getRequirementProgress(tender);
+    const purchasedDocument = getTenderDocument(tender.id);
     const recClass = tender.recommended_action === 'BID_HIGH_FIT' ? 'bid' : tender.recommended_action === 'OPPORTUNITY_EXPANSION' ? 'expansion' : 'review';
     const stratClass = tender.sourcing_strategy === 'BID_CHINESE_EQUIVALENT' ? 'chinese' : tender.sourcing_strategy === 'BID_WITH_EQUIVALENCE_DEFENSE' ? 'defense' : 'european';
 
@@ -1759,6 +1778,20 @@ let pipelineSelectedStage = '';
 
     if (activeDrawerTab === 'matrix') {
       bodyHtml = `
+      <section class="bid-document-panel" aria-labelledby="bidDocumentHeading">
+        <div class="bid-document-heading">
+          <div><p class="eyebrow">Bid workspace</p><h3 id="bidDocumentHeading">Purchased bidding document</h3></div>
+          <span class="document-status ${purchasedDocument ? 'uploaded' : 'pending'}">${purchasedDocument ? 'Document added' : 'Not added'}</span>
+        </div>
+        ${purchasedDocument ? `<div class="uploaded-document"><span class="document-icon">PDF</span><div><strong>${purchasedDocument.name}</strong><small>${formatFileSize(purchasedDocument.size)} · Added ${purchasedDocument.addedAt}</small></div><button class="remove-document" id="removeTenderDocument" type="button">Remove</button></div>` : `<label class="document-dropzone" for="tenderDocumentInput"><span class="upload-icon">↑</span><strong>Add the purchased tender document</strong><small>PDF, DOCX or XLSX · Stored locally until secure document storage is connected</small><span class="document-select-button">Choose document</span><input id="tenderDocumentInput" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx"></label>`}
+      </section>
+
+      <section class="completion-panel" aria-labelledby="completionHeading">
+        <div class="completion-header"><div><p class="eyebrow">Requirement tracking</p><h3 id="completionHeading">Tender requirement completion</h3></div><strong class="completion-percent">${progress.percentage}%</strong></div>
+        <div class="completion-track"><span style="width:${progress.percentage}%"></span></div>
+        <div class="completion-summary"><span><b>${progress.completed}</b> of ${progress.total} requirements covered</span><span class="completion-legend"><i class="complete-dot"></i>${progress.compliant} compliant <i class="partial-dot"></i>${progress.partial} partial / verify</span></div>
+      </section>
+
       <!-- Multi-Score Company Fit Matrix -->
       <div class="drawer-score-grid" aria-label="Company relevance score breakdown">
         <div class="drawer-score" style="border:2px solid var(--teal)">
@@ -2057,6 +2090,26 @@ let pipelineSelectedStage = '';
       ${bodyHtml}
     </div>
   `;
+
+    const documentInput = drawerContent.querySelector('#tenderDocumentInput');
+    if (documentInput) {
+      documentInput.addEventListener('change', () => {
+        const file = documentInput.files[0];
+        if (!file) return;
+        window.localStorage.setItem(`medtender_document_${tender.id}`, JSON.stringify({ name: file.name, size: file.size, addedAt: new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date()) }));
+        renderDrawerContent();
+        showToast(`Bidding document added to ${tender.ref}.`);
+      });
+    }
+
+    const removeDocumentButton = drawerContent.querySelector('#removeTenderDocument');
+    if (removeDocumentButton) {
+      removeDocumentButton.addEventListener('click', () => {
+        window.localStorage.removeItem(`medtender_document_${tender.id}`);
+        renderDrawerContent();
+        showToast('Bidding document removed from this browser.');
+      });
+    }
 
     // Attach tab switcher events
     drawerContent.querySelectorAll('[data-drawer-tab]').forEach(btn => {
