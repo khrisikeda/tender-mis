@@ -1346,7 +1346,7 @@ let pipelineSelectedStage = '';
     const cat = categoryFilter ? categoryFilter.value : '';
     const act = actionFilter ? actionFilter.value : '';
     const strat = strategyFilter ? strategyFilter.value : '';
-    const sort = sortBy ? sortBy.value : 'relevance';
+    const sort = sortBy ? sortBy.value : 'deadline';
 
     let filtered = tenders.filter(t => {
       if (pipelineSelectedStage === 'high_fit' && t.relevance_score < 80) return false;
@@ -1365,7 +1365,11 @@ let pipelineSelectedStage = '';
     filtered.sort((a, b) => {
       if (sort === 'relevance') return (b.relevance_score || 0) - (a.relevance_score || 0);
       if (sort === 'equivalence') return (b.equivalence_score || 0) - (a.equivalence_score || 0);
-      if (sort === 'deadline') return new Date(a.deadline_at) - new Date(b.deadline_at);
+      if (sort === 'deadline') {
+        const deadlineA = a.deadline_at ? new Date(a.deadline_at).getTime() : Number.POSITIVE_INFINITY;
+        const deadlineB = b.deadline_at ? new Date(b.deadline_at).getTime() : Number.POSITIVE_INFINITY;
+        return deadlineA - deadlineB;
+      }
       if (sort === 'value') return (b.tender_value || 0) - (a.tender_value || 0);
       if (sort === 'coverage') return (b.coverage_rate || 0) - (a.coverage_rate || 0);
       return 0;
