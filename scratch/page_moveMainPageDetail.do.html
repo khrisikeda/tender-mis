@@ -1,0 +1,1676 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script type="text/javaScript" src="/js/common/font.js"></script>
+<script type="text/javaScript" src="/js/common/alert.js"></script>
+<script type="text/javaScript" language="javascript">
+    
+    // mask String
+    var validateTokenNumber="Number";
+    var validateTokenKorean="Korea language";
+    var validateTokenUpperEnglish="Upper english";
+    var validateTokenLowerEnglish="Lower English";
+    var validateTokenNewline="New Line";
+    var validateTokenUnderBar="Underbar";
+    var validateTokenComma="Comma";
+    var validateTokenDot="Dot";
+    var validateTokenDash="Dash";
+    var validateTokenSpace="Space";
+    var validateTokenParentheses ="Small bracket";
+
+    // required message
+    var requiredMessage="Please check the required field.";
+
+    // calrendar.js에서 사용 	
+    var systime ="August 28, 2026 18:43:09";
+    var systimeStr ="28082026184309439";
+    var today ="28082026";
+    // 공통메세지 	
+    var valiTelNoMsg ="It is invalid phone/fax type(10 digits).";
+    var valiDateMsg ="It is invalid date type.";
+    var valiNoMatchDateMsg ="Start date and end date is reversed.";
+    var todayStr ="28/08/2026";
+    // contextPath
+    var contextPath = "/";
+    // 현재언어
+    var langCode = "en";
+     // 날짜포맷
+    var dateFormat = "dd/MM/yyyy";
+     // 날짜구분타입
+    var dateSeparater = "/";
+     // 시간구분타입
+    var timeSeparater = ":";
+     // 화폐구분타입
+    var caliberSeparater = ",";
+     // 화폐구분단위
+    var caliberDigits = 3;
+     // 소수점 구분
+    var caliberPoint = ".";
+     // 입찰, 계약 자리수 구분 메세지
+     var invalidDigitMessage = "Please enter real number of {0} digit(s) and decimal number of {1} digit(s).";
+     // 금액 체크 메세지
+     var invalidMoneyMessage = "Invalid currency";
+     // 수량 체크 메세지
+     var invalidQuantityMessage = "It is invalid quantity type.";
+     // 소수점 체크 메세지
+     var invalidDecimalMessage = "You can enter either real numbers of X digit(s) or integer numbers of X digit(s).";
+     // 확인 메세지
+     var confirmStr = "Confirm";
+     // 취소 메세지
+     var cancelStr = "Cancel";
+     // close message
+     var closeStr = "Close";
+     // 정수 범위 메세지
+     var intRangeStr = "Please enter 14 digits maximum.";
+ 
+	function noEvent() {
+		if (event.keyCode == 116) {
+			event.keyCode= 2;
+			return false;
+		}
+	}
+	document.onkeydown = noEvent;
+	
+if(navigator.userAgent.indexOf("Safari") >-1) { 		
+	document.domain="umucyo.gov.rw";		
+} else {	
+	if( navigator.appName.indexOf("Microsoft") > -1 ) {	
+		document.domain="umucyo.gov.rw";		
+   } else {	
+		document.domain="umucyo.gov.rw";		
+   }		
+}	
+</script>
+
+<script type="text/javascript" src="/js/common/string.js"></script>
+<script type="text/javascript" src="/js/common/date.js"></script>
+<script type="text/javascript" src="/js/common/event.js"></script>
+<script type="text/javascript" src="/js/common/validation.js"></script>
+<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+
+<html>
+<head>
+<title>Rwanda On-Line E-Procurement System</title>
+
+<!-- <style>
+
+
+/* =====================  CHAT BOT  ============================ */
+.rw-open-launcher__container img {
+/*width of the image*/
+
+content: url(https://projects.rw/umucyo.png); 
+
+ 
+}
+/* put the image url here  */
+/*=====================  CHAT BOT  ============================*/
+
+
+</style> -->
+
+	<style>
+	
+        .container {
+            margin-right: 2px;
+        }
+        
+        .custom-alert {
+            position: relative;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .custom-alert .alert-content {
+            position: relative;
+            background-color: #f8f9fa;
+            border: 0px solid transparent;
+            background: linear-gradient(45deg, transparent, transparent),
+                        linear-gradient(white, white);
+            background-clip: padding-box, border-box;
+            background-origin: border-box;
+            padding: 0.75rem 1.25rem;
+            overflow: hidden;
+            height: fit-content;
+        }
+
+
+        /* ---- Single-line notice ticker ----
+           All published notices sit on ONE row, separated by "|", so adding an
+           announcement widens the row instead of making the homepage taller.
+           The row slides gently left-and-right and always stays on screen:
+           --ticker-travel is measured in JS (see syncTickerTravel). */
+        .alert-ticker {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            white-space: nowrap;
+            animation: bounce-marquee 20s ease-in-out infinite alternate;
+        }
+
+        .custom-alert:hover .alert-ticker {
+            animation-play-state: paused;
+        }
+
+        .alert-ticker-item {
+            font-size: 15px;
+            font-weight: bold;
+            color: blue;
+        }
+
+        .alert-ticker-sep {
+            font-size: 15px;
+            font-weight: normal;
+            color: #adb5bd;
+            margin: 0 1.25rem;
+        }
+
+        @keyframes bounce-marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(var(--ticker-travel, 0px)); }
+        }
+
+        /* divider + language headings inside a dual-language modal body */
+        .alert-modal-lang-divider {
+            border: 0;
+            border-top: 1px solid #dee2e6;
+            margin: 1.25rem 0;
+        }
+
+        .alert-modal-lang-label {
+            font-weight: 600;
+            color: #212529;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* common.css resets every list site-wide (ol,ul,li{list-style:none})
+           and forces *{font-size:12px}, so the modal body restores both */
+        .alert-modal-body,
+        .alert-modal-body * {
+            font-size: 15px;
+        }
+
+        .alert-modal-body ul {
+            margin: 0.5rem 0 0 0.5rem;
+            padding-left: 1.25rem;
+            list-style: disc;
+        }
+
+        .alert-modal-body li {
+            list-style: disc outside;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .alert-more-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: inherit;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            font-weight: 500;
+			color: #e91e1e !important;
+        }
+
+        .alert-more-btn:hover {
+            opacity: 0.8;
+        }
+
+        .alert-dismiss {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            line-height: 1;
+            color: inherit;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .alert-dismiss:hover {
+            opacity: 1;
+        }
+
+        /* Modal Styles */
+        .alert-modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+
+        .alert-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .alert-modal-content {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .alert-modal-header {
+            padding: 1.5rem 1.5rem 1rem;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alert-modal-title {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .alert-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin: -0.5rem;
+            color: #6c757d;
+            transition: color 0.2s;
+        }
+
+        .alert-modal-close:hover {
+            color: #000;
+        }
+
+        .alert-modal-body {
+            padding: 1.5rem;
+            line-height: 1.6;
+            color: #495057;
+        }
+
+        .alert-modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #dee2e6;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .alert-modal-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .alert-modal-btn:hover {
+            background: #f8f9fa;
+            border-color: #adb5bd;
+        }
+
+        .alert-modal-btn-primary {
+            background: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+
+        .alert-modal-btn-primary:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        /* Hide alert when dismissed */
+        .custom-alert.hidden {
+            display: none;
+        }
+</style>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="/js/tytabs.jquery.min.js"></script>
+<script type="text/javaScript" language="javascript">
+
+// Builds ONE sliding row holding every published notice, separated by "|".
+// Adding an announcement = adding an entry to UMUCYO_NOTICES below; the row
+// grows sideways, so the page height never changes.
+function buildTickerItems(notices) {
+    var html = '';
+    for (var i = 0; i < notices.length; i++) {
+        var notice = notices[i];
+        if (i > 0) {
+            html += '<span class="alert-ticker-sep">|</span>';
+        }
+        html += '<span class="alert-ticker-item">' +
+                    notice.shortTitle +
+                    '<button type="button" class="alert-more-btn" onclick="showAlertModal(\'' + notice.id + '\', \'en\')">More</button>' +
+                '</span>';
+    }
+    return html;
+}
+
+function buildNoticeModal(notice) {
+    return '<div class="alert-modal" id="' + notice.id + '-modal-en" onclick="closeModalOnBackdrop(event, \'' + notice.id + '-modal-en\')">' +
+        '<div class="alert-modal-content">' +
+            '<div class="alert-modal-header">' +
+                '<h3 class="alert-modal-title">' + notice.modalTitle + '</h3>' +
+                '<button type="button" class="alert-modal-close" onclick="closeAlertModal(\'' + notice.id + '\', \'en\')">&times;</button>' +
+            '</div>' +
+            '<div style="font-size: 15px" class="alert-modal-body">' +
+                notice.fullHtml +
+            '</div>' +
+            '<div class="alert-modal-footer">' +
+                '<button type="button" class="alert-modal-btn" onclick="closeAlertModal(\'' + notice.id + '\', \'en\')">Close</button>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+}
+
+// How far the row may slide, so it never runs off either edge:
+//   row narrower than the bar -> slide right until the row's right edge meets
+//                                the bar's right edge, then back (positive travel)
+//   row wider than the bar    -> slide left just far enough to reveal the tail,
+//                                then back (negative travel)
+function syncTickerTravel() {
+    var track = document.getElementById('notice-ticker-track');
+    if (!track || !track.parentNode) {
+        return;
+    }
+    var bar = track.parentNode;                     // .alert-content
+    var style = window.getComputedStyle ? window.getComputedStyle(bar) : null;
+    var padding = style ? (parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)) : 0;
+    var available = bar.clientWidth - padding;
+    var travel = Math.round(available - track.scrollWidth);
+    track.style.setProperty('--ticker-travel', travel + 'px');
+}
+
+function renderNoticeTicker(notices, container) {
+    container = container || 'alert-container';
+
+    var containerEl = document.getElementById(container);
+    if (!containerEl) {
+        console.error('Container element with ID "' + container + '" not found');
+        return;
+    }
+    if (!notices || !notices.length) {
+        containerEl.innerHTML = '';
+        return;
+    }
+
+    var html = '<div class="custom-alert" id="notice-ticker">' +
+        '<div class="alert-content">' +
+            '<div class="alert-ticker" id="notice-ticker-track">' +
+                buildTickerItems(notices) +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+    for (var i = 0; i < notices.length; i++) {
+        html += buildNoticeModal(notices[i]);
+    }
+
+    containerEl.innerHTML = html;
+    syncTickerTravel();
+}
+
+// The slide distance depends on the window width, so re-measure when it changes.
+// addEventListener (not window.onresize) so we don't clobber the chatbot's handler.
+var tickerResizeTimer = null;
+function onTickerResize() {
+    if (tickerResizeTimer) {
+        clearTimeout(tickerResizeTimer);
+    }
+    tickerResizeTimer = setTimeout(syncTickerTravel, 150);
+}
+if (window.addEventListener) {
+    window.addEventListener('resize', onTickerResize);
+}
+
+// Enhanced single language alert function
+function createSingleAlert(options) {
+    options = options || {};
+    var id = options.id || 'single-alert';
+    var type = options.type || 'info';
+    var shortText = options.shortText || 'This is a short alert message.';
+    var fullText = options.fullText || 'This is the complete alert message with additional details.';
+    var modalTitle = options.modalTitle || 'Alert Details';
+    var language = options.language || 'en';
+    var container = options.container || 'alert-container';
+    var dismissible = options.dismissible !== false;
+    
+    var moreText = language === 'rw' ? 'Ibindi' : 'More';
+    var closeText = language === 'rw' ? 'Gufunga' : 'Close';
+    var langLabel = language === 'rw' ? 'RW' : 'EN';
+
+    var containerEl = document.getElementById(container);
+    if (!containerEl) {
+        console.error('Container element with ID "' + container + '" not found');
+        return;
+    }
+
+    // Create single language alert HTML
+    var alertHTML = '<div class="custom-alert custom-alert-' + type + '" id="' + id + '">' +
+        '<div class="alert-content">' +
+            '<div class="alert-language-row">' +
+                '<span class="alert-language-label">' + langLabel + '</span>' +
+                '<span class="alert-marquee">' +
+                    shortText +
+                    '<button type="button" class="alert-more-btn" onclick="showAlertModal(\'' + id + '\', \'' + language + '\')">' + moreText + '</button>' +
+                '</span>' +
+            '</div>' +
+        '</div>' +
+        (dismissible ? '<button type="button" class="alert-dismiss" onclick="dismissAlert(\'' + id + '\', ' + cookieDays + ')">&times;</button>' : '') +
+    '</div>';
+
+    // Create modal HTML
+    var modalHTML = '<div class="alert-modal" id="' + id + '-modal-' + language + '" onclick="closeModalOnBackdrop(event, \'' + id + '-modal-' + language + '\')">' +
+        '<div class="alert-modal-content">' +
+            '<div class="alert-modal-header">' +
+                '<h5 class="alert-modal-title">' + modalTitle + '</h5>' +
+                '<button type="button" class="alert-modal-close" onclick="closeAlertModal(\'' + id + '\', \'' + language + '\')">&times;</button>' +
+            '</div>' +
+            '<div class="alert-modal-body">' +
+                fullText +
+            '</div>' +
+            '<div class="alert-modal-footer">' +
+                '<button type="button" class="alert-modal-btn" onclick="closeAlertModal(\'' + id + '\', \'' + language + '\')">' + closeText + '</button>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+    containerEl.innerHTML = alertHTML + modalHTML;
+}
+
+// Enhanced modal functions to support language parameter
+function showAlertModal(alertId, language) {
+    var modal = document.getElementById(alertId + '-modal-' + language);
+    if (modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeAlertModal(alertId, language) {
+    var modal = document.getElementById(alertId + '-modal-' + language);
+    if (modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+}
+
+function closeModalOnBackdrop(event, modalId) {
+    if (event.target.id === modalId) {
+        var parts = modalId.split('-');
+        var language = parts[parts.length - 1];
+        var alertId = parts.slice(0, -2).join('-');
+        closeAlertModal(alertId, language);
+    }
+}
+
+// Dismiss alert function
+function dismissAlert(alertId, days) {
+    var alertEl = document.getElementById(alertId);
+    if (alertEl) {
+        alertEl.classList.add('hidden');
+    }
+}
+
+/* =========================================================================
+ * PUBLISHED NOTICES
+ * To publish another announcement, add one more entry to this array.
+ * Every notice scrolls on the SAME row, separated by "|", each keeping its
+ * own "More" popup - so the homepage never grows taller as notices are added.
+ *   shortTitle : the few words shown in the scrolling row (keep it short)
+ *   modalTitle : heading of the "More" popup
+ *   fullHtml   : the complete announcement (English, then Kinyarwanda)
+ * ========================================================================= */
+var UMUCYO_NOTICES = [
+    {
+        id: 'ef-category-notice',
+        shortTitle: '\u26a0\ufe0f Notice of E & F categories',
+        modalTitle: '\u26a0\ufe0f Notice on E & F categories under works/construction and civil engineering works.',
+        fullHtml: 'Dear esteemed bidders and procuring entities,<br><br>' +
+            'Kindly note that the request to get category F in the field of Buildings, Roads and Bridges, Drinking Water Supply, Marshland Development and Hillside Irrigation plus category E in the field of construction of Dams all under the procurement of works/CONSTRUCTION AND CIVIL ENGINEERING WORKS will no longer require a company to be published on the RPPA categorization list.<br><br>' +
+            'Any interested supplier who wishes to be categorized under the above fields with the mentioned categories will be required to only apply for these categories in UMUCYO system and may do so during the supplier registration process in UMUCYO. The supplier\u2019s registered business activities at the time of the request will be considered in evaluating the eligibility to be categorized under the requested field.<br><br>' +
+            'Procuring Entities will no longer require companies to share proof of being in category F and E from the RPPA website in the above fields; rather, the system will be considered during evaluation.<br>' +
+            'Please note that the rest of the categories will follow the existing process of requesting a category from RPPA.<br><br>' +
+            'For more clarification, you can call UMUCYO Call center at 3131 or RPPA at +250 788 123 100 for international calls and +250 786 582 957.<br><br>' +
+            '<strong>Thank you!</strong>'
+    },
+    {
+        id: 'appeal-fee-notice',
+        shortTitle: '\ud83d\udcb3 Notice on appeal fees via Umucyo',
+        modalTitle: 'Payment of appeal fees / Kwishyura amafaranga y\'ubujurire',
+        fullHtml: 'Dear Bidders,<br><br>' +
+            'Please be informed that appeal fees can now be paid directly through the Umucyo system.<br><br>' +
+            'The applicable payment procedure depends on how the tender was processed:' +
+            '<ul>' +
+                '<li><strong>Tenders processed through the Umucyo system:</strong> Appeal fees must be paid directly through Umucyo.</li>' +
+                '<li><strong>Tenders processed outside the Umucyo system:</strong> Appeal fees will continue to be paid through the Rwanda Revenue Authority (RRA), as previously.</li>' +
+            '</ul>' +
+            '<br>' +
+            'Bidders are therefore advised to use the appropriate payment channel based on the system through which their tender was processed.<br><br>' +
+            '<strong>Thank you for your attention and cooperation.</strong>' +
+            '<hr class="alert-modal-lang-divider">' +
+			'<hr class="alert-modal-lang-divider">' +
+            'Bapiganira amasoko (Bidders),<br><br>' +
+            'Turabamenyesha ko amafaranga yo kujurira (Appeal Fees) ashobora kwishyurwa binyuze muri sisitemu Umucyo.<br><br>' +
+            'Uburyo bwo kwishyura bushingira ku buryo isoko ryatunganyijwe:' +
+            '<ul>' +
+                '<li><strong>Amasoko yatunganyijwe binyuze muri sisitemu Umucyo:</strong> Amafaranga yo kujurira agomba kwishyurwa binyuze mu Umucyo.</li>' +
+                '<li><strong>Amasoko yatunganyijwe hanze ya sisitemu Umucyo:</strong> Amafaranga yo kujurira azakomeza kwishyurwa binyuze mu Kigo cy’Imisoro n’Amahoro (RRA), nk’uko byari bisanzwe.</li>' +
+            '</ul>' +
+            '<br>' +
+            'Kubw’ibyo, turasaba abapiganira amasoko gukoresha uburyo bwo kwishyura buboneye, hashingiwe ku buryo isoko ryabo ryatunganyijwemo.<br><br>' +
+            '<strong>Murakoze kubw’ubufatanya natwe.</strong>'
+    }
+];
+
+window.onload = function() {
+    renderNoticeTicker(UMUCYO_NOTICES);
+};
+
+/*  End of the alert and modal for info */
+
+	var ecUrl = "https://www.umucyo.gov.rw";
+	var ebUrl = "https://www.umucyo.gov.rw";
+
+	$(document).ready(function(){
+		
+		$("#tabsholder").tytabs({
+				tabinit : "1",
+				fadespeed : "fast"
+		});
+		
+		$("#tabsholder2").tytabs({
+			prefixtabs 	  : "tab_a",
+			prefixcontent : "content_a",
+			classcontent  : "tabscontent2",
+			tabinit 	  : "1",
+			catchget 	  : "tab2",
+			fadespeed 	  : "fast"
+		});
+		
+		/* The notice ticker is rendered from window.onload (see renderNoticeTicker) */
+
+	});
+	
+	var loadPage = function( callback ) {
+		
+		$.ajax({
+		  type     : "post"
+	      , url	     : "/pt/pcm/selectListAnoncemt.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2"
+	      , dataType : "html"
+	      , data     : {tabIndex : "1"}
+	      , success  : function(data) {
+	    		$("#content_a1").html(data);
+				callback(); 
+	      }
+		});	
+		
+	}; 
+	
+	/* ********************************************************
+	 * Go to the Detail
+	 * Added By TOMMY YOUN  07-JUN-2017
+	 * MenuID = PT01010600 [ NEWS]
+	 ******************************************************** */
+	function fn_moveNewsDetail(seqno) {
+		var form = document.frm_mainpage_dtl;
+		form.seqno.value = seqno;
+		form.action = "/pt/pcm/moveNewsDetail.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01010600";
+		form.submit();
+	}
+
+	/* ********************************************************
+	 * Select Tender notice Tab
+	 ******************************************************** */
+	function fn_selectTendNtceTab(tabIndex){
+		var form = document.frm_mainpage_dtl;
+		
+		$.ajax({
+			type: "post"
+	      , url: "/pt/pcm/selectListTendNtce.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2"
+	      , dataType : "html"
+	      , data : {tabIndex : tabIndex}
+	      , success: function(data) {
+	        	$("#content" + tabIndex).html(data);
+				form.tendNtceTabIndex.value = tabIndex;
+	      }
+		});	
+		
+	}
+	
+	/* ********************************************************
+	 * Go to the Tender notice Detail
+	 ******************************************************** */
+	function fn_viewTendNtceDetail(tendReferNo, tendStageCd) {
+		var form = document.tend_ntce_pop;
+		var w = 800;
+		var h = 500;
+		var LeftPosition = (screen.width - w) / 2;
+		var TopPosition = (screen.height - h) / 2;
+		var openParam = "toolbar=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,location=no,z-lock=no, width=" + w + ",height=" + h + ", top=" + TopPosition + ", left=" + LeftPosition;
+		
+		window.open('','tendNtcePop', openParam);
+		
+		form.action = "https://www.umucyo.gov.rw/eb/bav/getInvitInfoForGeneralUser.do";
+		form.tendReferNo.value = tendReferNo;
+		form.tendStageCd.value = tendStageCd;
+		form.target = "tendNtcePop";
+		form.method = "post";
+		form.submit();
+	}
+	
+	/* ********************************************************
+	 * Select Anoncemt Tab
+	 ******************************************************** */
+	function fn_selectAnoncemtTab(tabIndex){
+		var form = document.frm_mainpage_dtl;
+		
+		$.ajax({
+			type: "post"
+	      , url: "/pt/pcm/selectListAnoncemt.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2"
+	      , dataType : "html"
+	      , data : {tabIndex : tabIndex}
+	      , success: function(data) {
+	    		$("#content_a" + tabIndex).html(data);
+	    		form.anoncemtTabIndex.value = tabIndex;
+	      }
+		});	
+		
+	}
+
+	/* ********************************************************
+	 * Select Tender notice more
+	 * Added By TOMMY YOUN  07-JUN-2017
+	 * TendType : EB0200  
+		W = Works 
+		C = Consultant Service
+		G = Goods
+		NC = Non Consultant Services
+	 * MenuID = EB01020100 [ List of advertising (all)]
+	 ******************************************************** */
+	function fn_moreTenderNotice(){
+		var form = document.frm_mainpage_dtl;
+
+		if(form.tendNtceTabIndex.value == "1"){
+			form.action = ""+ebUrl+"/eb/bav/selectListAdvertisingListForGU.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=EB01020100&leftTopFlag=l";
+		}else if(form.tendNtceTabIndex.value == "2"){
+			form.action = ""+ebUrl+"/eb/bav/selectListAdvertisingListForGU.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=EB01020100&leftTopFlag=l&tendTypeCd=W";
+		}else if(form.tendNtceTabIndex.value == "3"){
+			form.action = ""+ebUrl+"/eb/bav/selectListAdvertisingListForGU.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=EB01020100&leftTopFlag=l&tendTypeCd=G";
+		}else if(form.tendNtceTabIndex.value == "4"){
+			form.action = ""+ebUrl+"/eb/bav/selectListAdvertisingListForGU.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=EB01020100&leftTopFlag=l&tendTypeCd=C";
+		}else if(form.tendNtceTabIndex.value == "5"){
+			form.action = ""+ebUrl+"/eb/bav/selectListAdvertisingListForGU.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=EB01020100&leftTopFlag=l&tendTypeCd=NC";
+		}
+		form.submit();
+	}
+
+	/* ********************************************************
+	 * Select Anoncemt more
+	 * Added By TOMMY YOUN  07-JUN-2017
+	   MenuID = PT01010100 [ Admin Announcement ]
+			PT01010200 [ PE Announcement    ]
+			EC01070300 [ Publication of Tender Awarded ]
+	 ******************************************************** */
+	function fn_moreAnoncemt(){
+		var form = document.frm_mainpage_dtl;
+		
+		if(form.anoncemtTabIndex.value == "1"){
+			form.action = "/pt/pcm/moveAdminAnnouncementList.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01010100";
+		}else if(form.anoncemtTabIndex.value == "2"){
+			form.action = "/pt/pcm/movePeAnnouncementList.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01010200";
+		}else if(form.anoncemtTabIndex.value == "3"){
+			form.action = ""+ecUrl+"/ec/csp/selectListPublicationTenderAwarded.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=EC01070300";
+		}
+		form.submit();
+	}
+
+	/* ********************************************************
+	 * Go to the Anoncemt Detail
+	 ******************************************************** */
+	function fn_viewAnoncemtDetail(seqno) {
+		
+		var form = document.frm_mainpage_dtl;
+
+		form.seqno.value = seqno;
+		
+		if ( form.anoncemtTabIndex.value == "1" ){
+			form.action = "/pt/pcm/moveAdminAnnouncementDetail.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01010100";
+		} else if ( form.anoncemtTabIndex.value == "2" ){
+			form.action = "/pt/pcm/movePeAnnouncementDetail.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01010200";
+		}
+		
+		form.submit();
+	}
+	
+	/* ********************************************************
+	 * Go to the Announcement Detail
+	 ******************************************************** */
+	function fn_viewTendAwardedDetail(contDocType, contNo, contVerNo, suplrTin, contStatCd) {
+		
+		var form = document.frm_tendAwarded_dtl;
+		
+		form.contDocType.value  = contDocType;
+		form.contNo.value 	= contNo;
+		form.contVerNo.value 	= contVerNo;
+		form.suplrTin.value 	= suplrTin;
+		form.contStatCd.value 	= contStatCd;
+		form.menuId.value 	= "EC01070300";      // Publication of Tender Awarded (TOMMY YOUN)
+		
+		form.action = ""+ecUrl+"/ec/cnw/selectFinalContDtlPE.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=EC01070300";
+		form.submit();
+	}
+
+	/* ********************************************************
+	 * Go to the URL Page
+	 ******************************************************** */
+	function fn_moveMainPage(url){
+		var form = document.frm_mainpage_dtl;
+		form.action = url;
+		form.submit();
+	}
+	
+	function fn_movePTPCMMainBankPopup() {
+		var w = 800;
+		var h = 300;
+		var LeftPosition = (screen.width - w) / 2;
+		var TopPosition = (screen.height - h) / 2;
+		var openParam = "toolbar=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,location=no,z-lock=no, width=" + w + ",height=" + h + ", top=" + TopPosition + ", left=" + LeftPosition;
+		window.open("/pt/pcm/PTPCMMainBankPopup.do","Banner Popup", openParam);
+	}
+	
+	function fn_movePTPCMMainInsurancePopup() {
+		var w = 800;
+		var h = 300;
+		var LeftPosition = (screen.width - w) / 2;
+		var TopPosition = (screen.height - h) / 2;
+		var openParam = "toolbar=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,location=no,z-lock=no, width=" + w + ",height=" + h + ", top=" + TopPosition + ", left=" + LeftPosition;
+		window.open("/pt/pcm/PTPCMMainInsurancePopup.do","Insurance Popup", openParam);
+	}
+
+</script>
+</head>
+<body>
+
+	<div id="wrap" class="bgwhite">
+		<div id="header"><div class="header_top"> 
+<p class="logo"><a href="https://www.umucyo.gov.rw/pt/index.do" target="main">				
+<img src="/images/logo.png" alt=""></a></p>	
+<div class="util">                                        	
+<ul>														   	
+<li><a href="https://www.umucyo.gov.rw/um/lg/moveLogin.do" target="main">Login</a></li>
+<li><a href="https://www.umucyo.gov.rw/pt/pcm/moveAdminAnnouncementList.do?menuId=PT01010100" target="main">Help</a></li>	
+<li><a href="https://www.umucyo.gov.rw/sp/sgs/moveSpSgsMn.do?menuId=SP01000000" target="main">e-Shopping Mall</a></li>	
+<li><a href="https://www.umucyo.gov.rw/sp/sdm/SPSDMDspsLst.do?menuId=DP01030100" target="main">Disposal</a></li>	
+<li><a href="https://www.umucyo.gov.rw" target="_blank">RPPA</a></li>	
+</ul>													   	
+<a href="https://www.umucyo.gov.rw/pt/setCmLocale.do?lang=fr" target="main"><img src="/images/fr.gif" alt=""></a>						
+<a href="https://www.umucyo.gov.rw/pt/setCmLocale.do?lang=en" target="main"><img src="/images/en.gif" alt=""></a>						
+<a href="https://www.umucyo.gov.rw/pt/setCmLocale.do?lang=rw" target="main"><img src="/images/rewanda.png" alt=""></a>						
+</div>													   	
+</div>													   	
+<div class="wrap_menu clearfix">						
+<ul class="cbp-hsmenu">				   	
+<li><a href="https://www.umucyo.gov.rw/pt/pcm/moveAdminAnnouncementList.do?menuId=PT01010100&amp;leftTopFlag=t" target="main">Help</a></li>
+<li><a href="https://www.umucyo.gov.rw/eb/bpp/selectPageProcurementPlan.do?menuId=EB01010100&amp;leftTopFlag=t" target="main">e-Bidding</a></li>
+<li><a href="https://www.umucyo.gov.rw/ca/main/CAKISSrchItemSrchCondtnFrm.do?menuId=CA01010100&amp;leftTopFlag=t" target="main">e-Catalog</a></li>
+<li><a href="https://www.umucyo.gov.rw/um/upe/reg/moveUMUPEPeRgt.do?menuId=UM01010100&amp;leftTopFlag=t" target="main">PE&nbsp;Registration</a></li>
+<li><a href="https://www.umucyo.gov.rw/um/usr/moveSupplierRequestInsert.do?menuId=UM02010100&amp;leftTopFlag=t" target="main">Supplier&nbsp;Registration</a></li>
+<li><a href="https://www.umucyo.gov.rw/pt/index.do?menuId=PT02090100&amp;leftTopFlag=t" target="main">My&nbsp;Page</a></li>
+</ul>														
+</div>														
+</div>
+
+		<form name="tend_ntce_pop">
+			<input type="hidden" 	name="tendStageCd" /> 
+			<input type="hidden" 	name="tendReferNo" />
+		</form>
+
+		<form name="frm_tendAwarded_dtl">
+			<input type="hidden" name="contDocType" /> 
+			<input type="hidden" name="contNo" 	    /> 
+			<input type="hidden" name="contVerNo"   /> 
+			<input type="hidden" name="suplrTin"    /> <!-- Supplier TIN  -->
+			<input type="hidden" name="contStatCd"  /> 
+			<input type="hidden" name="menuId"      />
+		</form>
+
+		
+		  <form id="frm_bd_notice" action="https://www.umucyo.gov.rw/eb/bav/selectListAdvertisingListForGU.do?menuId=EB01020100&amp;leftTopFlag=l" commandName="tendMstVO" method="post">
+          </form>
+
+
+		<form id="ptPcmMainPageVO" name="frm_mainpage_dtl" action="/pt/pcm/moveMainPageDetail.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2" method="post">
+
+			<!--    <input id="userDN" name="userDN" type="hidden" value=""> -->
+			<input type="hidden" name="seqno" id="seqno" />
+			<input type="hidden" name="anoncemtTabIndex" value="1" />
+			<input type="hidden" name="tendNtceTabIndex" value="1" />
+			<!-- <div class="marquee-container">
+			  <span class="marquee-text">
+			    Dear esteemed bidders; We kindly encourage you to submit your bids at least 24 hours prior to the submission deadline.
+			     This proactive approach helps prevent last-minute issues and enables us to serve you more efficiently. Thank you.
+			  </span>
+			</div>
+
+			<div class="marquee-container">
+			  <span class="marquee-text">
+			    Ku bifuza gupiganirwa amasoko bose; turabakangurira kujya mwohereza inyandiko zanyu z'ipiganwa byibuze amasaha 24 mbere y'igihe ntarengwa, 
+			    kugira ngo mwirinde ibibazo byo ku munota wa nyuma kandi tubashe kubafasha uko bikwiriye. Murakoze
+			  </span>
+			</div> -->
+			
+			<div class="container">
+      
+
+        <!-- Alert will be inserted here -->
+        <div id="alert-container"></div>
+
+    </div>
+    
+			<div class="visual mb20">
+				<div class="visualbox">
+					<h3 class="blind">Roneps</h3>
+					<ul class="slider">
+						<li class="clearfix on">
+							<div class="sliderText">
+								<h5>
+									Rwanda On-Line E-Procurement System
+								</h5>
+								
+								
+								
+								 <!-- by Mariam:blacklist  -->
+								<ul class="V_icon">
+									<li><a href="#"
+										onclick="javascript:fn_moveMainPage('https://www.umucyo.gov.rw/eb/bpp/selectPageProcurementPlan.do?menuId=EB01010100'); return false;"><img
+											src="/images/visualicon_01.png" alt="aa" /></a></li>
+		<!--							<li><a href="#" target="main"
+										onclick="javascript:fn_moveMainPage('https://www.umucyo.gov.rw/eb/bav/selectListAdvertisingListForGU.do?menuId=EB01020100&leftTopFlag=l'); return false;"><img
+											src="/images/visualicon_02.png" alt="aa" /></a></li> -->
+
+									<li><a href="#" onclick="document.getElementById('frm_bd_notice').submit(); return false;">
+								     <img src="/images/visualicon_02.png" alt="aa" />
+								      </a>
+								      </li>
+									<li><a href="#"
+										onclick="javascript:fn_moveMainPage('https://www.umucyo.gov.rw/sp/sgs/moveSpSgsMn.do?menuId=SP01000000'); return false;"><img
+											src="/images/visualicon_03.png" alt="aa" /></a></li>
+									<li><a href="#"
+										onclick="javascript:fn_moveMainPage('https://www.umucyo.gov.rw/ca/main/CAKISSrchItemSrchCondtnFrm.do?menuId=CA01010100&leftTopFlag=t'); return false;"><img
+											src="/images/visualicon_04.png" alt="aa" /></a></li>
+									<li><a href="#"
+										onclick="javascript:fn_moveMainPage('/pt/pcm/moveLawList.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01020200'); return false;"><img
+											src="/images/visualicon_05.png" alt="aa" /></a></li>
+									<li><a href="http://www.govca.rw/" target="_blank"><img
+											src="/images/visualicon_06.png" alt="aa" /></a></li>
+									<li><a href="#"
+										onclick="javascript:fn_moveMainPage('https://www.umucyo.gov.rw/um/ubl/moveUmUblBlacLstComListPub.do?menuId=PT01040100&leftTopFlag=l'); return false;"><img
+											src="/images/blacklist_icon.png" alt="aa" /></a></li> <!-- by Mariam:blacklist -->
+									<!-- Umucyo Business Intelligence (BI) by Philemon -->
+									<li><a href="#"
+										onclick="javascript:fn_moveMainPage('https://www.umucyo.gov.rw/um/ubl/moveUmucyoBiPublic.do?menuId=PT02051000&leftTopFlag=l'); return false;"><img
+											src="/images/umucyo_bi.png" alt="aa" /></a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- //visualbox end -->
+			</div>
+			<!-- //visual end -->
+
+			<div id="main" class="clearfix">
+				<div id="main_L">
+					<!-- //main_L start -->
+					<h3>
+						Service Assistant
+					</h3>
+					<ul class="assistant">
+						
+						<li><a href="https://risa-rw.webex.com/risa-rw/j.php?MTID=mabaf365e393f982091d44da67aa0b6e3" target="_blank"><img
+											src="/images/QrUmucyoSupport.png" alt="Click or Scan me for Support!" /></a></li>
+						<li title="Welcome remark">
+							<a href="#"
+							onclick="javascript:fn_moveMainPage('/pt/plm/moveSinglePageWelcomeRemark.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01010800'); return false;"
+							style="width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Welcome remark
+						</a>
+						</li>
+						<li title="What is UMUCYO ?">
+							<a href="#"
+							onclick="javascript:fn_moveMainPage('/pt/plm/moveSinglePageWhatIsRoneps.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01010900'); return false;"
+							style="width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								What is UMUCYO ?
+						</a>
+						</li>
+						<li
+							title="Procurement Glossary">
+							<a href="#"
+							onclick="javascript:fn_moveMainPage('/pt/plm/moveSinglePageProcurementGlossary.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01011000'); return false;"
+							style="width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Procurement Glossary
+						</a>
+						</li>
+						<!-- by Philemon -->
+						<li>
+							<a href="https://ocds.umucyo.gov.rw/" target="_blank">
+							 	Open Data Portal
+							</a>
+						</li>
+						<li title="Supplier Registration">
+							
+							<a href="#"
+							onclick="javascript:fn_moveMainPage('https://www.umucyo.gov.rw/um/usr/moveSupplierRequestInsert.do?menuId=UM02010100&leftTopFlag=t'); return false;"
+							style="width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Supplier Registration
+						</a>
+						</li>
+						<li title="Guide"><a
+							href="#"
+							onclick="javascript:fn_moveMainPage('/pt/plm/moveSinglePageGuide.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01011100'); return false;"
+							style="width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Guide
+						</a></li>
+						<li title="Contact us"><a
+							href="#"
+							onclick="javascript:fn_moveMainPage('/pt/plm/moveSinglePageContactUs.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01011200'); return false;"
+							style="width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Contact us
+						</a></li>
+						<li title="Call us(3131)"><a
+							href="#"
+							onclick="javascript:fn_moveMainPage('/pt/plm/moveSinglePageCallCenter.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01011300'); return false;"
+							style="width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color:#3e6697;">
+								Call us(3131)
+						</a></li>
+					</ul>
+					<!-- PT01010600 : NEWS TOMMY YOUN  -->
+					<h3
+						onclick="javascript:fn_moveMainPage('/pt/pcm/moveNewsList.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?menuId=PT01010600'); return false;"
+						style="cursor: pointer;">
+						News/Event
+					</h3>
+					<div class="news">
+						
+							<img
+								src="/pt/pcm/selectNewsThunail.do;jsessionid=25CB34D91B86450382065BE4A69AD69E.pt2?seqno=55"
+								style="width: 200px" height="170px" alt="news">
+						
+						
+
+						
+							<h4 title="Changes in Bids Submission (Works, Goods and NC)">
+								
+						
+						
+						
+						
+							
+							
+								Changes in Bids Submission (Works, Goods and NC)
+							
+						
+						</h4>
+						<p>
+							
+								
+							
+							
+							
+
+							<a href="#"
+								onclick="javascript:fn_moveNewsDetail('55'); return false;">
+								
+									
+										
+										Dear esteemed bidder (Tenders for Works, Goods and NC),
+In order to avoid issues of Verification of the Price Schedule or BoQ during bids submission, this serves to inform you that you no longer need
+										...
+									
+									
+								
+							</a>
+						</p>
+					</div>
+					<!-- //news end -->
+				</div>
+				<!-- //main_L end -->
+
+				<div id="main_R">
+					<h3>
+						Tender notices
+					</h3>
+					<div id="tabsholder">
+						<!-- 		            	<p> <a href="#" onclick="javascript:fn_moreTendNtce(); return false;">&#43; </a></p>   -->
+						<p>
+							<a href="#"
+								onclick="javascript:fn_moreTenderNotice(); return false;">&#43;
+							</a>
+						</p>
+						<ul class="tabs">
+							<li title="All" id="tab1"
+								class="divide_line"
+								onclick="javascript:fn_selectTendNtceTab('1'); return false;"
+								style="width: 75px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								All</li> 
+							<li title="Works" id="tab2"
+								class="divide_line"
+								onclick="javascript:fn_selectTendNtceTab('2'); return false;"
+								style="width: 75px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Works</li>
+							<li title="Goods" id="tab3"
+								class="divide_line"
+								onclick="javascript:fn_selectTendNtceTab('3'); return false;"
+								style="width: 75px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Goods</li>
+							<li title="Consultant Services" id="tab4"
+								class="divide_line"
+								onclick="javascript:fn_selectTendNtceTab('4'); return false;"
+								style="width: 75px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Consultant Services</li>
+							<li title="Non-Consult Services"
+								id="tab5" class="divide_line"
+								onclick="javascript:fn_selectTendNtceTab('5'); return false;"
+								style="width: 75px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+								Non-Consult Services</li>
+						</ul>
+
+						
+							<div id="content1" class="tabscontent">
+								
+									
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="notice">
+	
+		<li>
+			<a href="#" onclick="javacsript:fn_viewTendNtceDetail('000003/NC/NCB/2026/2027/2300000000', 'O')">
+				<span title="Non Consultant Services" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Non Consultant Services</span>
+				<span title="Tender for the production of Audio-Visual content services">
+					
+						
+							
+							Tender for the production of Audio-Visua
+							...
+						
+						
+					
+				</span>
+				
+					<img src="/images/new.png" alt="new"  />
+				
+			</a>
+			<span class="Date">28/08/2026</span>
+		</li>
+	
+		<li>
+			<a href="#" onclick="javacsript:fn_viewTendNtceDetail('000001/G/NCB/2026/2027/1420000000', 'O')">
+				<span title="Goods" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Goods</span>
+				<span title="Supply and Installation of Furniture to 5 (Five) Schools under KfW Phase III">
+					
+						
+							
+							Supply and Installation of Furniture to 
+							...
+						
+						
+					
+				</span>
+				
+					<img src="/images/new.png" alt="new"  />
+				
+			</a>
+			<span class="Date">28/08/2026</span>
+		</li>
+	
+		<li>
+			<a href="#" onclick="javacsript:fn_viewTendNtceDetail('000007/NC/NCB/2026/2027/1203000000', 'O')">
+				<span title="Non Consultant Services" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Non Consultant Services</span>
+				<span title="Provision of full Communication services to RRA (Framework Contract)">
+					
+						
+							
+							Provision of full Communication services
+							...
+						
+						
+					
+				</span>
+				
+					<img src="/images/new.png" alt="new"  />
+				
+			</a>
+			<span class="Date">28/08/2026</span>
+		</li>
+	
+		<li>
+			<a href="#" onclick="javacsript:fn_viewTendNtceDetail('000001/G/NCB/2026/2027/1004000000', 'O')">
+				<span title="Goods" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Goods</span>
+				<span title="Supply and install Curtains for NIRDA’s offices and residential houses under framework contract">
+					
+						
+							
+							Supply and install Curtains for NIRDA’s 
+							...
+						
+						
+					
+				</span>
+				
+					<img src="/images/new.png" alt="new"  />
+				
+			</a>
+			<span class="Date">28/08/2026</span>
+		</li>
+	
+		<li>
+			<a href="#" onclick="javacsript:fn_viewTendNtceDetail('000001/NC/NCB/2026/2027/1417000000', 'O')">
+				<span title="Non Consultant Services" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Non Consultant Services</span>
+				<span title="Re-advertisement of tender for provision of Security Services for University of Rwanda Campuses">
+					
+						
+							
+							Re-advertisement of tender for provision
+							...
+						
+						
+					
+				</span>
+				
+					<img src="/images/new.png" alt="new"  />
+				
+			</a>
+			<span class="Date">28/08/2026</span>
+		</li>
+	
+	
+</ul>
+								
+								<!-- Added by TOMMY YOUN  
+								     AOS staff need to check  message-pt_en.properties is used to define  Spring Message (INFO_PT_010)  
+								 -->
+								
+							</div>
+						
+							<div id="content2" class="tabscontent">
+								
+								<!-- Added by TOMMY YOUN  
+								     AOS staff need to check  message-pt_en.properties is used to define  Spring Message (INFO_PT_010)  
+								 -->
+								
+									<ul class="notice">
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+									</ul>
+								
+							</div>
+						
+							<div id="content3" class="tabscontent">
+								
+								<!-- Added by TOMMY YOUN  
+								     AOS staff need to check  message-pt_en.properties is used to define  Spring Message (INFO_PT_010)  
+								 -->
+								
+									<ul class="notice">
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+									</ul>
+								
+							</div>
+						
+							<div id="content4" class="tabscontent">
+								
+								<!-- Added by TOMMY YOUN  
+								     AOS staff need to check  message-pt_en.properties is used to define  Spring Message (INFO_PT_010)  
+								 -->
+								
+									<ul class="notice">
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+									</ul>
+								
+							</div>
+						
+							<div id="content5" class="tabscontent">
+								
+								<!-- Added by TOMMY YOUN  
+								     AOS staff need to check  message-pt_en.properties is used to define  Spring Message (INFO_PT_010)  
+								 -->
+								
+									<ul class="notice">
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+									</ul>
+								
+							</div>
+						
+					</div>
+					<!-- /tabsholder-->
+
+					<h3>
+						Announcements
+					</h3>
+					<div id="tabsholder2">
+						<p>
+							<a href="#" onclick="javascript:fn_moreAnoncemt(); return false;">&#43;
+							</a>
+						</p>
+						<ul class="tabs">
+							<li title="Admin Announcement"
+								id="tab_a1" class="divide_line"
+								onclick="javascript:fn_selectAnoncemtTab('1'); return false;"
+								style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Admin Announcement</li>
+							<li title="Procuring Entity Announcement"
+								id="tab_a2" class="divide_line"
+								onclick="javascript:fn_selectAnoncemtTab('2'); return false;"
+								style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Procuring Entity Announcement</li>
+							<li title="Tender Awarded"
+								id="tab_a3" class="divide_line"
+								onclick="javascript:fn_selectAnoncemtTab('3'); return false;"
+								style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Tender Awarded</li>
+						</ul>
+						
+							<div id="content_a1" class="tabscontent2">
+								
+									
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="notice">
+	
+		
+			<li>
+				<a href="#" onclick="javacsript:fn_viewAnoncemtDetail('47')">
+					<span title="Procurement Plan" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Procurement Plan</span>
+					
+					
+						
+					
+					
+					
+					
+					<span title="Tender fee payment">
+						
+							
+								
+								Tender fee payment
+							
+						
+					</span>
+					
+				</a>
+				<span class="Date">27/09/2025</span>
+			</li>
+		
+			<li>
+				<a href="#" onclick="javacsript:fn_viewAnoncemtDetail('46')">
+					<span title="User Registration/ Management" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">User Registration/ Management</span>
+					
+					
+						
+					
+					
+					
+					
+					<span title="How to register a new digital certificate for a supplier">
+						
+							
+								
+								How to register a new digital certificat
+								...
+							
+								
+						
+					</span>
+					
+				</a>
+				<span class="Date">02/04/2025</span>
+			</li>
+		
+			<li>
+				<a href="#" onclick="javacsript:fn_viewAnoncemtDetail('45')">
+					<span title="User Registration/ Management" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">User Registration/ Management</span>
+					
+					
+						
+					
+					
+					
+					
+					<span title="Register a new certificate for a Procuring Entity employee">
+						
+							
+								
+								Register a new certificate for a Procuri
+								...
+							
+								
+						
+					</span>
+					
+				</a>
+				<span class="Date">01/04/2025</span>
+			</li>
+		
+			<li>
+				<a href="#" onclick="javacsript:fn_viewAnoncemtDetail('44')">
+					<span title="User Registration/ Management" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">User Registration/ Management</span>
+					
+					
+						
+					
+					
+					
+					
+					<span title="Downloading the new digital certificate">
+						
+							
+								
+								Downloading the new digital certificate
+							
+						
+					</span>
+					
+				</a>
+				<span class="Date">25/03/2025</span>
+			</li>
+		
+			<li>
+				<a href="#" onclick="javacsript:fn_viewAnoncemtDetail('43')">
+					<span title="User Registration/ Management" class="class" style="width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">User Registration/ Management</span>
+					
+					
+						
+					
+					
+					
+					
+					<span title="Registering your Cloud Certificate">
+						
+							
+								
+								Registering your Cloud Certificate
+							
+						
+					</span>
+					
+				</a>
+				<span class="Date">18/01/2024</span>
+			</li>
+		
+		
+	
+
+	
+	
+</ul>
+
+								
+								
+							</div>
+						
+							<div id="content_a2" class="tabscontent2">
+								
+								
+									<ul class="notice">
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+									</ul>
+								
+							</div>
+						
+							<div id="content_a3" class="tabscontent2">
+								
+								
+									<ul class="notice">
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+											<li>Load data</li>
+										
+									</ul>
+								
+							</div>
+						
+					</div>
+					<!-- /tabsholder-->
+				</div>
+				<!-- //main_R end -->
+
+				<ul class="banner" style="padding-bottom: 70px">
+					<li><a href="http://www.minecofin.gov.rw/" target="_blank"><img
+							src="/images/banner_01.png" /></a></li>
+					<li><a href="http://www.rppa.gov.rw/" target="_blank"><img
+							src="/images/banner_02.png" /></a></li>
+					<li><a href="http://www.rdb.rw/" target="_blank"><img
+							src="/images/banner_03.png" /></a></li>
+					<li><a href="http://www.rra.gov.rw/" target="_blank"><img
+							src="/images/banner_04.png" /></a></li>
+					<li><a href="http://www.rssb.rw/" target="_blank"><img
+							src="/images/banner_05.png" /></a></li>
+					<li><a href="http://www.minijust.gov.rw" target="_blank"><img
+							src="/images/banner_06.png" /></a></li>
+					<li><a href="http://www.bnr.rw/" target="_blank"><img
+							src="/images/banner_07.png" /></a></li>
+
+					<li><a href="#"
+						onclick="javascript:fn_movePTPCMMainBankPopup(); return false;"><img
+							src="/images/banner_08.png" /></a></li>
+					<li><a href="#"
+						onclick="javascript:fn_movePTPCMMainInsurancePopup(); return false;"><img
+							src="/images/banner_09.png" /></a></li>
+
+					<!-- by aimable -->
+					<li><a href="http://support.umucyo.gov.rw/otrs/customer.pl"
+						target="_blank" style="background-image:url('/images/logo.png') "> SUPPORT</a></li>
+				</ul>
+				
+			
+			<!--=====================  CHAT BOT  ============================-->
+   <div id="webchat"></div>
+
+
+<script>!(function () {
+  let e = document.createElement("script"),
+    t = document.head || document.getElementsByTagName("head")[0];
+  (e.src =
+    "/js/rasa_web_chat.js"),
+    (e.async = !0),
+    (e.onload = () => {
+	
+    	const Umucyo = "/images/Umucyo_Avatar_f000935d77.png";
+	
+				       const themeColor = "#0073AE";
+      window.WebChat.default(
+        {
+          selector: "#webchat",
+           initPayload: "/greet__en",
+           customData: { "language": "en" }, // arbitrary custom data. Stay minimal as this will be added to the socket
+           socketUrl: "https://chatbot.umucyo.gov.rw",
+           socketPath: "/socket.io/",
+           title: "Welcome to Umucyo",
+           subtitle: "Ask Umucyo", 
+           profileAvatar: Umucyo,
+           openLauncherImage: Umucyo,
+           hideWhenNotConnected: false,
+           params: { "storage": "session" },
+           onWidgetEvent: {
+            "onChatClose": clearSession,
+           },
+           tooltipPayload: "/greet__en",
+           tooltipDelay: 4000,
+        },
+        null
+      );
+    }),
+    t.insertBefore(e, t.firstChild);
+})();
+</script>
+
+<script type="text/javascript">
+  function clearSession() {
+    sessionStorage.removeItem('chat_session');
+    location.reload();
+  }
+</script>
+
+<!--=====================  CHAT BOT  ============================-->
+
+
+
+			</div>
+			<!-- //main end -->
+			<!-- //main_wrap END -->
+		</form>
+		<div id="footer">
+<div class="footerin">
+<span class="footLogo"><img src="/images/minecofin.png" alt=""></span>
+<div class="btmMenu">
+<p>  ©  2026  Ministry of Finance and Economic Planning 	& RPPA  </p>
+</div>
+</div>
+</div>
+<script type="text/javaScript" language="javascript">
+
+    if ((navigator.userAgent.indexOf('MSIE 6')>0) && (navigator.userAgent.indexOf('MSIE 7')==-1)){
+
+        util_messageAlertWithExec("This page can behave abnomally on IE 6 and 7. Therefore you should use other browsers or version upgrade such as IE 8 with compatibility option, Crome or Firefox.", "fn_moveMain()");
+
+		   function fn_moveMain(){
+		       location.href='https://www.umucyo.gov.rw/pt/index.do'
+		   }
+    }
+
+</script>
+
+	</div>
+
+	<!-- </div> -->
+	<iframe name="CertiFrame" height="0" width="0" frameborder="0"></iframe>
+</body>

@@ -6,6 +6,7 @@
   <title>MedTender | Company-to-Tender Relevance & Procurement Intelligence</title>
   <meta name="description" content="Company-to-Tender Relevance Matching and Predictive Stock Replenishment Workspace">
   <link rel="stylesheet" href="styles.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
   <a href="#mainContent" class="skip-link">Skip to main content</a>
@@ -23,21 +24,21 @@
 
       <nav class="nav-list" aria-label="Main menu">
         <button class="nav-item active" data-view="dashboard" id="navDashboard" aria-current="page">
-          <span class="nav-icon" aria-hidden="true">▦</span>
+          <span class="nav-icon" aria-hidden="true"><i class='bx bx-grid-alt'></i></span>
           <span>Overview</span>
         </button>
         <button class="nav-item" data-view="tenders" id="navTenders">
-          <span class="nav-icon" aria-hidden="true">≡</span>
+          <span class="nav-icon" aria-hidden="true"><i class='bx bx-spreadsheet'></i></span>
           <span>Tender pipeline</span>
           <span class="badge" id="sidebarPipelineCount">6</span>
         </button>
         <button class="nav-item" data-view="sources" id="navSources">
-          <span class="nav-icon" aria-hidden="true">◌</span>
+          <span class="nav-icon" aria-hidden="true"><i class='bx bx-radar'></i></span>
           <span>Sources</span>
           <span class="badge" id="sidebarSourcesCount">8</span>
         </button>
         <button class="nav-item" data-view="catalogue" id="navCatalogue">
-          <span class="nav-icon" aria-hidden="true">□</span>
+          <span class="nav-icon" aria-hidden="true"><i class='bx bx-cube'></i></span>
           <span>Catalogue & Replenish</span>
           <span class="badge" id="sidebarCatalogueCount">8</span>
         </button>
@@ -52,11 +53,11 @@
           </div>
         </div>
         <button class="nav-item" id="helpCentreBtn" aria-label="Open help centre">
-          <span class="nav-icon" aria-hidden="true">?</span>
+          <span class="nav-icon" aria-hidden="true"><i class='bx bx-help-circle'></i></span>
           <span>Help centre</span>
         </button>
         <button class="nav-item sign-out" id="sidebarSignOut" aria-label="Sign out of your account">
-          <span class="nav-icon" aria-hidden="true">↳</span>
+          <span class="nav-icon" aria-hidden="true"><i class='bx bx-log-out'></i></span>
           <span>Sign out</span>
         </button>
       </div>
@@ -74,10 +75,33 @@
         </div>
 
         <div class="top-actions">
-          <button class="icon-button" id="notificationButton" aria-label="View notifications (3 unread)">
-            <span class="notification-dot" aria-hidden="true"></span>
-            <span aria-hidden="true">♢</span>
-          </button>
+          <div class="notification-menu-container">
+            <button class="icon-button" id="notificationButton" aria-expanded="false" aria-haspopup="true" aria-label="View procurement and deadline notifications">
+              <span class="notification-dot" id="notificationDot" aria-hidden="true"></span>
+              <i class='bx bx-bell' aria-hidden="true" style="font-size:18px;"></i>
+            </button>
+
+            <div class="notification-dropdown" id="notificationDropdown" role="menu" aria-label="Approaching Deadlines and Procurement Alerts">
+              <div class="notification-header">
+                <div class="notification-header-title">
+                  <i class='bx bx-bell-ring' style='color:var(--teal);font-size:16px;'></i>
+                  <strong>Tender & Deadline Alerts</strong>
+                  <span class="notification-badge" id="notifUnreadBadge">3 Urgent</span>
+                </div>
+                <button class="mark-read-btn" id="markAllNotifsReadBtn" aria-label="Mark all notifications as read">Mark all read</button>
+              </div>
+
+              <div class="notification-list" id="notificationList" role="region" aria-live="polite">
+                <!-- Dynamically populated by live Umucyo deadlines -->
+              </div>
+
+              <div class="notification-footer">
+                <button class="view-all-btn" id="notifViewAllBtn">
+                  View All Opportunities in Pipeline <i class='bx bx-right-arrow-alt'></i>
+                </button>
+              </div>
+            </div>
+          </div>
 
           <div class="profile-menu-container">
             <button class="profile-chip" id="profileChipBtn" aria-expanded="false" aria-haspopup="true" aria-label="User menu">
@@ -86,7 +110,7 @@
                 <strong id="userName">Chris Kalisa</strong>
                 <small id="userRole">Chief Medical Procurement</small>
               </div>
-              <span class="chevron" aria-hidden="true">⌄</span>
+              <i class='bx bx-chevron-down chevron' aria-hidden="true"></i>
             </button>
 
             <div class="profile-dropdown" id="profileDropdown" role="menu" aria-label="User options">
@@ -95,10 +119,10 @@
                 <small id="menuUserEmail">c.kalisa@medtender.rw</small>
               </div>
               <button class="dropdown-item" id="menuSettings" role="menuitem">
-                <span aria-hidden="true">⚙</span> Company Profile & OEM Matrix
+                <i class='bx bx-cog' aria-hidden="true"></i> Company Profile & OEM Matrix
               </button>
               <button class="dropdown-item sign-out" id="signOutBtn" role="menuitem">
-                <span aria-hidden="true">↳</span> Sign out
+                <i class='bx bx-log-out' aria-hidden="true"></i> Sign out
               </button>
             </div>
           </div>
@@ -113,14 +137,14 @@
           <div>
             <p class="eyebrow">
               <span id="currentDate">Friday, 21 August 2026</span>
-              <span class="live-pill"><i aria-hidden="true"></i> Live Company Matching</span>
+              <span class="live-pill"><i class='bx bx-broadcast' aria-hidden="true"></i> Live Company Matching</span>
             </p>
             <h1 id="overviewHeading">Good morning, Chris.</h1>
             <p class="heading-note">Opportunities prioritized by technical fit, portfolio coverage, and delivery advantage.</p>
           </div>
           <div class="heading-actions">
             <button class="primary-button" id="scanButton">
-              <span aria-hidden="true">↻</span> Scan & Match Market
+              <i class='bx bx-refresh' aria-hidden="true"></i> Scan & Match Market
             </button>
           </div>
         </div>
@@ -168,13 +192,13 @@
                 <h2>Highest Relevance Medical Opportunities</h2>
               </div>
               <button class="text-button" id="overviewViewAllBtn" data-view="tenders">
-                Full pipeline matrix <span>→</span>
+                Full pipeline matrix <i class='bx bx-right-arrow-alt'></i>
               </button>
             </div>
 
             <div class="toolbar" role="search" aria-label="Filter overview opportunities">
               <label class="search-box" for="searchInput">
-                <span aria-hidden="true">⌕</span>
+                <i class='bx bx-search' aria-hidden="true"></i>
                 <input id="searchInput" type="search" placeholder="Search title, entity, required product..." aria-label="Search tenders by keyword">
               </label>
               <select id="overviewFitFilter" aria-label="Filter by company fit level">
@@ -221,7 +245,7 @@
                   <p class="eyebrow" style="color:var(--teal)">Replenishment Signals</p>
                   <h2 id="replenishHeading" style="font-size:14px;">High-Demand Tender Stock</h2>
                 </div>
-                <button class="text-button" data-view="catalogue" style="font-size:10px;">Predictor →</button>
+                <button class="text-button" data-view="catalogue" style="font-size:10px;">Predictor <i class='bx bx-right-arrow-alt'></i></button>
               </div>
               <div style="padding:0 18px 14px; display:grid; gap:10px;">
                 <div class="restock-alert urgent">
@@ -243,7 +267,7 @@
                 <div class="restock-alert opportunity">
                   <div>
                     <strong>Hemodialysis Machines & Filters</strong>
-                    <p style="font-size:10px;margin:2px 0 0">🚀 Not stocked. RWF 1.8B Rwanda demand.</p>
+                    <p style="font-size:10px;margin:2px 0 0"><i class='bx bx-trending-up' style='color:var(--teal);margin-right:2px;'></i> Not stocked. RWF 1.8B Rwanda demand.</p>
                   </div>
                   <button class="outline-button" style="padding:4px 8px;font-size:10px;" data-view="catalogue">Partner</button>
                 </div>
@@ -257,7 +281,7 @@
                   <p class="eyebrow">Company Capabilities</p>
                   <h2 id="readinessHeading">Tender Eligibility Index</h2>
                 </div>
-                <button class="icon-button" aria-label="Readiness options">•••</button>
+                <button class="icon-button" aria-label="Readiness options"><i class='bx bx-dots-horizontal-rounded'></i></button>
               </div>
 
               <div class="readiness-score">
@@ -305,10 +329,10 @@
           </div>
           <div class="heading-actions">
             <button class="outline-button" id="pipelineExportBtn">
-              <span aria-hidden="true">⤓</span> Export Compliance CSV
+              <i class='bx bx-download' aria-hidden="true"></i> Export Compliance CSV
             </button>
             <button class="primary-button" id="openAddTenderBtn">
-              <span aria-hidden="true">+</span> Register Tender
+              <i class='bx bx-plus' aria-hidden="true"></i> Register Tender
             </button>
           </div>
         </div>
@@ -347,10 +371,10 @@
                 All Tenders <span class="count" id="countStageAll">6</span>
               </button>
               <button class="stage-pill" data-stage="high_fit" role="tab" aria-selected="false">
-                ⭐ High Fit (≥80%) <span class="count" id="countStageHigh">4</span>
+                <i class='bx bxs-star' style='color:#f59e0b;font-size:12px;margin-right:2px;'></i> High Fit (≥80%) <span class="count" id="countStageHigh">4</span>
               </button>
               <button class="stage-pill" data-stage="expansion" role="tab" aria-selected="false">
-                🚀 Expansion Opportunities <span class="count" id="countStageExp">2</span>
+                <i class='bx bx-trending-up' style='color:var(--teal);font-size:12px;margin-right:2px;'></i> Expansion Opportunities <span class="count" id="countStageExp">2</span>
               </button>
               <button class="stage-pill" data-stage="bid_preparation" role="tab" aria-selected="false">
                 In Bid Preparation <span class="count" id="countStagePrep">2</span>
@@ -362,7 +386,7 @@
 
             <div class="toolbar" role="search" aria-label="Filter pipeline tenders">
               <label class="search-box" for="pipelineSearchInput">
-                <span aria-hidden="true">⌕</span>
+                <i class='bx bx-search' aria-hidden="true"></i>
                 <input id="pipelineSearchInput" type="search" placeholder="Search reference, title, buyer, required device..." aria-label="Search pipeline tenders">
               </label>
 
@@ -385,16 +409,16 @@
 
               <select id="pipelineStrategyFilter" aria-label="Filter by sourcing strategy">
                 <option value="">All Sourcing Strategies</option>
-                <option value="BID_CHINESE_EQUIVALENT">🇨🇳 Bid Chinese Stock (≥88% Equiv)</option>
-                <option value="BID_WITH_EQUIVALENCE_DEFENSE">⚖️ Bid with RPPA Defense (70-87%)</option>
-                <option value="SOURCE_EUROPEAN_PARTNER">🇪🇺 Source European OEM Partner</option>
+                <option value="BID_CHINESE_EQUIVALENT">Bid In-Stock Equivalent (≥88% Equiv)</option>
+                <option value="BID_WITH_EQUIVALENCE_DEFENSE">Bid with RPPA Defense (70-87%)</option>
+                <option value="SOURCE_EUROPEAN_PARTNER">Source European OEM Partner</option>
               </select>
 
               <select id="pipelineSortBy" aria-label="Sort tenders by">
                 <option value="deadline" selected>Sort: Closing Soonest</option>
                 <option value="equivalence">Sort: Brand Equivalence (Highest)</option>
                 <option value="relevance">Sort: Company Fit (Highest)</option>
-                <option value="value">Sort: Estimated Value</option>
+                <option value="value">Sort: Tender Security Amount</option>
                 <option value="coverage">Sort: Lot Coverage %</option>
               </select>
             </div>
@@ -405,7 +429,7 @@
                   <tr>
                     <th scope="col">Ref & Title</th>
                     <th scope="col">Buyer Entity</th>
-                    <th scope="col">Value (RWF)</th>
+                    <th scope="col">Tender Security (RWF)</th>
                     <th scope="col">Deadline</th>
                     <th scope="col">Company Fit</th>
                     <th scope="col">Spec Match</th>
@@ -438,10 +462,10 @@
           </div>
           <div class="heading-actions">
             <button class="secondary-button" id="scanAllSourcesBtn">
-              <span aria-hidden="true">↻</span> Scan All Sources Now
+              <i class='bx bx-refresh' aria-hidden="true"></i> Scan All Sources Now
             </button>
             <button class="primary-button" id="openAddSourceBtn">
-              <span aria-hidden="true">+</span> Add Source
+              <i class='bx bx-plus' aria-hidden="true"></i> Add Source
             </button>
           </div>
         </div>
@@ -482,7 +506,7 @@
           <div class="panel">
             <div class="toolbar" role="search" aria-label="Filter sources">
               <label class="search-box" for="sourceSearchInput">
-                <span aria-hidden="true">⌕</span>
+                <i class='bx bx-search' aria-hidden="true"></i>
                 <input id="sourceSearchInput" type="search" placeholder="Search source name, organization, URL..." aria-label="Search sources">
               </label>
 
@@ -529,14 +553,14 @@
           </div>
           <div class="heading-actions">
             <button class="primary-button" id="openAddProductBtn">
-              <span aria-hidden="true">+</span> Add Equipment / Product
+              <i class='bx bx-plus' aria-hidden="true"></i> Add Equipment / Product
             </button>
           </div>
         </div>
 
         <section class="catalogue-integration panel" aria-labelledby="catalogueIntegrationHeading">
           <div class="integration-copy">
-            <div class="integration-icon">▣</div>
+            <div class="integration-icon"><i class='bx bx-cube'></i></div>
             <div>
               <p class="eyebrow">Primary product intelligence source</p>
               <h2 id="catalogueIntegrationHeading">Detailed Product Catalogue</h2>
@@ -544,16 +568,16 @@
             </div>
           </div>
           <div class="integration-status"><span class="status-dot"></span><div><strong id="catalogueSourceName">Active product profile</strong><small id="catalogueSourceStatus">One product selected for direct matching</small></div></div>
-          <div class="integration-actions"><select id="activeProductSelect" aria-label="Select one product for tender matching"></select><select id="catalogueSourceType" aria-label="Catalogue source type"><option value="internal">Current catalogue</option><option value="api">External API</option><option value="database">Database connection</option><option value="file">Structured catalogue file</option></select><label class="integration-file-button" for="catalogueImportInput">Import catalogue<input id="catalogueImportInput" type="file" accept=".json,.csv,.xlsx"></label><button class="outline-button" id="connectCatalogueBtn" type="button">Connect source <span>→</span></button></div>
+          <div class="integration-actions"><select id="activeProductSelect" aria-label="Select one product for tender matching"></select><select id="catalogueSourceType" aria-label="Catalogue source type"><option value="internal">Current catalogue</option><option value="api">External API</option><option value="database">Database connection</option><option value="file">Structured catalogue file</option></select><label class="integration-file-button" for="catalogueImportInput">Import catalogue<input id="catalogueImportInput" type="file" accept=".json,.csv,.xlsx"></label><button class="outline-button" id="connectCatalogueBtn" type="button">Connect source <i class='bx bx-right-arrow-alt'></i></button></div>
         </section>
 
         <!-- Sub-Tabs: Catalogue vs Market Demand Replenishment -->
         <div class="catalogue-subtabs" role="tablist" aria-label="Catalogue sections">
           <button class="subtab-btn active" id="subtabCatalogue" role="tab" aria-selected="true">
-            📦 Company Product Catalogue & Specifications
+            <i class='bx bx-package' style='margin-right:6px;'></i> Company Product Catalogue & Specifications
           </button>
           <button class="subtab-btn" id="subtabDemand" role="tab" aria-selected="false">
-            📊 Most Recurring Products & Predictive Restocking
+            <i class='bx bx-line-chart' style='margin-right:6px;'></i> Most Recurring Products & Predictive Restocking
           </button>
         </div>
 
@@ -590,7 +614,7 @@
             <div class="panel">
               <div class="toolbar" role="search" aria-label="Filter catalogue">
                 <label class="search-box" for="catalogueSearchInput">
-                  <span aria-hidden="true">⌕</span>
+                  <i class='bx bx-search' aria-hidden="true"></i>
                   <input id="catalogueSearchInput" type="search" placeholder="Search product name, code, manufacturer, specs..." aria-label="Search catalogue">
                 </label>
 
@@ -655,21 +679,21 @@
                   <h2>Most Recurring Equipment & Predictive Sourcing Recommendations</h2>
                 </div>
                 <button class="primary-button" id="bulkRestockBtn">
-                  <span>⚡</span> Auto-Generate Restock Purchase Order
+                  <i class='bx bx-bolt-circle' aria-hidden="true" style='margin-right:4px;'></i> Auto-Generate Restock Purchase Order
                 </button>
               </div>
 
               <div class="toolbar" role="search" aria-label="Filter demand items">
                 <label class="search-box" for="demandSearchInput">
-                  <span aria-hidden="true">⌕</span>
+                  <i class='bx bx-search' aria-hidden="true"></i>
                   <input id="demandSearchInput" type="search" placeholder="Search equipment, category, predicted wave..." aria-label="Search demand items">
                 </label>
 
                 <select id="demandUrgencyFilter" aria-label="Filter by restock urgency">
                   <option value="">All Urgency Levels</option>
-                  <option value="urgent">🔴 Immediate Restock Needed</option>
-                  <option value="safe">🟢 Safe Buffer Level</option>
-                  <option value="expansion">🚀 New Sourcing Opportunity</option>
+                  <option value="urgent">Immediate Restock Needed</option>
+                  <option value="safe">Safe Buffer Level</option>
+                  <option value="expansion">New Sourcing Opportunity</option>
                 </select>
               </div>
 
@@ -693,7 +717,7 @@
   <aside class="tender-drawer" id="tenderDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
     <div class="drawer-header">
       <span class="eyebrow">Company Relevance & Spec Compliance Matrix</span>
-      <button class="close-button" id="closeDrawer" aria-label="Close tender details modal">×</button>
+      <button class="close-button" id="closeDrawer" aria-label="Close tender details modal"><i class='bx bx-x'></i></button>
     </div>
     <div id="drawerContent"></div>
   </aside>
@@ -703,7 +727,7 @@
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="restockModalTitle">
       <div class="modal-header">
         <h2 id="restockModalTitle">Replenish Warehouse Stock</h2>
-        <button class="close-button" id="closeRestockModal" aria-label="Close modal">×</button>
+        <button class="close-button" id="closeRestockModal" aria-label="Close modal"><i class='bx bx-x'></i></button>
       </div>
       <form id="restockForm" novalidate>
         <input type="hidden" id="restockProductCode">
@@ -738,20 +762,93 @@
     </div>
   </div>
 
+  <!-- Add Catalogue Product Modal -->
   <div class="modal-backdrop" id="productModalBackdrop" hidden>
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
-      <div class="modal-header"><h2 id="productModalTitle">Add catalogue product</h2><button class="close-button" id="closeProductModal" aria-label="Close product form">×</button></div>
+    <div class="modal-dialog modal-dialog-lg" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+      <div class="modal-header">
+        <div class="modal-header-text">
+          <span class="modal-badge"><span class="badge-dot"></span> Company Catalogue</span>
+          <h2 id="productModalTitle">Add catalogue product</h2>
+          <p class="modal-subtitle">Register equipment specifications for automated RPPA & hospital tender matching.</p>
+        </div>
+        <button class="close-button" id="closeProductModal" aria-label="Close product form" type="button"><i class='bx bx-x'></i></button>
+      </div>
       <form id="productForm">
         <div class="modal-body product-form-grid">
-          <label>Product code<input id="productCode" required placeholder="e.g. ICU-MON-12"></label>
-          <label>Product name<input id="productName" required placeholder="Detailed product name"></label>
-          <label>Manufacturer<input id="productManufacturer" required placeholder="Manufacturer or OEM"></label>
-          <label>Category<select id="productCategory"><option>Medical Equipment</option><option>Laboratory</option><option>Medical Consumables</option><option>Dental</option><option>Imaging & Radiology</option><option>Surgical</option></select></label>
-          <label class="full-width">Technical specifications <small>Enter one specification per line. These become searchable matching fields.</small><textarea id="productSpecs" rows="5" required placeholder="15-inch display&#10;ECG, SpO2, NIBP&#10;Built-in printer"></textarea></label>
-          <label>Brand<input id="productBrand" placeholder="Brand"></label>
-          <label>Model<input id="productModel" placeholder="Model"></label>
+          <div class="form-field">
+            <label for="productCode">
+              <span class="label-text">Product code <span class="required-tag">*</span></span>
+              <span class="label-hint">SKU Code</span>
+            </label>
+            <input type="text" id="productCode" required placeholder="e.g. ICU-MON-12" autocomplete="off">
+          </div>
+
+          <div class="form-field">
+            <label for="productCategory">
+              <span class="label-text">Category <span class="required-tag">*</span></span>
+            </label>
+            <select id="productCategory" required>
+              <option value="Medical Equipment">Medical Equipment</option>
+              <option value="Laboratory">Laboratory Diagnostics</option>
+              <option value="Medical Consumables">Medical Consumables</option>
+              <option value="Dental">Dental & Maxillofacial</option>
+              <option value="Imaging & Radiology">Imaging & Radiology</option>
+              <option value="Surgical">Surgical</option>
+            </select>
+          </div>
+
+          <div class="form-field full-width">
+            <label for="productName">
+              <span class="label-text">Product name <span class="required-tag">*</span></span>
+              <span class="label-hint">Equipment title</span>
+            </label>
+            <input type="text" id="productName" required placeholder="e.g. Multi-Parameter Patient Monitor 15-inch Touchscreen">
+          </div>
+
+          <div class="form-field full-width">
+            <label for="productManufacturer">
+              <span class="label-text">Manufacturer / OEM <span class="required-tag">*</span></span>
+              <span class="label-hint">Primary maker</span>
+            </label>
+            <input type="text" id="productManufacturer" required placeholder="e.g. Mindray / Philips / GE Healthcare">
+          </div>
+
+          <div class="form-field">
+            <label for="productBrand">
+              <span class="label-text">Brand / Product Line</span>
+              <span class="label-hint">Optional</span>
+            </label>
+            <input type="text" id="productBrand" placeholder="e.g. BeneVision / IntelliVue">
+          </div>
+
+          <div class="form-field">
+            <label for="productModel">
+              <span class="label-text">Model / Series</span>
+              <span class="label-hint">Optional</span>
+            </label>
+            <input type="text" id="productModel" placeholder="e.g. N15 Series High-Acuity">
+          </div>
+
+          <div class="form-field full-width">
+            <div class="label-row">
+              <label for="productSpecs">
+                <span class="label-text">Technical specifications <span class="required-tag">*</span></span>
+              </label>
+              <span class="specs-badge"><i class='bx bx-list-check'></i> 1 spec per line</span>
+            </div>
+            <p class="specs-helper-text">Enter one specification per line. These become searchable matching fields evaluated against tender compliance criteria.</p>
+            <textarea id="productSpecs" rows="5" required placeholder="15-inch color touchscreen display&#10;Standard parameters: ECG, SpO2, NIBP, Dual Temp, PR, Resp&#10;Arrhythmia and ST segment analysis&#10;Built-in thermal recorder / printer&#10;Rechargeable Li-ion battery backup (4+ hours continuous operation)&#10;Ethernet RJ45 & VGA output"></textarea>
+          </div>
         </div>
-        <div class="modal-footer"><button type="button" class="outline-button" id="cancelProductBtn">Cancel</button><button type="submit" class="primary-button">Save to catalogue</button></div>
+        <div class="modal-footer">
+          <div class="modal-footer-note">
+            <i class='bx bx-check-shield' style='color:var(--teal);margin-right:4px;'></i> Ready for tender matching engine
+          </div>
+          <div class="modal-footer-actions">
+            <button type="button" class="outline-button" id="cancelProductBtn">Cancel</button>
+            <button type="submit" class="primary-button">Save to catalogue</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
@@ -761,7 +858,7 @@
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="addSourceModalTitle">
       <div class="modal-header">
         <h2 id="addSourceModalTitle">Add Monitored Procurement Source</h2>
-        <button class="close-button" id="closeAddSourceModal" aria-label="Close modal">×</button>
+        <button class="close-button" id="closeAddSourceModal" aria-label="Close modal"><i class='bx bx-x'></i></button>
       </div>
       <form id="addSourceForm" novalidate>
         <div class="modal-body">
@@ -829,7 +926,7 @@
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="addTenderModalTitle">
       <div class="modal-header">
         <h2 id="addTenderModalTitle">Register New Tender Opportunity</h2>
-        <button class="close-button" id="closeAddTenderModal" aria-label="Close modal">×</button>
+        <button class="close-button" id="closeAddTenderModal" aria-label="Close modal"><i class='bx bx-x'></i></button>
       </div>
       <form id="addTenderForm" novalidate>
         <div class="modal-body">
@@ -865,8 +962,8 @@
           </label>
 
           <label for="newTenderValue">
-            Estimated Value (RWF)
-            <input type="number" id="newTenderValue" placeholder="e.g. 150000000">
+            Tender Security Amount (RWF)
+            <input type="number" id="newTenderValue" placeholder="e.g. 34643705">
           </label>
 
           <label for="newTenderRisk">
@@ -891,7 +988,7 @@
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="helpCentreModalTitle">
       <div class="modal-header">
         <h2 id="helpCentreModalTitle">MedTender Company Relevance & Match Guide</h2>
-        <button class="close-button" id="closeHelpCentreModal" aria-label="Close help centre">×</button>
+        <button class="close-button" id="closeHelpCentreModal" aria-label="Close help centre"><i class='bx bx-x'></i></button>
       </div>
       <div class="modal-body">
         <div class="help-section">
@@ -907,11 +1004,11 @@
         <div class="help-section">
           <h3>Compliance Status Badges</h3>
           <ul>
-            <li>✅ <strong>Compliant:</strong> Supplied product meets or exceeds tender specifications.</li>
-            <li>⚠️ <strong>Verification Required:</strong> Ambiguous requirement or requires checking special accessories with manufacturer.</li>
-            <li>🟡 <strong>Partially Compliant:</strong> Minor parameter variation or requires optional module.</li>
-            <li>❌ <strong>Non-Compliant:</strong> Critical specification gap.</li>
-            <li>❓ <strong>Unknown:</strong> Spec not stated in tender document; inquiry recommended.</li>
+            <li><i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> <strong>Compliant:</strong> Supplied product meets or exceeds tender specifications.</li>
+            <li><i class='bx bx-error' style='color:#d97706;margin-right:4px;'></i> <strong>Verification Required:</strong> Ambiguous requirement or requires checking special accessories with manufacturer.</li>
+            <li><i class='bx bx-adjust' style='color:#f59e0b;margin-right:4px;'></i> <strong>Partially Compliant:</strong> Minor parameter variation or requires optional module.</li>
+            <li><i class='bx bx-x-circle' style='color:#ef4444;margin-right:4px;'></i> <strong>Non-Compliant:</strong> Critical specification gap.</li>
+            <li><i class='bx bx-help-circle' style='color:var(--muted);margin-right:4px;'></i> <strong>Unknown:</strong> Spec not stated in tender document; inquiry recommended.</li>
           </ul>
         </div>
         <div class="help-section">

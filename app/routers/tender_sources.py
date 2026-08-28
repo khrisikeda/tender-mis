@@ -126,3 +126,55 @@ def deactivate_source(
     db.commit()
     db.refresh(source)
     return source
+
+
+@router.post("/{source_id}/scan", dependencies=[Depends(MANAGE_SOURCES)])
+async def scan_source(
+    source_id: uuid.UUID,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    Executes an on-demand extraction scan for a specific monitored tender source.
+    """
+    source = db.query(TenderSource).filter(TenderSource.id == source_id).first()
+    if not source:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Tender source not found")
+
+    from app.services.umucyo_crawler import sync_umucyo_tenders
+    result = await sync_umucyo_tenders(db=db)
+
+    write_audit_log(
+        db,
+        user_id=current_user.id,
+        action=AuditAction.UPDATE,
+        entity_type="tender_source",
+        entity_id=source.id,
+        new_value={"action": "scan_executed", "result": result},
+    )
+    db.commit()
+    return result
+
+
+@router.post("/sync/umucyo", dependencies=[Depends(MANAGE_SOURCES)])
+async def sync_umucyo_direct(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    Directly initiates a live crawler pass across Rwanda's Umucyo e-Procurement portal.
+    """
+    from app.services.umucyo_crawler import sync_umucyo_tenders
+    result = await sync_umucyo_tenders(db=db)
+
+    write_audit_log(
+        db,
+        user_id=current_user.id,
+        action=AuditAction.UPDATE,
+        entity_type="tender_source",
+        entity_id=current_user.id,
+        new_value={"action": "umucyo_direct_sync", "result": result},
+    )
+    db.commit()
+    return result
+

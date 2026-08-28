@@ -1,0 +1,52 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<title>Rwanda On-Line E-Procurement System</title>
+<script>
+	//document.domain = "roneps.rw";
+</script>
+<link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+<script type="text/javascript" src="/js/common/ajax.js"></script>
+<script type="text/javascript" src="/js/common/crossdomain.js"></script>
+<script type="text/javaScript" language="javascript">
+
+	function fn_logout(){
+
+		var cookie = document.cookie;
+
+		var expdate = new Date();
+		expdate.setDate(expdate.getDate() - 1); // cookie delete where
+
+		if( cookie.length > 0 ){
+
+			document.cookie = "_SLTS=; path=/; expires=" + expdate.toGMTString();
+			document.cookie = "_SLTK=; path=/; expires=" + expdate.toGMTString();
+			document.cookie = "_SLT=; path=/; expires=" + expdate.toGMTString();
+			document.cookie = "secu=; path=/; expires=" + expdate.toGMTString();
+
+		}
+
+	}
+
+</script>
+</head>
+
+<frameset rows="0, 0, 0, 0, 0, 0, 0, *" scrolling="yes" border="0" onbeforeunload="javascript:fn_logout()">
+    <frame name="UsemnAppletFrame" frameborder="0" src="">
+	<frame name="BidAppletFrame" frameborder="0" src="">
+    <frame name="ContractAppletFrame" frameborder="0" src="">
+    <frame name="ExmsAppletFrame" frameborder="0" src="">
+    <frame name="CataAppletFrame" frameborder="0" src="">
+	<frame name="ShopAppletFrame" frameborder="0" src="">
+    <frame name="AppletFrame" frameborder="0" frameborder="0">
+	<frame name="main" src="/pt/pcm/moveMainPageDetail.do" frameborder="0" scrolling="yes" noresize>
+	<frame name="CookieFrame" frameborder="0" scrolling="yes" noresize>
+</frameset>
+
+</html>

@@ -1,0 +1,182 @@
+[
+  {
+    "tendReferNo": "000002/G/ICB/2026/2027/1605000000",
+    "title": "Supply and installation of IT equipment for CHUK",
+    "buyer_code": "1605000000",
+    "date": "28/09/2026",
+    "tendStageCd": "O",
+    "method": "ICB",
+    "tendTypeCd": "G",
+    "deadline": "28/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000003/G/ICB/2026/2027/1605000000",
+    "title": "Supply and installation of Patient Monitoring and Critical care equipment",
+    "buyer_code": "1605000000",
+    "date": "28/09/2026",
+    "tendStageCd": "O",
+    "method": "ICB",
+    "tendTypeCd": "G",
+    "deadline": "28/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000002/G/NCB/2026/2027/1806000000",
+    "title": "Provision of First-Aid kits & replenishment of first-aid kits under framework contract",
+    "buyer_code": "1806000000",
+    "date": "21/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "21/09/2026 17:00"
+  },
+  {
+    "tendReferNo": "000005/G/NCB/2026/2027/7000000000",
+    "title": "Purchase of  equipment for Genocide Memorials",
+    "buyer_code": "7000000000",
+    "date": "21/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "21/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000003/G/NCB/2026/2027/1605000000",
+    "title": "Supply and installation of Hospital EMRS and Imaging software, Migration: System Reinstallation & Configuration",
+    "buyer_code": "1605000000",
+    "date": "21/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "21/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000005/G/NCB/2026/2027/1603000000",
+    "title": "Framework contract for provision of medical oxygen to NNPTH",
+    "buyer_code": "1603000000",
+    "date": "18/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "18/09/2026 15:00"
+  },
+  {
+    "tendReferNo": "000001/G/NCB/2026/2027/5600003001",
+    "title": " Purchase Water and tea beverages for hospital staff, visitors and patients",
+    "buyer_code": "5600003001",
+    "date": "18/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "18/09/2026 11:00"
+  },
+  {
+    "tendReferNo": "000006/G/NCB/2026/2027/0200000000",
+    "title": "Maintenance and repair of plumbing equipment and materials",
+    "buyer_code": "0200000000",
+    "date": "18/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "18/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000005/G/NCB/2026/2027/0200000000",
+    "title": "Maintenance and repair services for the security equipment",
+    "buyer_code": "0200000000",
+    "date": "18/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "18/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000001/G/NCB/2026/2027/1412009000",
+    "title": "Supply of ICT teaching  consumables and Maintenance of ICT equipments",
+    "buyer_code": "1412009000",
+    "date": "17/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "17/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000001/G/NCB/2026/2027/4300003002",
+    "title": "To Purchase electricity for the hospital",
+    "buyer_code": "4300003002",
+    "date": "17/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "17/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000001/G/NCB/2026/2027/1202000000",
+    "title": "Supply of Office Stationeries and Field Work materials for a period of one year with a possibility of Renewal based on performance and Availability of funds",
+    "buyer_code": "1202000000",
+    "date": "16/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "16/09/2026 12:00"
+  },
+  {
+    "tendReferNo": "000004/G/NCB/2026/2027/6300003001",
+    "title": "Supply and installation od Medical Air Compressor for ICU and Neonatalogy",
+    "buyer_code": "6300003001",
+    "date": "16/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "16/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000006/G/NCB/2026/2027/1302000000",
+    "title": "Acquisition of IT Equipment (Re-advertised)",
+    "buyer_code": "1302000000",
+    "date": "16/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "16/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000002/G/NCB/2026/2027/6500003002",
+    "title": "Supply of Medical Equipment",
+    "buyer_code": "6500003002",
+    "date": "14/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "14/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000003/G/NCB/2026/2027/5600000000",
+    "title": "Tender for the supply of environmental and social health facilities in different sectors of Rubavu District",
+    "buyer_code": "5600000000",
+    "date": "14/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "14/09/2026 10:00"
+  },
+  {
+    "tendReferNo": "000003/G/NCB/2026/2027/1806000000",
+    "title": "Provision of Personal Protective Equipment (PPEs) under framework contract;",
+    "buyer_code": "1806000000",
+    "date": "11/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "11/09/2026 17:00"
+  },
+  {
+    "tendReferNo": "000001/G/NCB/2026/2027/5500003001",
+    "title": "Tender for Supply of uniform for Shyira Hospital\u2019s Staff.",
+    "buyer_code": "5500003001",
+    "date": "11/09/2026",
+    "tendStageCd": "O",
+    "method": "NCB",
+    "tendTypeCd": "G",
+    "deadline": "11/09/2026 10:30"
+  }
+]

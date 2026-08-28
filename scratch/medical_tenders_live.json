@@ -1,0 +1,163 @@
+[
+  {
+    "ref_internal": "000003/G/ICB/2026/2027/1605000000",
+    "title": "Supply and installation of Patient Monitoring and Critical care equipment",
+    "entity": "RWANDA BIO-MEDICAL CENTER(RBC)",
+    "ref_no": "000003/G/ICB/2026/2027/RBC",
+    "deadline": "28/09/2026 10:00 (local time)",
+    "opening": "28/09/2026 11:00 (local time)",
+    "tender_security": 34643704.51,
+    "fee": "10,000",
+    "method": "International Competitive Bidding",
+    "lots": [
+      {
+        "lot_no": "1",
+        "name": "Supply and installation of ECG machines",
+        "security": "982,525.96 FRW",
+        "delivery_time": "120 Days",
+        "place": "CHUK Masaka"
+      },
+      {
+        "lot_no": "2",
+        "name": "Supply and installation of Trolley mounted Patient monitors",
+        "security": "5,449,148.83 FRW",
+        "delivery_time": "120 Days",
+        "place": "CHUK Masaka"
+      },
+      {
+        "lot_no": "3",
+        "name": "Supply and installation of Wall mounted Patient monitors",
+        "security": "4,105,410.04 FRW",
+        "delivery_time": "120 Days",
+        "place": "CHUK Masaka"
+      },
+      {
+        "lot_no": "4",
+        "name": "Supply and installation of Central Monitor Station (Wall mounted Patient monitor with Central station)",
+        "security": "9,201,447.59 FRW",
+        "delivery_time": "120 Days",
+        "place": "CHUK Masaka"
+      },
+      {
+        "lot_no": "5",
+        "name": "Supply and installation of Holter Monitors with carrying poush/strap",
+        "security": "3,856,008 FRW",
+        "delivery_time": "120 Days",
+        "place": "CHUK Masaka"
+      },
+      {
+        "lot_no": "6",
+        "name": "Supply and installation of Defibrillators and Colposcopy - Digital Colposcopy machine",
+        "security": "5,832,212.1 FRW",
+        "delivery_time": "120 Days",
+        "place": "CHUK Masaka"
+      },
+      {
+        "lot_no": "7",
+        "name": "Supply and installation of Mobile CTG -systems",
+        "security": "1,521,611 FRW",
+        "delivery_time": "120 Days",
+        "place": "CHUK Masaka"
+      },
+      {
+        "lot_no": "8",
+        "name": "Supply and installation of Wall mounted CTG -systems",
+        "security": "3,695,341 FRW",
+        "delivery_time": "120 Days",
+        "place": "CHUK Masaka"
+      }
+    ]
+  },
+  {
+    "ref_internal": "000002/G/ICB/2026/2027/1605000000",
+    "title": "Supply and installation of IT equipment for CHUK",
+    "entity": "RWANDA BIO-MEDICAL CENTER(RBC)",
+    "ref_no": "000002/G/ICB/2026/2027/RBC",
+    "deadline": "28/09/2026 10:00 (local time)",
+    "opening": "28/09/2026 11:00 (local time)",
+    "tender_security": 15099424.8,
+    "fee": "10,000",
+    "method": "International Competitive Bidding",
+    "lots": [
+      {
+        "lot_no": "1",
+        "name": "Supply and installation of IT equipment for CHUK",
+        "security": "15,099,424.8 FRW",
+        "delivery_time": "2 Months",
+        "place": "CHUK Masaka"
+      }
+    ]
+  },
+  {
+    "ref_internal": "000003/G/NCB/2026/2027/1605000000",
+    "title": "Supply and installation of Hospital EMRS and Imaging software, Migration: System Reinstallation & Configuration",
+    "entity": "RWANDA BIO-MEDICAL CENTER(RBC)",
+    "ref_no": "000003/G/NCB/2026/2027/RBC",
+    "deadline": "21/09/2026 10:00 (local time)",
+    "opening": "21/09/2026 11:00 (local time)",
+    "tender_security": 2306753.15,
+    "fee": "10,000",
+    "method": "National Competitive Bidding",
+    "lots": [
+      {
+        "lot_no": "1",
+        "name": "Supply and installation of Hospital EMRS and Imaging software, Migration: System Reinstallation & Configuration",
+        "security": "2,306,753.15 FRW",
+        "delivery_time": "2 Months",
+        "place": "CHUK Masaka"
+      }
+    ]
+  },
+  {
+    "ref_internal": "000005/G/NCB/2026/2027/1603000000",
+    "title": "Framework contract for provision of medical oxygen to NNPTH",
+    "entity": "NEURO PSYCHIATRIC HOSPITAL OF NDERA (HNN)",
+    "ref_no": "000005/G/NCB/2026/2027/HNN",
+    "deadline": "18/09/2026 15:00 (local time)",
+    "opening": "18/09/2026 16:00 (local time)",
+    "tender_security": null,
+    "fee": "10,000",
+    "method": "National Competitive Bidding",
+    "lots": [
+      {
+        "lot_no": "1",
+        "name": "Framework contract for provision of medical oxygen to NNPTH",
+        "security": "0 FRW",
+        "delivery_time": "12 Months",
+        "place": "NNPTH Gasabo District Ndera Sector"
+      }
+    ]
+  },
+  {
+    "ref_internal": "000002/G/NCB/2026/2027/1806000000",
+    "title": "Provision of First-Aid kits & replenishment of first-aid kits under framework contract",
+    "entity": "ENERGY DEVELOPMENT CORPORATION (EDCL)",
+    "ref_no": "000002/G/NCB/2026/2027/EDCL",
+    "deadline": "21/09/2026 17:00 (local time)",
+    "opening": "21/09/2026 17:30 (local time)",
+    "tender_security": null,
+    "fee": "10,000",
+    "method": "National Competitive Bidding",
+    "lots": [
+      {
+        "lot_no": "1",
+        "name": "Provision of First-Aid kits & replenishment of first-aid kits under framework contract",
+        "security": "0 FRW",
+        "delivery_time": "1 Years",
+        "place": "EDCL Premises"
+      }
+    ]
+  },
+  {
+    "ref_internal": "000003/NC/NCB/2026/2027/1001000000",
+    "title": "Provision of Laboratory Proficiency Testing (PT) service to RSB under framework contract.",
+    "entity": "RWANDA STANDARDS BOARD (RSB)",
+    "ref_no": "000003/NC/NCB/2026/2027/RSB",
+    "deadline": "23/09/2026 15:00 (local time)",
+    "opening": "23/09/2026 15:30 (local time)",
+    "tender_security": 1000000.0,
+    "fee": "10,000",
+    "method": "National Competitive Bidding",
+    "lots": []
+  }
+]
