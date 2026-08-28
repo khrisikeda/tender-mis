@@ -304,6 +304,18 @@ let catalogue = [
   }
 ];
 
+const CATALOGUE_STORAGE_KEY = 'medtender_product_catalogue_v1';
+try {
+  const savedCatalogue = JSON.parse(window.localStorage.getItem(CATALOGUE_STORAGE_KEY) || 'null');
+  if (Array.isArray(savedCatalogue) && savedCatalogue.length) catalogue = savedCatalogue;
+} catch {
+  // Keep the bundled catalogue when browser storage contains invalid data.
+}
+
+function saveCatalogue() {
+  window.localStorage.setItem(CATALOGUE_STORAGE_KEY, JSON.stringify(catalogue));
+}
+
 // ==========================================================================
 // 3. Tenders Data Store with Multi-Level Granular Specification Matching
 // ==========================================================================
@@ -1442,25 +1454,16 @@ let pipelineSelectedStage = '';
           <span class="recommend-badge ${recClass}">${t.recommendation_label}</span>
         </td>
         <td>
-          <div style="display:flex;flex-direction:column;gap:5px;">
-            <button class="primary-button" style="padding:4px 8px;font-size:10px;" data-open-matrix="${t.id}" aria-label="Open Spec Matrix">
-              📋 Spec Matrix
-            </button>
-            <button class="outline-button" style="padding:4px 8px;font-size:10px;" data-open-equiv="${t.id}" aria-label="Open Brand Equivalence">
-              🇨🇳 vs 🇪🇺 Equiv (${t.equivalence_score}%)
-            </button>
-          </div>
+          <button class="primary-button" style="padding:5px 9px;font-size:10px;white-space:nowrap;" data-open-analysis="${t.id}" aria-label="Open specification and CN versus EU equivalence analysis">
+            Specs + Parity
+          </button>
         </td>
       </tr>
     `;
     }).join('');
 
-    pipelineRows.querySelectorAll('[data-open-matrix]').forEach(btn => {
-      btn.addEventListener('click', () => openTenderDrawer(btn.dataset.openMatrix, 'matrix'));
-    });
-
-    pipelineRows.querySelectorAll('[data-open-equiv]').forEach(btn => {
-      btn.addEventListener('click', () => openTenderDrawer(btn.dataset.openEquiv, 'brand_equivalence'));
+    pipelineRows.querySelectorAll('[data-open-analysis]').forEach(btn => {
+      btn.addEventListener('click', () => openTenderDrawer(btn.dataset.openAnalysis, 'matrix'));
     });
   }
 
@@ -1701,6 +1704,128 @@ let pipelineSelectedStage = '';
   if (catSearch) catSearch.addEventListener('input', renderCatalogue);
   if (catCat) catCat.addEventListener('change', renderCatalogue);
 
+  const catalogueSourceType = document.querySelector('#catalogueSourceType');
+  const activeProductSelect = document.querySelector('#activeProductSelect');
+  const catalogueImportInput = document.querySelector('#catalogueImportInput');
+  const connectCatalogueBtn = document.querySelector('#connectCatalogueBtn');
+  const catalogueSourceName = document.querySelector('#catalogueSourceName');
+  const catalogueSourceStatus = document.querySelector('#catalogueSourceStatus');
+  const productModalBackdrop = document.querySelector('#productModalBackdrop');
+  const productForm = document.querySelector('#productForm');
+  const openAddProductBtn = document.querySelector('#openAddProductBtn');
+  const closeProductModal = document.querySelector('#closeProductModal');
+  const cancelProductBtn = document.querySelector('#cancelProductBtn');
+
+  function closeProductDialog() {
+    if (productModalBackdrop) productModalBackdrop.hidden = true;
+  }
+
+  if (openAddProductBtn && productModalBackdrop) openAddProductBtn.addEventListener('click', () => { productModalBackdrop.hidden = false; document.querySelector('#productCode')?.focus(); });
+  if (closeProductModal) closeProductModal.addEventListener('click', closeProductDialog);
+  if (cancelProductBtn) cancelProductBtn.addEventListener('click', closeProductDialog);
+  if (productModalBackdrop) productModalBackdrop.addEventListener('click', event => { if (event.target === productModalBackdrop) closeProductDialog(); });
+
+  if (productForm) productForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const specs = document.querySelector('#productSpecs').value.split('\n').map(item => item.trim()).filter(Boolean);
+    const payload = {
+      product_code: document.querySelector('#productCode').value.trim(),
+      name: document.querySelector('#productName').value.trim(),
+      manufacturer: document.querySelector('#productManufacturer').value.trim(),
+      category: document.querySelector('#productCategory').value,
+      brand: document.querySelector('#productBrand').value.trim() || null,
+      model: document.querySelector('#productModel').value.trim() || null,
+      keywords: [document.querySelector('#productName').value.trim(), document.querySelector('#productCategory').value],
+      technical_specifications: Object.fromEntries(specs.map((spec, index) => [`specification_${index + 1}`, spec])),
+      certifications: [],
+      availability: 'To be verified'
+    };
+    let savedProduct = payload;
+    if (accessToken) {
+      try {
+        const response = await fetch(`${API_BASE}/catalogue`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}` }, body: JSON.stringify(payload) });
+        if (!response.ok) throw new Error('The database rejected this product. Check the product code.');
+        savedProduct = await response.json();
+      } catch (error) {
+        showToast(error.message);
+        return;
+      }
+    }
+    const localProduct = { ...savedProduct, id: savedProduct.id || `local-${Date.now()}`, code: savedProduct.product_code || savedProduct.code, specs, certifications: [], warehouse_stock: 0, stock_status: 'DATABASE_SOURCE', stock_label: 'Catalogue source', matched_tenders: 0 };
+    catalogue = [...catalogue.filter(product => product.code !== localProduct.code), localProduct];
+    saveCatalogue();
+    if (activeProductSelect) {
+      activeProductSelect.innerHTML = catalogue.map(product => `<option value="${product.code}">Match one product: ${product.name}</option>`).join('');
+      activeProductSelect.value = localProduct.code;
+      window.localStorage.setItem('medtender_active_product', localProduct.code);
+    }
+    renderCatalogue();
+    productForm.reset();
+    closeProductDialog();
+    showToast(accessToken ? 'Product saved to the database catalogue.' : 'Product saved in demo catalogue storage.');
+  });
+
+  const savedProductCode = window.localStorage.getItem('medtender_active_product') || catalogue[0]?.code;
+  if (activeProductSelect) {
+    activeProductSelect.innerHTML = catalogue.map(product => `<option value="${product.code}" ${product.code === savedProductCode ? 'selected' : ''}>Match one product: ${product.name}</option>`).join('');
+    const activeProduct = catalogue.find(product => product.code === savedProductCode) || catalogue[0];
+    if (activeProduct) updateCatalogueSourceLabel('internal', `${activeProduct.code} · ${activeProduct.specs.length} catalogue specifications ready`);
+    activeProductSelect.addEventListener('change', () => {
+      window.localStorage.setItem('medtender_active_product', activeProductSelect.value);
+      const product = catalogue.find(item => item.code === activeProductSelect.value);
+      if (product) updateCatalogueSourceLabel('internal', `${product.code} · ${product.specs.length} catalogue specifications ready`);
+      showToast(`${product ? product.name : 'Product'} selected for direct tender matching.`);
+    });
+  }
+
+  function updateCatalogueSourceLabel(sourceType, detail) {
+    const labels = { internal: 'Internal catalogue', api: 'External API connection', database: 'Database connection', file: 'Structured catalogue file' };
+    if (catalogueSourceName) catalogueSourceName.textContent = labels[sourceType] || labels.internal;
+    if (catalogueSourceStatus) catalogueSourceStatus.textContent = detail || `${catalogue.length} products · Ready for matching`;
+  }
+
+  if (catalogueSourceType) catalogueSourceType.addEventListener('change', () => {
+    const sourceType = catalogueSourceType.value;
+    updateCatalogueSourceLabel(sourceType, sourceType === 'internal' ? `${catalogue.length} products · Last synced today` : 'Connection not configured · Ready to connect');
+  });
+  if (catalogueImportInput) catalogueImportInput.addEventListener('change', async () => {
+    const file = catalogueImportInput.files[0];
+    if (!file) return;
+    catalogueSourceType.value = 'file';
+    if (file.name.toLowerCase().endsWith('.json')) {
+      try {
+        const importedCatalogue = JSON.parse(await file.text());
+        if (!Array.isArray(importedCatalogue) || importedCatalogue.some(product => !product.code || !product.name || !Array.isArray(product.specs))) throw new Error('Invalid catalogue format');
+        catalogue = importedCatalogue;
+        saveCatalogue();
+        if (activeProductSelect) {
+          activeProductSelect.innerHTML = catalogue.map(product => `<option value="${product.code}">Match one product: ${product.name}</option>`).join('');
+          window.localStorage.setItem('medtender_active_product', catalogue[0].code);
+        }
+        renderCatalogue();
+        updateCatalogueSourceLabel('file', `${file.name} · ${catalogue.length} products retained`);
+        showToast('Catalogue imported and retained for future matching.');
+        return;
+      } catch {
+        showToast('Catalogue import rejected. Use JSON records with code, name, and specs fields.');
+        return;
+      }
+    }
+    updateCatalogueSourceLabel('file', `${file.name} · Import staged for review`);
+    showToast('Catalogue file staged. JSON imports can be retained for matching.');
+  });
+  if (connectCatalogueBtn) connectCatalogueBtn.addEventListener('click', () => {
+    const sourceType = catalogueSourceType ? catalogueSourceType.value : 'internal';
+    if (sourceType === 'internal') {
+      const product = catalogue.find(item => item.code === (activeProductSelect ? activeProductSelect.value : savedProductCode));
+      updateCatalogueSourceLabel('internal', product ? `${product.code} · ${product.specs.length} catalogue specifications ready` : 'One product selected for direct matching');
+      showToast('Internal catalogue is the active matching source.');
+      return;
+    }
+    updateCatalogueSourceLabel(sourceType, 'Awaiting backend connector configuration');
+    showToast('Source connector saved as a future integration point.');
+  });
+
   const demandSearch = document.querySelector('#demandSearchInput');
   const demandUrg = document.querySelector('#demandUrgencyFilter');
   if (demandSearch) demandSearch.addEventListener('input', renderDemand);
@@ -1715,6 +1840,7 @@ let pipelineSelectedStage = '';
         const glv = catalogue.find(c => c.code === 'CON-SUR-GLV');
         if (mon) { mon.warehouse_stock += 8; mon.stock_status = 'IN_STOCK'; }
         if (glv) { glv.warehouse_stock += 1200; glv.stock_status = 'IN_STOCK'; }
+        saveCatalogue();
         const demMon = recurringDemand.find(d => d.code === 'ICU-MON-12');
         const demGlv = recurringDemand.find(d => d.code === 'CON-SUR-GLV');
         if (demMon) { demMon.current_warehouse_stock += 8; demMon.urgency_level = 'SAFE'; demMon.urgency_label = '🟢 Replenished (Safe Buffer)'; }
@@ -1794,6 +1920,10 @@ let pipelineSelectedStage = '';
         <div class="completion-header"><div><p class="eyebrow">Requirement tracking</p><h3 id="completionHeading">Tender requirement completion</h3></div><strong class="completion-percent">${progress.percentage}%</strong></div>
         <div class="completion-track"><span style="width:${progress.percentage}%"></span></div>
         <div class="completion-summary"><span><b>${progress.completed}</b> of ${progress.total} requirements covered</span><span class="completion-legend"><i class="complete-dot"></i>${progress.compliant} compliant <i class="partial-dot"></i>${progress.partial} partial / verify</span></div>
+      </section>
+
+      <section class="catalogue-source-note" aria-label="Product specification source">
+        <span class="source-note-icon">▣</span><div><strong>Product specifications sourced from Detailed Product Catalogue</strong><small>${tender.matched_name || 'Selected catalogue product'} → Tender requirements → Match status</small></div><span class="source-note-status">Catalogue-backed</span>
       </section>
 
       <!-- Multi-Score Company Fit Matrix -->
@@ -2347,6 +2477,38 @@ let pipelineSelectedStage = '';
   }
 
   // Initial Initialization
+  async function loadDatabaseCatalogue() {
+    if (!accessToken) return;
+    try {
+      const response = await fetch(`${API_BASE}/catalogue`, { headers: { 'Authorization': `Bearer ${accessToken}` } });
+      if (!response.ok) return;
+      const databaseCatalogue = await response.json();
+      if (!Array.isArray(databaseCatalogue) || !databaseCatalogue.length) return;
+      catalogue = databaseCatalogue.map(product => ({
+        ...product,
+        code: product.product_code,
+        origin: product.country_of_origin || 'Origin not available',
+        specs: Object.entries(product.technical_specifications || {}).map(([key, value]) => `${key}: ${value}`),
+        certifications: product.certifications || [],
+        warehouse_stock: 0,
+        stock_status: 'DATABASE_SOURCE',
+        stock_label: 'Catalogue source',
+        matched_tenders: 0
+      }));
+      saveCatalogue();
+      const activeProductSelect = document.querySelector('#activeProductSelect');
+      if (activeProductSelect) {
+        activeProductSelect.innerHTML = catalogue.map(product => `<option value="${product.code}">Match one product: ${product.name}</option>`).join('');
+        activeProductSelect.value = window.localStorage.getItem('medtender_active_product') || catalogue[0].code;
+      }
+      renderCatalogue();
+      showToast(`${catalogue.length} products loaded from the database catalogue.`);
+    } catch {
+      // Bundled or previously saved catalogue remains available offline.
+    }
+  }
+
   loadUserProfile();
+  loadDatabaseCatalogue();
   const initialHash = window.location.hash.replace('#', '');
   switchView(initialHash && viewMap[initialHash] ? initialHash : 'dashboard');

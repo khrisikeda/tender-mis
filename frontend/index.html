@@ -534,6 +534,19 @@
           </div>
         </div>
 
+        <section class="catalogue-integration panel" aria-labelledby="catalogueIntegrationHeading">
+          <div class="integration-copy">
+            <div class="integration-icon">▣</div>
+            <div>
+              <p class="eyebrow">Primary product intelligence source</p>
+              <h2 id="catalogueIntegrationHeading">Detailed Product Catalogue</h2>
+              <p>Product names, manufacturers, categories, and technical specifications used in tender matching.</p>
+            </div>
+          </div>
+          <div class="integration-status"><span class="status-dot"></span><div><strong id="catalogueSourceName">Active product profile</strong><small id="catalogueSourceStatus">One product selected for direct matching</small></div></div>
+          <div class="integration-actions"><select id="activeProductSelect" aria-label="Select one product for tender matching"></select><select id="catalogueSourceType" aria-label="Catalogue source type"><option value="internal">Current catalogue</option><option value="api">External API</option><option value="database">Database connection</option><option value="file">Structured catalogue file</option></select><label class="integration-file-button" for="catalogueImportInput">Import catalogue<input id="catalogueImportInput" type="file" accept=".json,.csv,.xlsx"></label><button class="outline-button" id="connectCatalogueBtn" type="button">Connect source <span>→</span></button></div>
+        </section>
+
         <!-- Sub-Tabs: Catalogue vs Market Demand Replenishment -->
         <div class="catalogue-subtabs" role="tablist" aria-label="Catalogue sections">
           <button class="subtab-btn active" id="subtabCatalogue" role="tab" aria-selected="true">
@@ -721,6 +734,24 @@
           <button type="button" class="outline-button" id="cancelRestockBtn">Cancel</button>
           <button type="submit" class="primary-button">Confirm & Update Stock</button>
         </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="productModalBackdrop" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+      <div class="modal-header"><h2 id="productModalTitle">Add catalogue product</h2><button class="close-button" id="closeProductModal" aria-label="Close product form">×</button></div>
+      <form id="productForm">
+        <div class="modal-body product-form-grid">
+          <label>Product code<input id="productCode" required placeholder="e.g. ICU-MON-12"></label>
+          <label>Product name<input id="productName" required placeholder="Detailed product name"></label>
+          <label>Manufacturer<input id="productManufacturer" required placeholder="Manufacturer or OEM"></label>
+          <label>Category<select id="productCategory"><option>Medical Equipment</option><option>Laboratory</option><option>Medical Consumables</option><option>Dental</option><option>Imaging & Radiology</option><option>Surgical</option></select></label>
+          <label class="full-width">Technical specifications <small>Enter one specification per line. These become searchable matching fields.</small><textarea id="productSpecs" rows="5" required placeholder="15-inch display&#10;ECG, SpO2, NIBP&#10;Built-in printer"></textarea></label>
+          <label>Brand<input id="productBrand" placeholder="Brand"></label>
+          <label>Model<input id="productModel" placeholder="Model"></label>
+        </div>
+        <div class="modal-footer"><button type="button" class="outline-button" id="cancelProductBtn">Cancel</button><button type="submit" class="primary-button">Save to catalogue</button></div>
       </form>
     </div>
   </div>

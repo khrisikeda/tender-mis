@@ -1,8 +1,9 @@
 import os
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from app.routers import auth, tender_sources, tenders
+from app.routers import auth, tender_sources, tenders, catalogue
 
 app = FastAPI(
     title="Medical Tender Intelligence & Bid Management System",
@@ -10,9 +11,18 @@ app = FastAPI(
     version="0.1.0-mvp",
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5500", "http://127.0.0.1:5500"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(auth.router)
 app.include_router(tender_sources.router)
 app.include_router(tenders.router)
+app.include_router(catalogue.router)
 
 
 @app.get("/health", tags=["system"])
