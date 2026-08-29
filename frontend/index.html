@@ -329,7 +329,7 @@
           </div>
           <div class="heading-actions">
             <button class="outline-button" id="pipelineExportBtn">
-              <i class='bx bx-download' aria-hidden="true"></i> Export Compliance CSV
+              <i class='bx bx-spreadsheet' aria-hidden="true"></i> Export Executive Excel
             </button>
             <button class="primary-button" id="openAddTenderBtn">
               <i class='bx bx-plus' aria-hidden="true"></i> Register Tender
@@ -424,20 +424,15 @@
             </div>
 
             <div class="table-wrap">
-              <table aria-label="Complete pipeline table">
+              <table class="pipeline-table" aria-label="Complete pipeline table">
                 <thead>
                   <tr>
-                    <th scope="col">Ref & Title</th>
-                    <th scope="col">Buyer Entity</th>
-                    <th scope="col">Tender Security (RWF)</th>
-                    <th scope="col">Deadline</th>
-                    <th scope="col">Company Fit</th>
-                    <th scope="col">Spec Match</th>
-                    <th scope="col">Sourcing Strategy</th>
-                    <th scope="col">Lot Coverage</th>
-                    <th scope="col">Delivery Readiness</th>
-                    <th scope="col">Recommendation</th>
-                    <th scope="col">Decision Matrix</th>
+                    <th scope="col" style="width: 32%;">Opportunity & Buyer</th>
+                    <th scope="col" style="width: 14%;">Security Value</th>
+                    <th scope="col" style="width: 13%;">Deadline</th>
+                    <th scope="col" style="width: 14%;">Fit & Coverage</th>
+                    <th scope="col" style="width: 15%;">Sourcing Strategy</th>
+                    <th scope="col" style="width: 12%; text-align: right;">Action</th>
                   </tr>
                 </thead>
                 <tbody id="pipelineTableRows"></tbody>
@@ -930,6 +925,16 @@
       </div>
       <form id="addTenderForm" novalidate>
         <div class="modal-body">
+          <div class="doc-upload-banner" id="tenderDocUploadZone" style="border: 2px dashed #99f6e4; background: #f0fdf9; border-radius: 8px; padding: 14px; text-align: center; margin-bottom: 14px; cursor: pointer; transition: all 0.2s ease;">
+            <input type="file" id="tenderDocUploadInput" accept=".doc,.docx,.pdf" style="display:none;">
+            <i class='bx bx-cloud-upload' style="font-size: 26px; color: var(--teal); display: block; margin-bottom: 4px;"></i>
+            <strong style="display: block; font-size: 12px; color: var(--ink);">Upload & Auto-Extract Word Document (.doc, .docx)</strong>
+            <small style="display: block; font-size: 10px; color: var(--muted); margin-top: 2px;">
+              Auto-extracts Reference, Title, Buyer Entity, Submission Deadline, and full Technical Specifications Matrix
+            </small>
+            <div id="docExtractStatus" style="margin-top: 6px; font-size: 11px; font-weight: 700; color: var(--teal);" hidden></div>
+          </div>
+
           <label for="newTenderTitle">
             Tender Title
             <input type="text" id="newTenderTitle" placeholder="e.g. Supply of ICU Ventilators and Patient Monitors" required>
@@ -949,6 +954,8 @@
             Product Category
             <select id="newTenderCategory" required>
               <option value="Medical Equipment">Medical Equipment</option>
+              <option value="Ophthalmology">Ophthalmology & Eye Diagnostics</option>
+              <option value="Physical Therapy & Gym">Physical Therapy & Gym Equipment</option>
               <option value="Laboratory">Laboratory Diagnostics</option>
               <option value="Medical Consumables">Medical Consumables</option>
               <option value="Dental">Dental & Maxillofacial</option>

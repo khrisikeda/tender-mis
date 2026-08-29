@@ -1589,12 +1589,12 @@ select,
 
 .table-wrap {
   overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 740px;
 }
 
 th {
@@ -1604,23 +1604,23 @@ th {
   color: #8b999a;
   letter-spacing: 0.5px;
   font-size: 9px;
-  font-weight: 500;
-  padding: 14px 14px;
+  font-weight: 600;
+  padding: 12px 12px;
   border-bottom: 1px solid var(--line);
 }
 
 th:first-child,
 td:first-child {
-  padding-left: 22px;
+  padding-left: 20px;
 }
 
 th:last-child,
 td:last-child {
-  padding-right: 22px;
+  padding-right: 20px;
 }
 
 td {
-  padding: 14px 14px;
+  padding: 12px 12px;
   border-bottom: 1px solid #edf1f0;
   font-size: 12px;
   vertical-align: middle;
@@ -1630,11 +1630,201 @@ tr:hover td {
   background: #fafdfc;
 }
 
+/* Pipeline Specific Streamlined Layout */
+.pipeline-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: auto;
+}
+
+.pipeline-table th,
+.pipeline-table td {
+  padding: 11px 10px;
+}
+
+.pipeline-table th:first-child,
+.pipeline-table td:first-child {
+  padding-left: 18px;
+}
+
+.pipeline-table th:last-child,
+.pipeline-table td:last-child {
+  padding-right: 18px;
+}
+
+.tender-cell-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.tender-cell-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.tender-cell-title {
+  display: block;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.tender-cell-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.tender-cell-meta .buyer-name {
+  color: #3b5250;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.tender-cell-meta .tender-ref-code {
+  font-family: 'DM Mono', monospace;
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.tender-cell-meta .meta-sep {
+  color: #94a3b8;
+}
+
+.tender-cell-meta .category-tag {
+  background: #edf3f2;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 9px;
+  color: #475569;
+}
+
+.security-cell .value-text {
+  display: block;
+  font-size: 12px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.security-cell .security-note {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.deadline-cell .deadline-date {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.deadline-countdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.deadline-countdown.urgent {
+  color: var(--coral);
+}
+
+.deadline-countdown.warning {
+  color: #d97706;
+}
+
+.deadline-countdown.safe {
+  color: var(--teal);
+}
+
+.fit-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fit-top-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.fit-sub {
+  font-size: 9.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.strategy-cell-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.strategy-cell-compact .strategy-badge {
+  font-size: 9px;
+  padding: 2.5px 6px;
+  max-width: fit-content;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+.strategy-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.strategy-sub-row .benchmark-txt {
+  font-size: 8.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.action-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.action-cell .recommend-badge {
+  font-size: 8.5px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.pipeline-action-btn {
+  padding: 5px 9px !important;
+  font-size: 10px !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+}
+
 .tender-name {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-width: 240px;
+  min-width: 200px;
 }
 
 .tender-icon {

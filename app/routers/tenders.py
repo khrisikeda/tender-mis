@@ -1,6 +1,6 @@
 import uuid
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -107,3 +107,21 @@ def update_tender_status(
     db.commit()
     db.refresh(tender)
     return tender
+
+
+@router.post("/extract-document")
+async def extract_tender_document(
+    file: UploadFile = File(...),
+):
+    """
+    Extracts specifications, reference number, buyer entity, deadline, and line items
+    from an uploaded Word (.docx / .doc) or PDF bidding document.
+    """
+    from app.services.document_extractor import TenderDocumentExtractor
+
+    file_bytes = await file.read()
+    if not file_bytes:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Uploaded file is empty")
+
+    extracted = TenderDocumentExtractor.extract_from_file(file_bytes, file.filename)
+    return extracted
