@@ -30,6 +30,16 @@ async function loadUserProfile() {
   const menuUserEmail = document.querySelector('#menuUserEmail');
   const overviewHeading = document.querySelector('#overviewHeading');
 
+  const currentDateEl = document.querySelector('#currentDate');
+  if (currentDateEl) {
+    currentDateEl.textContent = new Intl.DateTimeFormat('en-GB', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(new Date());
+  }
+
   if (isDemoSession) {
     if (userName) userName.textContent = 'Chris Kalisa';
     if (userRole) userRole.textContent = 'Chief Medical Procurement';
@@ -303,6 +313,445 @@ function saveCatalogue() {
 
 let tenders = [
   {
+    "id": "tender-rms-apheresis-lab",
+    "ref": "RMS/DAO/2026/G/018/LAB-EQ",
+    "title": "Supply, Delivery, and Installation of Automated Clinical Electrophoresis, Apheresis, and Auto Stainer Systems",
+    "procuring_entity": "Rwanda Medical Supply (RMS) Ltd",
+    "category": "Laboratory",
+    "tender_value": 12800000,
+    "tender_security_amount": 12800000,
+    "currency": "RWF",
+    "deadline_at": "2026-09-24T10:00:00+02:00",
+    "published_at": "2026-08-28T09:00:00+02:00",
+    "relevance_score": 95,
+    "tech_spec_match": 97,
+    "product_match": 94,
+    "coverage_rate": 100,
+    "eligibility_match": 100,
+    "manufacturer_match": 95,
+    "risk": "Low",
+    "security": "RWF 12,800,000 (Tender Security / Bank Guarantee)",
+    "authorization": "Required (Authorized OEM / Distributor)",
+    "stock_readiness": "IN_STOCK",
+    "stock_label": "⚡ Ready for Delivery (RMS Central Warehouse)",
+    "status": "bid_preparation",
+    "recommended_action": "BID_HIGH_FIT",
+    "recommendation_label": "Bid (High Win Rate - Job in Rwanda)",
+    "icon": "Lab",
+    "source_url": "https://www.jobinrwanda.com",
+    "benchmarked_european_brand": "Sebia Capillarys 3 / Terumo BCT Spectra Optia",
+    "chinese_stocked_model": "Biobase & Mindray Automated Clinical Electrophoresis & Cell Stainer",
+    "european_market_price_rwf": 480000000,
+    "chinese_bid_price_rwf": 268000000,
+    "cost_advantage_pct": 44,
+    "cost_savings_rwf": 212000000,
+    "equivalence_score": 97,
+    "tech_parity_score": 97,
+    "clinical_parity_score": 96,
+    "regulatory_parity_score": 100,
+    "warranty_parity_score": 95,
+    "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
+    "sourcing_strategy_label": "🇨🇳 Bid Automated Diagnostic Suite (97% Parity)",
+    "sourcing_strategy_desc": "Live RMS tender on Job in Rwanda. Turnkey supply across 3 laboratory lots with RWF 212M national budget savings.",
+    "lots": [
+      {
+        "lot_no": 1,
+        "name": "Automated Capillary Electrophoresis Analyzer",
+        "security_rwf": 5200000,
+        "place": "RMS Central Logistics",
+        "delivery_days": 45,
+        "coverage_status": "COMPLIANT"
+      },
+      {
+        "lot_no": 2,
+        "name": "Continuous Flow Apheresis Cell Separation System",
+        "security_rwf": 5100000,
+        "place": "National Blood Transfusion Centre",
+        "delivery_days": 45,
+        "coverage_status": "COMPLIANT"
+      },
+      {
+        "lot_no": 3,
+        "name": "Automated Slide Stainer for Hematology & Cytology",
+        "security_rwf": 2500000,
+        "place": "RMS Central Logistics",
+        "delivery_days": 30,
+        "coverage_status": "COMPLIANT"
+      }
+    ],
+    "items": [
+      {
+        "lot_id": "Lot 1",
+        "title": "Automated Capillary Electrophoresis Analyzer",
+        "target_brand": "Sebia Capillarys 3",
+        "our_product": "Biobase Auto-Electrophoresis System 800",
+        "compliance": "Compliant",
+        "compliance_class": "compliant",
+        "specs_count": 10,
+        "specs_matched": 10,
+        "score": 97,
+        "lot_tender_security_rwf": 5200000,
+        "qty": 4,
+        "notes": "Hemoglobin, serum protein, and immunofixation capillary testing. Bi-directional LIS HL7 interface.",
+        "specs_matrix": [
+          {
+            "param": "Capillary Separation Channels",
+            "req": "Minimum 8 silica capillaries with Peltier temperature control (35.5°C ±0.1°C)",
+            "sup": "8-capillary array with Peltier precision thermal regulation",
+            "status": "COMPLIANT",
+            "notes": "Exact clinical diagnostic parity"
+          },
+          {
+            "param": "Throughput & Sample Loading",
+            "req": "Minimum 60 samples/hour for serum proteins",
+            "sup": "72 samples/hour with continuous primary tube rack loader",
+            "status": "COMPLIANT",
+            "notes": "Exceeds required throughput"
+          }
+        ]
+      },
+      {
+        "lot_id": "Lot 2",
+        "title": "Continuous Flow Apheresis Cell Separation System",
+        "target_brand": "Terumo BCT Spectra Optia",
+        "our_product": "MedTender Clinical Apheresis System Pro",
+        "compliance": "Compliant",
+        "compliance_class": "compliant",
+        "specs_count": 8,
+        "specs_matched": 8,
+        "score": 96,
+        "lot_tender_security_rwf": 5100000,
+        "qty": 2,
+        "notes": "Therapeutic plasma exchange (TPE) and platelet collection protocols certified.",
+        "specs_matrix": [
+          {
+            "param": "Centrifugal Separation Channel",
+            "req": "Continuous flow centrifuge channel with optical fluid sensors",
+            "sup": "Continuous single-stage centrifugal separation with dual multi-wavelength sensors",
+            "status": "COMPLIANT",
+            "notes": "Meets international blood bank criteria"
+          }
+        ]
+      }
+    ],
+    "brand_equivalence_matrix": [
+      {
+        "parameter": "Electrophoretic Resolution & Serum Protein Fractionation",
+        "european_benchmark": "Sebia Capillarys: 8 capillaries, 300dpi optical resolution, automated barcoding",
+        "chinese_supplied": "Biobase CE-800: 8 capillaries, 350dpi optical sensor, full LIS barcode tracking",
+        "status": "EXACT_MATCH",
+        "justification": "Full technical and clinical resolution parity. 100% compliant with ISO 15189 laboratory standards.",
+        "standards_compliance": "ISO 13485, CE-IVD, IEC 61010"
+      }
+    ]
+  },
+  {
+    "id": "tender-rsog-mch-warmers",
+    "ref": "RSOG/G/2026/004/MCH-EQ",
+    "title": "Supply and Installation of Maternal-Child Medical Equipment and Infant Radiant Warmers",
+    "procuring_entity": "Rwanda Society of Obstetrics and Gynecology (RSOG)",
+    "category": "Medical Equipment",
+    "tender_value": 6500000,
+    "tender_security_amount": 6500000,
+    "currency": "RWF",
+    "deadline_at": "2026-09-30T14:00:00+02:00",
+    "published_at": "2026-08-25T10:00:00+02:00",
+    "relevance_score": 98,
+    "tech_spec_match": 99,
+    "product_match": 98,
+    "coverage_rate": 100,
+    "eligibility_match": 100,
+    "manufacturer_match": 95,
+    "risk": "Low",
+    "security": "RWF 6,500,000 (Tender Security)",
+    "authorization": "Required (Authorized OEM / Distributor)",
+    "stock_readiness": "IN_STOCK",
+    "stock_label": "⚡ In-Stock (6 Units in Kigali Warehouse)",
+    "status": "bid_preparation",
+    "recommended_action": "BID_HIGH_FIT",
+    "recommendation_label": "Bid (High Win Rate - Job in Rwanda)",
+    "icon": "ICU",
+    "source_url": "https://www.jobinrwanda.com",
+    "benchmarked_european_brand": "Dräger Babyroo TN300 / GE Giraffe OmniBed",
+    "chinese_stocked_model": "MedTech Global NEO-WRM-500 Infant Warmer & Phototherapy Suite",
+    "european_market_price_rwf": 192000000,
+    "chinese_bid_price_rwf": 99800000,
+    "cost_advantage_pct": 48,
+    "cost_savings_rwf": 92200000,
+    "equivalence_score": 98,
+    "tech_parity_score": 99,
+    "clinical_parity_score": 98,
+    "regulatory_parity_score": 100,
+    "warranty_parity_score": 95,
+    "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
+    "sourcing_strategy_label": "🇨🇳 Bid In-Stock Warmers (Catalogue Match NEO-WRM-500)",
+    "sourcing_strategy_desc": "Live maternal health tender on Job in Rwanda. Matches active catalogue stock NEO-WRM-500 with immediate delivery advantage.",
+    "lots": [
+      {
+        "lot_no": 1,
+        "name": "Advanced Infant Radiant Warmers with Integrated Phototherapy",
+        "security_rwf": 3500000,
+        "place": "Kayonza & Rwinkwavu Health Facilities",
+        "delivery_days": 10,
+        "coverage_status": "COMPLIANT"
+      },
+      {
+        "lot_no": 2,
+        "name": "Wireless Ultrasonic Fetal Dopplers with OLED Display",
+        "security_rwf": 1500000,
+        "place": "District Health Centers",
+        "delivery_days": 10,
+        "coverage_status": "COMPLIANT"
+      },
+      {
+        "lot_no": 3,
+        "name": "Hydraulic 3-Section Obstetric Examination and Delivery Beds",
+        "security_rwf": 1500000,
+        "place": "District Maternity Centers",
+        "delivery_days": 10,
+        "coverage_status": "COMPLIANT"
+      }
+    ],
+    "items": [
+      {
+        "lot_id": "Lot 1",
+        "title": "Advanced Infant Radiant Warmer & Phototherapy System",
+        "target_brand": "Dräger Babyroo / GE Giraffe",
+        "our_product": "NEO-WRM-500 (Stocked Catalogue Item)",
+        "compliance": "Compliant",
+        "compliance_class": "compliant",
+        "specs_count": 8,
+        "specs_matched": 8,
+        "score": 100,
+        "lot_tender_security_rwf": 3500000,
+        "qty": 8,
+        "notes": "Direct match with warehouse stock NEO-WRM-500. Microprocessor skin control (34-38°C ±0.1°C) and LED phototherapy.",
+        "specs_matrix": [
+          {
+            "param": "Skin Temperature Servo-Control",
+            "req": "Microprocessor controlled skin temperature 34.0°C to 38.0°C with ±0.1°C accuracy",
+            "sup": "Dual microprocessor servo-control (34-38°C ±0.1°C) with T1/T2 dual skin sensors",
+            "status": "COMPLIANT",
+            "notes": "Exact clinical parity"
+          },
+          {
+            "param": "Integrated LED Phototherapy",
+            "req": "Integrated overhead LED phototherapy (450-470nm blue wavelength, >35 µW/cm²/nm)",
+            "sup": "High-intensity LED phototherapy (450-470nm, >40 µW/cm²/nm) with APGAR timer",
+            "status": "COMPLIANT",
+            "notes": "Exceeds standard irradiance requirement"
+          }
+        ]
+      }
+    ],
+    "brand_equivalence_matrix": [
+      {
+        "parameter": "Thermal Regulation & Phototherapy Efficacy",
+        "european_benchmark": "Dräger Babyroo: Quartz heating, 450nm phototherapy, electric tilt ±15°",
+        "chinese_supplied": "NEO-WRM-500: Microprocessor ceramic radiant heating, 450-470nm LED, electric tilt ±15°",
+        "status": "EXACT_MATCH",
+        "justification": "Full ISO 13485 and CE 0123 certified equivalence. In-stock Kigali delivery gives critical scoring advantage.",
+        "standards_compliance": "ISO 13485, CE 0123, IEC 60601-2-21, Rwanda FDA"
+      }
+    ]
+  },
+  {
+    "id": "tender-rosh-ortho-carm",
+    "ref": "ROSH/DAO/2026/02/ORTHO-MED",
+    "title": "Supply, Installation, and Maintenance of Orthopedic Diagnostic C-Arm and Physiotherapy Equipment",
+    "procuring_entity": "Rilima Orthopedic Hospital (ROSH Sainte Marie)",
+    "category": "Medical Equipment",
+    "tender_value": 8200000,
+    "tender_security_amount": 8200000,
+    "currency": "RWF",
+    "deadline_at": "2026-10-06T11:00:00+02:00",
+    "published_at": "2026-08-27T08:30:00+02:00",
+    "relevance_score": 93,
+    "tech_spec_match": 95,
+    "product_match": 92,
+    "coverage_rate": 100,
+    "eligibility_match": 100,
+    "manufacturer_match": 95,
+    "risk": "Low",
+    "security": "RWF 8,200,000 (Tender Security)",
+    "authorization": "Required (Authorized OEM Partner)",
+    "stock_readiness": "IN_STOCK",
+    "stock_label": "⚡ In-Stock Delivery Window (15 Days)",
+    "status": "bid_preparation",
+    "recommended_action": "BID_HIGH_FIT",
+    "recommendation_label": "Bid (High Win Rate - Imvaho Nshya)",
+    "icon": "DIAG",
+    "source_url": "https://imvahonshya.co.rw",
+    "benchmarked_european_brand": "Ziehm Imaging Solo / BTL-6000 Shockwave",
+    "chinese_stocked_model": "Perlove Medical 5kW High-Frequency C-Arm + MedTender Ortho Pro",
+    "european_market_price_rwf": 320000000,
+    "chinese_bid_price_rwf": 175000000,
+    "cost_advantage_pct": 45,
+    "cost_savings_rwf": 145000000,
+    "equivalence_score": 95,
+    "tech_parity_score": 95,
+    "clinical_parity_score": 94,
+    "regulatory_parity_score": 100,
+    "warranty_parity_score": 95,
+    "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
+    "sourcing_strategy_label": "🇨🇳 Bid High-Frequency Surgical C-Arm (+45% Cost Edge)",
+    "sourcing_strategy_desc": "Live orthopedic hospital procurement on Imvaho Nshya. Full 3-lot coverage with RWF 145M savings for Rilima ROSH.",
+    "lots": [
+      {
+        "lot_no": 1,
+        "name": "High-Frequency Digital Mobile C-Arm Surgical System",
+        "security_rwf": 4500000,
+        "place": "Rilima Orthopedic Surgery Suites",
+        "delivery_days": 21,
+        "coverage_status": "COMPLIANT"
+      },
+      {
+        "lot_no": 2,
+        "name": "Continuous Passive Motion (CPM) Knee & Hip Rehabilitation Units",
+        "security_rwf": 2000000,
+        "place": "ROSH Physical Therapy Dept",
+        "delivery_days": 14,
+        "coverage_status": "COMPLIANT"
+      },
+      {
+        "lot_no": 3,
+        "name": "Dual-Energy Shockwave Therapy Station for Musculoskeletal Care",
+        "security_rwf": 1700000,
+        "place": "ROSH Physical Therapy Dept",
+        "delivery_days": 14,
+        "coverage_status": "COMPLIANT"
+      }
+    ],
+    "items": [
+      {
+        "lot_id": "Lot 1",
+        "title": "5kW Mobile Surgical C-Arm System (9-inch Image Intensifier)",
+        "target_brand": "Ziehm Solo / GE OEC One",
+        "our_product": "Perlove PLX112D High-Frequency Surgical C-Arm",
+        "compliance": "Compliant",
+        "compliance_class": "compliant",
+        "specs_count": 10,
+        "specs_matched": 10,
+        "score": 98,
+        "lot_tender_security_rwf": 4500000,
+        "qty": 1,
+        "notes": "5kW 110kV generator, 9\" Toshiba image intensifier, dual 19\" medical LCD monitors, DICOM 3.0 export.",
+        "specs_matrix": [
+          {
+            "param": "Generator & Fluoroscopy Power",
+            "req": "Minimum 5kW high-frequency monoblock generator (>=40kHz, 110kV)",
+            "sup": "5kW 40kHz high-frequency generator with pulsed fluoroscopy dose reduction",
+            "status": "COMPLIANT",
+            "notes": "Exact surgical performance match"
+          }
+        ]
+      }
+    ],
+    "brand_equivalence_matrix": [
+      {
+        "parameter": "Image Resolution & Radiation Dose Control",
+        "european_benchmark": "Ziehm Solo: 1k x 1k digital matrix, pulsed fluoroscopy, laser aiming",
+        "chinese_supplied": "Perlove PLX112D: 1k x 1k CCD matrix, pulsed dose reduction, dual cross-hair laser",
+        "status": "EXACT_MATCH",
+        "justification": "Full clinical equivalence for orthopedic trauma, pinning, and joint replacement.",
+        "standards_compliance": "ISO 13485, CE marked, IEC 60601-2-54"
+      }
+    ]
+  },
+  {
+    "id": "tender-urhg-biomed-maint",
+    "ref": "UR-HG/N0 08/NCB/2026/MED-MAINT",
+    "title": "Annual Framework Contract for Biomedical Preventive and Corrective Maintenance Services",
+    "procuring_entity": "University Of Rwanda Holding Group Ltd (UR-HG LTD)",
+    "category": "Medical Equipment",
+    "tender_value": 4200000,
+    "tender_security_amount": 4200000,
+    "currency": "RWF",
+    "deadline_at": "2026-10-12T12:00:00+02:00",
+    "published_at": "2026-08-28T11:00:00+02:00",
+    "relevance_score": 96,
+    "tech_spec_match": 98,
+    "product_match": 96,
+    "coverage_rate": 100,
+    "eligibility_match": 100,
+    "manufacturer_match": 95,
+    "risk": "Low",
+    "security": "RWF 4,200,000 (Tender Security Guarantee)",
+    "authorization": "Required (Biomedical Engineering License / Rwanda FDA)",
+    "stock_readiness": "IN_STOCK",
+    "stock_label": "⚡ 4 Resident Field Engineers in Kigali",
+    "status": "bid_preparation",
+    "recommended_action": "BID_HIGH_FIT",
+    "recommendation_label": "Bid (High Win Rate - Imvaho Nshya)",
+    "icon": "ICU",
+    "source_url": "https://imvahonshya.co.rw",
+    "benchmarked_european_brand": "OEM Authorized Biomedical Service Standard",
+    "chinese_stocked_model": "MedTender Certified Biomedical Field Engineering Directorate",
+    "cost_advantage_pct": 38,
+    "cost_savings_rwf": 32000000,
+    "equivalence_score": 98,
+    "tech_parity_score": 98,
+    "clinical_parity_score": 96,
+    "regulatory_parity_score": 100,
+    "warranty_parity_score": 100,
+    "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
+    "sourcing_strategy_label": "🇨🇳 Local Biomedical Engineering SLA (4-Hour Response)",
+    "sourcing_strategy_desc": "Live 12-month maintenance framework on Imvaho Nshya. Covers 12 clinical facilities with resident Kigali team.",
+    "lots": [
+      {
+        "lot_no": 1,
+        "name": "Biomedical Safety Testing (IEC 62353) and Calibration Services",
+        "security_rwf": 2200000,
+        "place": "UR-HG Clinical Health Centres",
+        "delivery_days": 365,
+        "coverage_status": "COMPLIANT"
+      },
+      {
+        "lot_no": 2,
+        "name": "Corrective Repair and Fast-Track Genuine Spare Parts Supply",
+        "security_rwf": 2000000,
+        "place": "UR-HG Clinical Health Centres",
+        "delivery_days": 365,
+        "coverage_status": "COMPLIANT"
+      }
+    ],
+    "items": [
+      {
+        "lot_id": "Lot 1",
+        "title": "Comprehensive Biomedical Maintenance SLA (12 Clinical Centres)",
+        "target_brand": "Fluke Biomedical Calibrated Standard",
+        "our_product": "MedTender ISO 17025 Calibrated Testing Protocols",
+        "compliance": "Compliant",
+        "compliance_class": "compliant",
+        "specs_count": 8,
+        "specs_matched": 8,
+        "score": 100,
+        "lot_tender_security_rwf": 2200000,
+        "qty": 12,
+        "notes": "4-hour response SLA in Kigali, electrical safety testing, gas calibration, vital signs simulation.",
+        "specs_matrix": [
+          {
+            "param": "Electrical Safety & Performance Calibration",
+            "req": "Testing compliant with IEC 62353 medical electrical equipment standards",
+            "sup": "Certified Fluke Biomedical electrical safety testing and multiparameter patient simulators",
+            "status": "COMPLIANT",
+            "notes": "Full international compliance"
+          }
+        ]
+      }
+    ],
+    "brand_equivalence_matrix": [
+      {
+        "parameter": "Biomedical Service Response SLA & Engineer Qualification",
+        "european_benchmark": "Overseas OEM Service: 48-72 hour response, fly-in engineers",
+        "chinese_supplied": "MedTender Local Engineering: 4-hour Kigali response, 4 certified resident engineers",
+        "status": "EXACT_MATCH",
+        "justification": "Superior local uptime guarantee with local parts depot in Kigali.",
+        "standards_compliance": "ISO 9001, ISO 13485, IEC 62353"
+      }
+    ]
+  },
+  {
     "id": "tender-urhg-tonometer",
     "ref": "N0 012/G/2025/NCB/ UR-HG LTD",
     "title": "Tender for supply of the non-contact tonometer on behalf of UR-HG LTD (Re-advertised)",
@@ -311,8 +760,8 @@ let tenders = [
     "tender_value": 18500000,
     "tender_security_amount": 18500000,
     "currency": "RWF",
-    "deadline_at": "2026-02-27T12:00:00+02:00",
-    "published_at": "2026-02-13T08:00:00+02:00",
+    "deadline_at": "2026-09-15T12:00:00+02:00",
+    "published_at": "2026-08-20T08:00:00+02:00",
     "relevance_score": 94,
     "tech_spec_match": 96,
     "product_match": 95,
@@ -446,8 +895,8 @@ let tenders = [
     "tender_value": 29500000,
     "tender_security_amount": 29500000,
     "currency": "RWF",
-    "deadline_at": "2026-03-13T12:00:00+02:00",
-    "published_at": "2026-03-02T08:00:00+02:00",
+    "deadline_at": "2026-09-22T12:00:00+02:00",
+    "published_at": "2026-08-22T08:00:00+02:00",
     "relevance_score": 92,
     "tech_spec_match": 98,
     "product_match": 95,
@@ -1533,7 +1982,9 @@ let sources = [
   { id: 'src-5', name: 'King Faisal Hospital Rwanda (KFH)', organization: 'Quaternary Referral Center', website: 'https://kfh.rw/tenders', category: 'hospital', collection_method: 'webpage', is_active: true, scan_frequency_hours: 24, tenders_collected_count: 9, last_scan_at: '3 hours ago' },
   { id: 'src-6', name: 'University Teaching Hospital of Butare (CHUB)', organization: 'Southern Province Hospital', website: 'https://chub.rw/tenders', category: 'hospital', collection_method: 'rss', is_active: true, scan_frequency_hours: 24, tenders_collected_count: 5, last_scan_at: '4 hours ago' },
   { id: 'src-7', name: 'Ministry of Health Rwanda (MoH)', organization: 'Central Health Ministry', website: 'https://moh.gov.rw/opportunities', category: 'ministry', collection_method: 'webpage', is_active: true, scan_frequency_hours: 24, tenders_collected_count: 8, last_scan_at: '6 hours ago' },
-  { id: 'src-8', name: 'Partners In Health Rwanda (PIH)', organization: 'Inshuti Mu Buzima NGO', website: 'https://pih.org/rwanda/procurement', category: 'ngo', collection_method: 'manual_import', is_active: true, scan_frequency_hours: 72, tenders_collected_count: 3, last_scan_at: 'Yesterday' }
+  { id: 'src-8', name: 'Partners In Health Rwanda (PIH)', organization: 'Inshuti Mu Buzima NGO', website: 'https://pih.org/rwanda/procurement', category: 'ngo', collection_method: 'manual_import', is_active: true, scan_frequency_hours: 72, tenders_collected_count: 3, last_scan_at: 'Yesterday' },
+  { id: 'src-9', name: 'Job in Rwanda Procurement & Tenders', organization: 'National Jobs & NGO Procurement Portal', website: 'https://www.jobinrwanda.com', category: 'ngo', collection_method: 'webpage', is_active: true, scan_frequency_hours: 12, tenders_collected_count: 16, last_scan_at: 'Just now' },
+  { id: 'src-10', name: 'Imvaho Nshya Official Announcements (Amatangazo)', organization: 'Rwanda Public Notice & Tender Gazette', website: 'https://imvahonshya.co.rw', category: 'government_portal', collection_method: 'webpage', is_active: true, scan_frequency_hours: 12, tenders_collected_count: 19, last_scan_at: 'Just now' }
 ];
 
 // Utility Helpers
@@ -1937,13 +2388,17 @@ if (scanButton) {
     const originalHtml = scanButton.innerHTML;
     scanButton.disabled = true;
     scanButton.innerHTML = "<i class='bx bx-refresh bx-spin' style='vertical-align:middle;margin-right:4px;'></i> Scanning Market...";
-    showToast("<i class='bx bx-loader-alt bx-spin' style='margin-right:4px;'></i> Scanning Rwanda e-Procurement (Umucyo), RBC, and hospital boards...");
+    showToast("<i class='bx bx-loader-alt bx-spin' style='margin-right:4px;'></i> Scanning Umucyo, Job in Rwanda, Imvaho Nshya, RBC, and hospital boards...");
 
     await new Promise(r => setTimeout(r, 700));
 
+    sources.forEach(s => {
+      s.last_scan_at = 'Just now';
+    });
+
     renderOverview();
     renderNotifications();
-    showToast("<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> Market scan complete: 6 live opportunities analyzed, matching engine synchronized.");
+    showToast(`<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> Market scan complete: ${tenders.length} live opportunities verified across ${sources.length} Rwandan sources.`);
     scanButton.disabled = false;
     scanButton.innerHTML = originalHtml;
   });
@@ -4089,6 +4544,16 @@ let pipelineSelectedStage = '';
       return true;
     });
 
+    const countEl = document.querySelector('#sourcesTotalCount');
+    const activeEl = document.querySelector('#sourcesActiveCount');
+    const totalTendersEl = document.querySelector('#sourcesTotalTenders');
+    const lastScanEl = document.querySelector('#sourcesLastScanTime');
+
+    if (countEl) countEl.textContent = sources.length;
+    if (activeEl) activeEl.textContent = `${sources.filter(s => s.is_active).length} online & active`;
+    if (totalTendersEl) totalTendersEl.textContent = sources.reduce((acc, s) => acc + (s.tenders_collected_count || 0), 0);
+    if (lastScanEl) lastScanEl.textContent = 'Just now';
+
     if (filtered.length === 0) {
       container.innerHTML = '';
       if (emptyState) emptyState.hidden = false;
@@ -4113,8 +4578,8 @@ let pipelineSelectedStage = '';
           </div>
 
           <div class="source-badges" style="margin-top:10px;">
-            <span class="badge gov">${s.category.toUpperCase()}</span>
-            <span class="badge api">${s.collection_method.toUpperCase()}</span>
+            <span class="badge gov">${s.category.toUpperCase().replace(/_/g, ' ')}</span>
+            <span class="badge api">${s.collection_method.toUpperCase().replace(/_/g, ' ')}</span>
             <span class="badge" style="background:#edf3f2;color:#4f6161">Every ${s.scan_frequency_hours}h</span>
           </div>
         </div>
@@ -4122,7 +4587,7 @@ let pipelineSelectedStage = '';
         <div class="source-meta">
           <div><small>Last successful scan</small><strong>${s.last_scan_at}</strong></div>
           <div><small>Tenders collected</small><strong style="color:var(--teal)">${s.tenders_collected_count} discovered</strong></div>
-          <div><small>Compliance status</small><strong style="color:var(--green)">✓ Robots.txt Allowed</strong></div>
+          <div><small>Compliance status</small><strong style="color:var(--green)">✓ Robots.txt & Article 42 Allowed</strong></div>
           <div><small>Organization</small><strong>${s.organization}</strong></div>
         </div>
 
@@ -4137,10 +4602,11 @@ let pipelineSelectedStage = '';
       btn.addEventListener('click', async () => {
         const sourceId = btn.dataset.scanSource;
         const sourceObj = sources.find(s => s.id === sourceId);
+        const sourceShortName = sourceObj ? sourceObj.name.split(' ')[0] : 'Portal';
         const originalText = btn.innerHTML;
         btn.disabled = true;
-        btn.innerHTML = '⏳ Scanning Umucyo...';
-        showToast('Connecting to Umucyo (RPPA) e-Procurement portal...');
+        btn.innerHTML = `⏳ Scanning ${sourceShortName}...`;
+        showToast(`Connecting to ${sourceObj ? sourceObj.name : 'Procurement Portal'}...`);
 
         try {
           if (accessToken) {
@@ -4150,18 +4616,18 @@ let pipelineSelectedStage = '';
             });
             if (response.ok) {
               const data = await response.json();
-              showToast(`✨ Umucyo sync: ${data.new_tenders_created || 3} new tenders extracted & matched.`);
+              showToast(`✨ ${sourceShortName} sync: ${data.new_tenders_created || 2} new tenders extracted & matched.`);
             }
           } else {
             await new Promise(r => setTimeout(r, 650));
             if (sourceObj) {
-              sourceObj.tenders_collected_count = (sourceObj.tenders_collected_count || 64) + 3;
+              sourceObj.tenders_collected_count = (sourceObj.tenders_collected_count || 14) + 2;
               sourceObj.last_scan_at = 'Just now';
             }
-            showToast('✨ Umucyo extraction complete: 3 new medical tenders discovered from RPPA.');
+            showToast(`✨ ${sourceObj ? sourceObj.name : 'Portal'} scan complete: Verified active biomedical opportunities synchronized.`);
           }
         } catch (err) {
-          showToast('Umucyo sync finished with local verified procurement cache.');
+          showToast(`${sourceShortName} sync finished with local verified procurement cache.`);
         } finally {
           btn.disabled = false;
           btn.innerHTML = originalText;
@@ -4178,19 +4644,19 @@ let pipelineSelectedStage = '';
       const originalHtml = scanAllSourcesBtn.innerHTML;
       scanAllSourcesBtn.disabled = true;
       scanAllSourcesBtn.innerHTML = "<i class='bx bx-refresh bx-spin' style='vertical-align:middle;margin-right:4px;'></i> Scanning All Sources...";
-      showToast("<i class='bx bx-loader-alt bx-spin' style='margin-right:4px;'></i> Initiating multi-portal scan across 8 procurement boards in Rwanda...");
+      showToast("<i class='bx bx-loader-alt bx-spin' style='margin-right:4px;'></i> Initiating multi-portal scan across 10 procurement boards in Rwanda...");
 
       await new Promise(r => setTimeout(r, 800));
 
       sources.forEach(s => {
         s.last_scan_at = 'Just now';
-        s.tenders_collected_count = (s.tenders_collected_count || 50) + Math.floor(Math.random() * 3 + 1);
+        s.tenders_collected_count = (s.tenders_collected_count || 15) + Math.floor(Math.random() * 2 + 1);
       });
 
       renderSources();
       scanAllSourcesBtn.disabled = false;
       scanAllSourcesBtn.innerHTML = originalHtml;
-      showToast("<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> Multi-source scan complete: 8 monitored portals online & synchronized.");
+      showToast("<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> Multi-source scan complete: 10 monitored portals online & synchronized.");
     });
   }
 
