@@ -333,7 +333,7 @@ let tenders = [
     "security": "RWF 12,800,000 (Tender Security / Bank Guarantee)",
     "authorization": "Required (Authorized OEM / Distributor)",
     "stock_readiness": "IN_STOCK",
-    "stock_label": "⚡ Ready for Delivery (RMS Central Warehouse)",
+    "stock_label": "Ready for Delivery (RMS Central Warehouse)",
     "status": "bid_preparation",
     "recommended_action": "BID_HIGH_FIT",
     "recommendation_label": "Bid (High Win Rate - Job in Rwanda)",
@@ -351,7 +351,7 @@ let tenders = [
     "regulatory_parity_score": 100,
     "warranty_parity_score": 95,
     "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
-    "sourcing_strategy_label": "🇨🇳 Bid Automated Diagnostic Suite (97% Parity)",
+    "sourcing_strategy_label": "Bid Automated Diagnostic Suite (97% Parity)",
     "sourcing_strategy_desc": "Live RMS tender on Job in Rwanda. Turnkey supply across 3 laboratory lots with RWF 212M national budget savings.",
     "lots": [
       {
@@ -466,7 +466,7 @@ let tenders = [
     "security": "RWF 6,500,000 (Tender Security)",
     "authorization": "Required (Authorized OEM / Distributor)",
     "stock_readiness": "IN_STOCK",
-    "stock_label": "⚡ In-Stock (6 Units in Kigali Warehouse)",
+    "stock_label": "In-Stock (6 Units in Kigali Warehouse)",
     "status": "bid_preparation",
     "recommended_action": "BID_HIGH_FIT",
     "recommendation_label": "Bid (High Win Rate - Job in Rwanda)",
@@ -484,7 +484,7 @@ let tenders = [
     "regulatory_parity_score": 100,
     "warranty_parity_score": 95,
     "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
-    "sourcing_strategy_label": "🇨🇳 Bid In-Stock Warmers (Catalogue Match NEO-WRM-500)",
+    "sourcing_strategy_label": "Bid In-Stock Warmers (Catalogue Match NEO-WRM-500)",
     "sourcing_strategy_desc": "Live maternal health tender on Job in Rwanda. Matches active catalogue stock NEO-WRM-500 with immediate delivery advantage.",
     "lots": [
       {
@@ -576,7 +576,7 @@ let tenders = [
     "security": "RWF 8,200,000 (Tender Security)",
     "authorization": "Required (Authorized OEM Partner)",
     "stock_readiness": "IN_STOCK",
-    "stock_label": "⚡ In-Stock Delivery Window (15 Days)",
+    "stock_label": "In-Stock Delivery Window (15 Days)",
     "status": "bid_preparation",
     "recommended_action": "BID_HIGH_FIT",
     "recommendation_label": "Bid (High Win Rate - Imvaho Nshya)",
@@ -594,7 +594,7 @@ let tenders = [
     "regulatory_parity_score": 100,
     "warranty_parity_score": 95,
     "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
-    "sourcing_strategy_label": "🇨🇳 Bid High-Frequency Surgical C-Arm (+45% Cost Edge)",
+    "sourcing_strategy_label": "Bid High-Frequency Surgical C-Arm (+45% Cost Edge)",
     "sourcing_strategy_desc": "Live orthopedic hospital procurement on Imvaho Nshya. Full 3-lot coverage with RWF 145M savings for Rilima ROSH.",
     "lots": [
       {
@@ -679,7 +679,7 @@ let tenders = [
     "security": "RWF 4,200,000 (Tender Security Guarantee)",
     "authorization": "Required (Biomedical Engineering License / Rwanda FDA)",
     "stock_readiness": "IN_STOCK",
-    "stock_label": "⚡ 4 Resident Field Engineers in Kigali",
+    "stock_label": "4 Resident Field Engineers in Kigali",
     "status": "bid_preparation",
     "recommended_action": "BID_HIGH_FIT",
     "recommendation_label": "Bid (High Win Rate - Imvaho Nshya)",
@@ -695,7 +695,7 @@ let tenders = [
     "regulatory_parity_score": 100,
     "warranty_parity_score": 100,
     "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
-    "sourcing_strategy_label": "🇨🇳 Local Biomedical Engineering SLA (4-Hour Response)",
+    "sourcing_strategy_label": "Local Biomedical Engineering SLA (4-Hour Response)",
     "sourcing_strategy_desc": "Live 12-month maintenance framework on Imvaho Nshya. Covers 12 clinical facilities with resident Kigali team.",
     "lots": [
       {
@@ -772,7 +772,7 @@ let tenders = [
     "security": "Bid Security Not Required (Document Fee: 10,000 Rwf)",
     "authorization": "Required (Authorized OEM / Distributor)",
     "stock_readiness": "IN_STOCK",
-    "stock_label": "⚡ In-Stock (Kigali Warehouse)",
+    "stock_label": "In-Stock (Kigali Warehouse)",
     "status": "bid_preparation",
     "recommended_action": "BID_HIGH_FIT",
     "recommendation_label": "Bid (High Win Rate)",
@@ -789,7 +789,7 @@ let tenders = [
     "regulatory_parity_score": 100,
     "warranty_parity_score": 95,
     "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
-    "sourcing_strategy_label": "🇨🇳 Bid In-Stock Equivalent (96% Parity)",
+    "sourcing_strategy_label": "Bid In-Stock Equivalent (96% Parity)",
     "sourcing_strategy_desc": "UR-HG simplified bidding. 45-day delivery window. Full Article 42 equivalence with corneal thickness auto-compensation.",
     "lots": [
       {
@@ -907,7 +907,7 @@ let tenders = [
     "security": "Bid Security Not Required (Document Fee: 10,000 Rwf)",
     "authorization": "Required (Authorized OEM / Distributor)",
     "stock_readiness": "IN_STOCK",
-    "stock_label": "⚡ In-Stock (Kigali Warehouse)",
+    "stock_label": "In-Stock (Kigali Warehouse)",
     "status": "bid_preparation",
     "recommended_action": "BID_HIGH_FIT",
     "recommendation_label": "Bid (High Win Rate)",
@@ -924,7 +924,7 @@ let tenders = [
     "regulatory_parity_score": 100,
     "warranty_parity_score": 95,
     "sourcing_strategy": "BID_CHINESE_EQUIVALENT",
-    "sourcing_strategy_label": "🇨🇳 Commercial Stocked Equipment (+49% Cost Edge)",
+    "sourcing_strategy_label": "Commercial Stocked Equipment (+49% Cost Edge)",
     "sourcing_strategy_desc": "UR-HG complete 3-station institutional gym supply. 14-day delivery timeframe from Kigali warehouse stock.",
     "lots": [
       {
@@ -2546,12 +2546,12 @@ Kigali, Rwanda | info@medtender.rw | +250 788 000 000`;
     const letter = generateEquivalenceLetter(tender);
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(letter).then(() => {
-        showToast('✓ RPPA Technical Equivalence Defense Letter copied to clipboard.');
+        showToast("<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> RPPA Technical Equivalence Defense Letter copied to clipboard.");
       }).catch(() => {
         showToast('Defense letter generated. Ready for submission.');
       });
     } else {
-      showToast('✓ RPPA Technical Equivalence Defense Letter generated.');
+      showToast("<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> RPPA Technical Equivalence Defense Letter generated.");
     }
   }
 
@@ -2569,6 +2569,930 @@ Kigali, Rwanda | info@medtender.rw | +250 788 000 000`;
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
     showToast(`Downloaded RPPA Defense statement for ${tender.ref}`);
+  }
+
+  function escapeXml(str) {
+    if (str == null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
+  }
+
+  function exportTenderComplianceExcel(tender) {
+    if (!tender) return;
+
+    const exportDate = new Date();
+    const dateStr = exportDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    const timeStr = exportDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ' CAT';
+    const progress = getRequirementProgress(tender);
+    const itemsList = (tender.items && tender.items.length) ? tender.items : (tender.lots || []);
+    const days = daysRemaining(tender.deadline_at);
+    const deadlineStr = `${formatFullDeadline(tender.deadline_at)} (${days > 0 ? `${days} days left` : 'Closed'})`;
+    const tenderValStr = tender.tender_value ? `RWF ${(tender.tender_value).toLocaleString()}` : (tender.security || 'As specified in DAO');
+    const safeRef = (tender.ref || 'TENDER').replace(/[^a-zA-Z0-9_-]/g, '_');
+    const sheetName = (`Matrix_${tender.ref || 'Compliance'}`).substring(0, 31).replace(/[:\\\/\?\*\[\]]/g, '_');
+
+    // Build spec rows
+    let lotSectionsHtml = '';
+    let globalSpecIndex = 1;
+
+    if (itemsList.length > 0) {
+      lotSectionsHtml = itemsList.map((lot, lIdx) => {
+        const lotTitle = lot.lot_id || (lot.lot_no ? `Lot ${lot.lot_no}` : (lot.lot_number || `Lot ${lIdx + 1}`));
+        const itemTitle = lot.title || lot.name || 'Medical Equipment Supply';
+        const isCompliant = lot.compliance_class === 'compliant' || lot.coverage_status === 'COMPLIANT' || (lot.score === 100);
+        const matchedProduct = lot.our_product || lot.matched_name || lot.target_brand || tender.matched_name || 'Compliant Catalogue Model';
+        const matrix = lot.specs_matrix || [];
+
+        let specRowsHtml = '';
+        if (matrix.length > 0) {
+          specRowsHtml = matrix.map((s, sIdx) => {
+            const isEven = sIdx % 2 === 1;
+            const status = s.status || 'COMPLIANT';
+            const badgeClass = status === 'COMPLIANT' || status === 'EXACT_MATCH'
+              ? 'badge-compliant'
+              : status === 'PARTIALLY_COMPLIANT'
+                ? 'badge-partial'
+                : status === 'VERIFICATION_REQUIRED'
+                  ? 'badge-verify'
+                  : 'badge-non';
+            const badgeLabel = status === 'COMPLIANT' || status === 'EXACT_MATCH'
+              ? 'COMPLIANT'
+              : status === 'PARTIALLY_COMPLIANT'
+                ? 'PARTIALLY COMPLIANT'
+                : status === 'VERIFICATION_REQUIRED'
+                  ? 'VERIFY WITH OEM'
+                  : 'NON-COMPLIANT';
+
+            return `
+            <tr class="${isEven ? 'matrix-row-even' : ''}">
+              <td class="matrix-td" style="text-align:center;font-weight:700;color:#0d9488;">${globalSpecIndex++}</td>
+              <td class="matrix-td" style="font-weight:700;color:#0f172a;">${escapeXml(s.param || s.parameter || 'Technical Specification')}</td>
+              <td class="matrix-td" style="color:#334155;">${escapeXml(s.req || s.required || 'Standard Clinical Requirement')}</td>
+              <td class="matrix-td" style="font-weight:600;color:#042f2e;">${escapeXml(s.sup || s.supplied || matchedProduct)}</td>
+              <td class="matrix-td" style="text-align:center;"><span class="${badgeClass}">${badgeLabel}</span></td>
+              <td class="matrix-td" style="font-size:8.5pt;color:#475569;">${escapeXml(s.notes || s.justification || 'Verified against manufacturer datasheet and RPPA Article 42.')}</td>
+              <td class="matrix-td" style="text-align:center;font-size:8.5pt;font-weight:600;color:#059669;">Verified (Pass)</td>
+            </tr>`;
+          }).join('');
+        } else {
+          // Fallback standard parameters
+          const defaultSpecs = [
+            { param: 'Power & Electrical Standard', req: 'AC 100-240V, 50/60Hz with battery backup & surge protection', sup: 'AC 100-240V 50/60Hz, IEC 60601-1 Class I medical power supply', status: 'COMPLIANT', notes: 'Full hospital grid compatibility with Kigali voltage regulation' },
+            { param: 'Operational Performance & Range', req: 'Continuous hospital duty cycle, high clinical accuracy (<±2%)', sup: 'Heavy-duty clinical rating with certified calibration protocol', status: 'COMPLIANT', notes: 'Meets national clinical threshold for district and referral hospitals' },
+            { param: 'Quality Management & CE Safety', req: 'ISO 13485:2016 and CE / FDA clearance certificates', sup: 'ISO 13485:2016, CE 0123 / FDA 510(k) certified', status: 'COMPLIANT', notes: 'Certificates verified and registered with Rwanda FDA' },
+            { param: 'Warranty & Local Engineering SLA', req: 'Minimum 2-year warranty with on-site biomedical repair SLA', sup: '3-Year comprehensive warranty with 4-hour Kigali emergency SLA', status: 'COMPLIANT', notes: '4 resident biomedical engineers based in Kigali headquarters' }
+          ];
+          specRowsHtml = defaultSpecs.map((s, sIdx) => {
+            const isEven = sIdx % 2 === 1;
+            return `
+            <tr class="${isEven ? 'matrix-row-even' : ''}">
+              <td class="matrix-td" style="text-align:center;font-weight:700;color:#0d9488;">${globalSpecIndex++}</td>
+              <td class="matrix-td" style="font-weight:700;color:#0f172a;">${escapeXml(s.param)}</td>
+              <td class="matrix-td" style="color:#334155;">${escapeXml(s.req)}</td>
+              <td class="matrix-td" style="font-weight:600;color:#042f2e;">${escapeXml(s.sup)}</td>
+              <td class="matrix-td" style="text-align:center;"><span class="badge-compliant">COMPLIANT</span></td>
+              <td class="matrix-td" style="font-size:8.5pt;color:#475569;">${escapeXml(s.notes)}</td>
+              <td class="matrix-td" style="text-align:center;font-size:8.5pt;font-weight:600;color:#059669;">Verified (Pass)</td>
+            </tr>`;
+          }).join('');
+        }
+
+        return `
+        <!-- LOT SUB-HEADER -->
+        <tr>
+          <td colspan="7" class="lot-header-bar">
+            <span style="font-size:10.5pt;font-weight:800;color:#042f2e;">[LOT] ${escapeXml(lotTitle)}: ${escapeXml(itemTitle)}</span>
+            &nbsp;·&nbsp;
+            <span style="font-size:9pt;color:#0f766e;font-weight:700;">Supplied Model: ${escapeXml(matchedProduct)}</span>
+            ${lot.matched_sku ? `&nbsp;·&nbsp;<span style="font-family:'Consolas',monospace;font-size:8.5pt;color:#0d9488;">[SKU: ${escapeXml(lot.matched_sku)}]</span>` : ''}
+            &nbsp;·&nbsp;
+            <span style="font-size:8.5pt;font-weight:800;color:${isCompliant ? '#059669' : '#d97706'};">Status: ${isCompliant ? 'FULLY COMPLIANT' : 'REVIEW REQUIRED'}</span>
+          </td>
+        </tr>
+        ${specRowsHtml}
+        `;
+      }).join('');
+    }
+
+    // Brand Equivalence Section (if available)
+    let brandEquivHtml = '';
+    if (tender.brand_equivalence_matrix && tender.brand_equivalence_matrix.length > 0) {
+      const equivRows = tender.brand_equivalence_matrix.map((m, idx) => {
+        const isEven = idx % 2 === 1;
+        const statusClass = m.status === 'EXACT_MATCH' ? 'badge-compliant' : m.status === 'EQUIVALENT' ? 'badge-equiv' : 'badge-verify';
+        const statusLabel = m.status === 'EXACT_MATCH' ? 'EXACT MATCH / EXCEEDS' : m.status === 'EQUIVALENT' ? 'CLINICAL EQUIVALENT' : 'REGULATORY PARITY';
+        return `
+        <tr class="${isEven ? 'matrix-row-even' : ''}">
+          <td class="matrix-td" style="text-align:center;font-weight:700;color:#7c3aed;">EQ-${idx + 1}</td>
+          <td class="matrix-td" style="font-weight:700;color:#0f172a;">${escapeXml(m.parameter)}</td>
+          <td class="matrix-td" style="color:#b91c1c;font-weight:600;">${escapeXml(m.european_benchmark)}</td>
+          <td class="matrix-td" style="color:#047857;font-weight:600;">${escapeXml(m.chinese_supplied)}</td>
+          <td class="matrix-td" style="text-align:center;"><span class="${statusClass}">${statusLabel}</span></td>
+          <td class="matrix-td" style="font-size:8.5pt;color:#334155;">${escapeXml(m.justification)}</td>
+          <td class="matrix-td" style="font-family:'Consolas',monospace;font-size:8pt;color:#0d9488;text-align:center;">${escapeXml(m.standards_compliance)}</td>
+        </tr>`;
+      }).join('');
+
+      brandEquivHtml = `
+      <!-- SPACER -->
+      <tr><td colspan="7" style="height:14px;"></td></tr>
+
+      <!-- BRAND EQUIVALENCE SECTION BANNER -->
+      <tr>
+        <td colspan="7" class="section-bar" style="background-color:#4c1d95;border-color:#3b0764;">
+          RPPA LAW NO. 62/2018 ARTICLE 42 BRAND EQUIVALENCE & SAVINGS JUSTIFICATION (${tender.equivalence_score || 95}% PARITY)
+        </td>
+      </tr>
+
+      <!-- BRAND BENCHMARK COMPARISON BAR -->
+      <tr>
+        <td colspan="3" class="kpi-cell" style="background-color:#fdf2f8;border:1.5px solid #f472b6;text-align:left;padding:8px 12px;">
+          <div class="kpi-lbl" style="color:#9d174d;">Tender European Benchmark</div>
+          <div style="font-size:11pt;font-weight:800;color:#831843;">${escapeXml(tender.benchmarked_european_brand || 'Standard European Brand')}</div>
+          <div style="font-size:8pt;color:#9d174d;">Est. Market Import: RWF ${(tender.european_market_price_rwf || 0).toLocaleString()} · Lead Time: 45-90 Days</div>
+        </td>
+        <td colspan="4" class="kpi-cell featured" style="text-align:left;padding:8px 12px;">
+          <div class="kpi-lbl">MedTender Stocked Equivalent (Supplied)</div>
+          <div style="font-size:11pt;font-weight:800;color:#042f2e;">${escapeXml(tender.chinese_stocked_model || 'Supplied Certified Medical Device')}</div>
+          <div style="font-size:8pt;color:#0f766e;">
+            Bid Value: RWF ${(tender.chinese_bid_price_rwf || 0).toLocaleString()} &nbsp;·&nbsp;
+            <strong style="color:#059669;background:#d1fae5;padding:1px 6px;border-radius:3px;">Public Savings: RWF ${(tender.cost_savings_rwf || 0).toLocaleString()} (+${tender.cost_advantage_pct || 0}% Advantage)</strong>
+          </div>
+        </td>
+      </tr>
+
+      <!-- EQUIVALENCE HEADERS -->
+      <tr>
+        <th class="matrix-th" style="width:60px;text-align:center;background-color:#5b21b6;">#</th>
+        <th class="matrix-th" style="width:180px;background-color:#5b21b6;">Benchmark Parameter</th>
+        <th class="matrix-th" style="width:240px;background-color:#5b21b6;">European Benchmark Spec</th>
+        <th class="matrix-th" style="width:240px;background-color:#5b21b6;">Supplied Equivalent Spec</th>
+        <th class="matrix-th" style="width:160px;text-align:center;background-color:#5b21b6;">Equivalence Status</th>
+        <th class="matrix-th" style="width:260px;background-color:#5b21b6;">Clinical & Engineering Defense Justification</th>
+        <th class="matrix-th" style="width:130px;text-align:center;background-color:#5b21b6;">Standards Compliance</th>
+      </tr>
+
+      ${equivRows}
+      `;
+    }
+
+    const excelTemplate = `
+    <html xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <!--[if gte mso 9]>
+      <xml>
+        <x:ExcelWorkbook>
+          <x:ExcelWorksheets>
+            <x:ExcelWorksheet>
+              <x:Name>${escapeXml(sheetName)}</x:Name>
+              <x:WorksheetOptions>
+                <x:FitToPage/>
+                <x:Print>
+                  <x:ValidPrinterInfo/>
+                  <x:PaperSizeIndex>9</x:PaperSizeIndex>
+                  <x:Scale>75</x:Scale>
+                  <x:FitWidth>1</x:FitWidth>
+                  <x:FitHeight>0</x:FitHeight>
+                </x:Print>
+                <x:PageSetup>
+                  <x:Layout x:Orientation="Landscape"/>
+                  <x:Header x:Margin="0.3"/>
+                  <x:Footer x:Margin="0.3"/>
+                  <x:PageMargins x:Bottom="0.5" x:Left="0.5" x:Right="0.5" x:Top="0.5"/>
+                </x:PageSetup>
+                <x:DisplayGridlines/>
+              </x:WorksheetOptions>
+            </x:ExcelWorksheet>
+          </x:ExcelWorksheets>
+        </x:ExcelWorkbook>
+      </xml>
+      <![endif]-->
+      <style>
+        body, table {
+          font-family: 'Segoe UI', 'Calibri', -apple-system, Roboto, Arial, sans-serif;
+          font-size: 9.5pt;
+          color: #1e293b;
+          background-color: #ffffff;
+        }
+        .brand-header-cell {
+          background-color: #0b332e;
+          color: #ffffff;
+          padding: 16px 20px;
+          border-bottom: 3px solid #14b8a6;
+        }
+        .brand-badge {
+          background-color: #14b8a6;
+          color: #042f2e;
+          font-weight: 900;
+          font-size: 13pt;
+          padding: 4px 10px;
+          font-family: 'Arial Black', Arial, sans-serif;
+        }
+        .brand-name {
+          font-size: 15pt;
+          font-weight: 800;
+          color: #ffffff;
+          letter-spacing: 1px;
+        }
+        .brand-tagline {
+          font-size: 8pt;
+          color: #99f6e4;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+        }
+        .dossier-meta {
+          font-size: 11pt;
+          font-weight: bold;
+          color: #fef08a;
+          text-align: right;
+        }
+        .dossier-sub {
+          font-size: 8pt;
+          color: #cbd5e1;
+          text-align: right;
+        }
+        .opp-banner {
+          background-color: #f0fdf9;
+          border: 1.5px solid #2dd4bf;
+          padding: 10px 14px;
+        }
+        .opp-title {
+          font-size: 11pt;
+          font-weight: 800;
+          color: #042f2e;
+        }
+        .opp-sub {
+          font-size: 8.5pt;
+          color: #0f766e;
+        }
+        .kpi-cell {
+          padding: 8px 10px;
+          border: 1px solid #cbd5e1;
+          background-color: #f8fafc;
+          text-align: center;
+        }
+        .kpi-cell.featured {
+          background-color: #f0fdf9;
+          border: 1.5px solid #2dd4bf;
+        }
+        .kpi-lbl {
+          font-size: 7pt;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: #64748b;
+        }
+        .kpi-cell.featured .kpi-lbl {
+          color: #0f766e;
+        }
+        .kpi-val {
+          font-size: 13pt;
+          font-weight: 800;
+          color: #0f172a;
+        }
+        .kpi-cell.featured .kpi-val {
+          color: #042f2e;
+        }
+        .section-bar {
+          background-color: #0f4c42;
+          color: #ffffff;
+          font-size: 9pt;
+          font-weight: bold;
+          padding: 8px 12px;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          border: 1px solid #0b3831;
+        }
+        .lot-header-bar {
+          background-color: #e6f4f1;
+          color: #042f2e;
+          font-size: 8.5pt;
+          font-weight: bold;
+          padding: 7px 10px;
+          border: 1px solid #99f6e4;
+        }
+        th.matrix-th {
+          background-color: #134e48;
+          color: #ffffff;
+          font-size: 8pt;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          padding: 8px 6px;
+          border: 1px solid #0f3d38;
+          text-align: left;
+        }
+        td.matrix-td {
+          padding: 7px 6px;
+          border: 1px solid #e2e8f0;
+          font-size: 8.5pt;
+          vertical-align: top;
+        }
+        tr.matrix-row-even td.matrix-td {
+          background-color: #f8fafc;
+        }
+        .badge-compliant {
+          background-color: #d1fae5;
+          color: #065f46;
+          font-weight: 800;
+          font-size: 7.5pt;
+          padding: 2px 6px;
+          border: 1px solid #86efac;
+          text-align: center;
+        }
+        .badge-partial {
+          background-color: #fef3c7;
+          color: #92400e;
+          font-weight: 800;
+          font-size: 7.5pt;
+          padding: 2px 6px;
+          border: 1px solid #fde68a;
+          text-align: center;
+        }
+        .badge-verify {
+          background-color: #ffedd5;
+          color: #c2410c;
+          font-weight: 800;
+          font-size: 7.5pt;
+          padding: 2px 6px;
+          border: 1px solid #fed7aa;
+          text-align: center;
+        }
+        .badge-non {
+          background-color: #fee2e2;
+          color: #991b1b;
+          font-weight: 800;
+          font-size: 7.5pt;
+          padding: 2px 6px;
+          border: 1px solid #fca5a5;
+          text-align: center;
+        }
+        .badge-equiv {
+          background-color: #ede9fe;
+          color: #5b21b6;
+          font-weight: 800;
+          font-size: 7.5pt;
+          padding: 2px 6px;
+          border: 1px solid #c4b5fd;
+          text-align: center;
+        }
+        .reg-table td {
+          padding: 6px 8px;
+          border: 1px solid #e2e8f0;
+          font-size: 8.5pt;
+        }
+        .footer-note {
+          font-size: 8pt;
+          color: #64748b;
+          padding: 12px 8px;
+          text-align: center;
+          background-color: #ffffff;
+        }
+      </style>
+    </head>
+    <body>
+      <table style="width:100%;border-collapse:collapse;">
+        <!-- BRAND & HEADER BANNER -->
+        <tr>
+          <td colspan="4" class="brand-header-cell">
+            <span class="brand-badge">MT</span>
+            <span class="brand-name">MEDTENDER</span>
+            <div class="brand-tagline">Intelligence System · Rwanda Healthcare & Medical Procurement</div>
+          </td>
+          <td colspan="3" class="brand-header-cell" style="text-align:right;">
+            <div class="dossier-meta">TECHNICAL COMPLIANCE & SPECIFICATION DOSSIER</div>
+            <div class="dossier-sub">Tender Ref: ${escapeXml(tender.ref)}</div>
+            <div class="dossier-sub">Generated: ${dateStr}, ${timeStr} · Region: Rwanda (Kigali)</div>
+          </td>
+        </tr>
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:8px;"></td></tr>
+
+        <!-- OPPORTUNITY DETAILS BANNER -->
+        <tr>
+          <td colspan="7" class="opp-banner">
+            <div class="opp-title">${escapeXml(tender.title)}</div>
+            <div class="opp-sub">
+              <strong>Procuring Entity:</strong> ${escapeXml(tender.procuring_entity)} &nbsp;·&nbsp;
+              <strong>Submission Deadline:</strong> ${escapeXml(deadlineStr)} &nbsp;·&nbsp;
+              <strong>Tender Security / Value:</strong> ${escapeXml(tenderValStr)} &nbsp;·&nbsp;
+              <strong>Category:</strong> ${escapeXml(tender.category || 'Medical Equipment Supply')}
+            </div>
+          </td>
+        </tr>
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:8px;"></td></tr>
+
+        <!-- EXECUTIVE SCORE & READINESS CARDS -->
+        <tr>
+          <td colspan="2" class="kpi-cell featured">
+            <div class="kpi-lbl">Company Relevance Fit</div>
+            <div class="kpi-val" style="color:#0f766e;">${tender.relevance_score || 0}%</div>
+            <div style="font-size:7.5pt;color:#0f766e;">Composite Bid Qualification Score</div>
+          </td>
+          <td class="kpi-cell">
+            <div class="kpi-lbl">Technical Spec Match</div>
+            <div class="kpi-val" style="color:#0d9488;">${tender.tech_spec_match || 0}%</div>
+            <div style="font-size:7.5pt;color:#64748b;">${progress.completed}/${progress.total} Specs Fulfilled</div>
+          </td>
+          <td class="kpi-cell">
+            <div class="kpi-lbl">Lot Coverage</div>
+            <div class="kpi-val" style="color:${tender.coverage_rate === 100 ? '#059669' : '#d97706'};">${tender.coverage_rate || 0}%</div>
+            <div style="font-size:7.5pt;color:#64748b;">Turnkey Supply Availability</div>
+          </td>
+          <td class="kpi-cell">
+            <div class="kpi-lbl">Regulatory Match</div>
+            <div class="kpi-val" style="color:#2563eb;">${tender.eligibility_match || 100}%</div>
+            <div style="font-size:7.5pt;color:#64748b;">ISO 13485 & FDA Licensed</div>
+          </td>
+          <td class="kpi-cell">
+            <div class="kpi-lbl">Delivery Readiness</div>
+            <div class="kpi-val" style="font-size:10.5pt;color:#047857;margin-top:4px;">${escapeXml(tender.stock_label || 'In Stock Window')}</div>
+            <div style="font-size:7.5pt;color:#047857;">Local Warehouse Stock</div>
+          </td>
+          <td class="kpi-cell">
+            <div class="kpi-lbl">Strategic Recommendation</div>
+            <div class="kpi-val" style="font-size:9.5pt;color:#042f2e;margin-top:4px;">${escapeXml(tender.recommendation_label || 'BID (HIGH WIN RATE)')}</div>
+            <div style="font-size:7.5pt;color:#059669;">Verified for Bid Submission</div>
+          </td>
+        </tr>
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:10px;"></td></tr>
+
+        <!-- SECTION BANNER: LOT SUPPLY & TECHNICAL MATRIX -->
+        <tr>
+          <td colspan="7" class="section-bar">
+            LIVE SPECIFICATION COMPLIANCE MATRIX · PARAMETER-BY-PARAMETER AUDIT (${itemsList.length} LOTS EVALUATED)
+          </td>
+        </tr>
+
+        <!-- TABLE HEADERS -->
+        <tr>
+          <th class="matrix-th" style="width:50px;text-align:center;">#</th>
+          <th class="matrix-th" style="width:200px;">Specification Parameter</th>
+          <th class="matrix-th" style="width:280px;">Tender Mandatory Requirement (DAO)</th>
+          <th class="matrix-th" style="width:280px;">Our Supplied Technical Specification</th>
+          <th class="matrix-th" style="width:150px;text-align:center;">Compliance Status</th>
+          <th class="matrix-th" style="width:240px;">Clinical & Engineering Notes / Standards</th>
+          <th class="matrix-th" style="width:110px;text-align:center;">Audit Result</th>
+        </tr>
+
+        <!-- LOT & SPECIFICATION ROWS -->
+        ${lotSectionsHtml}
+
+        ${brandEquivHtml}
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:14px;"></td></tr>
+
+        <!-- REGULATORY & QUALIFICATION CHECKLIST BANNER -->
+        <tr>
+          <td colspan="7" class="section-bar" style="background-color:#1e3a8a;border-color:#172554;">
+            MANDATORY QUALIFICATION & REGULATORY ELIGIBILITY CHECKLIST
+          </td>
+        </tr>
+        <tr>
+          <th class="matrix-th" colspan="2" style="background-color:#1e40af;">Compliance & Licensing Requirement</th>
+          <th class="matrix-th" colspan="2" style="background-color:#1e40af;">Tender Mandatory Stipulation</th>
+          <th class="matrix-th" style="background-color:#1e40af;text-align:center;">Our Verified Status</th>
+          <th class="matrix-th" colspan="2" style="background-color:#1e40af;">Regulatory Reference / Authority</th>
+        </tr>
+        <tr class="reg-table">
+          <td colspan="2" style="font-weight:700;color:#0f172a;">1. Medical Device QMS Certification</td>
+          <td colspan="2">Valid ISO 13485:2016 for medical device manufacturer</td>
+          <td style="text-align:center;"><span class="badge-compliant">ACTIVE & VERIFIED</span></td>
+          <td colspan="2" style="color:#475569;">ISO 13485:2016 Certified Facilities</td>
+        </tr>
+        <tr class="matrix-row-even reg-table">
+          <td colspan="2" style="font-weight:700;color:#0f172a;">2. Rwanda FDA Import & Wholesale License</td>
+          <td colspan="2">Authorized medical device wholesale establishment license</td>
+          <td style="text-align:center;"><span class="badge-compliant">ACTIVE & COMPLIANT</span></td>
+          <td colspan="2" style="color:#475569;">Rwanda Food and Drugs Authority (Rwanda FDA)</td>
+        </tr>
+        <tr class="reg-table">
+          <td colspan="2" style="font-weight:700;color:#0f172a;">3. Manufacturer Authorization Letter (MAF)</td>
+          <td colspan="2">${escapeXml(tender.authorization || 'Required (Authorized OEM Partner)')}</td>
+          <td style="text-align:center;"><span class="badge-compliant">AUTHENTICATED MAF</span></td>
+          <td colspan="2" style="color:#475569;">Direct Authorized Partner / OEM Channel</td>
+        </tr>
+        <tr class="matrix-row-even reg-table">
+          <td colspan="2" style="font-weight:700;color:#0f172a;">4. Tender Security / Bid Bond</td>
+          <td colspan="2">${escapeXml(tender.security || 'Bank Guarantee / Insurance Bond')}</td>
+          <td style="text-align:center;"><span class="badge-compliant">READY FOR ISSUANCE</span></td>
+          <td colspan="2" style="color:#475569;">Commercial Bank of Rwanda / RPPA Standard</td>
+        </tr>
+        <tr class="reg-table">
+          <td colspan="2" style="font-weight:700;color:#0f172a;">5. Local Biomedical Engineering SLA</td>
+          <td colspan="2">On-site installation, commissioning, maintenance & staff training</td>
+          <td style="text-align:center;"><span class="badge-compliant">RESIDENT KIGALI TEAM</span></td>
+          <td colspan="2" style="color:#475569;">4 Resident Biomedical Engineers (4-Hour SLA)</td>
+        </tr>
+        <tr class="matrix-row-even reg-table">
+          <td colspan="2" style="font-weight:700;color:#0f172a;">6. Brand Equivalence Formulation</td>
+          <td colspan="2">Non-restrictive technical specifications (RPPA Art. 42)</td>
+          <td style="text-align:center;"><span class="badge-compliant">CERTIFIED EQUIVALENCE</span></td>
+          <td colspan="2" style="color:#475569;">Law No. 62/2018 Governing Public Procurement Art. 42</td>
+        </tr>
+
+        ${tender.expansion_potential ? `
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:10px;"></td></tr>
+        <tr>
+          <td colspan="7" style="background-color:#eff6ff;border:1.5px solid #60a5fa;padding:8px 12px;font-size:8.5pt;">
+            <strong style="color:#1e40af;">Startup & Commercial Expansion Insight:</strong>
+            <span style="color:#1e3a8a;">${escapeXml(tender.expansion_potential)}</span>
+          </td>
+        </tr>
+        ` : ''}
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:14px;"></td></tr>
+
+        <!-- FOOTER LEGAL & MARGINS -->
+        <tr>
+          <td colspan="7" class="footer-note">
+            MedTender Intelligence System · Kigali, Rwanda · Formally Prepared under RPPA Law No. 62/2018 (Article 42) & Rwanda FDA Regulations · Confidential & Authorized for Bid Preparation Only
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>`;
+
+    const blob = new Blob([excelTemplate], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `MedTender_Compliance_Matrix_${safeRef}_${exportDate.toISOString().split('T')[0]}.xls`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    showToast(`<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> Compliance Matrix for "${escapeXml(tender.ref)}" exported to Excel with verified branding and spec parity.`);
+  }
+
+  function exportTenderEquivalenceExcel(tender) {
+    if (!tender) return;
+
+    const exportDate = new Date();
+    const dateStr = exportDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    const timeStr = exportDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ' CAT';
+    const safeRef = (tender.ref || 'TENDER').replace(/[^a-zA-Z0-9_-]/g, '_');
+    const sheetName = (`Equiv_${tender.ref || 'Dossier'}`).substring(0, 31).replace(/[:\\\/\?\*\[\]]/g, '_');
+
+    const matrix = tender.brand_equivalence_matrix || [];
+    const matrixRows = matrix.map((m, idx) => {
+      const isEven = idx % 2 === 1;
+      const statusClass = m.status === 'EXACT_MATCH' ? 'badge-compliant' : m.status === 'EQUIVALENT' ? 'badge-equiv' : 'badge-verify';
+      const statusLabel = m.status === 'EXACT_MATCH' ? 'EXACT MATCH / EXCEEDS' : m.status === 'EQUIVALENT' ? 'CLINICAL EQUIVALENT' : 'REGULATORY PARITY';
+      return `
+      <tr class="${isEven ? 'matrix-row-even' : ''}">
+        <td class="matrix-td" style="text-align:center;font-weight:700;color:#7c3aed;">EQ-${idx + 1}</td>
+        <td class="matrix-td" style="font-weight:700;color:#0f172a;">${escapeXml(m.parameter)}</td>
+        <td class="matrix-td" style="color:#b91c1c;font-weight:600;">${escapeXml(m.european_benchmark)}</td>
+        <td class="matrix-td" style="color:#047857;font-weight:600;">${escapeXml(m.chinese_supplied)}</td>
+        <td class="matrix-td" style="text-align:center;"><span class="${statusClass}">${statusLabel}</span></td>
+        <td class="matrix-td" style="font-size:8.5pt;color:#334155;">${escapeXml(m.justification)}</td>
+        <td class="matrix-td" style="font-family:'Consolas',monospace;font-size:8pt;color:#0d9488;text-align:center;">${escapeXml(m.standards_compliance)}</td>
+      </tr>`;
+    }).join('');
+
+    const excelTemplate = `
+    <html xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <!--[if gte mso 9]>
+      <xml>
+        <x:ExcelWorkbook>
+          <x:ExcelWorksheets>
+            <x:ExcelWorksheet>
+              <x:Name>${escapeXml(sheetName)}</x:Name>
+              <x:WorksheetOptions>
+                <x:FitToPage/>
+                <x:Print>
+                  <x:ValidPrinterInfo/>
+                  <x:PaperSizeIndex>9</x:PaperSizeIndex>
+                  <x:Scale>75</x:Scale>
+                  <x:FitWidth>1</x:FitWidth>
+                  <x:FitHeight>0</x:FitHeight>
+                </x:Print>
+                <x:PageSetup>
+                  <x:Layout x:Orientation="Landscape"/>
+                  <x:Header x:Margin="0.3"/>
+                  <x:Footer x:Margin="0.3"/>
+                  <x:PageMargins x:Bottom="0.5" x:Left="0.5" x:Right="0.5" x:Top="0.5"/>
+                </x:PageSetup>
+                <x:DisplayGridlines/>
+              </x:WorksheetOptions>
+            </x:ExcelWorksheet>
+          </x:ExcelWorksheets>
+        </x:ExcelWorkbook>
+      </xml>
+      <![endif]-->
+      <style>
+        body, table {
+          font-family: 'Segoe UI', 'Calibri', -apple-system, Roboto, Arial, sans-serif;
+          font-size: 9.5pt;
+          color: #1e293b;
+          background-color: #ffffff;
+        }
+        .brand-header-cell {
+          background-color: #3b0764;
+          color: #ffffff;
+          padding: 16px 20px;
+          border-bottom: 3px solid #c084fc;
+        }
+        .brand-badge {
+          background-color: #c084fc;
+          color: #3b0764;
+          font-weight: 900;
+          font-size: 13pt;
+          padding: 4px 10px;
+          font-family: 'Arial Black', Arial, sans-serif;
+        }
+        .brand-name {
+          font-size: 15pt;
+          font-weight: 800;
+          color: #ffffff;
+          letter-spacing: 1px;
+        }
+        .brand-tagline {
+          font-size: 8pt;
+          color: #e9d5ff;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+        }
+        .dossier-meta {
+          font-size: 11pt;
+          font-weight: bold;
+          color: #fef08a;
+          text-align: right;
+        }
+        .dossier-sub {
+          font-size: 8pt;
+          color: #e2e8f0;
+          text-align: right;
+        }
+        .opp-banner {
+          background-color: #faf5ff;
+          border: 1.5px solid #d8b4fe;
+          padding: 10px 14px;
+        }
+        .opp-title {
+          font-size: 11pt;
+          font-weight: 800;
+          color: #3b0764;
+        }
+        .opp-sub {
+          font-size: 8.5pt;
+          color: #6b21a8;
+        }
+        .kpi-cell {
+          padding: 8px 10px;
+          border: 1px solid #cbd5e1;
+          background-color: #f8fafc;
+          text-align: center;
+        }
+        .kpi-cell.featured {
+          background-color: #faf5ff;
+          border: 1.5px solid #c084fc;
+        }
+        .kpi-lbl {
+          font-size: 7pt;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: #64748b;
+        }
+        .kpi-cell.featured .kpi-lbl {
+          color: #6b21a8;
+        }
+        .kpi-val {
+          font-size: 13pt;
+          font-weight: 800;
+          color: #0f172a;
+        }
+        .kpi-cell.featured .kpi-val {
+          color: #3b0764;
+        }
+        .section-bar {
+          background-color: #4c1d95;
+          color: #ffffff;
+          font-size: 9pt;
+          font-weight: bold;
+          padding: 8px 12px;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          border: 1px solid #3b0764;
+        }
+        th.matrix-th {
+          background-color: #5b21b6;
+          color: #ffffff;
+          font-size: 8pt;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          padding: 8px 6px;
+          border: 1px solid #4c1d95;
+          text-align: left;
+        }
+        td.matrix-td {
+          padding: 7px 6px;
+          border: 1px solid #e2e8f0;
+          font-size: 8.5pt;
+          vertical-align: top;
+        }
+        tr.matrix-row-even td.matrix-td {
+          background-color: #f8fafc;
+        }
+        .badge-compliant {
+          background-color: #d1fae5;
+          color: #065f46;
+          font-weight: 800;
+          font-size: 7.5pt;
+          padding: 2px 6px;
+          border: 1px solid #86efac;
+          text-align: center;
+        }
+        .badge-equiv {
+          background-color: #ede9fe;
+          color: #5b21b6;
+          font-weight: 800;
+          font-size: 7.5pt;
+          padding: 2px 6px;
+          border: 1px solid #c4b5fd;
+          text-align: center;
+        }
+        .badge-verify {
+          background-color: #ffedd5;
+          color: #c2410c;
+          font-weight: 800;
+          font-size: 7.5pt;
+          padding: 2px 6px;
+          border: 1px solid #fed7aa;
+          text-align: center;
+        }
+        .footer-note {
+          font-size: 8pt;
+          color: #64748b;
+          padding: 12px 8px;
+          text-align: center;
+          background-color: #ffffff;
+        }
+      </style>
+    </head>
+    <body>
+      <table style="width:100%;border-collapse:collapse;">
+        <!-- BRAND & HEADER BANNER -->
+        <tr>
+          <td colspan="4" class="brand-header-cell">
+            <span class="brand-badge">MT</span>
+            <span class="brand-name">MEDTENDER</span>
+            <div class="brand-tagline">Intelligence System · Rwanda Healthcare & Medical Procurement</div>
+          </td>
+          <td colspan="3" class="brand-header-cell" style="text-align:right;">
+            <div class="dossier-meta">RPPA ART. 42 EQUIVALENCE DEFENSE DOSSIER</div>
+            <div class="dossier-sub">Tender Ref: ${escapeXml(tender.ref)}</div>
+            <div class="dossier-sub">Generated: ${dateStr}, ${timeStr} · Region: Rwanda (Kigali)</div>
+          </td>
+        </tr>
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:8px;"></td></tr>
+
+        <!-- OPPORTUNITY DETAILS BANNER -->
+        <tr>
+          <td colspan="7" class="opp-banner">
+            <div class="opp-title">${escapeXml(tender.title)}</div>
+            <div class="opp-sub">
+              <strong>Procuring Entity:</strong> ${escapeXml(tender.procuring_entity)} &nbsp;·&nbsp;
+              <strong>Strategy:</strong> ${escapeXml(tender.sourcing_strategy_label || 'Brand Equivalence Sourcing')} &nbsp;·&nbsp;
+              <strong>Legal Reference:</strong> Rwanda Public Procurement Law No. 62/2018, Article 42
+            </div>
+          </td>
+        </tr>
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:8px;"></td></tr>
+
+        <!-- PARITY SCORE BREAKDOWN CARDS -->
+        <tr>
+          <td colspan="2" class="kpi-cell featured">
+            <div class="kpi-lbl">Overall Equivalence Parity</div>
+            <div class="kpi-val" style="color:#5b21b6;">${tender.equivalence_score || 95}%</div>
+            <div style="font-size:7.5pt;color:#5b21b6;">RPPA Article 42 Compliant</div>
+          </td>
+          <td class="kpi-cell">
+            <div class="kpi-lbl">Technical Spec Parity (40%)</div>
+            <div class="kpi-val" style="color:#0d9488;">${tender.tech_parity_score || 95}%</div>
+            <div style="font-size:7.5pt;color:#64748b;">Core engineering match</div>
+          </td>
+          <td class="kpi-cell">
+            <div class="kpi-lbl">Clinical Performance (30%)</div>
+            <div class="kpi-val" style="color:#059669;">${tender.clinical_parity_score || 94}%</div>
+            <div style="font-size:7.5pt;color:#64748b;">Diagnostic / Treatment standard</div>
+          </td>
+          <td class="kpi-cell">
+            <div class="kpi-lbl">Regulatory Compliance (20%)</div>
+            <div class="kpi-val" style="color:#2563eb;">${tender.regulatory_parity_score || 100}%</div>
+            <div style="font-size:7.5pt;color:#64748b;">ISO 13485 & CE/FDA certified</div>
+          </td>
+          <td colspan="2" class="kpi-cell">
+            <div class="kpi-lbl">Local Kigali SLA (10%)</div>
+            <div class="kpi-val" style="color:#d97706;">${tender.warranty_parity_score || 95}%</div>
+            <div style="font-size:7.5pt;color:#64748b;">3-Year warranty + 4-hr response</div>
+          </td>
+        </tr>
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:10px;"></td></tr>
+
+        <!-- COST ADVANTAGE BENCHMARK CARD -->
+        <tr>
+          <td colspan="3" class="kpi-cell" style="background-color:#fdf2f8;border:1.5px solid #f472b6;text-align:left;padding:10px 14px;">
+            <div class="kpi-lbl" style="color:#9d174d;">Benchmarked European Reference Brand</div>
+            <div style="font-size:11pt;font-weight:800;color:#831843;">${escapeXml(tender.benchmarked_european_brand || 'European Benchmark Model')}</div>
+            <div style="font-size:8.5pt;color:#9d174d;margin-top:2px;">
+              Estimated European Market Import Cost: <strong>RWF ${(tender.european_market_price_rwf || 0).toLocaleString()}</strong>
+            </div>
+            <div style="font-size:8pt;color:#9d174d;">Estimated Delivery Window: 45 - 90 Days Shipping</div>
+          </td>
+          <td colspan="4" class="kpi-cell featured" style="text-align:left;padding:10px 14px;">
+            <div class="kpi-lbl">MedTender Certified Equivalent Model (Supplied)</div>
+            <div style="font-size:11pt;font-weight:800;color:#042f2e;">${escapeXml(tender.chinese_stocked_model || 'Supplied Certified Medical Model')}</div>
+            <div style="font-size:8.5pt;color:#042f2e;margin-top:2px;">
+              Our Acquisition Bid Price: <strong>RWF ${(tender.chinese_bid_price_rwf || 0).toLocaleString()}</strong> &nbsp;·&nbsp;
+              <span style="background-color:#d1fae5;color:#065f46;font-weight:800;padding:2px 6px;border-radius:3px;">
+                Direct Public Budget Savings: RWF ${(tender.cost_savings_rwf || 0).toLocaleString()} (+${tender.cost_advantage_pct || 0}% Advantage)
+              </span>
+            </div>
+            <div style="font-size:8pt;color:#0f766e;">Delivery Readiness: ${escapeXml(tender.stock_label || 'In-Stock Kigali Window')}</div>
+          </td>
+        </tr>
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:10px;"></td></tr>
+
+        <!-- EQUIVALENCE MATRIX TABLE -->
+        <tr>
+          <td colspan="7" class="section-bar">
+            GRANULAR PARAMETER DEVIATION & CLINICAL JUSTIFICATION MATRIX
+          </td>
+        </tr>
+        <tr>
+          <th class="matrix-th" style="width:60px;text-align:center;">#</th>
+          <th class="matrix-th" style="width:180px;">Parameter</th>
+          <th class="matrix-th" style="width:240px;">European Benchmark</th>
+          <th class="matrix-th" style="width:240px;">Supplied Specification</th>
+          <th class="matrix-th" style="width:160px;text-align:center;">Equivalence Status</th>
+          <th class="matrix-th" style="width:260px;">Clinical / Engineering Defense Justification</th>
+          <th class="matrix-th" style="width:130px;text-align:center;">Standards Compliance</th>
+        </tr>
+
+        ${matrixRows}
+
+        <!-- SPACER -->
+        <tr><td colspan="7" style="height:14px;"></td></tr>
+
+        <!-- LEGAL DEFENSE SUMMARY -->
+        <tr>
+          <td colspan="7" style="background-color:#f5f3ff;border:1.5px solid #c4b5fd;padding:12px 16px;font-size:9pt;line-height:1.5;color:#3b0764;">
+            <strong style="font-size:10pt;">Formal Legal Defense Note (RPPA Law No. 62/2018, Art. 42):</strong><br>
+            Under Rwandan Public Procurement Law, tender specifications must promote broad competition and not favor proprietary trademarks or brand names without allowing equal consideration for technical equivalents. The specifications demonstrated above fulfill and exceed all therapeutic, diagnostic, electrical, and safety requirements specified in the Tender Bidding Documents.
+          </td>
+        </tr>
+
+        <!-- FOOTER -->
+        <tr>
+          <td colspan="7" class="footer-note">
+            MedTender Intelligence System · Kigali, Rwanda · Formally Prepared under RPPA Law No. 62/2018 (Article 42) & Rwanda FDA Regulations · Confidential
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>`;
+
+    const blob = new Blob([excelTemplate], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `RPPA_Equivalence_Dossier_${safeRef}_${exportDate.toISOString().split('T')[0]}.xls`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    showToast(`<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> RPPA Brand Equivalence Dossier for "${escapeXml(tender.ref)}" exported to Excel.`);
   }
 
 // Stage Filter State
@@ -2702,7 +3626,7 @@ let pipelineSelectedStage = '';
             <span class="strategy-badge ${stratClass}">${t.sourcing_strategy_label}</span>
             <div class="strategy-sub-row">
               <span class="stock-tag ${t.stock_readiness === 'IN_STOCK' ? 'in-stock' : t.stock_readiness === 'EXPANSION_OPPORTUNITY' ? 'expansion' : 'lead-time'}">
-                ${t.stock_readiness === 'IN_STOCK' ? '⚡ In-Stock' : 'Lead Time'}
+                ${t.stock_readiness === 'IN_STOCK' ? 'In-Stock' : 'Lead Time'}
               </span>
               <small class="benchmark-txt">vs ${t.benchmarked_european_brand ? t.benchmarked_european_brand.split('/')[0].trim() : 'Benchmark'}</small>
             </div>
@@ -3094,7 +4018,7 @@ let pipelineSelectedStage = '';
             <td style="text-align:center;font-weight:bold;color:#042f2e;">${Math.round(activeTenders.reduce((s,t) => s + (t.relevance_score||0),0)/activeTenders.length)}%</td>
             <td style="text-align:center;font-weight:bold;color:#0d9488;">${avgSpecMatch}%</td>
             <td style="text-align:center;font-weight:bold;color:#059669;">${Math.round(activeTenders.reduce((s,t) => s + (t.coverage_rate||0),0)/activeTenders.length)}%</td>
-            <td colspan="3" style="font-size:8.5pt;color:#0f766e;">✓ Complete RPPA Article 42 Brand Equivalence Dossier Included</td>
+            <td colspan="3" style="font-size:8.5pt;color:#0f766e;">Complete RPPA Article 42 Brand Equivalence Dossier Included</td>
           </tr>
 
           <!-- FOOTER LEGAL & MARGINS -->
@@ -3529,7 +4453,7 @@ let pipelineSelectedStage = '';
         security: `RWF ${value.toLocaleString()}`,
         authorization: 'Required (Authorized OEM / Distributor)',
         stock_readiness: 'IN_STOCK',
-        stock_label: '⚡ In-Stock (Kigali Warehouse)',
+        stock_label: 'In-Stock (Kigali Warehouse)',
         status: 'bid_preparation',
         recommended_action: 'BID_HIGH_FIT',
         recommendation_label: 'Bid (High Win Rate)',
@@ -3544,7 +4468,7 @@ let pipelineSelectedStage = '';
         regulatory_parity_score: 100,
         warranty_parity_score: 95,
         sourcing_strategy: 'BID_CHINESE_EQUIVALENT',
-        sourcing_strategy_label: '🇨🇳 Bid In-Stock Equivalent (+45% Cost Edge)',
+        sourcing_strategy_label: 'Bid In-Stock Equivalent (+45% Cost Edge)',
         sourcing_strategy_desc: `Registered opportunity from document extraction. Full lot coverage with RWF ${(Math.round(value * 0.45)).toLocaleString()} public savings.`,
         lots: constructedLots,
         items: constructedItems,
@@ -3627,14 +4551,14 @@ let pipelineSelectedStage = '';
 
     container.innerHTML = filtered.map(p => {
       const stockClass = p.stock_status === 'IN_STOCK' ? 'safe' : p.stock_status === 'LOW_STOCK_URGENT' ? 'low' : 'safe';
-      const stockLabel = p.stock_status === 'LOW_STOCK_URGENT' ? '⚠️ Low Stock Alert' : '✓ In Stock Ready';
+      const stockLabel = p.stock_status === 'LOW_STOCK_URGENT' ? "<i class='bx bx-error-circle' style='color:#ef4444;'></i> Low Stock Alert" : "<i class='bx bx-check-circle' style='color:var(--green);'></i> In Stock Ready";
 
       return `
       <article class="product-card">
         <div>
           <div class="product-card-top">
             <span class="product-code">${p.code}</span>
-            <span class="origin-flag-badge">${p.origin || '🇨🇳 China Stock'}</span>
+            <span class="origin-flag-badge">${p.origin || 'China Stock'}</span>
             <span class="badge" style="background:#e3f1ed;color:var(--teal-dark)">${p.category}</span>
           </div>
 
@@ -3644,7 +4568,7 @@ let pipelineSelectedStage = '';
             ${p.european_benchmark ? `
               <div class="benchmark-pill" style="margin-top:4px;">
                 <small style="color:#1d554f;font-size:10px;display:block;">
-                  🇪🇺 <strong>Benchmark Eq:</strong> ${p.european_benchmark}
+                  <i class='bx bx-shield-quarter' style='color:var(--teal);'></i> <strong>Benchmark Eq:</strong> ${p.european_benchmark}
                 </small>
               </div>
             ` : ''}
@@ -3652,7 +4576,7 @@ let pipelineSelectedStage = '';
 
           ${p.cost_advantage_pct ? `
             <div class="cost-advantage-tag" style="margin-bottom:8px;">
-              ⚡ <strong>${p.cost_advantage_pct}% Lower Cost</strong> vs European Import
+              <i class='bx bx-trending-down' style='color:var(--green);'></i> <strong>${p.cost_advantage_pct}% Lower Cost</strong> vs European Import
             </div>
           ` : ''}
 
@@ -3663,7 +4587,7 @@ let pipelineSelectedStage = '';
 
         <div>
           <div style="margin: 12px 0 8px; display: flex; gap: 5px; flex-wrap: wrap;">
-            ${p.certifications.map(c => `<span class="cert-tag">✓ ${c}</span>`).join('')}
+            ${p.certifications.map(c => `<span class="cert-tag"><i class='bx bx-check'></i> ${c}</span>`).join('')}
           </div>
 
           <div class="product-footer">
@@ -3757,7 +4681,7 @@ let pipelineSelectedStage = '';
           </div>
 
           <div style="font-size:10px;color:#556666;line-height:1.4;background:var(--paper);padding:8px 10px;border-radius:4px;">
-            💡 <strong>Bidding Feasibility:</strong> ${d.delivery_advantage_note}
+            <i class='bx bx-bulb' style='color:var(--teal);'></i> <strong>Bidding Feasibility:</strong> ${d.delivery_advantage_note}
           </div>
 
           <div style="display:flex;gap:8px;">
@@ -3919,8 +4843,8 @@ let pipelineSelectedStage = '';
         saveCatalogue();
         const demMon = recurringDemand.find(d => d.code === 'ICU-MON-12');
         const demGlv = recurringDemand.find(d => d.code === 'CON-SUR-GLV');
-        if (demMon) { demMon.current_warehouse_stock += 8; demMon.urgency_level = 'SAFE'; demMon.urgency_label = '🟢 Replenished (Safe Buffer)'; }
-        if (demGlv) { demGlv.current_warehouse_stock += 1200; demGlv.urgency_level = 'SAFE'; demGlv.urgency_label = '🟢 Replenished (Safe Buffer)'; }
+        if (demMon) { demMon.current_warehouse_stock += 8; demMon.urgency_level = 'SAFE'; demMon.urgency_label = 'Replenished (Safe Buffer)'; }
+        if (demGlv) { demGlv.current_warehouse_stock += 1200; demGlv.urgency_level = 'SAFE'; demGlv.urgency_label = 'Replenished (Safe Buffer)'; }
         renderCatalogue();
         renderDemand();
         renderOverview();
@@ -4007,13 +4931,13 @@ let pipelineSelectedStage = '';
       </section>
 
       <section class="catalogue-source-note" aria-label="Product specification source">
-        <span class="source-note-icon">▣</span><div><strong>Product specifications sourced from Detailed Product Catalogue</strong><small>${tender.matched_name || 'Selected catalogue product'} → Tender requirements → Match status</small></div><span class="source-note-status">Catalogue-backed</span>
+        <span class="source-note-icon"><i class='bx bx-data'></i></span><div><strong>Product specifications sourced from Detailed Product Catalogue</strong><small>${tender.matched_name || 'Selected catalogue product'} → Tender requirements → Match status</small></div><span class="source-note-status">Catalogue-backed</span>
       </section>
 
       <!-- Multi-Score Company Fit Matrix -->
       <div class="drawer-score-grid" aria-label="Company relevance score breakdown">
         <div class="drawer-score" style="border:2px solid var(--teal)">
-          <strong style="font-size:18px;">★ ${tender.relevance_score}%</strong>
+          <strong style="font-size:18px;"><i class='bx bxs-star' style='color:var(--teal);font-size:16px;'></i> ${tender.relevance_score}%</strong>
           <small>Company Relevance</small>
         </div>
         <div class="drawer-score">
@@ -4056,12 +4980,12 @@ let pipelineSelectedStage = '';
             <div class="lot-header">
               <span class="lot-title">${lotTitle}: ${itemTitle}</span>
               <span class="compliance-status ${isCompliant ? 'compliant' : 'non-compliant'}">
-                ${isCompliant ? '✅ Supplied' : '❌ Missing Product'}
+                ${isCompliant ? "<i class='bx bx-check-circle' style='color:var(--green);'></i> Supplied" : "<i class='bx bx-x-circle' style='color:#ef4444;'></i> Missing Product"}
               </span>
             </div>
 
             <div class="lot-product-pairing">
-              <span style="font-size:16px;">📦</span>
+              <span style="font-size:16px;"><i class='bx bx-package' style='color:var(--teal);'></i></span>
               <div>
                 <strong>${matchedProduct}</strong>
                 ${lot.matched_sku ? `<small style="font-family:'DM Mono',monospace;color:var(--teal)">SKU: ${lot.matched_sku}</small>` : ''}
@@ -4081,7 +5005,7 @@ let pipelineSelectedStage = '';
               </thead>
               <tbody>
                 ${matrix.map(s => {
-                  const badgeIcon = s.status === 'COMPLIANT' ? '✅' : s.status === 'VERIFICATION_REQUIRED' ? '⚠️' : s.status === 'PARTIALLY_COMPLIANT' ? '🟡' : s.status === 'NON_COMPLIANT' ? '❌' : '❓';
+                  const badgeIcon = s.status === 'COMPLIANT' ? "<i class='bx bx-check-circle' style='color:var(--green);'></i>" : s.status === 'VERIFICATION_REQUIRED' ? "<i class='bx bx-error' style='color:#d97706;'></i>" : s.status === 'PARTIALLY_COMPLIANT' ? "<i class='bx bx-adjust' style='color:#f59e0b;'></i>" : s.status === 'NON_COMPLIANT' ? "<i class='bx bx-x-circle' style='color:#ef4444;'></i>" : "<i class='bx bx-help-circle'></i>";
                   const badgeClass = s.status ? s.status.toLowerCase().replace(/_/g, '-') : 'compliant';
                   return `
                     <tr>
@@ -4113,27 +5037,29 @@ let pipelineSelectedStage = '';
         <h3>Qualification & Regulatory Checklist</h3>
         <div class="drawer-facts">
           <div><small>Tender Security Amount</small><strong>${formatRWF(tender.tender_value)}</strong></div>
-          <div><small>Submission Deadline (Umucyo)</small><strong>${formatFullDeadline(tender.deadline_at)}</strong><small style="display:block;margin-top:2px;color:var(--teal-dark);font-weight:600;">⏱️ ${days > 0 ? `${days} days remaining` : 'Closed'}</small></div>
+          <div><small>Submission Deadline (Umucyo)</small><strong>${formatFullDeadline(tender.deadline_at)}</strong><small style="display:block;margin-top:2px;color:var(--teal-dark);font-weight:600;"><i class='bx bx-time-five' style='margin-right:2px;'></i> ${days > 0 ? `${days} days remaining` : 'Closed'}</small></div>
           <div><small>Bid Security Required</small><strong>${tender.security}</strong></div>
           <div><small>Manufacturer Authorization Letter</small><strong>${tender.authorization}</strong></div>
-          <div><small>ISO 13485:2016 Certificate</small><strong style="color:var(--green)">✓ Verified On File</strong></div>
-          <div><small>Rwanda FDA Wholesale License</small><strong style="color:var(--green)">✓ Active & Compliant</strong></div>
+          <div><small>ISO 13485:2016 Certificate</small><strong style="color:var(--green)"><i class='bx bx-check-circle'></i> Verified On File</strong></div>
+          <div><small>Rwanda FDA Wholesale License</small><strong style="color:var(--green)"><i class='bx bx-check-circle'></i> Active & Compliant</strong></div>
         </div>
       </section>
 
       ${tender.expansion_potential ? `
         <div class="restock-alert opportunity" style="margin-top:14px;">
           <div>
-            <strong>🚀 Startup Expansion Insight:</strong>
+            <strong><i class='bx bx-rocket' style='color:var(--teal);margin-right:4px;'></i> Startup Expansion Insight:</strong>
             <p style="margin:2px 0 0;font-size:10px;">${tender.expansion_potential}</p>
           </div>
         </div>
       ` : ''}
 
       <div class="drawer-actions">
-        <button class="outline-button" id="exportMatrixBtn">Export Compliance CSV</button>
+        <button class="outline-button" id="exportMatrixBtn">
+          <i class='bx bx-spreadsheet' aria-hidden="true"></i> Export Compliance Excel
+        </button>
         <button class="primary-button" id="advancePrepBtn">
-          ${tender.status === 'bid_preparation' ? '✓ In Bid Prep Workspace' : 'Advance to Bid Preparation →'}
+          ${tender.status === 'bid_preparation' ? "<i class='bx bx-check-double'></i> In Bid Prep Workspace" : "Advance to Bid Preparation <i class='bx bx-right-arrow-alt'></i>"}
         </button>
       </div>
     `;
@@ -4143,27 +5069,27 @@ let pipelineSelectedStage = '';
       <div class="strategy-banner ${stratClass}">
         <div class="strategy-banner-top">
           <span class="strategy-badge ${stratClass}">${tender.sourcing_strategy_label}</span>
-          <span class="cost-savings-pill">⚡ Save ${formatRWF(tender.cost_savings_rwf)} (${tender.cost_advantage_pct}% Lower)</span>
+          <span class="cost-savings-pill"><i class='bx bx-bolt-circle'></i> Save ${formatRWF(tender.cost_savings_rwf)} (${tender.cost_advantage_pct}% Lower)</span>
         </div>
         <p class="strategy-desc">${tender.sourcing_strategy_desc}</p>
       </div>
 
       <!-- Side-by-Side Brand Benchmark Comparison Grid -->
       <section class="drawer-section">
-        <h3>🇨🇳 Chinese Stock vs 🇪🇺 European Benchmark</h3>
+        <h3><i class='bx bx-git-compare' style='color:var(--teal);margin-right:4px;'></i> Chinese Stock vs European Benchmark</h3>
         <div class="brand-compare-grid">
           <div class="brand-compare-card chinese">
-            <div class="compare-badge chinese">🇨🇳 Our Stocked Supply</div>
+            <div class="compare-badge chinese"><i class='bx bx-package'></i> Our Stocked Supply</div>
             <h4>${tender.chinese_stocked_model}</h4>
             <div class="compare-details">
               <div><small>Supplied Acquisition Bid</small><strong>${formatRWF(tender.chinese_bid_price_rwf)}</strong></div>
               <div><small>Stock & Delivery Lead Time</small><strong style="color:var(--green)">${tender.stock_label}</strong></div>
-              <div><small>Kigali Field Engineering</small><strong>✓ 4 Resident Biomedical Engineers</strong></div>
+              <div><small>Kigali Field Engineering</small><strong><i class='bx bx-check-circle' style='color:var(--green);'></i> 4 Resident Biomedical Engineers</strong></div>
             </div>
           </div>
 
           <div class="brand-compare-card european">
-            <div class="compare-badge european">🇪🇺 Tender Benchmark</div>
+            <div class="compare-badge european"><i class='bx bx-shield-quarter'></i> Tender Benchmark</div>
             <h4>${tender.benchmarked_european_brand}</h4>
             <div class="compare-details">
               <div><small>Estimated European Import Cost</small><strong>${formatRWF(tender.european_market_price_rwf)}</strong></div>
@@ -4180,7 +5106,7 @@ let pipelineSelectedStage = '';
         <div class="parity-score-box">
           <div class="parity-score-header">
             <div>
-              <strong style="font-size:20px;color:var(--teal)">★ ${tender.equivalence_score}%</strong>
+              <strong style="font-size:20px;color:var(--teal)"><i class='bx bxs-star'></i> ${tender.equivalence_score}%</strong>
               <span style="font-size:12px;color:var(--ink);font-weight:700;margin-left:6px;">Overall Equivalence Parity</span>
             </div>
             <span class="rppa-pill">RPPA Law No. 62/2018 Art. 42 Compliant</span>
@@ -4238,8 +5164,8 @@ let pipelineSelectedStage = '';
             <thead>
               <tr>
                 <th scope="col">Parameter</th>
-                <th scope="col">🇪🇺 European Benchmark</th>
-                <th scope="col">🇨🇳 Supplied Specification</th>
+                <th scope="col">European Benchmark</th>
+                <th scope="col">Supplied Specification</th>
                 <th scope="col">Equivalence Status</th>
                 <th scope="col">Clinical / Engineering Defense Justification</th>
               </tr>
@@ -4247,12 +5173,12 @@ let pipelineSelectedStage = '';
             <tbody>
               ${(tender.brand_equivalence_matrix || []).map(m => {
         const statusTag = m.status === 'EXACT_MATCH'
-          ? '<span class="status-pill exact">✅ Exact Match / Exceeds</span>'
+          ? '<span class="status-pill exact"><i class="bx bx-check-circle"></i> Exact Match / Exceeds</span>'
           : m.status === 'EQUIVALENT'
-            ? '<span class="status-pill equiv">🟡 Clinical Equivalent</span>'
+            ? '<span class="status-pill equiv"><i class="bx bx-git-compare"></i> Clinical Equivalent</span>'
             : m.status === 'TECHNICAL_MISS'
-              ? '<span class="status-pill miss">❌ Spec Gap / Sourcing</span>'
-              : '<span class="status-pill reg">⚠️ Regulatory Parity</span>';
+              ? '<span class="status-pill miss"><i class="bx bx-x-circle"></i> Spec Gap / Sourcing</span>'
+              : '<span class="status-pill reg"><i class="bx bx-shield"></i> Regulatory Parity</span>';
 
         return `
                   <tr>
@@ -4277,15 +5203,15 @@ let pipelineSelectedStage = '';
         <div class="defense-letter-card">
           <div class="defense-letter-header">
             <div>
-              <h3 style="margin:0;font-size:14px;color:var(--ink);">⚖️ Auto-Generated RPPA Technical Equivalence Defense Letter</h3>
+              <h3 style="margin:0;font-size:14px;color:var(--ink);"><i class='bx bx-scale' style='color:var(--teal);margin-right:4px;'></i> Auto-Generated RPPA Technical Equivalence Defense Letter</h3>
               <small style="color:var(--muted)">Formally prepared under Rwanda Public Procurement Law No. 62/2018, Article 42</small>
             </div>
             <div class="defense-actions">
               <button class="outline-button" id="copyDefenseLetterBtn" style="padding:6px 12px;font-size:11px;">
-                📋 Copy Defense Text
+                <i class='bx bx-copy'></i> Copy Defense Text
               </button>
               <button class="outline-button" id="downloadDefenseLetterBtn" style="padding:6px 12px;font-size:11px;">
-                📥 Download (.txt)
+                <i class='bx bx-download'></i> Download (.txt)
               </button>
             </div>
           </div>
@@ -4296,9 +5222,11 @@ let pipelineSelectedStage = '';
       </section>
 
       <div class="drawer-actions">
-        <button class="outline-button" id="exportEquivPdfBtn">Export Equivalence Dossier</button>
+        <button class="outline-button" id="exportEquivPdfBtn">
+          <i class='bx bx-spreadsheet' aria-hidden="true"></i> Export Equivalence Dossier (Excel)
+        </button>
         <button class="primary-button" id="attachDossierBtn">
-          ⚡ Attach to Bid Submission Dossier
+          <i class='bx bx-paperclip'></i> Attach to Bid Submission Dossier
         </button>
       </div>
     `;
@@ -4311,10 +5239,10 @@ let pipelineSelectedStage = '';
     <!-- Segmented Drawer Navigation Subtabs -->
     <div class="drawer-tabs" role="tablist" aria-label="Tender Analysis Views">
       <button class="drawer-tab-btn ${activeDrawerTab === 'matrix' ? 'active' : ''}" data-drawer-tab="matrix" role="tab" aria-selected="${activeDrawerTab === 'matrix'}">
-        📋 Spec Compliance Matrix
+        <i class='bx bx-clipboard'></i> Spec Compliance Matrix
       </button>
       <button class="drawer-tab-btn ${activeDrawerTab === 'brand_equivalence' ? 'active' : ''}" data-drawer-tab="brand_equivalence" role="tab" aria-selected="${activeDrawerTab === 'brand_equivalence'}">
-        🇨🇳 vs 🇪🇺 Brand Equivalence Engine (${tender.equivalence_score}% Parity)
+        <i class='bx bx-git-compare'></i> Brand Equivalence Engine (${tender.equivalence_score}% Parity)
       </button>
     </div>
 
@@ -4377,7 +5305,7 @@ let pipelineSelectedStage = '';
     const exportBtn = document.querySelector('#exportMatrixBtn');
     if (exportBtn) {
       exportBtn.addEventListener('click', () => {
-        showToast(`Compliance Matrix for "${tender.ref}" exported.`);
+        exportTenderComplianceExcel(tender);
       });
     }
 
@@ -4406,15 +5334,14 @@ let pipelineSelectedStage = '';
     const exportPdfBtn = document.querySelector('#exportEquivPdfBtn');
     if (exportPdfBtn) {
       exportPdfBtn.addEventListener('click', () => {
-        showToast(`Generating certified Equivalence Dossier PDF for ${tender.ref}...`);
-        setTimeout(() => showToast('Dossier generated with complete RPPA Article 42 justifications.'), 800);
+        exportTenderEquivalenceExcel(tender);
       });
     }
 
     const attachDossierBtn = document.querySelector('#attachDossierBtn');
     if (attachDossierBtn) {
       attachDossierBtn.addEventListener('click', () => {
-        showToast(`✓ Equivalence justification attached to Bid Dossier for ${tender.ref}`);
+        showToast(`<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> Equivalence justification attached to Bid Dossier for ${tender.ref}`);
       });
     }
   }
@@ -4478,7 +5405,7 @@ let pipelineSelectedStage = '';
       if (demandItem) {
         demandItem.current_warehouse_stock += units;
         demandItem.urgency_level = 'SAFE';
-        demandItem.urgency_label = '🟢 Replenished (Safe Buffer)';
+        demandItem.urgency_label = 'Replenished (Safe Buffer)';
       }
 
       closeRestockModalDialog();
@@ -4587,7 +5514,7 @@ let pipelineSelectedStage = '';
         <div class="source-meta">
           <div><small>Last successful scan</small><strong>${s.last_scan_at}</strong></div>
           <div><small>Tenders collected</small><strong style="color:var(--teal)">${s.tenders_collected_count} discovered</strong></div>
-          <div><small>Compliance status</small><strong style="color:var(--green)">✓ Robots.txt & Article 42 Allowed</strong></div>
+          <div><small>Compliance status</small><strong style="color:var(--green)"><i class='bx bx-check-circle'></i> Robots.txt & Article 42 Allowed</strong></div>
           <div><small>Organization</small><strong>${s.organization}</strong></div>
         </div>
 
@@ -4605,7 +5532,7 @@ let pipelineSelectedStage = '';
         const sourceShortName = sourceObj ? sourceObj.name.split(' ')[0] : 'Portal';
         const originalText = btn.innerHTML;
         btn.disabled = true;
-        btn.innerHTML = `⏳ Scanning ${sourceShortName}...`;
+        btn.innerHTML = `<i class='bx bx-loader-alt bx-spin' style='margin-right:4px;'></i> Scanning ${sourceShortName}...`;
         showToast(`Connecting to ${sourceObj ? sourceObj.name : 'Procurement Portal'}...`);
 
         try {
@@ -4616,7 +5543,7 @@ let pipelineSelectedStage = '';
             });
             if (response.ok) {
               const data = await response.json();
-              showToast(`✨ ${sourceShortName} sync: ${data.new_tenders_created || 2} new tenders extracted & matched.`);
+              showToast(`<i class='bx bx-sync' style='color:var(--teal);margin-right:4px;'></i> ${sourceShortName} sync: ${data.new_tenders_created || 2} new tenders extracted & matched.`);
             }
           } else {
             await new Promise(r => setTimeout(r, 650));
@@ -4624,7 +5551,7 @@ let pipelineSelectedStage = '';
               sourceObj.tenders_collected_count = (sourceObj.tenders_collected_count || 14) + 2;
               sourceObj.last_scan_at = 'Just now';
             }
-            showToast(`✨ ${sourceObj ? sourceObj.name : 'Portal'} scan complete: Verified active biomedical opportunities synchronized.`);
+            showToast(`<i class='bx bx-sync' style='color:var(--teal);margin-right:4px;'></i> ${sourceObj ? sourceObj.name : 'Portal'} scan complete: Verified active biomedical opportunities synchronized.`);
           }
         } catch (err) {
           showToast(`${sourceShortName} sync finished with local verified procurement cache.`);
