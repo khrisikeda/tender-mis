@@ -45,13 +45,6 @@
       </nav>
 
       <div class="sidebar-bottom">
-        <div class="system-status" aria-label="Company Matching engine status">
-          <span class="status-dot" aria-hidden="true"></span>
-          <div>
-            <strong>Matching engine</strong>
-            <small id="sidebarScanStatus">Portfolio synced (8 items)</small>
-          </div>
-        </div>
         <button class="nav-item" id="helpCentreBtn" aria-label="Open help centre">
           <span class="nav-icon" aria-hidden="true"><i class='bx bx-help-circle'></i></span>
           <span>Help centre</span>
@@ -75,6 +68,11 @@
         </div>
 
         <div class="top-actions">
+          <div class="live-sync-indicator" id="liveSyncStatus" title="Continuously intercepting real-time procurement notices from 70 Rwandan healthcare institutions">
+            <span class="live-pulse-dot" aria-hidden="true"></span>
+            <span class="live-sync-text">Live Market Radar <span class="sync-dot-sep">·</span> <span id="liveSyncCounter">70 Portals Active</span></span>
+          </div>
+
           <div class="notification-menu-container">
             <button class="icon-button" id="notificationButton" aria-expanded="false" aria-haspopup="true" aria-label="View procurement and deadline notifications">
               <span class="notification-dot" id="notificationDot" aria-hidden="true"></span>
@@ -137,10 +135,6 @@
           <div>
             <div class="header-pretitle">
               <span class="header-date" id="currentDate">Saturday, 29 August 2026</span>
-              <span class="header-status-badge">
-                <span class="status-indicator-dot"></span>
-                <span>Live Market Sync</span>
-              </span>
             </div>
             <h1 id="overviewHeading">Good morning, Chris.</h1>
             <p class="heading-note">Opportunities prioritized by technical fit, portfolio coverage, and delivery advantage.</p>
@@ -211,12 +205,20 @@
                 <option value="review">Review Needed</option>
               </select>
               <select id="categoryFilter" aria-label="Filter by product category">
-                <option value="">All categories</option>
+                <option value="">All categories (10+ Specialties)</option>
                 <option value="Medical Equipment">Medical Equipment</option>
-                <option value="Laboratory">Laboratory</option>
-                <option value="Medical Consumables">Medical Consumables</option>
-                <option value="Dental">Dental</option>
+                <option value="Laboratory">Laboratory Diagnostics</option>
                 <option value="Imaging & Radiology">Imaging & Radiology</option>
+                <option value="Neonatal & ICU">Neonatal & Maternal ICU</option>
+                <option value="Surgical">Surgical & Operating Theatre</option>
+                <option value="Renal & Dialysis">Renal Care & Dialysis</option>
+                <option value="Medical Gas & Infrastructure">Medical Gas & Oxygen PSA</option>
+                <option value="Ophthalmology">Ophthalmology</option>
+                <option value="Dental">Dental & Maxillofacial</option>
+                <option value="Physical Therapy & Gym">Physical Therapy & Rehab</option>
+                <option value="Emergency & Ambulance">Emergency & Ambulances</option>
+                <option value="Consumables">Medical Consumables & PPE</option>
+                <option value="Digital Health & Telemedicine">Digital Health, PACS & EMR</option>
               </select>
             </div>
 
@@ -237,6 +239,7 @@
               <div class="empty-state" id="emptyState" hidden>
                 No medical tender opportunities match your current filters.
               </div>
+              <div class="pagination-bar" id="overviewPaginationBar"></div>
             </div>
           </div>
 
@@ -288,8 +291,8 @@
               </div>
 
               <div class="readiness-score">
-                <div class="score-ring" aria-label="Overall readiness score: 88 out of 100">
-                  <strong>88</strong>
+                <div class="score-ring" aria-label="Overall readiness score">
+                  <strong id="overviewReadinessScore">88</strong>
                   <small>/100</small>
                 </div>
                 <div>
@@ -302,17 +305,17 @@
                 <div>
                   <span class="legend teal" aria-hidden="true"></span>
                   <label>OEM Authorizations on File</label>
-                  <strong>6 Brands</strong>
+                  <strong id="overviewBrandAuthorizations">6 Brands</strong>
                 </div>
                 <div>
                   <span class="legend coral" aria-hidden="true"></span>
                   <label>Average Spec Compliance</label>
-                  <strong>84.2%</strong>
+                  <strong id="overviewAvgSpecCompliance">84.2%</strong>
                 </div>
                 <div>
                   <span class="legend gold" aria-hidden="true"></span>
                   <label>Local In-Stock Availability</label>
-                  <strong>62.5%</strong>
+                  <strong id="overviewInStockAvailability">62.5%</strong>
                 </div>
               </div>
             </section>
@@ -394,12 +397,20 @@
               </label>
 
               <select id="pipelineCategoryFilter" aria-label="Filter by category">
-                <option value="">All categories</option>
+                <option value="">All categories (10+ Specialties)</option>
                 <option value="Medical Equipment">Medical Equipment</option>
                 <option value="Laboratory">Laboratory Diagnostics</option>
-                <option value="Medical Consumables">Medical Consumables</option>
-                <option value="Dental">Dental & Maxillofacial</option>
                 <option value="Imaging & Radiology">Imaging & Radiology</option>
+                <option value="Neonatal & ICU">Neonatal & Maternal ICU</option>
+                <option value="Surgical">Surgical & Operating Theatre</option>
+                <option value="Renal & Dialysis">Renal Care & Dialysis</option>
+                <option value="Medical Gas & Infrastructure">Medical Gas & Oxygen PSA</option>
+                <option value="Ophthalmology">Ophthalmology</option>
+                <option value="Dental">Dental & Maxillofacial</option>
+                <option value="Physical Therapy & Gym">Physical Therapy & Rehab</option>
+                <option value="Emergency & Ambulance">Emergency & Ambulances</option>
+                <option value="Consumables">Medical Consumables & PPE</option>
+                <option value="Digital Health & Telemedicine">Digital Health, PACS & EMR</option>
               </select>
 
               <select id="pipelineActionFilter" aria-label="Filter by recommended action">
@@ -443,6 +454,7 @@
               <div class="empty-state" id="pipelineEmptyState" hidden>
                 No pipeline tenders match your selected filters.
               </div>
+              <div class="pagination-bar" id="pipelinePaginationBar"></div>
             </div>
           </div>
         </div>
@@ -535,6 +547,7 @@
             <div class="empty-state" id="sourcesEmptyState" hidden>
               No monitored sources match your filter criteria.
             </div>
+            <div class="pagination-bar" id="sourcesPaginationBar"></div>
           </div>
         </div>
       </section>
@@ -643,7 +656,7 @@
                 <span>Annual Market Demand</span>
                 <span class="metric-spark">Rwanda Sector</span>
               </div>
-              <strong class="metric-value">RWF 18.5B</strong>
+              <strong class="metric-value" id="demandAnnualValue">RWF 18.5B</strong>
               <small>Aggregated across RBC, RMS, Hospitals</small>
               <div class="sparkline" aria-hidden="true">
                 <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
@@ -656,8 +669,8 @@
               <div class="mini-bar warm-bar" aria-hidden="true"><span style="width:40%"></span></div>
             </article>
             <article class="metric-card" aria-label="Predicted upcoming tender wave">
-              <div class="metric-label">Predicted Q3/Q4 Inflow</div>
-              <strong class="metric-value">+14 Tenders</strong>
+              <div class="metric-label">Predicted Annual Inflow</div>
+              <strong class="metric-value" id="demandPredictedInflow">+14 Tenders</strong>
               <small>MOH District Hospital upgrade cycle</small>
               <div class="mini-bar green-bar" aria-hidden="true"><span style="width:75%"></span></div>
             </article>
