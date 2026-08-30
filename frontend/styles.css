@@ -3957,50 +3957,6 @@ tr:hover td {
   cursor: pointer;
 }
 
-/* Live Market Polling & Pulse Indicator */
-.live-sync-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 12px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 500;
-  color: #166534;
-  user-select: none;
-}
-
-.live-pulse-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  animation: pulse-green 2s infinite;
-}
-
-@keyframes pulse-green {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-  }
-}
-
-.sync-dot-sep {
-  opacity: 0.5;
-  margin: 0 2px;
-}
-
 @keyframes newDealHighlight {
   0% { background-color: rgba(16, 185, 129, 0.22); }
   100% { background-color: transparent; }
