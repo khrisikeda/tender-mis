@@ -8693,6 +8693,31 @@ function renderPaginationControls(containerId, totalItems, currentPage, pageSize
   }
 }
 
+// Helper function to build reliable public deep link to tender on Umucyo / procurement sources
+function getExactTenderSourceUrl(t) {
+  if (!t) return 'https://www.umucyo.gov.rw/eb/bav/selectListAdvertisingListForGU.do?menuId=EB01020100&leftTopFlag=l&tendTypeCd=G';
+  
+  const ref = (t.ref || t.reference_number || '').trim();
+
+  // If there's a direct document link
+  if (t.tender_document_url) {
+    return t.tender_document_url;
+  }
+
+  // If source_url is a specific non-Umucyo site (e.g. RBC, RMS)
+  if (t.source_url && !t.source_url.includes('umucyo.gov.rw')) {
+    return t.source_url;
+  }
+
+  // If this tender was scraped live from Umucyo (has live scraped flag & real Umucyo reference)
+  if (t.is_live_scraped && ref) {
+    return `https://www.umucyo.gov.rw/eb/bav/selectListAdvertisingListForGU.do?menuId=EB01020100&leftTopFlag=l&tendTypeCd=G&searchWord=${encodeURIComponent(ref)}`;
+  }
+
+  // For MVP simulated demo deals: open active Umucyo Goods Advertising portal directly
+  return 'https://www.umucyo.gov.rw/eb/bav/selectListAdvertisingListForGU.do?menuId=EB01020100&leftTopFlag=l&tendTypeCd=G';
+}
+
 function renderOverview() {
   const currentDateEl = document.querySelector('#currentDate');
   if (currentDateEl) {
@@ -8806,7 +8831,13 @@ function renderOverview() {
             <span class="tender-icon" aria-hidden="true">${getTenderBoxicon(t.icon)}</span>
             <div>
               <strong>${t.title}</strong>
-              <small style="color:var(--muted)">${t.procuring_entity} · <span style="font-family:'DM Mono',monospace;color:var(--teal)">${t.ref}</span></small>
+              <small style="color:var(--muted)">
+                ${t.procuring_entity} · 
+                <a href="${getExactTenderSourceUrl(t)}" target="_blank" rel="noopener noreferrer" class="source-ref-link" style="font-family:'DM Mono',monospace;color:var(--teal);font-weight:600;" title="View source portal">${t.ref} <i class='bx bx-link-external' style='font-size:10px;'></i></a> · 
+                <a href="${getExactTenderSourceUrl(t)}" target="_blank" rel="noopener noreferrer" class="tender-source-badge-sm" title="View original tender source portal">
+                  <i class='bx bx-globe'></i> Source
+                </a>
+              </small>
             </div>
           </div>
         </td>
@@ -10113,7 +10144,11 @@ function renderPipeline() {
             <div class="tender-cell-meta">
               <span class="buyer-name"><i class='bx bx-building-house'></i> ${t.procuring_entity}</span>
               <span class="meta-sep">·</span>
-              <span class="tender-ref-code">${t.ref}</span>
+              <a href="${getExactTenderSourceUrl(t)}" target="_blank" rel="noopener noreferrer" class="tender-ref-code source-ref-link" title="Open source portal for ${escapeXml(t.ref || t.title)}">${t.ref} <i class='bx bx-link-external' style='font-size:10px;'></i></a>
+              <span class="meta-sep">·</span>
+              <a href="${getExactTenderSourceUrl(t)}" target="_blank" rel="noopener noreferrer" class="tender-source-badge" title="View original tender source portal">
+                <i class='bx bx-globe'></i> Source Portal <i class='bx bx-right-top-arrow-circle' style='font-size:11px;'></i>
+              </a>
               <span class="meta-sep">·</span>
               <span class="category-tag">${t.category}</span>
             </div>
@@ -10241,7 +10276,9 @@ function renderPipeline() {
 
         return `
         <tr class="${isEven ? 'matrix-row-even' : ''}">
-          <td class="matrix-td ref-code">${t.ref || ''}</td>
+          <td class="matrix-td ref-code">
+            <a href="${getExactTenderSourceUrl(t)}" target="_blank" rel="noopener noreferrer" class="matrix-ref-link" title="Open source portal for ${t.ref || ''}">${t.ref || ''} <i class='bx bx-link-external' style='font-size:10px;'></i></a>
+          </td>
           <td class="matrix-td"><strong class="tender-title">${t.title || ''}</strong></td>
           <td class="matrix-td buyer-txt">${t.procuring_entity || ''}</td>
           <td class="matrix-td" style="color:#475569;">${t.category || ''}</td>
@@ -11800,7 +11837,13 @@ function renderPipeline() {
 
     drawerContent.innerHTML = `
     <h2 class="drawer-title" id="drawerTitle">${tender.title}</h2>
-    <p class="drawer-entity">${tender.procuring_entity} · <strong style="font-family:'DM Mono',monospace;color:var(--teal)">${tender.ref}</strong></p>
+    <p class="drawer-entity">
+      ${tender.procuring_entity} · 
+      <a href="${getExactTenderSourceUrl(tender)}" target="_blank" rel="noopener noreferrer" class="source-ref-link" style="font-family:'DM Mono',monospace;color:var(--teal);font-weight:600;" title="View source portal">${tender.ref} <i class='bx bx-link-external' style='font-size:11px;'></i></a> · 
+      <a href="${getExactTenderSourceUrl(tender)}" target="_blank" rel="noopener noreferrer" class="tender-source-badge" title="Open source portal for this tender">
+        <i class='bx bx-globe'></i> View Source Portal <i class='bx bx-right-top-arrow-circle' style='font-size:11px;'></i>
+      </a>
+    </p>
 
     <!-- Segmented Drawer Navigation Subtabs -->
     <div class="drawer-tabs" role="tablist" aria-label="Tender Analysis Views">
@@ -12661,3 +12704,24 @@ if (scanMarketBtn) {
     scanMarketBtn.innerHTML = originalText;
   });
 }
+
+
+// Global listener to copy tender reference code to clipboard on clicking any source link
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('.tender-source-badge, .source-ref-link, .matrix-ref-link, .tender-source-badge-sm');
+  if (link) {
+    const refAttr = link.getAttribute('data-ref');
+    const refText = refAttr || link.innerText.trim();
+    if (refText) {
+      const cleanRef = refText.split('\n')[0].replace(/[↗]/g, '').replace(/Source Portal/g, '').replace(/Source/g, '').replace(/View/g, '').trim();
+      if (cleanRef && cleanRef.length > 5) {
+        if (cleanRef.includes('2026/2027') || cleanRef.includes('00000') || cleanRef.includes('RMS/DAO')) {
+          showToast(`<i class='bx bx-info-circle' style='color:#0d9488;margin-right:4px;'></i> Opened Live Umucyo Portal (Demo Deal: <b>${escapeXml(cleanRef)}</b>)`);
+        } else {
+          if (navigator.clipboard) navigator.clipboard.writeText(cleanRef).catch(() => {});
+          showToast(`<i class='bx bx-copy-check' style='color:#0d9488;margin-right:4px;'></i> Copied tender ref <b>${escapeXml(cleanRef)}</b> to clipboard!`);
+        }
+      }
+    }
+  }
+});
