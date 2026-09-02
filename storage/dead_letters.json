@@ -136,5 +136,47 @@
     "attempt_count": 1,
     "last_retry_at": "2026-09-02T16:36:48.029Z",
     "resolved": false
+  },
+  {
+    "timestamp": "2026-09-02T17:02:01.032335+00:00",
+    "endpoint": "https://www.umucyo.gov.rw/eb/bav/selectAdvertisingDtlInfo.do",
+    "status_code": 500,
+    "error": "Internal Server Error: Missing adv_no query param",
+    "context": {
+      "test": true
+    }
+  },
+  {
+    "timestamp": "2026-09-02T17:08:31.897290+00:00",
+    "endpoint": "https://www.umucyo.gov.rw/eb/bav/selectAdvertisingDtlInfo.do",
+    "status_code": 500,
+    "error": "Internal Server Error: Missing adv_no query param",
+    "context": {
+      "test": true
+    }
+  },
+  {
+    "timestamp": "2026-09-02T17:08:54.156695+00:00",
+    "endpoint": "https://www.umucyo.gov.rw/eb/bav/selectAdvertisingDtlInfo.do",
+    "status_code": 500,
+    "error": "Internal Server Error: Missing adv_no query param",
+    "context": {
+      "test": true
+    }
+  },
+  {
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all",
+    "method": "GET",
+    "status_code": null,
+    "error_message": "timeout of 15000ms exceeded",
+    "request_params": {
+      "offset": 0,
+      "limit": 50
+    },
+    "id": "943b8f16-280e-4d5d-a710-0e805103d1c5",
+    "timestamp": "2026-09-02T17:09:22.883Z",
+    "attempt_count": 1,
+    "last_retry_at": "2026-09-02T17:09:22.883Z",
+    "resolved": false
   }
 ]

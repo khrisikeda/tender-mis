@@ -31,6 +31,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(tender_sources.router)
 app.include_router(tenders.router)
+app.include_router(tenders.router, prefix="/api")
 app.include_router(catalogue.router)
 
 

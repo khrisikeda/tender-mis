@@ -32,12 +32,9 @@ export async function runSync(options: { tier?: 'ocds' | 'portal' | 'all'; limit
     const tier1Start = new Date().toISOString();
 
     let releases = await ocdsAdapter.fetchReleases(offset, limit);
-    let usedFallback = false;
 
     if (releases.length === 0) {
-      logger.warn('No releases returned from live OCDS API. Engaging verified fallback releases...');
-      releases = ocdsAdapter.getVerifiedFallbackReleases();
-      usedFallback = true;
+      logger.warn('No releases returned from live OCDS API (captured by dead-letter queue if error).');
     }
 
     let createdCount = 0;
@@ -63,7 +60,7 @@ export async function runSync(options: { tier?: 'ocds' | 'portal' | 'all'; limit
 
     reports.push({
       tier: 'Tier 1: Official OCDS API',
-      source: usedFallback ? 'Rwanda OCDS (Verified Fallback Feed)' : 'Rwanda OCDS Engine (Live API)',
+      source: 'Rwanda OCDS Engine (Live API)',
       timestamp: tier1Start,
       scanned_count: releases.length,
       created_count: createdCount,

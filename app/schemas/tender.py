@@ -109,3 +109,56 @@ class TenderOut(BaseModel):
     created_at: datetime
     updated_at: Optional[datetime] = None
     items: list[TenderItemOut] = Field(default_factory=list)
+
+
+class EstimatedValueOut(BaseModel):
+    amount: Optional[float] = None
+    currency: str = "RWF"
+    formatted: str = "Not Disclosed"
+
+
+class DocumentLinkOut(BaseModel):
+    id: Optional[str] = None
+    title: str
+    url: str
+    document_type: Optional[str] = None
+
+
+class NormalizedTenderOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: str
+    tenderNo: str
+    title: str
+    description: Optional[str] = None
+    procuringEntity: Optional[str] = None
+    status: str
+    publicationDate: Optional[str] = None
+    submissionDeadline: Optional[str] = None
+    estimatedValue: Optional[EstimatedValueOut] = None
+    documents: list[DocumentLinkOut] = Field(default_factory=list)
+
+    # Legacy & backward compatibility fields
+    reference_number: Optional[str] = None
+    procuring_entity: Optional[str] = None
+    published_at: Optional[str] = None
+    deadline_at: Optional[str] = None
+    tender_value: Optional[float] = None
+    currency: Optional[str] = "RWF"
+    category: Optional[str] = None
+    country: str = "Rwanda"
+    source_url: Optional[str] = None
+    tender_document_url: Optional[str] = None
+    ocid: Optional[str] = None
+    portal_adv_no: Optional[str] = None
+    portal_adv_status: Optional[str] = None
+    relevance_score: Optional[int] = None
+    items: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class PaginatedTendersOut(BaseModel):
+    items: list[NormalizedTenderOut]
+    total: int
+    page: int
+    page_size: int
+    total_pages: int

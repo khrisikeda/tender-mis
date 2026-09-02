@@ -43,6 +43,32 @@ def get_current_user(
     return user
 
 
+oauth2_scheme_optional = OAuth2PasswordBearer(tokenUrl="/auth/login", auto_error=False)
+
+
+def get_current_user_optional(
+    token: str | None = Depends(oauth2_scheme_optional),
+    db: Session = Depends(get_db),
+) -> User | None:
+    if not token:
+        return None
+    payload = decode_token(token)
+    if payload is None or payload.get("type") != "access":
+        return None
+    user_id = payload.get("sub")
+    if user_id is None:
+        return None
+    import uuid
+    try:
+        user_uuid = uuid.UUID(str(user_id))
+    except (ValueError, TypeError):
+        return None
+    user = db.query(User).filter(User.id == user_uuid).first()
+    if user is None or not user.is_active:
+        return None
+    return user
+
+
 def require_roles(allowed_roles: Iterable[RoleName]):
     """
     Dependency factory for endpoint-level RBAC, e.g.:

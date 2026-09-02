@@ -347,126 +347,6 @@ def fetch_single_tender_detail(opener, internal_ref_no: str, tend_stage_cd: str 
 def get_mock_umucyo_feed() -> List[Dict[str, Any]]:
     """
     Live verified Umucyo Rwandan procurement dataset with safe, parameterized portal deep links.
-    """
-    return [
-        {
-            "reference_number": "000003/G/ICB/2026/2027/RBC",
-            "portal_adv_no": "000003/G/ICB/2026/2027/1605000000",
-            "portal_adv_status": "00",
-            "title": "Supply and installation of Patient Monitoring and Critical care equipment",
-            "procuring_entity": "RWANDA BIO-MEDICAL CENTER(RBC)",
-            "category": "Medical Equipment",
-            "procurement_method": "International Competitive Bidding",
-            "published_at": datetime(2026, 8, 28, 8, 30),
-            "deadline_at": datetime(2026, 9, 28, 10, 0),
-            "tender_value": 34643704.51,
-            "currency": "RWF",
-            "source_url": build_safe_portal_url("000003/G/ICB/2026/2027/1605000000", "00"),
-            "description": "Supply, installation, and commissioning of Patient Monitoring and Critical care equipment for CHUK Masaka. Total Tender Security: 34,643,704.51 RWF across 8 lots.",
-            "items": [
-                {"title": "Lot 1: Supply and installation of ECG machines", "description": "Lot 1: Supply and installation of ECG machines", "quantity": 1, "unit": "Lot", "specifications": {"lot_number": "1", "tender_security_amount": "982,525.96 FRW", "delivery_place": "CHUK Masaka"}},
-                {"title": "Lot 2: Supply and installation of Trolley mounted Patient monitors", "description": "Lot 2: Supply and installation of Trolley mounted Patient monitors", "quantity": 1, "unit": "Lot", "specifications": {"lot_number": "2", "tender_security_amount": "5,449,148.83 FRW", "delivery_place": "CHUK Masaka"}},
-                {"title": "Lot 3: Supply and installation of Wall mounted Patient monitors", "description": "Lot 3: Supply and installation of Wall mounted Patient monitors", "quantity": 1, "unit": "Lot", "specifications": {"lot_number": "3", "tender_security_amount": "4,105,410.04 FRW", "delivery_place": "CHUK Masaka"}},
-                {"title": "Lot 4: Central Monitor Station (Wall mounted Patient monitor with Central station)", "description": "Lot 4: Central Monitor Station (Wall mounted Patient monitor with Central station)", "quantity": 1, "unit": "Lot", "specifications": {"lot_number": "4", "tender_security_amount": "9,201,447.59 FRW", "delivery_place": "CHUK Masaka"}},
-                {"title": "Lot 5: Supply and installation of Holter Monitors with carrying pouch", "description": "Lot 5: Supply and installation of Holter Monitors with carrying pouch", "quantity": 1, "unit": "Lot", "specifications": {"lot_number": "5", "tender_security_amount": "3,856,008.00 FRW", "delivery_place": "CHUK Masaka"}},
-                {"title": "Lot 6: Supply and installation of Defibrillators and Digital Colposcopy machine", "description": "Lot 6: Supply and installation of Defibrillators and Digital Colposcopy machine", "quantity": 1, "unit": "Lot", "specifications": {"lot_number": "6", "tender_security_amount": "5,832,212.10 FRW", "delivery_place": "CHUK Masaka"}},
-                {"title": "Lot 7: Supply and installation of Mobile CTG -systems", "description": "Lot 7: Supply and installation of Mobile CTG -systems", "quantity": 1, "unit": "Lot", "specifications": {"lot_number": "7", "tender_security_amount": "1,521,611.00 FRW", "delivery_place": "CHUK Masaka"}},
-                {"title": "Lot 8: Supply and installation of Wall mounted CTG -systems", "description": "Lot 8: Supply and installation of Wall mounted CTG -systems", "quantity": 1, "unit": "Lot", "specifications": {"lot_number": "8", "tender_security_amount": "3,695,341.00 FRW", "delivery_place": "CHUK Masaka"}}
-            ]
-        },
-        {
-            "reference_number": "000004/G/NCB/2026/2027/RUHENGERI HOSPITAL",
-            "portal_adv_no": "000004/G/NCB/2026/2027/6300003001",
-            "portal_adv_status": "00",
-            "title": "Supply and installation of Medical Air Compressor for ICU and Neonatalogy",
-            "procuring_entity": "RUHENGERI LEVEL TWO TEACHING HOSPITAL",
-            "category": "Medical Equipment",
-            "procurement_method": "National Competitive Bidding",
-            "published_at": datetime(2026, 8, 20, 9, 0),
-            "deadline_at": datetime(2026, 9, 16, 10, 0),
-            "tender_value": 2850000.0,
-            "currency": "RWF",
-            "source_url": build_safe_portal_url("000004/G/NCB/2026/2027/6300003001", "00"),
-            "description": "Supply and installation of oil-free high-flow medical air compressor system for ICU and Neonatal resuscitation units.",
-            "items": [
-                {"title": "Medical Air Compressor Unit with 500L Tank and Filtration Stack", "description": "Medical Air Compressor Unit with 500L Tank and Filtration Stack", "quantity": 1, "unit": "System", "specifications": {"lot_number": "1", "delivery_place": "RL2TH Hospital", "delivery_time": "15 Days"}}
-            ]
-        },
-        {
-            "reference_number": "000002/G/NCB/2026/2027/Ruli DH",
-            "portal_adv_no": "000002/G/NCB/2026/2027/6500003002",
-            "portal_adv_status": "00",
-            "title": "Supply of Medical Equipment and Diagnostic Devices",
-            "procuring_entity": "Ruli District Hospital",
-            "category": "Medical Equipment",
-            "procurement_method": "National Competitive Bidding",
-            "published_at": datetime(2026, 8, 18, 10, 0),
-            "deadline_at": datetime(2026, 9, 14, 10, 0),
-            "tender_value": 3200000.0,
-            "currency": "RWF",
-            "source_url": build_safe_portal_url("000002/G/NCB/2026/2027/6500003002", "00"),
-            "description": "Procurement of essential diagnostic medical devices, blood pressure monitors, pulse oximeters, and surgical suction units.",
-            "items": [
-                {"title": "Medical Diagnostic & Vital Signs Equipment Package", "description": "Medical Diagnostic & Vital Signs Equipment Package", "quantity": 1, "unit": "Lot", "specifications": {"delivery_place": "Ruli DH", "delivery_time": "30 Days"}}
-            ]
-        },
-        {
-            "reference_number": "000005/G/NCB/2026/2027/HNN",
-            "portal_adv_no": "000005/G/NCB/2026/2027/1603000000",
-            "portal_adv_status": "00",
-            "title": "Framework contract for provision of medical oxygen to NNPTH",
-            "procuring_entity": "NEURO PSYCHIATRIC HOSPITAL OF NDERA (HNN)",
-            "category": "Healthcare Supplies",
-            "procurement_method": "National Competitive Bidding",
-            "published_at": datetime(2026, 8, 22, 11, 0),
-            "deadline_at": datetime(2026, 9, 18, 15, 0),
-            "tender_value": 4500000.0,
-            "currency": "RWF",
-            "source_url": build_safe_portal_url("000005/G/NCB/2026/2027/1603000000", "00"),
-            "description": "Annual supply of high-purity medical oxygen gas cylinders (B10, B50) and manifold connection maintenance.",
-            "items": [
-                {"title": "Medical Oxygen Cylinders & Manifold Supply", "description": "Medical Oxygen Cylinders & Manifold Supply", "quantity": 1, "unit": "Annual Contract", "specifications": {"delivery_place": "NNPTH Ndera", "delivery_time": "12 Months"}}
-            ]
-        },
-        {
-            "reference_number": "000003/G/NCB/2026/2027/RBC",
-            "portal_adv_no": "000003/G/NCB/2026/2027/1605000000",
-            "portal_adv_status": "00",
-            "title": "Supply and installation of Hospital EMRS and Imaging software, Migration: System Reinstallation & Configuration",
-            "procuring_entity": "RWANDA BIO-MEDICAL CENTER(RBC)",
-            "category": "Medical Equipment",
-            "procurement_method": "National Competitive Bidding",
-            "published_at": datetime(2026, 8, 24, 14, 0),
-            "deadline_at": datetime(2026, 9, 21, 10, 0),
-            "tender_value": 2306753.15,
-            "currency": "RWF",
-            "source_url": build_safe_portal_url("000003/G/NCB/2026/2027/1605000000", "00"),
-            "description": "Integration of Hospital Electronic Medical Records with Radiology DICOM PACS Imaging and Laboratory Information Systems.",
-            "items": [
-                {"title": "Hospital EMRS & Diagnostic Imaging PACS Integration", "description": "Hospital EMRS & Diagnostic Imaging PACS Integration", "quantity": 1, "unit": "System", "specifications": {"lot_number": "1", "delivery_place": "CHUK Masaka", "tender_security": "2,306,753.15 FRW"}}
-            ]
-        },
-        {
-            "reference_number": "000002/G/ICB/2026/2027/RBC",
-            "portal_adv_no": "000002/G/ICB/2026/2027/1605000000",
-            "portal_adv_status": "00",
-            "title": "Supply and installation of IT and Diagnostic Workstation equipment for CHUK",
-            "procuring_entity": "RWANDA BIO-MEDICAL CENTER(RBC)",
-            "category": "Medical Equipment",
-            "procurement_method": "International Competitive Bidding",
-            "published_at": datetime(2026, 8, 26, 12, 0),
-            "deadline_at": datetime(2026, 9, 28, 10, 0),
-            "tender_value": 15099424.8,
-            "currency": "RWF",
-            "source_url": build_safe_portal_url("000002/G/ICB/2026/2027/1605000000", "00"),
-            "description": "High-performance medical diagnostic workstations, PACS viewing monitors, and network infrastructure for the new CHUK Masaka hospital complex.",
-            "items": [
-                {"title": "Diagnostic Clinical Workstations & Servers", "description": "Diagnostic Clinical Workstations & Servers", "quantity": 1, "unit": "Package", "specifications": {"lot_number": "1", "delivery_place": "CHUK Masaka", "tender_security": "15,099,424.80 FRW"}}
-            ]
-        }
-    ]
-
-
 async def sync_umucyo_tenders(db: Session, max_pages: int = 5) -> Dict[str, Any]:
     """
     Two-Tier Ingestion Orchestrator:
@@ -499,10 +379,10 @@ async def sync_umucyo_tenders(db: Session, max_pages: int = 5) -> Dict[str, Any]
             error_message=f"Live Umucyo extraction exception: {str(e)}",
             context={"max_pages": max_pages}
         )
-        logger.warning(f"Live Umucyo extraction encountered an issue ({e}). Using verified fallback feed.")
+        logger.warning(f"Live Umucyo extraction encountered an issue ({e}). Returning live results only.")
 
     if not tenders_data:
-        tenders_data = get_mock_umucyo_feed()
+        tenders_data = []
 
     # Deduplicate & upsert portal items
     portal_created_count = 0

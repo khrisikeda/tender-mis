@@ -303,11 +303,18 @@ def sync_ocds_tenders(db: Session, limit: int = 50, query: Optional[str] = "medi
         except Exception as e:
             logger.warning(f"Search endpoint query encountered an issue: {e}")
 
-    # Fallback: if network connectivity to live OCDS engine times out, use verified local OCDS snapshot
     if not releases:
-        logger.info("Using verified standard OCDS sample dataset for baseline synchronization...")
-        releases = get_verified_ocds_sample_releases()
-        source_name = "Rwanda OCDS Engine (Verified Fallback Feed)"
+        logger.warning("Live OCDS API returned 0 releases. Ingestion completed with 0 updates.")
+        return {
+            "tier": "Tier 1: Official OCDS API",
+            "source": source_name,
+            "endpoint": client.base_url,
+            "tenders_scanned": 0,
+            "new_tenders_created": 0,
+            "tenders_updated": 0,
+            "synced_summary": [],
+            "synced_at": datetime.now(timezone.utc).isoformat(),
+        }
 
     now = datetime.now(timezone.utc)
     created_count = 0

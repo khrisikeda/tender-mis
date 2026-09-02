@@ -3966,3 +3966,72 @@ tr:hover td {
   animation: newDealHighlight 3.5s ease-out;
 }
 
+/* Skeleton Shimmer Loading States */
+@keyframes shimmerWave {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmerWave 1.6s infinite ease-in-out;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.skeleton-row td {
+  padding: 16px 14px;
+}
+
+.skeleton-line {
+  height: 14px;
+  border-radius: 4px;
+}
+
+.skeleton-line.title {
+  width: 75%;
+  height: 16px;
+  margin-bottom: 6px;
+}
+
+.skeleton-line.sub {
+  width: 45%;
+  height: 11px;
+}
+
+.skeleton-line.badge {
+  width: 60px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.empty-state-card {
+  text-align: center;
+  padding: 42px 24px;
+  color: var(--muted, #64748b);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.empty-state-card i {
+  font-size: 40px;
+  color: #94a3b8;
+}
+
+.empty-state-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink, #0f172a);
+  margin: 0;
+}
+
+.empty-state-card p {
+  font-size: 13px;
+  max-width: 420px;
+  margin: 0;
+}
+
