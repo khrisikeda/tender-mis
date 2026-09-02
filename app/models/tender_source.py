@@ -23,12 +23,15 @@ class TenderSource(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
     name = Column(String(200), nullable=False)
-    website = Column(String(500), nullable=False)
+    code = Column(String(100), nullable=True, index=True)
+    website = Column(String(500), nullable=True)
+    url = Column(String(500), nullable=True)
+    scraper_type = Column(String(100), nullable=True)
     country = Column(String(100), nullable=False, default="Rwanda")
     organization = Column(String(200), nullable=True)
 
     category = Column(Enum(SourceCategory), nullable=False, default=SourceCategory.OTHER)
-    collection_method = Column(Enum(CollectionMethod), nullable=False)
+    collection_method = Column(Enum(CollectionMethod), nullable=False, default=CollectionMethod.WEBPAGE)
 
     is_active = Column(Boolean, default=True, nullable=False)
     scan_frequency_hours = Column(Integer, default=24, nullable=False)

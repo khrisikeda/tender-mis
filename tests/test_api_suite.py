@@ -29,9 +29,11 @@ from app.models.product import Product
 from app.models.tender import Tender, TenderItem
 from app.models.audit_log import AuditLog
 
+from sqlalchemy.pool import StaticPool
+
 # Use an in-memory SQLite DB for clean, isolated test runs
 TEST_DATABASE_URL = "sqlite:///:memory:"
-test_engine = create_engine(TEST_DATABASE_URL, connect_args={"check_same_thread": False})
+test_engine = create_engine(TEST_DATABASE_URL, connect_args={"check_same_thread": False}, poolclass=StaticPool)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
 
 def override_get_db():
@@ -470,7 +472,7 @@ def test_audit_trail_integrity():
     try:
         logs = db.query(AuditLog).all()
         assert len(logs) > 0
-        actions = {log.action for log in logs}
+        actions = {(log.action.value if hasattr(log.action, 'value') else str(log.action)).upper() for log in logs}
         # Check that LOGIN, CREATE, UPDATE, etc. are recorded
         assert any(a in ["LOGIN", "CREATE", "UPDATE", "STATUS_CHANGE", "LOGIN_FAILED"] for a in actions)
     finally:

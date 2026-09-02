@@ -8697,24 +8697,31 @@ function renderPaginationControls(containerId, totalItems, currentPage, pageSize
 function getExactTenderSourceUrl(t) {
   if (!t) return 'https://www.umucyo.gov.rw/eb/bav/selectListAdvertisingListForGU.do?menuId=EB01020100&leftTopFlag=l&tendTypeCd=G';
   
-  const ref = (t.ref || t.reference_number || '').trim();
+  const ref = (t.portal_adv_no || t.ref || t.reference_number || '').trim();
+  const status = (t.portal_adv_status || '00').trim();
+
+  // If source_url already has safe parameterized detail query
+  if (t.source_url && t.source_url.includes('selectAdvertisingDtlInfo.do') && t.source_url.includes('adv_no=')) {
+    return t.source_url;
+  }
 
   // If there's a direct document link
   if (t.tender_document_url) {
     return t.tender_document_url;
   }
 
-  // If source_url is a specific non-Umucyo site (e.g. RBC, RMS)
+  // If source_url is a specific non-Umucyo site (e.g. RBC, RMS, WHO)
   if (t.source_url && !t.source_url.includes('umucyo.gov.rw')) {
     return t.source_url;
   }
 
-  // If this tender was scraped live from Umucyo (has live scraped flag & real Umucyo reference)
-  if (t.is_live_scraped && ref) {
-    return `https://www.umucyo.gov.rw/eb/bav/selectListAdvertisingListForGU.do?menuId=EB01020100&leftTopFlag=l&tendTypeCd=G&searchWord=${encodeURIComponent(ref)}`;
+  // Parameterized Umucyo Detail Link
+  // Never issue raw GET requests without adv_no and adv_status
+  if (ref) {
+    return `https://www.umucyo.gov.rw/eb/bav/selectAdvertisingDtlInfo.do?adv_no=${encodeURIComponent(ref)}&adv_status=${encodeURIComponent(status)}`;
   }
 
-  // For MVP simulated demo deals: open active Umucyo Goods Advertising portal directly
+  // Fallback to active Umucyo Goods Advertising portal
   return 'https://www.umucyo.gov.rw/eb/bav/selectListAdvertisingListForGU.do?menuId=EB01020100&leftTopFlag=l&tendTypeCd=G';
 }
 

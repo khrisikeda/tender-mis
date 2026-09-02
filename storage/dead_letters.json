@@ -1,0 +1,140 @@
+[
+  {
+    "timestamp": "2026-09-02T16:27:53.949584+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:27:53.993215+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50",
+    "status_code": null,
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:28:09.093565+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50"
+    }
+  },
+  {
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all",
+    "method": "GET",
+    "status_code": null,
+    "error_message": "timeout of 15000ms exceeded",
+    "request_params": {
+      "offset": 0,
+      "limit": 50
+    },
+    "id": "618c584a-cc1e-4027-ae0b-e15a9750592b",
+    "timestamp": "2026-09-02T16:32:16.620Z",
+    "attempt_count": 1,
+    "last_retry_at": "2026-09-02T16:32:16.620Z",
+    "resolved": false
+  },
+  {
+    "timestamp": "2026-09-02T16:34:18.727098+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=10",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=10"
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:34:18.752120+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=10",
+    "status_code": null,
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=10"
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:34:33.793474+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=10",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=10"
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:34:48.911693+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=10",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=10"
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:34:48.930810+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=10",
+    "status_code": null,
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=10"
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:35:03.979803+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=10",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=10"
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:35:03.999731+00:00",
+    "endpoint": "https://www.umucyo.gov.rw/eb/bav/selectAdvertisingDtlInfo.do",
+    "status_code": 500,
+    "error": "Internal Server Error: Missing adv_no query param",
+    "context": {
+      "test": true
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:35:40.603292+00:00",
+    "endpoint": "https://www.umucyo.gov.rw/eb/bav/selectAdvertisingDtlInfo.do",
+    "status_code": 500,
+    "error": "Internal Server Error: Missing adv_no query param",
+    "context": {
+      "test": true
+    }
+  },
+  {
+    "timestamp": "2026-09-02T16:36:14.355739+00:00",
+    "endpoint": "https://www.umucyo.gov.rw/eb/bav/selectAdvertisingDtlInfo.do",
+    "status_code": 500,
+    "error": "Internal Server Error: Missing adv_no query param",
+    "context": {
+      "test": true
+    }
+  },
+  {
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all",
+    "method": "GET",
+    "status_code": null,
+    "error_message": "timeout of 15000ms exceeded",
+    "request_params": {
+      "offset": 0,
+      "limit": 50
+    },
+    "id": "6eaf8764-b36a-433d-92c2-a7bc47bd7d43",
+    "timestamp": "2026-09-02T16:36:48.029Z",
+    "attempt_count": 1,
+    "last_retry_at": "2026-09-02T16:36:48.029Z",
+    "resolved": false
+  }
+]

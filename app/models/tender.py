@@ -30,6 +30,13 @@ class Tender(Base):
     description = Column(Text, nullable=True)
     source_url = Column(String(1000), nullable=True)
     tender_document_url = Column(String(1000), nullable=True)
+    # OCDS & Portal Identification fields
+    ocid = Column(String(255), nullable=True, index=True)
+    ocds_release_id = Column(String(255), nullable=True)
+    ocds_payload = Column(JSON, nullable=True)
+    portal_adv_no = Column(String(100), nullable=True, index=True)
+    portal_adv_status = Column(String(50), nullable=True)
+
     contact_name = Column(String(200), nullable=True)
     contact_email = Column(String(320), nullable=True)
     contact_telephone = Column(String(80), nullable=True)
@@ -94,10 +101,21 @@ class TenderItem(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     tender_id = Column(UUID(as_uuid=True), ForeignKey("tenders.id"), nullable=False, index=True)
-    description = Column(String(500), nullable=False)
+    lot_number = Column(Integer, nullable=True)
+    item_number = Column(Integer, nullable=True)
+    title = Column(String(500), nullable=True)
+    description = Column(String(500), nullable=True)
     quantity = Column(Numeric(18, 3), nullable=True)
     unit = Column(String(80), nullable=True)
     specifications = Column(JSON, nullable=True)
+    specifications_raw = Column(Text, nullable=True)
     evidence_status = Column(Enum(EvidenceStatus), nullable=False, default=EvidenceStatus.REQUIRES_HUMAN_VERIFICATION)
 
     tender = relationship("Tender", back_populates="items")
+
+    def __init__(self, **kwargs):
+        if "title" in kwargs and not kwargs.get("description"):
+            kwargs["description"] = kwargs["title"]
+        elif "description" in kwargs and not kwargs.get("title"):
+            kwargs["title"] = kwargs["description"]
+        super().__init__(**kwargs)
