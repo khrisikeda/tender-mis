@@ -1,0 +1,21 @@
+{
+  "name": "tender-mis",
+  "version": "1.0.0",
+  "description": "Medical Tender Intelligence & Bid Management System for Rwandan Procurement",
+  "scripts": {
+    "dev": "python -m uvicorn app.main:app --reload --port 8000",
+    "start": "python -m uvicorn app.main:app --port 8000",
+    "sync": "python -c \"import asyncio, app.database; from app.services.umucyo_crawler import sync_umucyo_tenders; asyncio.run(sync_umucyo_tenders(app.database.SessionLocal()))\"",
+    "worker:test": "cd workers/ingestion && npm test",
+    "worker:sync": "cd workers/ingestion && npm run sync",
+    "test": "pytest"
+  },
+  "keywords": [
+    "tender",
+    "procurement",
+    "umucyo",
+    "ocds",
+    "rwanda"
+  ],
+  "license": "ISC"
+}

@@ -299,11 +299,20 @@ def fetch_single_tender_detail(opener, internal_ref_no: str, tend_stage_cd: str 
         elif "Deadline for Bids Submission" in clean[0] and len(clean) > 1:
             deadline_at = parse_date_safe(clean[1])
         
-        if "Tender Security (sum of LOTs)" in row_text or "Tender Security Amount" in row_text:
-            amounts = re.findall(r'[\d,]+\.?\d*', row_text)
+        # Check for Tender Security across English, French, and portal terminology
+        sec_markers = [
+            "tender security",
+            "bid security",
+            "sum of lots",
+            "garantie de soumission",
+            "caution de soumission",
+            "cautionnement provisoire",
+        ]
+        if any(marker in row_text.lower() for marker in sec_markers):
+            amounts = re.findall(r'(?:RWF|FRW|\$)?\s*([\d]{1,3}(?:[,\s]\d{3})*(?:\.\d{1,2})?)', row_text)
             for amt in amounts:
                 parsed_amt = parse_currency_amount(amt)
-                if parsed_amt and parsed_amt > 1000:
+                if parsed_amt and parsed_amt >= 500:
                     tender_security_amount = parsed_amt
                     break
 
@@ -332,6 +341,17 @@ def fetch_single_tender_detail(opener, internal_ref_no: str, tend_stage_cd: str 
             elif "Document Name" in row_text or "Required bidding" in row_text:
                 is_lot_table = False
 
+    # Fallback to sum of lots if header didn't specify total security
+    if not tender_security_amount and items:
+        total_lot_security = 0.0
+        for itm in items:
+            spec_sec = itm.get("specifications", {}).get("tender_security_amount", "")
+            parsed_lot_amt = parse_currency_amount(spec_sec)
+            if parsed_lot_amt:
+                total_lot_security += parsed_lot_amt
+        if total_lot_security > 0:
+            tender_security_amount = total_lot_security
+
     return {
         "ref_no": ref_no,
         "title": tender_name,
@@ -344,9 +364,6 @@ def fetch_single_tender_detail(opener, internal_ref_no: str, tend_stage_cd: str 
     }
 
 
-def get_mock_umucyo_feed() -> List[Dict[str, Any]]:
-    """
-    Live verified Umucyo Rwandan procurement dataset with safe, parameterized portal deep links.
 async def sync_umucyo_tenders(db: Session, max_pages: int = 5) -> Dict[str, Any]:
     """
     Two-Tier Ingestion Orchestrator:

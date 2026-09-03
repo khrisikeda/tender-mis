@@ -1,5 +1,5 @@
 const API_BASE = window.localStorage.getItem('medtender_api_base') ||
-  (window.location.port === '8000' || window.location.protocol.startsWith('http') ? window.location.origin : 'http://localhost:8000');
+  (window.location.port === '8000' ? window.location.origin : 'http://127.0.0.1:8000');
 
 // ==========================================================================
 // 1. Authentication & Session Management
@@ -357,7 +357,7 @@ function mapOcdsTenderToFrontend(item) {
   const lots = rawLots.length ? rawLots.map((l, idx) => ({
     lot_no: l.lot_number || l.lot_no || (idx + 1),
     name: l.title || l.name || l.description || `Lot ${idx + 1}`,
-    security_rwf: typeof l.specifications === 'object' && l.specifications?.tender_security_amount ? l.specifications.tender_security_amount : (val ? `${Math.round(val * 0.02).toLocaleString()} RWF` : 'Standard Bank Guarantee'),
+    security_rwf: typeof l.specifications === 'object' && l.specifications?.tender_security_amount ? l.specifications.tender_security_amount : (val ? formatRWF(val) : 'Standard Bank Guarantee'),
     place: typeof l.specifications === 'object' && l.specifications?.delivery_place ? l.specifications.delivery_place : buyer,
     delivery_days: 30,
     coverage_status: 'COMPLIANT'
@@ -365,7 +365,7 @@ function mapOcdsTenderToFrontend(item) {
     {
       lot_no: 1,
       name: title,
-      security_rwf: val ? `${Math.round(val * 0.02).toLocaleString()} RWF` : '2% Tender Security',
+      security_rwf: val ? formatRWF(val) : 'Official Tender Security',
       place: buyer,
       delivery_days: 30,
       coverage_status: 'COMPLIANT'
@@ -463,7 +463,7 @@ function mapOcdsTenderToFrontend(item) {
     clinical_parity_score: 96,
     regulatory_parity_score: 100,
     warranty_parity_score: 96,
-    security: val ? `RWF ${Math.round(val * 0.02).toLocaleString()} (Tender Security / Bank Guarantee)` : '2% Bank Guarantee',
+    security: val ? `${formatRWF(val)} (Official Tender Security / Bid Bond)` : 'Standard Bank Guarantee',
     authorization: 'Required (Authorized OEM / Distributor)',
     sourcing_strategy: 'BID_CHINESE_EQUIVALENT',
     sourcing_strategy_label: 'Bid In-Stock Solution (+42% Cost Advantage)',
@@ -1554,12 +1554,20 @@ function formatFullDeadline(date) {
   return `${dateStr}, ${timeStr} (Kigali / CAT Local Time)`;
 }
 
-function formatRWF(val) {
+function formatRWF(val, compact = false) {
   if (val === null || val === undefined || !Number.isFinite(Number(val)) || Number(val) <= 0) return 'Not Disclosed';
   const num = Number(val);
-  if (num >= 1000000000) return `RWF ${(num / 1000000000).toFixed(1)}B`;
-  if (num >= 1000000) return `RWF ${(num / 1000000).toFixed(0)}M`;
-  return `RWF ${num.toLocaleString()}`;
+  if (compact) {
+    if (num >= 1000000000) return `RWF ${(num / 1000000000).toFixed(2)}B`;
+    if (num >= 1000000) return `RWF ${(num / 1000000).toFixed(1)}M`;
+    return `RWF ${num.toLocaleString('en-US')}`;
+  }
+  // Format exact accurate amount with thousand separators: "RWF 2,302,408" or "RWF 34,643,704.51"
+  const hasDecimals = num % 1 !== 0;
+  return `RWF ${num.toLocaleString('en-US', {
+    minimumFractionDigits: hasDecimals ? 2 : 0,
+    maximumFractionDigits: 2
+  })}`;
 }
 
 function urgency(date) {
@@ -3417,8 +3425,8 @@ function renderPipeline() {
       </td>
       <td>
         <div class="security-cell">
-          <strong class="value-text">${formatRWF(t.tender_value)}</strong>
-          <small class="security-note">Tender Value</small>
+          <strong class="value-text" title="Exact Tender Security: ${formatRWF(t.tender_value)}">${formatRWF(t.tender_value)}</strong>
+          <small class="security-note">Tender Security</small>
         </div>
       </td>
       <td>
@@ -5420,20 +5428,29 @@ function renderSources() {
       btn.innerHTML = `<i class='bx bx-loader-alt bx-spin' style='margin-right:4px;'></i> Scanning ${sourceShortName}...`;
       showToast(`Connecting to ${sourceObj ? sourceObj.name : 'Procurement Portal'}...`);
 
-      await new Promise(r => setTimeout(r, 600));
-      if (sourceObj) {
-        sourceObj.tenders_collected_count = (sourceObj.tenders_collected_count || 14) + 2;
-        sourceObj.last_scan_at = 'Just now';
+      try {
+        const token = window.localStorage.getItem('medtender_access_token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+
+        if (sourceId && !sourceId.startsWith('src-')) {
+          await fetch(`${API_BASE}/tender-sources/${sourceId}/scan`, { method: 'POST', headers });
+        } else {
+          await fetch(`${API_BASE}/tender-sources/sync/umucyo`, { method: 'POST', headers });
+        }
+        await loadTendersFromApi();
+        await loadDatabaseSources();
+        showToast(`Live scan complete for ${sourceShortName}. Pipeline updated.`);
+      } catch (e) {
+        console.warn('Scan warning:', e);
+        showToast(`Scan finished for ${sourceShortName}.`);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        renderSources();
+        renderOverview();
+        renderPipeline();
       }
-
-      // Generate/discover a live tender from this source
-      discoverTenderFromSource(sourceObj);
-
-      btn.disabled = false;
-      btn.innerHTML = originalText;
-      renderSources();
-      renderOverview();
-      renderPipeline();
     });
   });
 

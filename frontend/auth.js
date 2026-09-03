@@ -1,5 +1,5 @@
 const API_BASE = window.localStorage.getItem('medtender_api_base') || 
-  (window.location.port === '8000' || window.location.protocol.startsWith('http') ? window.location.origin : 'http://localhost:8000');
+  (window.location.port === '8000' ? window.location.origin : 'http://127.0.0.1:8000');
 
 const feedback = document.querySelector('#authFeedback');
 const loginForm = document.querySelector('#loginForm');
