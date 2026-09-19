@@ -150,6 +150,19 @@ def seed_default_sources(db: Session):
             "scan_frequency_hours": 24,
             "tenders_collected_count": 3,
         },
+        {
+            "name": "Imvaho Nshya - Amasoko (Official Gazette & Public Notices)",
+            "code": "IMVAHO-AMASOKO",
+            "organization": "Imvaho Nshya Media / Rwanda Printery Company",
+            "website": "https://imvahonshya.co.rw/category/amatangazo/amasoko/",
+            "url": "https://imvahonshya.co.rw/category/amatangazo/amasoko/",
+            "scraper_type": "webpage",
+            "category": SourceCategory.GOVERNMENT_PORTAL,
+            "collection_method": CollectionMethod.WEBPAGE,
+            "is_active": True,
+            "scan_frequency_hours": 12,
+            "tenders_collected_count": 3,
+        },
     ]
     for s_data in defaults:
         existing = db.query(TenderSource).filter(TenderSource.name == s_data["name"]).first()

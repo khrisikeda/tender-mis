@@ -1556,15 +1556,15 @@ let sources = [
   },
   {
     "id": "src-67",
-    "name": "Imvaho Nshya Official Announcements (Amatangazo)",
-    "organization": "National Gazette & Public Notice Publisher",
-    "website": "https://imvahonshya.co.rw",
+    "name": "Imvaho Nshya - Amasoko (Official Gazette & Public Notices)",
+    "organization": "Imvaho Nshya Media / Rwanda Printery Company",
+    "website": "https://imvahonshya.co.rw/category/amatangazo/amasoko/",
     "category": "government_portal",
     "collection_method": "webpage",
     "is_active": true,
     "scan_frequency_hours": 12,
-    "tenders_collected_count": 34,
-    "last_scan_at": "35m ago"
+    "tenders_collected_count": 3,
+    "last_scan_at": "Just now"
   },
   {
     "id": "src-68",
