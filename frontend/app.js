@@ -336,21 +336,32 @@ function mapOcdsTenderToFrontend(item) {
   const published = item.publicationDate || item.published_at || null;
   const statusStr = item.status || 'Active';
 
+  // Detect non-medical items or non-medical clients
+  const isNonMedical = /security(\s+equipment|\s+services)?|genocide\s+memorial|vup\s+program|public\s+works|foot\s*ball|sports?(\s+equipment)?|refreshment|catering|stationar(y|ies)|printing|solar\s+home|radio\s+salus|media\s+production/i.test(title) ||
+    /senate|parliament|revenue\s+authority|kigali\s+city/i.test(buyer);
+
   // Medical category determination
   let cat = item.category || 'Medical Equipment';
-  if (/radiology|x-ray|c-arm|ct|mri|imaging/i.test(title)) cat = 'Radiology & Imaging';
+  if (isNonMedical) {
+    cat = 'Non-Medical';
+  } else if (/radiology|x-ray|c-arm|ct|mri|imaging/i.test(title)) cat = 'Imaging & Radiology';
   else if (/icu|neonatal|warmer|incubator|ventilator|monitor|critical|patient/i.test(title)) cat = 'Neonatal & ICU';
-  else if (/lab|reagent|stainer|blood|analyzer|biomed|chemistry/i.test(title)) cat = 'Laboratory';
-  else if (/surgical|theatre|operating|suction|implant/i.test(title)) cat = 'Surgical & Theatre';
-  else if (/oxygen|gas|compressor/i.test(title)) cat = 'Medical Gas';
+  else if (/lab|reagent|stainer|blood|analyzer|biomed|chemistry|metrology/i.test(title)) cat = 'Laboratory';
+  else if (/surgical|theatre|operating|suction|implant/i.test(title)) cat = 'Surgical';
+  else if (/oxygen|gas|\bair\s+compressor\b/i.test(title)) cat = 'Medical Gas & Infrastructure';
+  else if (/cornea|eye|ophthalmology/i.test(title)) cat = 'Ophthalmology';
+  else if (/renal|dialysis/i.test(title)) cat = 'Renal & Dialysis';
+  else if (/dental/i.test(title)) cat = 'Dental';
+  else if (/pacs|emrs|telemedicine/i.test(title)) cat = 'Digital Health & Telemedicine';
+  else if (/linen|uniform|mattress|drapes|textile/i.test(title)) cat = 'Healthcare Supplies';
 
   // Boxicon code
   let iconCode = 'DIAG';
-  if (/icu|monitor|vital|patient/i.test(title)) iconCode = 'ICU';
-  else if (/air|compressor/i.test(title)) iconCode = 'AIR';
+  if (/icu|vital|patient|warmer|incubator/i.test(title)) iconCode = 'ICU';
+  else if (/\bair\s+compressor\b|\bair\b/i.test(title) && !/repair/i.test(title)) iconCode = 'AIR';
   else if (/oxygen/i.test(title)) iconCode = 'OXY';
-  else if (/pacs|server|emrs|software|it/i.test(title)) iconCode = 'PACS';
-  else if (/lab|blood|reagent|chemical/i.test(title)) iconCode = 'Lab';
+  else if (/pacs|server|emrs|software/i.test(title)) iconCode = 'PACS';
+  else if (/lab|blood|reagent|chemical|metrology/i.test(title)) iconCode = 'Lab';
 
   // Multi-lot line items
   const rawLots = item.items || item.lots || [];
@@ -409,8 +420,27 @@ function mapOcdsTenderToFrontend(item) {
   }));
 
   // Dynamic spec and relevance matching
-  const relScore = item.relevance_score || (/equipment|monitor|icu|compressor|device|machine|workstation/i.test(title) ? 94 : 86);
-  const specMatch = /equipment|monitor|ventilator|compressor|pacs/i.test(title) ? 96 : 89;
+  const isHighFitMedical = !isNonMedical && /patient\s+monitor|critical\s+care|air\s+compressor.*icu|pacs|radiology|x-ray|c-arm|ventilator|chemistry\s+analyzer|biomed|laboratory\s+equipment|metrology|oxygen|cornea|dialysis|operating\s+theatre|surgical/i.test(title);
+
+  let relScore = item.relevance_score;
+  let specMatch = 88;
+
+  if (isNonMedical) {
+    relScore = 0;
+    specMatch = 0;
+  } else if (!relScore) {
+    if (isHighFitMedical) {
+      relScore = 92;
+      specMatch = 95;
+    } else {
+      relScore = 84;
+      specMatch = 88;
+    }
+  } else {
+    specMatch = relScore >= 90 ? 95 : relScore >= 80 ? 90 : 82;
+  }
+
+  const isMedicalEquipment = !isNonMedical && (cat !== 'Healthcare Supplies' && cat !== 'Non-Medical');
 
   const rawUrl = item.source_url || (item.documents && item.documents[0] ? item.documents[0].url : '');
   const finalSourceUrl = rawUrl || getExactTenderSourceUrl({ portal_adv_no: item.portal_adv_no, ref: ref });
@@ -434,17 +464,19 @@ function mapOcdsTenderToFrontend(item) {
     publicationDate: published,
     relevance_score: relScore,
     tech_spec_match: specMatch,
-    product_match: 92,
-    coverage_rate: 100,
-    eligibility_match: 100,
-    manufacturer_match: 95,
-    risk: 'Low',
-    stock_readiness: 'IN_STOCK',
-    stock_label: 'In Stock (Kigali Distribution Hub)',
+    product_match: isNonMedical ? 0 : 92,
+    coverage_rate: isNonMedical ? 0 : 100,
+    eligibility_match: isNonMedical ? 0 : 100,
+    manufacturer_match: isNonMedical ? 0 : 95,
+    risk: isNonMedical ? 'High' : 'Low',
+    stock_readiness: isNonMedical ? 'NO_STOCK' : 'IN_STOCK',
+    stock_label: isNonMedical ? 'Not Applicable' : 'In Stock (Kigali Distribution Hub)',
     status: statusStr.toLowerCase().replace(/\s+/g, '_'),
     status_label: statusStr,
-    recommended_action: relScore >= 80 ? 'BID_HIGH_FIT' : 'OPPORTUNITY_EXPANSION',
-    recommendation_label: relScore >= 80 ? 'Bid (High Win Rate)' : 'Expansion Potential',
+    is_medical: !isNonMedical,
+    is_medical_equipment: isMedicalEquipment,
+    recommended_action: isNonMedical ? 'NO_BID' : (relScore >= 80 ? 'BID_HIGH_FIT' : 'OPPORTUNITY_EXPANSION'),
+    recommendation_label: isNonMedical ? 'No-Bid (Non-Medical)' : (relScore >= 80 ? 'Bid (High Win Rate)' : 'Expansion Potential'),
     icon: iconCode,
     source_url: finalSourceUrl,
     tender_document_url: item.tender_document_url || '',
@@ -525,8 +557,57 @@ async function loadTendersFromApi(options = {}) {
   } finally {
     isTendersLoading = false;
     renderTenderLoadingState(false);
+    populateClientDropdowns();
     renderOverview();
     if (typeof renderPipeline === 'function') renderPipeline();
+    if (typeof updateOverviewMetrics === 'function') updateOverviewMetrics();
+  }
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function populateClientDropdowns() {
+  const clientFilter = document.querySelector('#clientFilter');
+  const pipeClientFilter = document.querySelector('#pipelineClientFilter');
+
+  const medicalEntities = Array.from(new Set(
+    tenders
+      .filter(t => t.is_medical !== false && t.procuring_entity)
+      .map(t => t.procuring_entity.trim())
+  )).sort();
+
+  const buildOptions = (currentVal) => {
+    let html = `
+      <option value="medical_only" ${currentVal === 'medical_only' ? 'selected' : ''}>Clients: Medical Equipment Only</option>
+      <option value="" ${currentVal === '' ? 'selected' : ''}>All Procuring Clients</option>
+    `;
+    if (medicalEntities.length > 0) {
+      html += `<optgroup label="Verified Healthcare Clients & Hospitals">`;
+      medicalEntities.forEach(ent => {
+        const isSel = currentVal === ent ? 'selected' : '';
+        html += `<option value="${escapeHtml(ent)}" ${isSel}>${escapeHtml(ent)}</option>`;
+      });
+      html += `</optgroup>`;
+    }
+    return html;
+  };
+
+  if (clientFilter) {
+    const prev = clientFilter.value || 'medical_only';
+    clientFilter.innerHTML = buildOptions(prev);
+    clientFilter.value = prev;
+  }
+  if (pipeClientFilter) {
+    const prev = pipeClientFilter.value || 'medical_only';
+    pipeClientFilter.innerHTML = buildOptions(prev);
+    pipeClientFilter.value = prev;
   }
 }
 
@@ -1967,9 +2048,10 @@ function renderOverview() {
     currentDateEl.textContent = new Intl.DateTimeFormat('en-GB', options).format(new Date());
   }
 
-  const highFitCount = tenders.filter(t => t.relevance_score >= 80).length;
-  const fullCoverageCount = tenders.filter(t => t.coverage_rate === 100).length;
-  const expansionCount = tenders.filter(t => t.recommended_action === 'OPPORTUNITY_EXPANSION').length;
+  const medicalTenders = tenders.filter(t => t.is_medical !== false && (t.is_medical_equipment || t.category !== 'Healthcare Supplies'));
+  const highFitCount = medicalTenders.filter(t => t.relevance_score >= 80).length;
+  const fullCoverageCount = medicalTenders.filter(t => t.coverage_rate === 100).length;
+  const expansionCount = medicalTenders.filter(t => t.recommended_action === 'OPPORTUNITY_EXPANSION').length;
   const restockAlerts = recurringDemand.filter(d => d.urgency_level === 'URGENT').length;
 
   const hCountEl = document.querySelector('#highFitCount');
@@ -1984,7 +2066,7 @@ function renderOverview() {
 
   const coverageBarEl = document.querySelector('#coverageBar');
   if (coverageBarEl) {
-    const coveragePct = tenders.length ? Math.round((fullCoverageCount / tenders.length) * 100) : 100;
+    const coveragePct = medicalTenders.length ? Math.round((fullCoverageCount / medicalTenders.length) * 100) : 100;
     coverageBarEl.style.width = `${coveragePct}%`;
   }
 
@@ -1993,7 +2075,7 @@ function renderOverview() {
   if (sbSourcesCount) sbSourcesCount.textContent = sources.length;
 
   const sbPipeCount = document.querySelector('#sidebarPipelineCount');
-  if (sbPipeCount) sbPipeCount.textContent = tenders.length;
+  if (sbPipeCount) sbPipeCount.textContent = medicalTenders.length;
 
   const sbCatCount = document.querySelector('#sidebarCatalogueCount');
   if (sbCatCount) sbCatCount.textContent = catalogue.length;
@@ -2005,17 +2087,17 @@ function renderOverview() {
   const inStockAvailEl = document.querySelector('#overviewInStockAvailability');
 
   if (readScoreEl) {
-    const avgScore = tenders.length ? Math.round(tenders.reduce((sum, t) => sum + (t.relevance_score || 0), 0) / tenders.length) : 88;
+    const avgScore = medicalTenders.length ? Math.round(medicalTenders.reduce((sum, t) => sum + (t.relevance_score || 0), 0) / medicalTenders.length) : 88;
     readScoreEl.textContent = avgScore;
   }
   if (brandAuthEl) brandAuthEl.textContent = `${catalogue.length} Brands`;
   if (avgSpecCompEl) {
-    const avgSpec = tenders.length ? (tenders.reduce((sum, t) => sum + (t.tech_spec_match || 0), 0) / tenders.length).toFixed(1) : '85.0';
+    const avgSpec = medicalTenders.length ? (medicalTenders.reduce((sum, t) => sum + (t.tech_spec_match || 0), 0) / medicalTenders.length).toFixed(1) : '85.0';
     avgSpecCompEl.textContent = `${avgSpec}%`;
   }
   if (inStockAvailEl) {
-    const inStockCount = tenders.filter(t => t.stock_readiness === 'IN_STOCK').length;
-    const inStockPct = tenders.length ? ((inStockCount / tenders.length) * 100).toFixed(1) : '60.0';
+    const inStockCount = medicalTenders.filter(t => t.stock_readiness === 'IN_STOCK').length;
+    const inStockPct = medicalTenders.length ? ((inStockCount / medicalTenders.length) * 100).toFixed(1) : '60.0';
     inStockAvailEl.textContent = `${inStockPct}%`;
   }
 
@@ -2025,6 +2107,7 @@ function renderOverview() {
   const emptyState = document.querySelector('#emptyState');
   const searchInput = document.querySelector('#searchInput');
   const fitFilter = document.querySelector('#overviewFitFilter');
+  const clientFilter = document.querySelector('#clientFilter');
   const categoryFilter = document.querySelector('#categoryFilter');
 
   if (!rows) return;
@@ -2038,8 +2121,17 @@ function renderOverview() {
   const term = (searchInput && typeof searchInput.value === 'string') ? searchInput.value.toLowerCase().trim() : '';
   const fit = fitFilter ? fitFilter.value : '';
   const cat = categoryFilter ? categoryFilter.value : '';
+  const client = clientFilter ? clientFilter.value : 'medical_only';
 
   const filtered = tenders.filter(t => {
+    // Client & Medical Equipment Filtering
+    if (client === 'medical_only') {
+      if (t.is_medical === false) return false;
+      if (!t.is_medical_equipment && t.category === 'Healthcare Supplies') return false;
+    } else if (client && client !== '') {
+      if (t.procuring_entity !== client && !t.procuring_entity.toLowerCase().includes(client.toLowerCase())) return false;
+    }
+
     if (cat && t.category !== cat) return false;
     if (fit === 'high' && t.relevance_score < 80) return false;
     if (fit === 'expansion' && t.recommended_action !== 'OPPORTUNITY_EXPANSION') return false;
@@ -2055,9 +2147,9 @@ function renderOverview() {
       emptyState.innerHTML = `
         <div class="empty-state-card">
           <i class='bx bx-search-alt-2'></i>
-          <h4>No live tenders match your criteria</h4>
-          <p>${term ? `No active opportunities found matching "${term}".` : 'No tenders match the selected filters.'}</p>
-          ${term || fit || cat ? `<button class="secondary-button" style="margin-top:8px;padding:6px 14px;font-size:12px;" onclick="if(document.querySelector('#searchInput')) document.querySelector('#searchInput').value=''; if(document.querySelector('#overviewFitFilter')) document.querySelector('#overviewFitFilter').value=''; if(document.querySelector('#categoryFilter')) document.querySelector('#categoryFilter').value=''; renderOverview();">Clear Filters</button>` : ''}
+          <h4>No live medical tenders match your criteria</h4>
+          <p>${term ? `No active opportunities found matching "${term}".` : 'No medical tenders match the selected filters.'}</p>
+          ${term || fit || cat || (client && client !== 'medical_only') ? `<button class="secondary-button" style="margin-top:8px;padding:6px 14px;font-size:12px;" onclick="if(document.querySelector('#searchInput')) document.querySelector('#searchInput').value=''; if(document.querySelector('#clientFilter')) document.querySelector('#clientFilter').value='medical_only'; if(document.querySelector('#overviewFitFilter')) document.querySelector('#overviewFitFilter').value=''; if(document.querySelector('#categoryFilter')) document.querySelector('#categoryFilter').value=''; renderOverview();">Clear Filters</button>` : ''}
         </div>
       `;
     }
@@ -2162,10 +2254,12 @@ function renderOverview() {
 
 const overviewSearchInput = document.querySelector('#searchInput');
 const overviewFitFilter = document.querySelector('#overviewFitFilter');
+const overviewClientFilter = document.querySelector('#clientFilter');
 const overviewCategoryFilter = document.querySelector('#categoryFilter');
 
 if (overviewSearchInput) overviewSearchInput.addEventListener('input', renderOverview);
 if (overviewFitFilter) overviewFitFilter.addEventListener('change', renderOverview);
+if (overviewClientFilter) overviewClientFilter.addEventListener('change', renderOverview);
 if (overviewCategoryFilter) overviewCategoryFilter.addEventListener('change', renderOverview);
 
 
@@ -3270,16 +3364,19 @@ function renderPipeline() {
   const pipelineRows = document.querySelector('#pipelineTableRows');
   const pipelineEmptyState = document.querySelector('#pipelineEmptyState');
   const searchInput = document.querySelector('#pipelineSearchInput');
+  const clientFilter = document.querySelector('#pipelineClientFilter');
   const categoryFilter = document.querySelector('#pipelineCategoryFilter');
   const actionFilter = document.querySelector('#pipelineActionFilter');
   const strategyFilter = document.querySelector('#pipelineStrategyFilter');
   const sortBy = document.querySelector('#pipelineSortBy');
 
+  const medicalTenders = tenders.filter(t => t.is_medical !== false && (t.is_medical_equipment || t.category !== 'Healthcare Supplies'));
+
   // Pipeline Metric Cards
-  const totalPipelineVal = tenders.reduce((sum, t) => sum + (t.tender_value || 0), 0);
-  const prepCount = tenders.filter(t => t.status === 'bid_preparation').length;
-  const avgMatch = tenders.length ? Math.round(tenders.reduce((sum, t) => sum + (t.tech_spec_match || 0), 0) / tenders.length) : 0;
-  const stockAdvCount = tenders.filter(t => t.stock_readiness === 'IN_STOCK').length;
+  const totalPipelineVal = medicalTenders.reduce((sum, t) => sum + (t.tender_value || 0), 0);
+  const prepCount = medicalTenders.filter(t => t.status === 'bid_preparation').length;
+  const avgMatch = medicalTenders.length ? Math.round(medicalTenders.reduce((sum, t) => sum + (t.tech_spec_match || 0), 0) / medicalTenders.length) : 0;
+  const stockAdvCount = medicalTenders.filter(t => t.stock_readiness === 'IN_STOCK').length;
 
   const pipeValEl = document.querySelector('#pipelineTotalValue');
   const pipeActiveEl = document.querySelector('#pipelineActiveCount');
@@ -3288,18 +3385,18 @@ function renderPipeline() {
   const pipeStockEl = document.querySelector('#pipelineStockAdvantage');
 
   if (pipeValEl) pipeValEl.textContent = formatRWF(totalPipelineVal);
-  if (pipeActiveEl) pipeActiveEl.textContent = `${tenders.length} active monitored opportunities`;
+  if (pipeActiveEl) pipeActiveEl.textContent = `${medicalTenders.length} active monitored opportunities`;
   if (pipePrepEl) pipePrepEl.textContent = prepCount;
   if (pipeAvgEl) pipeAvgEl.textContent = `${avgMatch}%`;
   if (pipeStockEl) pipeStockEl.textContent = `${stockAdvCount} Tenders`;
 
   // Stage counts
   const stageCounts = {
-    all: tenders.length,
-    high_fit: tenders.filter(t => t.relevance_score >= 80).length,
-    expansion: tenders.filter(t => t.recommended_action === 'OPPORTUNITY_EXPANSION').length,
+    all: medicalTenders.length,
+    high_fit: medicalTenders.filter(t => t.relevance_score >= 80).length,
+    expansion: medicalTenders.filter(t => t.recommended_action === 'OPPORTUNITY_EXPANSION').length,
     prep: prepCount,
-    submitted: tenders.filter(t => t.status === 'submitted').length
+    submitted: medicalTenders.filter(t => t.status === 'submitted').length
   };
 
   const cAll = document.querySelector('#countStageAll');
@@ -3316,7 +3413,7 @@ function renderPipeline() {
 
   // Sidebar badge sync
   const sbPipeCount = document.querySelector('#sidebarPipelineCount');
-  if (sbPipeCount) sbPipeCount.textContent = tenders.length;
+  if (sbPipeCount) sbPipeCount.textContent = medicalTenders.length;
 
   if (!pipelineRows) return;
 
@@ -3327,12 +3424,21 @@ function renderPipeline() {
   }
 
   const term = (searchInput && typeof searchInput.value === 'string') ? searchInput.value.toLowerCase().trim() : '';
+  const client = clientFilter ? clientFilter.value : 'medical_only';
   const cat = categoryFilter ? categoryFilter.value : '';
   const act = actionFilter ? actionFilter.value : '';
   const strat = strategyFilter ? strategyFilter.value : '';
   const sort = sortBy ? sortBy.value : 'deadline';
 
   let filtered = tenders.filter(t => {
+    // Client & Medical Equipment Filtering
+    if (client === 'medical_only') {
+      if (t.is_medical === false) return false;
+      if (!t.is_medical_equipment && t.category === 'Healthcare Supplies') return false;
+    } else if (client && client !== '') {
+      if (t.procuring_entity !== client && !t.procuring_entity.toLowerCase().includes(client.toLowerCase())) return false;
+    }
+
     if (pipelineSelectedStage === 'high_fit' && t.relevance_score < 80) return false;
     if (pipelineSelectedStage === 'expansion' && t.recommended_action !== 'OPPORTUNITY_EXPANSION') return false;
     if (pipelineSelectedStage === 'bid_preparation' && t.status !== 'bid_preparation') return false;
@@ -3366,9 +3472,9 @@ function renderPipeline() {
       pipelineEmptyState.innerHTML = `
         <div class="empty-state-card">
           <i class='bx bx-folder-open'></i>
-          <h4>No pipeline tenders found</h4>
-          <p>${term ? `No active pipeline deals found matching "${term}".` : 'No pipeline opportunities match your filters.'}</p>
-          ${term || cat || act || strat ? `<button class="secondary-button" style="margin-top:8px;padding:6px 14px;font-size:12px;" onclick="if(document.querySelector('#pipelineSearchInput')) document.querySelector('#pipelineSearchInput').value=''; if(document.querySelector('#pipelineCategoryFilter')) document.querySelector('#pipelineCategoryFilter').value=''; if(document.querySelector('#pipelineActionFilter')) document.querySelector('#pipelineActionFilter').value=''; if(document.querySelector('#pipelineStrategyFilter')) document.querySelector('#pipelineStrategyFilter').value=''; renderPipeline();">Reset Filters</button>` : ''}
+          <h4>No medical pipeline tenders found</h4>
+          <p>${term ? `No active pipeline deals found matching "${term}".` : 'No medical pipeline opportunities match your filters.'}</p>
+          ${term || cat || act || strat || (client && client !== 'medical_only') ? `<button class="secondary-button" style="margin-top:8px;padding:6px 14px;font-size:12px;" onclick="if(document.querySelector('#pipelineSearchInput')) document.querySelector('#pipelineSearchInput').value=''; if(document.querySelector('#pipelineClientFilter')) document.querySelector('#pipelineClientFilter').value='medical_only'; if(document.querySelector('#pipelineCategoryFilter')) document.querySelector('#pipelineCategoryFilter').value=''; if(document.querySelector('#pipelineActionFilter')) document.querySelector('#pipelineActionFilter').value=''; if(document.querySelector('#pipelineStrategyFilter')) document.querySelector('#pipelineStrategyFilter').value=''; renderPipeline();">Reset Filters</button>` : ''}
         </div>
       `;
     }
@@ -3505,12 +3611,14 @@ function renderPipeline() {
   });
 
   const pipeSearch = document.querySelector('#pipelineSearchInput');
+  const pipeClient = document.querySelector('#pipelineClientFilter');
   const pipeCat = document.querySelector('#pipelineCategoryFilter');
   const pipeAct = document.querySelector('#pipelineActionFilter');
   const pipeStrat = document.querySelector('#pipelineStrategyFilter');
   const pipeSort = document.querySelector('#pipelineSortBy');
 
   if (pipeSearch) pipeSearch.addEventListener('input', renderPipeline);
+  if (pipeClient) pipeClient.addEventListener('change', renderPipeline);
   if (pipeCat) pipeCat.addEventListener('change', renderPipeline);
   if (pipeAct) pipeAct.addEventListener('change', renderPipeline);
   if (pipeStrat) pipeStrat.addEventListener('change', renderPipeline);

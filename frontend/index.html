@@ -193,6 +193,10 @@
                 <i class='bx bx-search' aria-hidden="true"></i>
                 <input id="searchInput" type="search" placeholder="Search title, entity, required product..." aria-label="Search tenders by keyword">
               </label>
+              <select id="clientFilter" aria-label="Filter by procuring client">
+                <option value="medical_only" selected>Clients: Medical Equipment Only</option>
+                <option value="">All Procuring Clients</option>
+              </select>
               <select id="overviewFitFilter" aria-label="Filter by company fit level">
                 <option value="">All fit levels</option>
                 <option value="high">High Fit (≥80%)</option>
@@ -390,6 +394,11 @@
                 <i class='bx bx-search' aria-hidden="true"></i>
                 <input id="pipelineSearchInput" type="search" placeholder="Search reference, title, buyer, required device..." aria-label="Search pipeline tenders">
               </label>
+
+              <select id="pipelineClientFilter" aria-label="Filter by procuring client">
+                <option value="medical_only" selected>Clients: Medical Equipment Only</option>
+                <option value="">All Procuring Clients</option>
+              </select>
 
               <select id="pipelineCategoryFilter" aria-label="Filter by category">
                 <option value="">All categories (10+ Specialties)</option>

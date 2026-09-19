@@ -165,7 +165,7 @@ export class OCDSAdapter {
       procuring_entity: procuringEntityName.slice(0, 300),
       country: 'Rwanda',
       location: 'Rwanda',
-      category: /equipment|monitor|icu|ecg|device|defibrillator|ultrasound/i.test(title)
+      category: /medical\s+equipment|hospital\s+equipment|biomedical|monitor|icu|ventilator|radiology|imaging|x-ray|ecg|device|defibrillator|ultrasound|laboratory|analyzer|oxygen/i.test(title)
         ? 'Medical Equipment'
         : 'Healthcare Supplies',
       published_at: publishedAt,

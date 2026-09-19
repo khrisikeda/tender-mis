@@ -41,10 +41,28 @@ DEFAULT_HEADERS = {
 
 # Keywords to strictly filter for relevant medical, biomedical, clinical, laboratory, and hospital equipment
 MEDICAL_KEYWORDS = [
-    "patient", "medical", "hospital", "equipment", "health", "care", "diagnostic",
-    "clinic", "lab", "oxygen", "first-aid", "emrs", "imaging", "monitor", "frigo",
-    "ambulance", "reagent", "pharma", "biomedical", "icu", "neonatal", "ecg",
-    "defibrillator", "ultrasound", "compressor", "ppe"
+    "medical equipment", "medical device", "biomedical", "patient monitor", "monitoring and critical",
+    "vital signs", "ventilator", "radiology", "imaging", "pacs", "x-ray", "c-arm", "ct scanner",
+    "ultrasound", "laboratory equipment", "clinical chemistry", "hematology", "analyzer", "reagents",
+    "hospital equipment", "operating theatre", "surgical", "anesthesia", "infant warmer", "incubator",
+    "phototherapy", "neonatal", "dialysis", "hemodialysis", "medical gas", "medical air compressor",
+    "oxygen plant", "oxygen cylinder", "ophthalmology", "tonometer", "dental chair", "dental unit",
+    "autoclave", "sterilizer", "defibrillator", "ecg", "suction machine", "tissue banking", "cornea",
+    "metrology laborator", "hospital mattress", "mesical materials", "medical consumables"
+]
+
+EXCLUDED_CLIENTS = [
+    "senate", "parliament", "kigali city", "district", "revenue authority", "rra",
+    "edcl", "reg", "wasac", "police", "military", "rdf", "rwanda polytechnic",
+    "court", "ombudsman", "minecofin", "mininfra", "rtda", "rura"
+]
+
+EXCLUDED_TITLE_KEYWORDS = [
+    "security equipment", "security services", "genocide memorial", "vup program", "public works",
+    "sport", "foot ball", "refreshment", "catering", "stationery", "stationaries", "printing",
+    "solar home", "radio salus", "media production", "ict materials", "cleaning", "school",
+    "curtain", "tea beverage", "water and tea", "seeds", "tractor", "plumbing", "jail", "court",
+    "fire extinguisher", "road", "bridge", "office equipment", "cupboard", "locker safe", "cctv"
 ]
 
 
@@ -99,16 +117,36 @@ def parse_currency_amount(amount_str: str) -> Optional[float]:
         return None
 
 
-def is_relevant_medical_tender(title: str) -> bool:
-    """Filters tenders strictly for relevant medical, laboratory, hospital, and clinical equipment."""
+def is_relevant_medical_tender(title: str, client: Optional[str] = None) -> bool:
+    """
+    Filters tenders strictly for relevant medical, laboratory, hospital, and clinical equipment.
+    Excludes non-medical clients (e.g. Senate, Kigali City, RRA) and non-medical titles.
+    """
     if not title:
         return False
     title_lower = title.lower()
-    # Exclude obvious non-medical items (e.g., school furniture, general fuel, cleaning tenders)
-    exclusions = ["school", "curtain", "tea beverage", "water and tea", "seeds", "tractor", "plumbing", "police", "jail", "court"]
-    if any(ex in title_lower for ex in exclusions):
+    client_lower = (client or "").lower()
+
+    # Check excluded non-medical clients
+    if client_lower and any(ex_client in client_lower for ex_client in EXCLUDED_CLIENTS):
+        # Unless the tender title explicitly specifies hospital/medical equipment
+        if not any(k in title_lower for k in ["medical equipment", "biomedical", "hospital equipment"]):
+            return False
+
+    # Exclude obvious non-medical items
+    if any(ex in title_lower for ex in EXCLUDED_TITLE_KEYWORDS):
         return False
-    return any(k in title_lower for k in MEDICAL_KEYWORDS)
+
+    # Check for direct medical keywords
+    if any(k in title_lower for k in MEDICAL_KEYWORDS):
+        return True
+
+    # If from a recognized hospital / health institution with equipment
+    if any(h in client_lower for h in ["hospital", "rbc", "biomedical", "health", "clinic"]):
+        if any(w in title_lower for w in ["equipment", "machine", "device", "analyzer", "monitor", "oxygen"]):
+            return True
+
+    return False
 
 
 def fetch_live_umucyo_tenders(max_pages: int = 5) -> List[Dict[str, Any]]:
@@ -155,7 +193,8 @@ def fetch_live_umucyo_tenders(max_pages: int = 5) -> List[Dict[str, Any]]:
             tend_type_cd = tokens[6] if len(tokens) > 6 else "G"
 
             # Filter for relevant medical equipment ONLY
-            if not is_relevant_medical_tender(title_raw):
+            client_hint = tokens[2] if len(tokens) > 2 else ""
+            if not is_relevant_medical_tender(title_raw, client_hint):
                 continue
 
             if internal_ref_no in seen_refs:
@@ -178,13 +217,43 @@ def fetch_live_umucyo_tenders(max_pages: int = 5) -> List[Dict[str, Any]]:
             )
             safe_portal_url = build_safe_portal_url(adv_no=internal_ref_no, adv_status="00")
 
+            t_title = dtl_data.get("title") or title_raw
+            t_entity = dtl_data.get("procuring_entity") or client_hint or "Rwanda Biomedical Institution"
+
+            if not is_relevant_medical_tender(t_title, t_entity):
+                continue
+
+            # Determine category
+            cat = "Medical Equipment"
+            t_lower = t_title.lower()
+            if any(k in t_lower for k in ["radiology", "imaging", "x-ray", "c-arm", "ct scanner", "mri"]):
+                cat = "Imaging & Radiology"
+            elif any(k in t_lower for k in ["icu", "neonatal", "warmer", "incubator", "ventilator", "patient monitor", "monitoring"]):
+                cat = "Neonatal & ICU"
+            elif any(k in t_lower for k in ["laboratory", "biomed", "chemistry analyzer", "reagents", "metrology"]):
+                cat = "Laboratory"
+            elif any(k in t_lower for k in ["surgical", "operating theatre", "theatre", "suction"]):
+                cat = "Surgical"
+            elif any(k in t_lower for k in ["oxygen", "medical gas", "compressor"]):
+                cat = "Medical Gas & Infrastructure"
+            elif any(k in t_lower for k in ["ophthalmology", "cornea", "eye"]):
+                cat = "Ophthalmology"
+            elif any(k in t_lower for k in ["dialysis", "renal"]):
+                cat = "Renal & Dialysis"
+            elif any(k in t_lower for k in ["pacs", "emrs", "telemedicine"]):
+                cat = "Digital Health & Telemedicine"
+            elif any(k in t_lower for k in ["dental"]):
+                cat = "Dental"
+            elif any(k in t_lower for k in ["linen", "mattress", "uniform", "textile", "drapes"]):
+                cat = "Healthcare Supplies"
+
             tender_dict = {
                 "reference_number": dtl_data.get("ref_no") or ref_no,
                 "portal_adv_no": internal_ref_no,
                 "portal_adv_status": "00",
-                "title": dtl_data.get("title") or title_raw,
-                "procuring_entity": dtl_data.get("procuring_entity") or "Rwanda Biomedical Institution",
-                "category": "Medical Equipment" if any(k in title_raw.lower() for k in ["equipment", "monitor", "icu", "ecg", "defibrillator", "ultrasound", "compressor", "care"]) else "Healthcare Supplies",
+                "title": t_title,
+                "procuring_entity": t_entity,
+                "category": cat,
                 "procurement_method": dtl_data.get("procurement_method") or "National Competitive Bidding",
                 "published_at": parse_date_safe(published_str) or dtl_data.get("published_at") or datetime.now(timezone.utc),
                 "deadline_at": parse_date_safe(deadline_str) or dtl_data.get("deadline_at") or (datetime.now(timezone.utc) + timedelta(days=30)),

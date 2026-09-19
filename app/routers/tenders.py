@@ -3,7 +3,7 @@ import uuid
 from typing import Any, Optional, Union
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, Response, UploadFile, status
-from sqlalchemy import or_
+from sqlalchemy import or_, not_
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -127,16 +127,33 @@ def list_tenders(
     status_filter: Optional[str] = Query(default=None, alias="status"),
     country: Optional[str] = None,
     category: Optional[str] = None,
-    page: int = Query(default=1, ge=1),
-    page_size: int = Query(default=20, ge=1, le=100),
-    paginated: bool = Query(default=False, description="Return wrapped object with pagination metadata"),
+    client: Optional[str] = None,
+    medical_only: bool = True,
+    page: int = 1,
+    page_size: int = 20,
+    paginated: bool = False,
     db: Session = Depends(get_db),
     current_user: Optional[User] = Depends(get_current_user_optional),
 ):
     query = db.query(Tender)
 
+    # Filter client / procuring entity
+    if isinstance(client, str) and client.strip():
+        c_val = client.strip()
+        if c_val != "medical_only":
+            query = query.filter(Tender.procuring_entity.ilike(f"%{c_val}%"))
+
+    # Exclude non-medical clients and non-medical tenders if medical_only is True
+    if medical_only:
+        non_medical_clients = [
+            "senate", "parliament", "kigali city", "district", "revenue authority",
+            "edcl", "reg", "wasac", "police", "military", "rdf", "rwanda polytechnic"
+        ]
+        for nmc in non_medical_clients:
+            query = query.filter(not_(Tender.procuring_entity.ilike(f"%{nmc}%")))
+
     # Multi-field search
-    if q and q.strip():
+    if isinstance(q, str) and q.strip():
         search_pattern = f"%{q.strip()}%"
         query = query.filter(
             or_(
@@ -150,7 +167,7 @@ def list_tenders(
         )
 
     # Filter status
-    if status_filter and status_filter.strip():
+    if isinstance(status_filter, str) and status_filter.strip():
         val = status_filter.strip().lower()
         if val in {"active", "new"}:
             query = query.filter(Tender.status == TenderStatus.NEW)
@@ -169,10 +186,10 @@ def list_tenders(
             except ValueError:
                 pass
 
-    if country:
-        query = query.filter(Tender.country.ilike(country))
-    if category:
-        query = query.filter(Tender.category.ilike(category))
+    if isinstance(country, str) and country.strip():
+        query = query.filter(Tender.country.ilike(country.strip()))
+    if isinstance(category, str) and category.strip():
+        query = query.filter(Tender.category.ilike(category.strip()))
 
     total_count = query.count()
     total_pages = max(1, math.ceil(total_count / page_size)) if total_count > 0 else 1
