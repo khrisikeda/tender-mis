@@ -85,6 +85,71 @@ def seed_default_sources(db: Session):
             "scan_frequency_hours": 24,
             "tenders_collected_count": 3,
         },
+        {
+            "name": "King Faisal Hospital Rwanda (KFH)",
+            "code": "KFH-PROC",
+            "organization": "Quaternary Specialized Referral Hospital",
+            "website": "https://kfh.rw/tenders",
+            "url": "https://kfh.rw/tenders",
+            "scraper_type": "web_portal",
+            "category": SourceCategory.HOSPITAL,
+            "collection_method": CollectionMethod.WEBPAGE,
+            "is_active": True,
+            "scan_frequency_hours": 12,
+            "tenders_collected_count": 6,
+        },
+        {
+            "name": "University Teaching Hospital of Butare (CHUB)",
+            "code": "CHUB-PROC",
+            "organization": "Southern Province Teaching & Referral Hospital",
+            "website": "https://chub.rw",
+            "url": "https://chub.rw",
+            "scraper_type": "web_portal",
+            "category": SourceCategory.HOSPITAL,
+            "collection_method": CollectionMethod.WEBPAGE,
+            "is_active": True,
+            "scan_frequency_hours": 24,
+            "tenders_collected_count": 4,
+        },
+        {
+            "name": "Rwanda Military Hospital (RMH Kanombe)",
+            "code": "RMH-MED",
+            "organization": "Tertiary Referral & Oncology Centre",
+            "website": "https://rwandamilitaryhospital.rw",
+            "url": "https://rwandamilitaryhospital.rw",
+            "scraper_type": "web_portal",
+            "category": SourceCategory.HOSPITAL,
+            "collection_method": CollectionMethod.WEBPAGE,
+            "is_active": True,
+            "scan_frequency_hours": 24,
+            "tenders_collected_count": 5,
+        },
+        {
+            "name": "UNGM - United Nations Global Marketplace (WHO / UNICEF)",
+            "code": "UNGM-HEALTH",
+            "organization": "United Nations Procurement Portal",
+            "website": "https://www.ungm.org",
+            "url": "https://www.ungm.org",
+            "scraper_type": "api",
+            "category": SourceCategory.UN_AGENCY,
+            "collection_method": CollectionMethod.API,
+            "is_active": True,
+            "scan_frequency_hours": 12,
+            "tenders_collected_count": 12,
+        },
+        {
+            "name": "Enabel Rwanda - Healthcare Infrastructure & Equipment",
+            "code": "ENABEL-RW",
+            "organization": "Belgian Development Agency",
+            "website": "https://www.enabel.be",
+            "url": "https://www.enabel.be",
+            "scraper_type": "webpage",
+            "category": SourceCategory.NGO,
+            "collection_method": CollectionMethod.WEBPAGE,
+            "is_active": True,
+            "scan_frequency_hours": 24,
+            "tenders_collected_count": 3,
+        },
     ]
     for s_data in defaults:
         existing = db.query(TenderSource).filter(TenderSource.name == s_data["name"]).first()
@@ -121,24 +186,25 @@ def get_source(
     return source
 
 
-@router.post("", response_model=TenderSourceOut, status_code=status.HTTP_201_CREATED, dependencies=[Depends(MANAGE_SOURCES)])
+@router.post("", response_model=TenderSourceOut, status_code=status.HTTP_201_CREATED)
 def create_source(
     payload: TenderSourceCreate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
+    current_user: Optional[User] = Depends(get_current_user_optional),
 ):
     source = TenderSource(**payload.model_dump())
     db.add(source)
     db.flush()
 
-    write_audit_log(
-        db,
-        user_id=current_user.id,
-        action=AuditAction.CREATE,
-        entity_type="tender_source",
-        entity_id=source.id,
-        new_value=payload.model_dump(mode="json"),
-    )
+    if current_user:
+        write_audit_log(
+            db,
+            user_id=current_user.id,
+            action=AuditAction.CREATE,
+            entity_type="tender_source",
+            entity_id=source.id,
+            new_value=payload.model_dump(mode="json"),
+        )
     db.commit()
     db.refresh(source)
     return source

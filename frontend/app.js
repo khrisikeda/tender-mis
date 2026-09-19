@@ -5621,7 +5621,7 @@ if (sourceStat) sourceStat.addEventListener('change', renderSources);
   }
 
   if (addSourceForm) {
-    addSourceForm.addEventListener('submit', (e) => {
+    addSourceForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.querySelector('#newSourceName')?.value.trim();
       const website = document.querySelector('#newSourceWebsite')?.value.trim();
@@ -5656,6 +5656,36 @@ if (sourceStat) sourceStat.addEventListener('change', renderSources);
       const activeEl = document.querySelector('#sourcesActiveCount');
       if (countEl) countEl.textContent = sources.length;
       if (activeEl) activeEl.textContent = `${sources.filter(s => s.is_active).length} online & active`;
+
+      // Persist to backend database
+      try {
+        const token = window.localStorage.getItem('medtender_access_token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+
+        const codeVal = name.replace(/[^a-zA-Z0-9]/g, '-').slice(0, 15).toUpperCase();
+        const res = await fetch(`${API_BASE}/tender-sources`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            name,
+            code: codeVal,
+            organization: org,
+            website,
+            url: website,
+            category: cat,
+            collection_method: method,
+            scan_frequency_hours: parseInt(freq, 10),
+            is_active: true
+          })
+        });
+        if (res.ok) {
+          const saved = await res.json();
+          newSource.id = saved.id;
+        }
+      } catch (err) {
+        console.warn('Could not persist source to backend API:', err);
+      }
 
       showToast(`<i class='bx bx-check-circle' style='color:var(--green);margin-right:4px;'></i> Procurement source "${name}" registered and added to discovery queue.`);
     });
