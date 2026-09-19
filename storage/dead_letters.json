@@ -340,5 +340,140 @@
     "context": {
       "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50"
     }
+  },
+  {
+    "timestamp": "2026-09-04T17:20:13.044804+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-04T17:20:20.198941+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50",
+    "status_code": null,
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-04T17:20:35.291030+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:42:03.128939+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:42:03.333668+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50",
+    "status_code": null,
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:42:18.428566+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:43:22.949792+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:43:23.162844+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50",
+    "status_code": null,
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:43:38.274945+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:44:02.001145+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:44:02.153927+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50",
+    "status_code": null,
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:44:17.307724+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:44:38.689163+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/releases/all?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:44:38.818897+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50",
+    "status_code": null,
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/api/v1/releases?offset=0&limit=50"
+    }
+  },
+  {
+    "timestamp": "2026-09-18T16:44:53.913821+00:00",
+    "endpoint": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50",
+    "status_code": null,
+    "error": "The read operation timed out",
+    "context": {
+      "url": "https://ocds.umucyo.gov.rw/opendata/api/v1/ui/releases/search?query=medical&procuring_type=goods&page=1&page_size=50"
+    }
   }
 ]
