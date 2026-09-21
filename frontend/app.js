@@ -647,8 +647,33 @@ function renderTenderLoadingState(isLoading) {
     </tr>
   `).join('');
 
+  const pipeSkeletonHtml = Array.from({ length: 6 }).map(() => `
+    <tr class="skeleton-row">
+      <td>
+        <div class="tender-cell-main">
+          <div class="skeleton-shimmer skeleton-line badge" style="width:36px;height:36px;border-radius:8px;"></div>
+          <div style="flex:1;">
+            <div class="skeleton-shimmer skeleton-line title"></div>
+            <div class="skeleton-shimmer skeleton-line sub"></div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="skeleton-shimmer skeleton-line sub" style="width:90px;margin-bottom:4px;"></div>
+        <div class="skeleton-shimmer skeleton-line badge" style="width:60px;height:14px;"></div>
+      </td>
+      <td>
+        <div class="skeleton-shimmer skeleton-line sub" style="width:80px;margin-bottom:4px;"></div>
+        <div class="skeleton-shimmer skeleton-line badge" style="width:60px;height:14px;"></div>
+      </td>
+      <td style="text-align: right;">
+        <div class="skeleton-shimmer skeleton-line badge" style="width:100px;height:28px;margin-left:auto;"></div>
+      </td>
+    </tr>
+  `).join('');
+
   if (rows) rows.innerHTML = skeletonHtml;
-  if (pipeRows) pipeRows.innerHTML = skeletonHtml;
+  if (pipeRows) pipeRows.innerHTML = pipeSkeletonHtml;
 }
 
 // ==========================================================================
@@ -3541,29 +3566,8 @@ function renderPipeline() {
           <small class="deadline-countdown ${urgency(t.deadline_at)}"><i class='bx bx-time-five'></i> ${urgencyLabel}</small>
         </div>
       </td>
-      <td>
-        <div class="fit-cell">
-          <div class="fit-top-row">
-            <span class="match-score ${scoreClass}"><i class='bx bxs-star'></i> ${t.relevance_score}%</span>
-            <span class="coverage-pill ${t.coverage_rate === 100 ? 'full' : ''}">${t.coverage_rate}% Lots</span>
-          </div>
-          <small class="fit-sub">Spec: <b>${t.tech_spec_match}%</b> Match</small>
-        </div>
-      </td>
-      <td>
-        <div class="strategy-cell-compact">
-          <span class="strategy-badge ${stratClass}">${t.sourcing_strategy_label}</span>
-          <div class="strategy-sub-row">
-            <span class="stock-tag ${t.stock_readiness === 'IN_STOCK' ? 'in-stock' : t.stock_readiness === 'EXPANSION_OPPORTUNITY' ? 'expansion' : 'lead-time'}">
-              ${t.stock_readiness === 'IN_STOCK' ? 'In-Stock' : 'Lead Time'}
-            </span>
-            <small class="benchmark-txt">vs ${t.benchmarked_european_brand ? t.benchmarked_european_brand.split('/')[0].trim() : 'Benchmark'}</small>
-          </div>
-        </div>
-      </td>
       <td style="text-align: right;">
         <div class="action-cell">
-          <span class="recommend-badge ${recClass}">${recShortLabel}</span>
           <button class="primary-button pipeline-action-btn" data-open-analysis="${t.id}" aria-label="Open specification and equivalence analysis for ${t.title}">
             Specs + Parity <i class='bx bx-right-arrow-alt'></i>
           </button>
@@ -5785,19 +5789,20 @@ if (scanAllSourcesBtn) {
   scanAllSourcesBtn.addEventListener('click', async () => {
     const originalText = scanAllSourcesBtn.innerHTML;
     scanAllSourcesBtn.disabled = true;
-    scanAllSourcesBtn.innerHTML = "<i class='bx bx-refresh bx-spin' style='margin-right:4px;'></i> Polling Live Sources...";
-    showToast("<i class='bx bx-loader-alt bx-spin' style='margin-right:4px;'></i> Polling official Rwanda OCDS API and Umucyo portal...");
+    scanAllSourcesBtn.innerHTML = "<i class='bx bx-refresh bx-spin' style='margin-right:4px;'></i> Polling All Monitored Sources...";
+    showToast("<i class='bx bx-loader-alt bx-spin' style='margin-right:4px;'></i> Syncing Umucyo, Imvaho Nshya Amasoko & Hospital Portals...");
 
     try {
       const token = window.localStorage.getItem('medtender_access_token');
       const headers = { 'Content-Type': 'application/json' };
       if (token) headers['Authorization'] = `Bearer ${token}`;
-      await fetch(`${API_BASE}/tender-sources/sync/umucyo`, { method: 'POST', headers });
+      await fetch(`${API_BASE}/tender-sources/sync/all`, { method: 'POST', headers });
     } catch (e) {
       console.warn('Backend sync warning:', e);
     }
 
     await loadTendersFromApi();
+    await loadDatabaseSources();
 
     sources.forEach(s => {
       s.last_scan_at = 'Just now';

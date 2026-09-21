@@ -1,7 +1,7 @@
 from typing import Optional
 import uuid
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -299,8 +299,12 @@ async def scan_source(
     if not source:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Tender source not found")
 
-    from app.services.umucyo_crawler import sync_umucyo_tenders
-    result = await sync_umucyo_tenders(db=db)
+    if "imvaho" in (source.code or "").lower() or "imvaho" in (source.name or "").lower():
+        from app.services.multi_source_crawler import crawl_imvaho_amasoko
+        result = crawl_imvaho_amasoko(db=db, max_pages=3)
+    else:
+        from app.services.umucyo_crawler import sync_umucyo_tenders
+        result = await sync_umucyo_tenders(db=db)
 
     if current_user:
         write_audit_log(
@@ -337,4 +341,34 @@ async def sync_umucyo_direct(
         )
         db.commit()
     return result
+
+
+@router.post("/sync/all")
+async def sync_all_sources(
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+    current_user: Optional[User] = Depends(get_current_user_optional),
+):
+    """
+    Executes a 30-minute multi-source sync across all monitored procurement channels
+    (Umucyo e-Procurement, Imvaho Nshya Amasoko with Kinyarwanda medical parsing).
+    """
+    from app.services.multi_source_crawler import scan_all_monitored_sources
+    background_tasks.add_task(scan_all_monitored_sources)
+
+    if current_user:
+        write_audit_log(
+            db,
+            user_id=current_user.id,
+            action=AuditAction.UPDATE,
+            entity_type="tender_source",
+            entity_id=current_user.id,
+            new_value={"action": "multi_source_sync_all_initiated"},
+        )
+        db.commit()
+
+    return {
+        "status": "initiated",
+        "message": "30-minute multi-source sync initiated across Umucyo, Imvaho Nshya, and hospital channels."
+    }
 

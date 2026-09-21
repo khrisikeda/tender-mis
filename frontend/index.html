@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MedTender | Company-to-Tender Relevance & Procurement Intelligence</title>
   <meta name="description" content="Company-to-Tender Relevance Matching and Predictive Stock Replenishment Workspace">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.1.0">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
@@ -425,13 +425,6 @@
                 <option value="NO_BID">No-Bid</option>
               </select>
 
-              <select id="pipelineStrategyFilter" aria-label="Filter by sourcing strategy">
-                <option value="">All Sourcing Strategies</option>
-                <option value="BID_CHINESE_EQUIVALENT">Bid In-Stock Equivalent (≥88% Equiv)</option>
-                <option value="BID_WITH_EQUIVALENCE_DEFENSE">Bid with RPPA Defense (70-87%)</option>
-                <option value="SOURCE_EUROPEAN_PARTNER">Source European OEM Partner</option>
-              </select>
-
               <select id="pipelineSortBy" aria-label="Sort tenders by">
                 <option value="deadline" selected>Sort: Closing Soonest</option>
                 <option value="equivalence">Sort: Brand Equivalence (Highest)</option>
@@ -445,12 +438,10 @@
               <table class="pipeline-table" aria-label="Complete pipeline table">
                 <thead>
                   <tr>
-                    <th scope="col" style="width: 32%;">Opportunity & Buyer</th>
-                    <th scope="col" style="width: 14%;">Security Value</th>
-                    <th scope="col" style="width: 13%;">Deadline</th>
-                    <th scope="col" style="width: 14%;">Fit & Coverage</th>
-                    <th scope="col" style="width: 15%;">Sourcing Strategy</th>
-                    <th scope="col" style="width: 12%; text-align: right;">Action</th>
+                    <th scope="col" style="width: 50%;">Opportunity & Buyer</th>
+                    <th scope="col" style="width: 18%;">Security Value</th>
+                    <th scope="col" style="width: 16%;">Deadline</th>
+                    <th scope="col" style="width: 16%; text-align: right;">Action</th>
                   </tr>
                 </thead>
                 <tbody id="pipelineTableRows"></tbody>
@@ -1052,6 +1043,6 @@
   <!-- Toast Notification Container -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="app.js?v=2.0.4"></script>
+  <script src="app.js?v=2.1.0"></script>
 </body>
 </html>
