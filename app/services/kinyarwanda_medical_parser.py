@@ -21,6 +21,15 @@ KINYARWANDA_HEALTH_BUYERS = [
     "rwanda medical supply",   # RMS
     "rms",
     "ubuvuzi",                 # Healthcare
+    "inshuti mu buzima",       # Partners In Health Rwanda
+    "partners in health",      # PIH
+    "pih",
+    "health builders",         # Health Builders Rwanda
+    "unhcr",                   # UN Refugee Agency Health Operations
+    "rsog",                    # Rwanda Society of Obstetricians and Gynecologists
+    "rwanda society of obstetricians",
+    "society for family health", # SFH Rwanda
+    "sfh",
 ]
 
 # Kinyarwanda Medical Equipment, Consumables & Clinical Supplies
